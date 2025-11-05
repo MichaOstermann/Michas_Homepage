@@ -125,10 +125,72 @@ yarn start
 - **Featured Images**
 - **Author-Management**
 
+## 👽 NEU: Animierte Aliens!
+
+Die About-Sektion zeigt jetzt **3 animierte Neon-Aliens** mit:
+- **Pulsierenden Augen** und bewegten Pupillen
+- **Glühenden Antennen** mit Neon-Effekten
+- **Rotierenden Animationen** in verschiedenen Geschwindigkeiten
+- **Höherer Sichtbarkeit** (70% Opacity statt 20%)
+
+## 📊 Admin-Dashboard
+
+### Zugriff: `/admin`
+
+**Standard-Passwort:** `mcgv2024`
+
+⚠️ **WICHTIG: Passwort ändern!**
+
+Öffne `/app/admin/layout.tsx` und ändere:
+```typescript
+const ADMIN_PASSWORD = 'mcgv2024'; // ← HIER ÄNDERN!
+```
+
+### Dashboard-Features:
+- **📈 Statistik-Übersicht** - Anzahl aller Content-Typen
+- **📧 Kontakte-Verwaltung** - Alle Kontaktformular-Einträge anzeigen, filtern, als gelesen markieren, löschen
+- **🔍 Filter** - Ungelesen / Gelesen / Alle
+- **🗑️ CRUD-Operationen** - Erstellen, Lesen, Aktualisieren, Löschen
+
+### Geplante Features:
+- CRUD für Tracks, Scripts, Gaming-Content und Blog-Posts
+- File-Upload für Audio, Bilder und Scripts
+- WYSIWYG-Editor für Blog-Posts
+- SEO-Felder für jede Seite
+
+## 📧 E-Mail-Benachrichtigungen
+
+Das Kontaktformular unterstützt **E-Mail-Benachrichtigungen** via [Resend](https://resend.com).
+
+### Setup:
+
+1. **Resend Account erstellen**: https://resend.com
+2. **API Key generieren**: https://resend.com/api-keys
+3. **Environment Variables setzen**:
+
+```env
+RESEND_API_KEY="re_xxxxxxxxxxxxx"
+RESEND_FROM_EMAIL="onboarding@resend.dev"
+RESEND_TO_EMAIL="deine-email@example.com"
+```
+
+4. **Resend installieren** (bereits gemacht):
+```bash
+yarn add resend
+```
+
+### Features:
+- ✅ **Cyberpunk-Design E-Mails** mit Neon-Effekten
+- ✅ **Strukturierte Informationen** (Name, E-Mail, Betreff, Nachricht)
+- ✅ **Zeitstempel** in deutscher Lokalisierung
+- ✅ **Fallback-Modus** - Speichert in DB auch ohne Resend
+
+**Ohne gültigen API Key**: Formular funktioniert weiterhin, speichert nur in der Datenbank.
+
 ## 🔧 API Endpoints
 
 ### `/api/contact` (POST)
-Kontaktformular-Submission mit Validation:
+Kontaktformular-Submission mit Validation und E-Mail-Versand:
 ```typescript
 {
   name: string;
@@ -137,6 +199,27 @@ Kontaktformular-Submission mit Validation:
   message: string;
 }
 ```
+
+### `/api/admin/stats` (GET)
+Statistiken für das Dashboard:
+```typescript
+{
+  tracks: number;
+  scripts: number;
+  gaming: number;
+  blog: number;
+  contacts: number;
+}
+```
+
+### `/api/admin/contacts` (GET)
+Alle Kontaktformular-Einträge:
+```typescript
+ContactForm[]
+```
+
+### `/api/admin/contacts/[id]` (DELETE, PATCH)
+Kontakt löschen oder Status ändern
 
 ## 🎯 Performance Optimierungen
 
