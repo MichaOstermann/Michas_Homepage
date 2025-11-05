@@ -1,19 +1,32 @@
+'use client';
 
-import { prisma } from '@/lib/db';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import ReactMarkdown from 'react-markdown';
 
-export const metadata = {
-  title: 'Impressum | Code & Beats',
-  description: 'Impressum für mcgv.de',
-};
+export default function ImpressumPage() {
+  const [content, setContent] = useState<string>('');
+  const [loading, setLoading] = useState(true);
 
-export default async function ImpressumPage() {
-  const page = await prisma.legalPage.findUnique({
-    where: { type: 'IMPRESSUM' },
-  });
+  useEffect(() => {
+    async function fetchContent() {
+      try {
+        const response = await fetch('/api/legal?type=IMPRESSUM');
+        const data = await response.json();
+        if (data?.content) {
+          setContent(data.content);
+        }
+      } catch (error) {
+        console.error('Failed to fetch impressum:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  if (!page) {
+    fetchContent();
+  }, []);
+
+  if (loading) {
     return (
       <main className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/5">
         <div className="max-w-4xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
@@ -30,7 +43,7 @@ export default async function ImpressumPage() {
         <Card className="border-white/10 bg-card/50 backdrop-blur-sm">
           <CardContent className="p-8">
             <article className="prose prose-invert prose-lg max-w-none">
-              <ReactMarkdown>{page.content}</ReactMarkdown>
+              <ReactMarkdown>{content}</ReactMarkdown>
             </article>
           </CardContent>
         </Card>

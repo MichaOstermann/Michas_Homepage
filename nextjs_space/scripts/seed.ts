@@ -330,6 +330,20 @@ Dieses Setup ermöglicht es mir, die charakteristischen Synthwave-Sounds zu erze
   console.log('📝 Blog posts created');
 
   // Create CMS Sections
+  const blogSection = await prisma.section.upsert({
+    where: { slug: 'blog' },
+    update: {},
+    create: {
+      title: 'Blog',
+      slug: 'blog',
+      icon: 'BookOpen',
+      description: 'Neueste Updates und Artikel',
+      isActive: true,
+      showInNav: true,
+      order: 9,
+    },
+  });
+
   const portfolioSection = await prisma.section.upsert({
     where: { slug: 'portfolio' },
     update: {},
@@ -584,6 +598,233 @@ Stand: November 2024`,
   });
 
   console.log('⚖️ Legal pages created');
+
+  // Get or create blog section for blog posts
+  const blogSectionForPages = await prisma.section.findUnique({
+    where: { slug: 'blog' },
+  });
+
+  if (!blogSectionForPages) {
+    throw new Error('Blog section not found. Please ensure sections are created first.');
+  }
+
+  // Create blog posts as pages
+  await prisma.page.upsert({
+    where: { slug: 'neues-powershell-module-mailstore' },
+    update: {},
+    create: {
+      title: 'Neues PowerShell Module für MailStore',
+      slug: 'neues-powershell-module-mailstore',
+      excerpt: 'Ein neues PowerShell-Modul macht die Verwaltung von MailStore-Servern noch einfacher.',
+      content: `# Neues PowerShell Module für MailStore
+
+Ein neues PowerShell-Modul macht die Verwaltung von MailStore-Servern noch einfacher.
+
+## Einleitung
+
+Die Verwaltung von MailStore-Servern kann komplex sein. Mit diesem neuen PowerShell-Modul wird die Automatisierung deutlich vereinfacht.
+
+## Features
+
+- Automatische Backup-Verwaltung
+- Benutzer-Management über PowerShell
+- Integration in bestehende Skripte
+- Erweiterte Logging-Funktionen
+
+## Installation
+
+\`\`\`powershell
+Install-Module MailStoreHelper
+\`\`\`
+
+## Verwendung
+
+\`\`\`powershell
+# Verbindung zum MailStore Server
+Connect-MailStore -Server "mailstore.local" -Credential $cred
+
+# Backup erstellen
+New-MailStoreBackup -Path "C:\\Backups"
+
+# Benutzer auflisten
+Get-MailStoreUsers | Format-Table
+\`\`\`
+
+## Fazit
+
+Das Modul spart Zeit und reduziert Fehler bei der Server-Verwaltung erheblich.`,
+      sectionId: blogSectionForPages.id,
+      featuredImageUrl: '/images/blog/powershell-mailstore.jpg',
+      tags: ['PowerShell', 'MailStore', 'Automation'],
+      published: true,
+      showInNav: true,
+      order: 1,
+    },
+  });
+
+  await prisma.page.upsert({
+    where: { slug: 'synthwave-producer-setup-2024' },
+    update: {},
+    create: {
+      title: 'Synthwave Producer Setup 2024',
+      slug: 'synthwave-producer-setup-2024',
+      excerpt: 'Mein komplettes Setup für Synthwave-Produktion: Hardware, Software und Workflow.',
+      content: `# Synthwave Producer Setup 2024
+
+Mein komplettes Setup für Synthwave-Produktion: Hardware, Software und Workflow.
+
+## Hardware
+
+- **DAW**: FL Studio 21
+- **Synthesizer**: Serum, Sylenth1, Diva
+- **Interface**: Focusrite Scarlett 4i4
+- **MIDI Controller**: Arturia KeyLab Essential 61
+- **Monitors**: KRK Rokit 5 G4
+- **Kopfhörer**: Audio-Technica ATH-M50x
+
+## Software & Plugins
+
+Die wichtigsten Plugins für den authentischen Synthwave-Sound:
+
+### Synthesizer
+1. **Serum** - Für moderne, saubere Leads und Pads
+2. **Diva** - Für vintage analog Sounds
+3. **Sylenth1** - Klassischer Synthwave-Synth
+4. **TAL-U-NO-LX** - Für Juno-Style Sounds
+
+### Effects
+- **RC-20** - Für Lo-Fi Character
+- **Valhalla VintageVerb** - Der perfekte Hall
+- **FabFilter Pro-Q 3** - Präzises EQing
+- **OTT** - Für den typischen Sidechaining-Effekt
+
+## Workflow
+
+Mein typischer Produktions-Workflow:
+
+1. **Inspiration finden** - 80er Jahre Filme und Musik
+2. **Melodie & Akkorde skizzieren** - Meist am MIDI-Keyboard
+3. **Drum Pattern erstellen** - Mit klassischen 80er Drum-Sounds
+4. **Bass-Line entwickeln** - Wichtig für den Groove
+5. **Layering & Sound Design** - Mehrere Synth-Layer kombinieren
+6. **Mixing** - Sidechain-Compression ist key
+7. **Mastering** - Warm und analog klingend
+
+## Tipps für Anfänger
+
+- Studiert 80er Jahre Produktionstechniken
+- Weniger ist oft mehr - nicht zu viele Elemente
+- Der Bass ist das Fundament
+- Sidechain-Compression richtig einsetzen
+- Referenz-Tracks nutzen
+
+## Fazit
+
+Mit diesem Setup lassen sich professionelle Synthwave-Tracks produzieren. Das wichtigste ist aber immer noch: Übung und Kreativität!`,
+      sectionId: blogSectionForPages.id,
+      featuredImageUrl: '/images/blog/synthwave-setup.jpg',
+      tags: ['Synthwave', 'Music Production', 'Studio'],
+      published: true,
+      showInNav: true,
+      order: 2,
+    },
+  });
+
+  await prisma.page.upsert({
+    where: { slug: 'top-5-cyberpunk-games-2024' },
+    update: {},
+    create: {
+      title: 'Top 5 Cyberpunk Games 2024',
+      slug: 'top-5-cyberpunk-games-2024',
+      excerpt: 'Die besten Cyberpunk-Spiele des Jahres im Review - von Indie bis AAA.',
+      content: `# Top 5 Cyberpunk Games 2024
+
+Die besten Cyberpunk-Spiele des Jahres im Review - von Indie bis AAA.
+
+## 1. Cyberpunk 2077: Phantom Liberty
+
+Die Erweiterung bringt das Spiel auf ein neues Level. Night City war noch nie so lebendig.
+
+### Highlights
+- Neue Story-Inhalte rund um Spionage und Verrat
+- Überarbeitete Mechaniken und Skill-System
+- Verbesserte Performance auf allen Plattformen
+- Dogtown - Ein komplett neuer Stadtteil
+
+### Bewertung
+★★★★★ 5/5 - Ein Muss für alle Fans
+
+## 2. Citizen Sleeper
+
+Ein Indie-Gem mit unglaublicher Atmosphäre und packender Story.
+
+### Was macht es besonders?
+- Würfel-basiertes Gameplay
+- Tiefgründige Charaktere
+- Starke narrative Erfahrung
+- Wunderschöner Pixel-Art-Stil
+
+### Bewertung
+★★★★☆ 4/5
+
+## 3. Cloudpunk
+
+Die Taxi-Simulation in einer Cyberpunk-Stadt ist entspannend und atmosphärisch.
+
+### Features
+- Wunderschöne Voxel-Grafik
+- Entspanntes Gameplay
+- Interessante NPCs und Geschichten
+- Perfekt zum Entspannen
+
+### Bewertung
+★★★★☆ 4/5
+
+## 4. Ghostrunner 2
+
+Rasante Action im Cyberpunk-Setting mit präzisem Gameplay.
+
+### Was ist neu?
+- Mehr Bewegungsoptionen
+- Motorrad-Sequenzen
+- Größere Levels
+- Verbessertes Kampfsystem
+
+### Bewertung
+★★★★☆ 4/5
+
+## 5. System Shock Remake
+
+Der Klassiker in neuem Gewand - ein Muss für Genre-Fans.
+
+### Verbesserungen
+- Moderne Grafik
+- Überarbeitete Controls
+- Beibehaltung des Original-Feelings
+- Level-Design bleibt intakt
+
+### Bewertung
+★★★★★ 5/5
+
+## Fazit
+
+2024 war ein starkes Jahr für Cyberpunk-Games. Von AAA-Blockbustern bis zu atmosphärischen Indie-Titeln ist für jeden Geschmack etwas dabei. Besonders beeindruckend ist, wie verschiedene Studios das Genre interpretieren - von Action bis Storytelling.
+
+## Honorable Mentions
+
+- **Stray** (wenn ihr es noch nicht gespielt habt)
+- **The Ascent** - Für Koop-Fans
+- **Ruiner** - Für Twin-Stick-Shooter-Fans`,
+      sectionId: blogSectionForPages.id,
+      featuredImageUrl: '/images/blog/cyberpunk-games.jpg',
+      tags: ['Gaming', 'Cyberpunk', 'Review'],
+      published: true,
+      showInNav: true,
+      order: 3,
+    },
+  });
+
+  console.log('📝 Blog posts created');
 
   console.log('✅ Seed completed!');
 }

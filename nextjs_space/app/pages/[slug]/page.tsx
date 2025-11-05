@@ -72,7 +72,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
         {/* Content */}
         <Card className="border-white/10 bg-card/50 backdrop-blur-sm">
           <CardContent className="p-8">
-            <article className="prose prose-invert prose-lg max-w-none">
+            <article className="prose prose-invert prose-lg max-w-none" suppressHydrationWarning>
               <ReactMarkdown>{page.content}</ReactMarkdown>
             </article>
           </CardContent>

@@ -1,66 +1,61 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { BookOpen, Calendar, User, Filter, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-// Mock data - in real app this would come from CMS
-const blogPosts = [
-  {
-    id: 1,
-    title: 'Neues PowerShell Module für MailStore',
-    slug: 'neues-powershell-module-mailstore',
-    excerpt: 'Ein neues PowerShell-Modul macht die Verwaltung von MailStore-Servern noch einfacher.',
-    category: 'DEV',
-    author: 'Michael',
-    publishDate: '2024-11-01',
-    featuredImageUrl: '/api/placeholder/400/200',
-    tags: ['PowerShell', 'MailStore', 'Automation'],
-    published: true,
-  },
-  {
-    id: 2,
-    title: 'Synthwave Producer Setup 2024',
-    slug: 'synthwave-producer-setup-2024',
-    excerpt: 'Mein komplettes Setup für Synthwave-Produktion: Hardware, Software und Workflow.',
-    category: 'MUSIK',
-    author: 'Michael',
-    publishDate: '2024-10-28',
-    featuredImageUrl: '/api/placeholder/400/200',
-    tags: ['Synthwave', 'Music Production', 'Studio'],
-    published: true,
-  },
-  {
-    id: 3,
-    title: 'Top 5 Cyberpunk Games 2024',
-    slug: 'top-5-cyberpunk-games-2024',
-    excerpt: 'Die besten Cyberpunk-Spiele des Jahres im Review - von Indie bis AAA.',
-    category: 'NEWS',
-    author: 'Michael',
-    publishDate: '2024-10-15',
-    featuredImageUrl: '/api/placeholder/400/200',
-    tags: ['Gaming', 'Cyberpunk', 'Review'],
-    published: true,
-  },
-];
-
-const categories = [
-  { id: 'ALL', label: 'Alle', count: blogPosts.length },
-  { id: 'NEWS', label: 'News', count: blogPosts.filter(p => p.category === 'NEWS').length },
-  { id: 'MUSIK', label: 'Musik', count: blogPosts.filter(p => p.category === 'MUSIK').length },
-  { id: 'DEV', label: 'Dev', count: blogPosts.filter(p => p.category === 'DEV').length },
-];
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  tags: string[];
+  createdAt: string;
+}
 
 export function BlogSection() {
-  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedTag, setSelectedTag] = useState('ALL');
 
-  const filteredPosts = selectedCategory === 'ALL' 
+  useEffect(() => {
+    async function fetchBlogPosts() {
+      try {
+        const response = await fetch('/api/cms/pages?sectionSlug=blog');
+        const data = await response.json();
+        setBlogPosts(data || []);
+      } catch (error) {
+        console.error('Failed to fetch blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchBlogPosts();
+  }, []);
+
+  // Extract all unique tags from all posts
+  const allTags = Array.from(
+    new Set(blogPosts.flatMap(post => post.tags || []))
+  ).sort();
+
+  const tags = [
+    { id: 'ALL', label: 'Alle', count: blogPosts.length },
+    ...allTags.map(tag => ({
+      id: tag,
+      label: tag,
+      count: blogPosts.filter(p => p.tags?.includes(tag)).length
+    }))
+  ];
+
+  const filteredPosts = selectedTag === 'ALL' 
     ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
+    : blogPosts.filter(post => post.tags?.includes(selectedTag));
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('de-DE', {
@@ -68,19 +63,6 @@ export function BlogSection() {
       month: 'long',
       day: 'numeric',
     });
-  };
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'NEWS':
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'MUSIK':
-        return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
-      case 'DEV':
-        return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default:
-        return 'bg-primary/20 text-primary border-primary/30';
-    }
   };
 
   return (
@@ -107,37 +89,48 @@ export function BlogSection() {
         </motion.div>
 
         {/* Filter Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={selectedCategory === category.id ? 'default' : 'outline'}
-              className={`${
-                selectedCategory === category.id
-                  ? 'cyber-glow'
-                  : 'glass-morphism hover:bg-accent/50'
-              } transition-all duration-300`}
-              onClick={() => setSelectedCategory(category.id)}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              {category.label}
-              {category.count > 0 && (
-                <Badge variant="secondary" className="ml-2">
-                  {category.count}
-                </Badge>
-              )}
-            </Button>
-          ))}
-        </motion.div>
+        {!loading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-2 mb-12"
+          >
+            {tags.map((tag) => (
+              <Button
+                key={tag.id}
+                variant={selectedTag === tag.id ? 'default' : 'outline'}
+                className={`${
+                  selectedTag === tag.id
+                    ? 'cyber-glow'
+                    : 'glass-morphism hover:bg-accent/50'
+                } transition-all duration-300`}
+                onClick={() => setSelectedTag(tag.id)}
+              >
+                <Filter className="w-4 h-4 mr-2" />
+                {tag.label}
+                {tag.count > 0 && (
+                  <Badge variant="secondary" className="ml-2">
+                    {tag.count}
+                  </Badge>
+                )}
+              </Button>
+            ))}
+          </motion.div>
+        )}
 
         {/* Blog Posts */}
-        {filteredPosts.length > 0 ? (
+        {loading ? (
+          <div className="text-center">
+            <Card className="glass-morphism p-12">
+              <BookOpen className="w-16 h-16 text-primary/50 mx-auto mb-4 animate-pulse" />
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                Lade Blog-Posts...
+              </h3>
+            </Card>
+          </div>
+        ) : filteredPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, index) => (
               <motion.article
@@ -160,28 +153,27 @@ export function BlogSection() {
                   <div className="p-6 flex flex-col flex-1">
                     {/* Meta */}
                     <div className="flex items-center gap-2 mb-3">
-                      <Badge className={getCategoryColor(post.category)}>
-                        {post.category}
-                      </Badge>
                       <div className="flex items-center text-xs text-muted-foreground">
                         <Calendar className="w-3 h-3 mr-1" />
-                        {formatDate(post.publishDate)}
+                        {formatDate(post.createdAt)}
                       </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-200">
-                      {post.title}
-                    </h3>
+                    <Link href={`/pages/${post.slug}`} className="block">
+                      <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-200">
+                        {post.title}
+                      </h3>
+                    </Link>
 
                     {/* Excerpt */}
                     <p className="text-sm text-muted-foreground mb-4 flex-1">
-                      {post.excerpt}
+                      {post.excerpt || 'Kein Auszug verfügbar'}
                     </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1 mb-4">
-                      {post.tags.slice(0, 3).map((tag) => (
+                      {(post.tags || []).slice(0, 3).map((tag) => (
                         <Badge
                           key={tag}
                           variant="outline"
@@ -192,24 +184,18 @@ export function BlogSection() {
                       ))}
                     </div>
 
-                    {/* Author & Read More */}
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                      <div className="flex items-center text-xs text-muted-foreground">
-                        <User className="w-3 h-3 mr-1" />
-                        {post.author}
-                      </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="group/btn hover:text-primary"
-                        onClick={() => {
-                          // In a real app, this would navigate to /blog/[slug]
-                          alert(`Blog-Post "${post.title}" würde hier geöffnet werden. In der finalen Version würde dies zu einer Detailseite führen.`);
-                        }}
-                      >
-                        Lesen
-                        <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover/btn:translate-x-1" />
-                      </Button>
+                    {/* Read More */}
+                    <div className="flex items-center justify-end pt-4 border-t border-white/10">
+                      <Link href={`/pages/${post.slug}`}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="group/btn hover:text-primary"
+                        >
+                          Lesen
+                          <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover/btn:translate-x-1" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
