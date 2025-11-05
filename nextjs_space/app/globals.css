@@ -1,0 +1,181 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 19% 12%;
+    --foreground: 210 40% 98%;
+    --card: 216 19% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 216 19% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 216 19% 12%;
+    --secondary: 330 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 216 19% 15%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 180 100% 50%;
+    --radius: 0.5rem;
+    --chart-1: 180 100% 50%;
+    --chart-2: 330 100% 50%;
+    --chart-3: 280 100% 70%;
+    --chart-4: 120 100% 60%;
+    --chart-5: 60 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0B0F16 0%, #1a1b3a 50%, #0B0F16 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .cyber-glow {
+    box-shadow: 0 0 10px rgb(6 255 240 / 0.3), 0 0 20px rgb(6 255 240 / 0.2), 0 0 40px rgb(6 255 240 / 0.1);
+  }
+  
+  .cyber-glow-secondary {
+    box-shadow: 0 0 10px rgb(255 0 110 / 0.3), 0 0 20px rgb(255 0 110 / 0.2), 0 0 40px rgb(255 0 110 / 0.1);
+  }
+  
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .neon-border {
+    border: 1px solid rgb(6 255 240);
+    box-shadow: 0 0 5px rgb(6 255 240 / 0.5);
+  }
+  
+  .text-shadow-neon {
+    text-shadow: 0 0 10px rgba(6, 255, 240, 0.5), 0 0 20px rgba(6, 255, 240, 0.3);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgb(6 255 240), 0 0 30px rgb(6 255 240), 0 0 40px rgb(6 255 240);
+  }
+  to {
+    text-shadow: 0 0 10px rgb(6 255 240), 0 0 20px rgb(6 255 240), 0 0 30px rgb(6 255 240);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(11, 15, 22, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(6 255 240) 0%, rgb(255 0 110) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgb(6 255 240 / 0.8) 0%, rgb(255 0 110 / 0.8) 100%);
+}
+
+/* Custom Audio Player Styles */
+.audio-player {
+  @apply glass-morphism rounded-lg p-4;
+}
+
+.audio-player .rhap_container {
+  @apply bg-transparent;
+}
+
+.audio-player .rhap_progress-filled {
+  @apply bg-primary;
+}
+
+.audio-player .rhap_download-progress {
+  @apply bg-primary/30;
+}
+
+.audio-player .rhap_play-pause-button {
+  @apply text-primary hover:text-primary/80;
+}
+
+/* Code Block Styling */
+.code-block {
+  @apply glass-morphism rounded-lg overflow-hidden;
+}
+
+.code-block pre {
+  @apply bg-transparent p-4 text-sm;
+}
+
+/* Focus states */
+*:focus-visible {
+  @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .neon-border {
+    border-width: 2px;
+  }
+}
