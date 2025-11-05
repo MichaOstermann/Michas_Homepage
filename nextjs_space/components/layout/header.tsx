@@ -3,12 +3,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Code, Music, Gamepad2, BookOpen, User, Mail } from 'lucide-react';
+import { Menu, X, Code, Music, Gamepad2, BookOpen, User, Mail, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { motion, AnimatePresence } from 'framer-motion';
+import * as LucideIcons from 'lucide-react';
 
-const navigation = [
+// Static navigation items
+const staticNavigation = [
   { name: 'Home', href: '#hero', icon: Code },
   { name: 'Music', href: '#music', icon: Music },
   { name: 'PowerShell', href: '#powershell', icon: Code },
@@ -18,9 +20,41 @@ const navigation = [
   { name: 'Kontakt', href: '#contact', icon: Mail },
 ];
 
+interface DynamicSection {
+  id: string;
+  title: string;
+  slug: string;
+  icon?: string;
+  showInNav: boolean;
+  pages: Array<{
+    id: string;
+    title: string;
+    slug: string;
+    showInNav: boolean;
+  }>;
+}
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [dynamicSections, setDynamicSections] = useState<DynamicSection[]>([]);
+
+  // Load dynamic sections
+  useEffect(() => {
+    const loadDynamicSections = async () => {
+      try {
+        const res = await fetch('/api/cms/sections');
+        if (res.ok) {
+          const sections = await res.json();
+          setDynamicSections(sections.filter((s: DynamicSection) => s.showInNav));
+        }
+      } catch (error) {
+        console.error('Error loading dynamic sections:', error);
+      }
+    };
+
+    loadDynamicSections();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +64,25 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Get icon component from Lucide
+  const getIcon = (iconName?: string) => {
+    if (!iconName) return Briefcase;
+    const Icon = (LucideIcons as any)[iconName];
+    return Icon || Briefcase;
+  };
+
+  // Combine static and dynamic navigation
+  const allNavigation = [
+    ...staticNavigation,
+    ...dynamicSections.map((section) => ({
+      name: section.title,
+      href: section.pages.length > 0 ? `/pages/${section.pages[0].slug}` : '#',
+      icon: getIcon(section.icon),
+      isDropdown: section.pages.length > 1,
+      pages: section.pages.filter((p) => p.showInNav),
+    })),
+  ];
 
   const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -75,15 +128,17 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:block" role="menubar">
             <div className="flex items-center space-x-1">
-              {navigation.map((item) => {
+              {allNavigation.map((item) => {
                 const Icon = item.icon;
+                const isHashLink = item.href.startsWith('#');
+                
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
                     className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-200"
                     role="menuitem"
-                    onClick={(e) => smoothScroll(e, item.href)}
+                    onClick={isHashLink ? (e) => smoothScroll(e, item.href) : undefined}
                   >
                     <Icon className="w-4 h-4" aria-hidden="true" />
                     <span>{item.name}</span>
@@ -129,14 +184,16 @@ export function Header() {
             className="md:hidden bg-background/95 backdrop-blur-md border-b border-white/10"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map((item) => {
+              {allNavigation.map((item) => {
                 const Icon = item.icon;
+                const isHashLink = item.href.startsWith('#');
+                
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
                     className="flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-200"
-                    onClick={(e) => smoothScroll(e, item.href)}
+                    onClick={isHashLink ? (e) => smoothScroll(e, item.href) : () => setIsMenuOpen(false)}
                   >
                     <Icon className="w-5 h-5" aria-hidden="true" />
                     <span>{item.name}</span>

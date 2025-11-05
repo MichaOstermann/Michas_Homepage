@@ -3,7 +3,8 @@
 
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { Music, Code2, Gamepad2, BookOpen, Mail, TrendingUp } from 'lucide-react';
+import { Music, Code2, Gamepad2, BookOpen, Mail, TrendingUp, Folder, FileText } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -12,6 +13,8 @@ export default function AdminDashboard() {
     gaming: 0,
     blog: 0,
     contacts: 0,
+    sections: 0,
+    pages: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +37,22 @@ export default function AdminDashboard() {
   };
 
   const statCards = [
+    {
+      title: 'CMS Sektionen',
+      value: stats.sections,
+      icon: Folder,
+      color: 'from-yellow-400 to-orange-500',
+      href: '/admin/cms',
+      description: 'Content Management',
+    },
+    {
+      title: 'CMS Seiten',
+      value: stats.pages,
+      icon: FileText,
+      color: 'from-indigo-400 to-purple-500',
+      href: '/admin/cms',
+      description: 'Dynamische Inhalte',
+    },
     {
       title: 'Musik Tracks',
       value: stats.tracks,
@@ -104,6 +123,9 @@ export default function AdminDashboard() {
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-1">{stat.value}</h3>
                 <p className="text-sm text-muted-foreground">{stat.title}</p>
+                {stat.description && (
+                  <p className="text-xs text-muted-foreground mt-1">{stat.description}</p>
+                )}
               </Card>
             </a>
           );
@@ -113,7 +135,16 @@ export default function AdminDashboard() {
       {/* Quick Actions */}
       <Card className="glass-morphism p-6">
         <h2 className="text-xl font-bold text-foreground mb-4">Schnellaktionen</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <a
+            href="/admin/cms"
+            className="p-4 rounded-lg bg-gradient-to-br from-yellow-400/10 to-orange-500/10 hover:from-yellow-400/20 hover:to-orange-500/20 border border-yellow-400/20 transition-all"
+          >
+            <Folder className="w-8 h-8 text-yellow-400 mb-2" />
+            <p className="font-semibold text-foreground">CMS</p>
+            <p className="text-xs text-muted-foreground">Content verwalten</p>
+          </a>
+
           <a
             href="/admin/tracks"
             className="p-4 rounded-lg bg-gradient-to-br from-purple-400/10 to-pink-500/10 hover:from-purple-400/20 hover:to-pink-500/20 border border-purple-400/20 transition-all"

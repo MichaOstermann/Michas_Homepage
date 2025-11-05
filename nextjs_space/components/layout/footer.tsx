@@ -12,6 +12,11 @@ const quickLinks = [
   { name: 'About', href: '#about' },
 ];
 
+const legalLinks = [
+  { name: 'Impressum', href: '/impressum' },
+  { name: 'Datenschutz', href: '/datenschutz' },
+];
+
 const socialLinks = [
   { name: 'GitHub', href: '#', icon: Github, external: true },
   { name: 'YouTube', href: '#', icon: Youtube, external: true },
@@ -107,21 +112,36 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Code & Beats. Made with ❤️ and lots of ☕.
-          </p>
-          
-          <Button
-            onClick={scrollToTop}
-            variant="ghost"
-            size="sm"
-            className="mt-4 sm:mt-0 hover:bg-accent/50"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-4 h-4 mr-2" />
-            Back to Top
-          </Button>
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} Code & Beats. Made with ❤️ and lots of ☕.
+              </p>
+              <div className="flex gap-4">
+                {legalLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            
+            <Button
+              onClick={scrollToTop}
+              variant="ghost"
+              size="sm"
+              className="hover:bg-accent/50"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-4 h-4 mr-2" />
+              Back to Top
+            </Button>
+          </div>
         </div>
       </div>
     </footer>

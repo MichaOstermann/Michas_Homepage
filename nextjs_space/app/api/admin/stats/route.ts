@@ -8,12 +8,14 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    const [tracks, scripts, gaming, blog, contacts] = await Promise.all([
+    const [tracks, scripts, gaming, blog, contacts, sections, pages] = await Promise.all([
       prisma.track.count(),
       prisma.script.count(),
       prisma.gamingContent.count(),
       prisma.blogPost.count(),
       prisma.contactForm.count(),
+      prisma.section.count(),
+      prisma.page.count(),
     ]);
 
     return NextResponse.json({
@@ -22,6 +24,8 @@ export async function GET() {
       gaming,
       blog,
       contacts,
+      sections,
+      pages,
     });
   } catch (error) {
     console.error('Failed to fetch stats:', error);

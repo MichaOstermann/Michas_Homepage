@@ -329,6 +329,262 @@ Dieses Setup ermöglicht es mir, die charakteristischen Synthwave-Sounds zu erze
 
   console.log('📝 Blog posts created');
 
+  // Create CMS Sections
+  const portfolioSection = await prisma.section.upsert({
+    where: { slug: 'portfolio' },
+    update: {},
+    create: {
+      title: 'Portfolio',
+      slug: 'portfolio',
+      icon: 'Briefcase',
+      description: 'Meine Projekte und Arbeiten',
+      isActive: true,
+      showInNav: true,
+      order: 10,
+    },
+  });
+
+  const tutorialsSection = await prisma.section.upsert({
+    where: { slug: 'tutorials' },
+    update: {},
+    create: {
+      title: 'Tutorials',
+      slug: 'tutorials',
+      icon: 'BookOpen',
+      description: 'Schritt-für-Schritt Anleitungen',
+      isActive: true,
+      showInNav: true,
+      order: 11,
+    },
+  });
+
+  console.log('📂 Sections created');
+
+  // Create example pages
+  await prisma.page.upsert({
+    where: { slug: 'automation-projekt' },
+    update: {},
+    create: {
+      title: 'Automation Projekt',
+      slug: 'automation-projekt',
+      excerpt: 'Vollautomatisiertes PowerShell-System für IT-Management',
+      content: `# Automation Projekt
+
+Ein umfassendes PowerShell-basiertes Automation-System für IT-Management und -Monitoring.
+
+## Features
+- Automatische Server-Überwachung
+- Self-Healing Scripts
+- Reporting Dashboard
+- Integration mit Microsoft Teams
+
+## Technologien
+- PowerShell 7
+- Azure Functions
+- Microsoft Graph API
+- SQL Server
+
+Dieses Projekt hat die IT-Wartungszeit um 70% reduziert.`,
+      sectionId: portfolioSection.id,
+      featuredImageUrl: '/images/pages/automation.jpg',
+      tags: ['PowerShell', 'Automation', 'Azure'],
+      published: true,
+      showInNav: true,
+      order: 1,
+    },
+  });
+
+  await prisma.page.upsert({
+    where: { slug: 'synthwave-album' },
+    update: {},
+    create: {
+      title: 'Synthwave Album',
+      slug: 'synthwave-album',
+      excerpt: 'Mein erstes vollständiges Synthwave-Album',
+      content: `# Neon Dreams - Synthwave Album
+
+Mein erstes vollständiges Album mit 12 Tracks im Synthwave-Genre.
+
+## Album Details
+- **Release:** März 2024
+- **Genre:** Synthwave, Retrowave
+- **Tracks:** 12
+- **Länge:** 48 Minuten
+
+## Streaming
+Verfügbar auf allen großen Plattformen:
+- Spotify
+- Apple Music
+- YouTube Music
+- Bandcamp
+
+Ein Projekt der Leidenschaft, das über 2 Jahre hinweg entstanden ist.`,
+      sectionId: portfolioSection.id,
+      featuredImageUrl: '/images/pages/neon-dreams.jpg',
+      tags: ['Music', 'Synthwave', 'Album'],
+      published: true,
+      showInNav: true,
+      order: 2,
+    },
+  });
+
+  await prisma.page.upsert({
+    where: { slug: 'powershell-grundlagen' },
+    update: {},
+    create: {
+      title: 'PowerShell Grundlagen',
+      slug: 'powershell-grundlagen',
+      excerpt: 'Einführung in PowerShell für Anfänger',
+      content: `# PowerShell Grundlagen
+
+Eine umfassende Einführung in PowerShell für Einsteiger.
+
+## Was ist PowerShell?
+PowerShell ist eine mächtige Scripting-Sprache und Shell, die speziell für die System-Administration entwickelt wurde.
+
+## Erste Schritte
+\`\`\`powershell
+# Deine erste Ausgabe
+Write-Host "Hello, PowerShell!" -ForegroundColor Cyan
+
+# Variablen
+$name = "Michael"
+Write-Host "Hallo, $name!"
+
+# Loops
+1..10 | ForEach-Object {
+    Write-Host "Zahl: $_"
+}
+\`\`\`
+
+## Wichtige Cmdlets
+- \`Get-Command\` - Alle verfügbaren Befehle
+- \`Get-Help\` - Hilfe zu Befehlen
+- \`Get-Process\` - Laufende Prozesse
+- \`Get-Service\` - Windows-Dienste
+
+Mehr Tutorials folgen bald!`,
+      sectionId: tutorialsSection.id,
+      featuredImageUrl: '/images/pages/powershell-basics.jpg',
+      tags: ['PowerShell', 'Tutorial', 'Basics'],
+      published: true,
+      showInNav: true,
+      order: 1,
+    },
+  });
+
+  console.log('📄 Pages created');
+
+  // Create Privacy Settings
+  await prisma.privacySettings.upsert({
+    where: { id: 'default' },
+    update: {},
+    create: {
+      id: 'default',
+      cookieBannerEnabled: true,
+      cookieBannerText: 'Diese Website verwendet Cookies und ähnliche Technologien, um Ihnen die bestmögliche Nutzererfahrung zu bieten. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.',
+      privacyPolicyUrl: '/datenschutz',
+      imprintUrl: '/impressum',
+    },
+  });
+
+  console.log('🔒 Privacy settings created');
+
+  // Create Legal Pages
+  await prisma.legalPage.upsert({
+    where: { type: 'IMPRESSUM' },
+    update: {},
+    create: {
+      type: 'IMPRESSUM',
+      title: 'Impressum',
+      content: `# Impressum
+
+## Angaben gemäß § 5 TMG
+
+**Verantwortlich für den Inhalt:**
+Michael [Nachname]
+[Straße und Hausnummer]
+[PLZ] [Ort]
+Deutschland
+
+**Kontakt:**
+E-Mail: michael@mcgv.de
+Telefon: [Telefonnummer]
+
+## Haftungsausschluss
+
+### Haftung für Inhalte
+Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+
+### Haftung für Links
+Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+
+### Urheberrecht
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.`,
+    },
+  });
+
+  await prisma.legalPage.upsert({
+    where: { type: 'DATENSCHUTZ' },
+    update: {},
+    create: {
+      type: 'DATENSCHUTZ',
+      title: 'Datenschutzerklärung',
+      content: `# Datenschutzerklärung
+
+## 1. Datenschutz auf einen Blick
+
+### Allgemeine Hinweise
+Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
+
+### Datenerfassung auf dieser Website
+
+**Wer ist verantwortlich für die Datenerfassung auf dieser Website?**
+Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
+
+**Wie erfassen wir Ihre Daten?**
+Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.
+
+Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
+
+## 2. Hosting
+
+Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.
+
+## 3. Allgemeine Hinweise und Pflichtinformationen
+
+### Datenschutz
+Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+
+### Cookies
+Diese Website verwendet Cookies. Das sind kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät speichert. Cookies helfen uns dabei, unser Angebot nutzerfreundlicher zu machen.
+
+Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.
+
+Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und einzeln über deren Annahme entscheiden können.
+
+## 4. Kontaktformular
+
+Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
+
+Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+
+## 5. Ihre Rechte
+
+Sie haben das Recht:
+- gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen
+- gemäß Art. 16 DSGVO unverzüglich die Berichtigung unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen
+- gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen
+- gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen
+- gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten
+- gemäß Art. 77 DSGVO sich bei einer Aufsichtsbehörde zu beschweren
+
+Stand: November 2024`,
+    },
+  });
+
+  console.log('⚖️ Legal pages created');
+
   console.log('✅ Seed completed!');
 }
 

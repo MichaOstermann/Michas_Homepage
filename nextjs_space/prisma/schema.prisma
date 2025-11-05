@@ -111,6 +111,68 @@ model ContactForm {
   @@map("contact_forms")
 }
 
+// CMS Models für dynamische Sektionen und Seiten
+model Section {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  icon        String?
+  description String?
+  isActive    Boolean  @default(true)
+  showInNav   Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  pages       Page[]
+  
+  @@map("sections")
+}
+
+model Page {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   // Rich-text content (HTML/Markdown)
+  excerpt     String?
+  sectionId   String
+  featuredImageUrl String?
+  tags        String[] @default([])
+  published   Boolean  @default(true)
+  showInNav   Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  section     Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  
+  @@map("pages")
+}
+
+// DSGVO & Privacy Models
+model PrivacySettings {
+  id                String   @id @default(cuid())
+  cookieBannerEnabled Boolean @default(true)
+  cookieBannerText String   @default("Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten.")
+  privacyPolicyUrl String   @default("/datenschutz")
+  imprintUrl      String   @default("/impressum")
+  updatedAt       DateTime @updatedAt
+  
+  @@map("privacy_settings")
+}
+
+model LegalPage {
+  id        String       @id @default(cuid())
+  type      LegalPageType @unique
+  title     String
+  content   String
+  updatedAt DateTime     @updatedAt
+  
+  @@map("legal_pages")
+}
+
 // Enums
 enum TrackCategory {
   SYNTH
@@ -141,4 +203,10 @@ enum ContactStatus {
   UNREAD
   READ
   REPLIED
+}
+
+enum LegalPageType {
+  IMPRESSUM
+  DATENSCHUTZ
+  AGB
 }
