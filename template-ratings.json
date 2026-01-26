@@ -1,0 +1,32 @@
+{
+    "terminator-t800": {
+        "totalStars": 60,
+        "totalVotes": 12,
+        "average": 5
+    },
+    "hogwarts-magic": {
+        "totalStars": 40,
+        "totalVotes": 8,
+        "average": 5
+    },
+    "cyberpunk-nightcity": {
+        "totalStars": 5,
+        "totalVotes": 1,
+        "average": 5
+    },
+    "business-pro": {
+        "totalStars": 5,
+        "totalVotes": 1,
+        "average": 5
+    },
+    "family-moments": {
+        "totalStars": 5,
+        "totalVotes": 1,
+        "average": 5
+    },
+    "steel-legends": {
+        "totalStars": 5,
+        "totalVotes": 1,
+        "average": 5
+    }
+}

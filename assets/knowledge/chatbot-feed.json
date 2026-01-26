@@ -1,0 +1,212 @@
+{
+  "lastUpdate": "2025-11-10T22:10:00Z",
+  "about": {
+    "summary": "Michael Ostermann vereint Musikproduktion, PowerShell-Automatisierung und Gaming in einem kreativen Flow.",
+    "hobbies": [
+      "Elektronische Musikproduktion mit viel Liebe zum Detail",
+      "Streaming und Dokumentation von Gaming-Sessions",
+      "Entwicklung hilfreicher PowerShell-Tools für Admins"
+    ],
+    "philosophy": "Alles, was entsteht – Code, Sounds oder Gameplay – folgt Michaels natürlichem Flow und wird bis ins Detail optimiert.",
+    "contact": {
+      "email": "support@mcgv.de",
+      "responseTime": "Antwort in der Regel innerhalb von 24 Stunden",
+      "form": "/kontakt.html"
+    },
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/" },
+      { "label": "YouTube", "url": "https://youtube.com/" },
+      { "label": "Twitch", "url": "https://twitch.tv/" }
+    ]
+  },
+  "musik": {
+    "intro": "Alle Songs werden von Michael Ostermann eigenständig produziert – Synthwave, Party, Rapp, Love und Rock.",
+    "production": {
+      "composition": "Jeder Track ist zu 100% eigenständig komponiert und produziert.",
+      "ai": "KI liefert realistische Vocals, cineastische Orchestrierungen und hilft beim Mastering.",
+      "workflow": "Vom ersten Motiv bis zum finalen Master liegt alles in einer Hand – ohne kreative Grenzen."
+    },
+    "genres": [
+      { "name": "Ballermann/Party", "description": "Fetzige Hits mit Mitsing-Refrain." },
+      { "name": "Synthwave", "description": "Atmosphärisch, episch und melancholisch." },
+      { "name": "Rock", "description": "Kraftvolle Gitarren mit authentischer Message." },
+      { "name": "Ambient", "description": "Entspannende Soundscapes und Pads." }
+    ],
+    "tracks": [
+      {
+        "id": "life-am-strand",
+        "title": "Life am Strand",
+        "genre": "Party",
+        "description": "Fetziger Mallorca-Song über Micha den Barkeeper im Hitparaden-Stil.",
+        "duration": "3:45",
+        "tags": ["party", "mallorca", "sommer"],
+        "cover": "covers/life-am-strand.svg",
+        "url": "/Musik/party.html#life-am-strand",
+        "downloadUrl": "/assets/media/track1.mp3"
+      },
+      {
+        "id": "20-jahre-rdmc-oldenburg",
+        "title": "20 Jahre RDMC Oldenburg",
+        "genre": "Party",
+        "description": "Jubiläums-Hymne mit Crowd-Chants und Gitarren-Power.",
+        "duration": "4:12",
+        "tags": ["jubilaeum", "rock", "party"],
+        "cover": "covers/20-jahre-rdmc-oldenburg.svg",
+        "url": "/Musik/gemischt.html#20-jahre-rdmc-oldenburg",
+        "downloadUrl": "/assets/media/track2.mp3"
+      },
+      {
+        "id": "aus-dem-schatten",
+        "title": "Aus dem Schatten",
+        "genre": "Rapp",
+        "description": "Dunkler Synthwave-Rapp mit treibendem Beat und melancholischem Storytelling.",
+        "duration": "3:58",
+        "tags": ["synthwave", "dark", "rapp"],
+        "cover": "covers/aus-dem-schatten.svg",
+        "url": "/Musik/rapp.html#aus-dem-schatten",
+        "downloadUrl": "/assets/media/track3.mp3"
+      },
+      {
+        "id": "kein-lied-fuer-helden",
+        "title": "Kein Lied für Helden",
+        "genre": "Rock",
+        "description": "Kraftvoller Rocksong mit klarer Message – nichts für schwache Nerven!",
+        "duration": "4:30",
+        "tags": ["rock", "energie", "authentisch"],
+        "cover": "covers/kein-lied-fuer-helden.svg",
+        "url": "/Musik/gemischt.html#kein-lied-fuer-helden",
+        "downloadUrl": "/assets/media/Kein Lied für Helden.mp3"
+      },
+      {
+        "id": "love-2025",
+        "title": "Love 2025",
+        "genre": "Love",
+        "description": "Emotionaler Electro-Love-Track mit warmen Pads und Vocal-Chops.",
+        "duration": "4:05",
+        "tags": ["love", "ambient", "electro"],
+        "cover": "covers/love-2025.svg",
+        "url": "/Musik/love.html#love-2025",
+        "downloadUrl": "/Musik/audio/love/Love_2025.mp3"
+      }
+    ],
+    "categories": [
+      { "name": "Party", "focus": "Cyan/Violett Neon, fette Drums, Club-Energy" },
+      { "name": "Rapp", "focus": "Gold/Orange Highlights, Storytelling & Punchlines" },
+      { "name": "Love", "focus": "Pink/Orange Glow, verträumte Pads & Vocals" },
+      { "name": "Gemischt", "focus": "Violet/Cyan Mix, experimentelle Sounds" }
+    ]
+  },
+  "powershell": {
+    "headline": "Produktionsreife PowerShell-Tools für IT-Admins",
+    "summary": "Die Scripts sind dokumentiert, produktiv getestet und sparen Admins Zeit im Alltag.",
+    "focus": [
+      "Active Directory Automatisierung",
+      "Patch- und Compliance-Reports",
+      "Archiv- und Datenanalyse"
+    ],
+    "scripts": [
+      {
+        "name": "MailStore Analyse",
+        "category": "Archiving",
+        "description": "Analysiert und inventarisiert MailStore-Archive inklusive Statistik-Export.",
+        "downloadUrl": "/assets/scripts/MailStore_Analyse.ps1",
+        "verified": true,
+        "example": "Get-ChildItem -Recurse \"C:\\MailStore\" | Sort-Object Length -Descending | Select-Object -First 10"
+      },
+      {
+        "name": "WSUS Scan",
+        "category": "Security",
+        "description": "Prüft Windows-Server auf fehlende Updates und erstellt HTML-Reports.",
+        "downloadUrl": "/assets/scripts/WSUS_Scan.ps1",
+        "verified": true,
+        "example": "Invoke-WebRequest -Uri \"http://wsus.local/report\" -UseBasicParsing"
+      },
+      {
+        "name": "AD User Creation Tool v4.0",
+        "category": "Active Directory",
+        "description": "Automatisiert die Benutzeranlage mit Templates, OU-Zuordnung und Lizenzoptionen.",
+        "downloadUrl": "/assets/scripts/AD_User_Creation_v4.ps1",
+        "verified": true,
+        "example": "New-ADUser -Name \"John Doe\" -GivenName John -Surname Doe -SamAccountName j.doe"
+      }
+    ]
+  },
+  "gaming": {
+    "focus": "Koop- und Survival-Games mit tiefen Builds",
+    "summary": "Jedes Game besitzt ein eigenes Profil mit Builds, Stats und häufig Videos.",
+    "games": [
+      {
+        "title": "Diablo IV",
+        "genre": "Action-RPG",
+        "hours": 450,
+        "highlight": "6 Endgame-Builds, Boss-Guides und Season-Optimierungen.",
+        "description": "Meistere Dungeons und besiege Dämonen in Sanktuario.",
+        "link": "/gaming/diablo-iv.html"
+      },
+      {
+        "title": "Enshrouded",
+        "genre": "Koop-Survival",
+        "hours": 180,
+        "highlight": "Base-Building, Tank/Ranger/Magier-Setups mit Koop-Fokus.",
+        "description": "Nebeldurchzogene Welt mit bis zu 16 Spielern, Fokus auf Teamplay.",
+        "link": "/gaming/enshrouded.html"
+      },
+      {
+        "title": "Soulmask",
+        "genre": "Tribal Survival",
+        "hours": 280,
+        "highlight": "38 Stammesmitglieder, Maskenfortschritt 6/10, Raid-Strategien.",
+        "description": "Beschwöre Stammesmitglieder, baue Zivilisationen und überlebe Rituale.",
+        "link": "/gaming/soulmask.html"
+      },
+      {
+        "title": "ARK",
+        "genre": "Dino-Survival",
+        "hours": 1200,
+        "highlight": "180+ gezähmte Dinos, 45 Bosse, Boss-Routen & Breeding-Pläne.",
+        "description": "Zähme Dinosaurier, baue Basen und führe deinen Stamm zum Sieg.",
+        "link": "/gaming/ark.html"
+      }
+    ]
+  },
+  "blog": {
+    "posts": [
+      {
+        "title": "Musik-Sektion neu aufgebaut",
+        "slug": "musik-relaunch.html",
+        "summary": "Upload-Flow, Cover-Generator, Statistiken & SEO für den Live-Betrieb.",
+        "date": "2025-11-10"
+      },
+      {
+        "title": "Gaming-Sektion massiv erweitert",
+        "slug": "gaming-sektion-erweitert.html",
+        "summary": "Vier Game-Hubs mit Builds, Stats und eingebundenen Videos.",
+        "date": "2025-10-20"
+      },
+      {
+        "title": "Alien Bio-Tech Hero-Sektion",
+        "slug": "alien-style-hero.html",
+        "summary": "Making-of der animierten Startseite inklusive Neon-Partikel.",
+        "date": "2025-10-05"
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Kann ich Songs herunterladen?",
+      "answer": "Ja, jeder Track bietet MP3- und WAV-Downloads direkt auf der Song-Karte."
+    },
+    {
+      "question": "Wie lösche ich Songs?",
+      "answer": "Über die passwortgeschützte Verwaltung <code>manage.php</code> kannst du Titel bearbeiten oder löschen. Audio, Cover und JSON werden automatisch aufgeräumt."
+    },
+    {
+      "question": "Ist mcgv.de kommerziell?",
+      "answer": "Nein, mcgv.de ist eine private, nicht kommerzielle Webseite von Michael Ostermann."
+    },
+    {
+      "question": "Wie erreiche ich Michael?",
+      "answer": "Nutze das Kontaktformular auf mcgv.de/kontakt.html oder schreibe an support@mcgv.de – Rückmeldung erfolgt meist innerhalb von 24 Stunden."
+    }
+  ]
+}

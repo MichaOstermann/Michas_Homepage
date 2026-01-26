@@ -1,0 +1,66 @@
+{
+  "templates": [
+    {
+      "id": "terminator-t800",
+      "name": "Terminator T-800 HUD",
+      "category": "creative",
+      "description": "Futuristische T-800 Terminal-Oberfläche mit Matrix-Rain, Partikeln und HUD-Overlay. Sci-Fi Cyberpunk Design.",
+      "preview": "demos/terminator/preview.jpg",
+      "demoUrl": "demos/terminator/index.html",
+      "downloadUrl": "#",
+      "tags": ["Sci-Fi", "Cyberpunk", "Dark", "Interactive"],
+      "features": ["Matrix Rain Effect", "Particle System", "HUD Overlay", "Terminal Animation"],
+      "rating": 4.9,
+      "ratingCount": 18,
+      "downloads": 234,
+      "lastUpdated": "2025-11-17"
+    },
+    {
+      "id": "hogwarts-magic",
+      "name": "Hogwarts Magic Academy",
+      "category": "creative",
+      "description": "Magisches Hogwarts-Theme mit schwebenden Kerzen, Zaubersprüchen und House-Selection. Fantasy-Design mit Particle-Effekten.",
+      "preview": "demos/hogwarts/preview.jpg",
+      "demoUrl": "demos/hogwarts/index.html",
+      "downloadUrl": "#",
+      "tags": ["Fantasy", "Magic", "Harry Potter", "Interactive"],
+      "features": ["Floating Candles", "Magic Particles", "4 Houses", "Spell Cards"],
+      "rating": 4.8,
+      "ratingCount": 15,
+      "downloads": 189,
+      "lastUpdated": "2025-11-17"
+    },
+    {
+      "id": "techflow-solutions",
+      "name": "TechFlow Solutions",
+      "category": "business",
+      "description": "Professionelles IT-Dienstleister Template mit Glassmorphism, Code Rain Animation, Tech Radar, interaktivem Pricing Calculator und Dark/Light Theme. Perfekt für Tech-Companies.",
+      "previewImage": "demos/techflow/thumb.svg",
+      "demoUrl": "demos/techflow/index.html",
+      "downloadUrl": "#",
+      "tags": ["IT", "Tech", "Corporate", "Glassmorphism", "Interactive"],
+      "features": ["Code Rain Canvas", "Tech Radar", "Pricing Calculator", "Dark/Light Theme", "3D Tilt Cards"],
+      "rating": 5.0,
+      "ratingCount": 0,
+      "downloads": 0,
+      "lastUpdated": "2025-11-19",
+      "badge": "NEW"
+    },
+    {
+      "id": "steel-legends",
+      "name": "Steel Legends",
+      "category": "creative",
+      "description": "Harley Davidson inspiriertes Template mit Chrome-Effekten, Flame-Animationen, Bike-Showcase und Rock'n'Roll Style. Perfekt für Motorrad-Shops & Custom-Builders.",
+      "previewImage": "demos/steellegends/thumb.svg",
+      "demoUrl": "demos/steellegends/index.html",
+      "downloadUrl": "#",
+      "tags": ["Harley", "Motorcycle", "Chrome", "Rock", "Custom"],
+      "features": ["Flame Effects", "Gallery Lightbox", "Bike Cards", "Thunder Animations", "Parallax Hero"],
+      "rating": 5.0,
+      "ratingCount": 0,
+      "downloads": 0,
+      "lastUpdated": "2025-11-19",
+      "badge": "HOT"
+    }
+  ]
+}

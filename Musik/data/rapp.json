@@ -1,0 +1,159 @@
+{
+    "tracks": [
+        {
+            "id": "aus-dem-schatten",
+            "title": "Aus dem Schatten",
+            "category": "rapp",
+            "description": "Dunkler Synthwave mit treibendem Beat und melancholischer Hook.",
+            "cover": "cover3.svg",
+            "audio": "track3.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "kein-lied-fuer-helden",
+            "title": "Kein Lied für Helden",
+            "category": "rapp",
+            "description": "Kraftvoller Rocksong mit Message. Authentisch und direkt.",
+            "cover": "cover4.svg",
+            "audio": "Kein Lied für Helden.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "aus-dem-nichts",
+            "title": "Aus dem Nichts",
+            "category": "rapp",
+            "description": "Kraftvoller Track mit Message",
+            "cover": "covers\/aus-dem-nichts.svg",
+            "audio": "Aus_dem_Nichts.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "concrete-jungle-tales",
+            "title": "Concrete Jungle Tales",
+            "category": "rapp",
+            "description": "Urbaner Sound mit Straßen-Vibes",
+            "cover": "covers\/concrete-jungle-tales.svg",
+            "audio": "Concrete Jungle Tales.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "darkman-1972",
+            "title": "Darkman 1972",
+            "category": "rapp",
+            "description": "Düsterer Retro-Track",
+            "cover": "covers\/darkman-1972.svg",
+            "audio": "Darkman_1972.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "einsamer-wolf",
+            "title": "Einsamer Wolf",
+            "category": "rapp",
+            "description": "Melancholischer Solo-Track",
+            "cover": "covers\/einsamer-wolf.svg",
+            "audio": "Einsamer Wolf.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "im-a-devil",
+            "title": "I'm a Devil",
+            "category": "rapp",
+            "description": "Harter Track mit Attitude",
+            "cover": "covers\/im-a-devil.svg",
+            "audio": "Im_a_Devil.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "strassen",
+            "title": "Straßen",
+            "category": "rapp",
+            "description": "Urbaner Straßen-Track",
+            "cover": "covers\/strassen.svg",
+            "audio": "Strassen.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "fckw",
+            "title": "FCKW",
+            "category": "rapp",
+            "description": "Energiegeladener Party-Hit",
+            "cover": "covers\/fckw.svg",
+            "audio": "FCKW.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "micha-2025",
+            "title": "Micha 2025",
+            "category": "rapp",
+            "description": "Persönlicher Track für 2025",
+            "cover": "covers\/micha-2025.svg",
+            "audio": "Micha 2025.mp3",
+            "folder": "Musik",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "micha-final-10-anni",
+            "title": "Micha Final 10 Anni",
+            "category": "rapp",
+            "description": "Jubiläums-Track zum 10 Anni",
+            "cover": "covers\/micha-final-10-anni.svg",
+            "audio": "Micha_Final_10_Anni.mp3",
+            "folder": "Musik",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "my-life-englisch",
+            "title": "My Life Englisch",
+            "category": "rapp",
+            "description": "Englische Version",
+            "cover": "covers\/my-life-englisch.svg",
+            "audio": "My Life Englisch.mp3",
+            "folder": "Musik",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "keiner-hat-noch-geld",
+            "title": "Keiner hat noch Geld",
+            "category": "rapp",
+            "description": "Keiner hat noch Geld",
+            "cover": "covers\/keiner-hat-noch-geld.svg",
+            "audio": "Keiner hat noch Geld.mp3",
+            "folder": "assets\/media",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "fckw",
+            "title": "FCKW",
+            "category": "rapp",
+            "description": "Energiegeladener Party-Hit",
+            "cover": "covers\/fckw.svg",
+            "audio": "FCKW.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "keiner-hat-noch-geld",
+            "title": "Keiner hat noch Geld",
+            "category": "rapp",
+            "description": "Gesellschaftskritischer Party-Track mit Humor und Groove.",
+            "cover": "cover5.svg",
+            "audio": "Keiner hat noch Geld.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        }
+    ]
+}

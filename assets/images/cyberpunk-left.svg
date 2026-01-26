@@ -1,0 +1,30 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='360' height='720' viewBox='0 0 360 720'>
+  <defs>
+    <linearGradient id='skin' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0' stop-color='#0b1220'/>
+      <stop offset='1' stop-color='#111a2a'/>
+    </linearGradient>
+    <filter id='glow' x='-50%' y='-50%' width='200%' height='200%'>
+      <feGaussianBlur stdDeviation='6' result='b'/>
+      <feMerge>
+        <feMergeNode in='b'/>
+        <feMergeNode in='SourceGraphic'/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width='360' height='720' fill='none'/>
+  <!-- stylized side profile -->
+  <g transform='translate(40,40)' fill='none' stroke='#00eaff' stroke-width='2' filter='url(#glow)' stroke-linecap='round' stroke-linejoin='round' opacity='.85'>
+    <path d='M40 120 C60 96, 88 80, 120 78 C150 76, 176 92, 182 122 C186 144, 176 168, 160 186 C132 216, 96 236, 68 252' />
+    <path d='M84 180 C112 164, 132 140, 150 120' opacity='.6'/>
+    <path d='M76 210 C116 188, 142 168, 172 162' opacity='.4'/>
+    <!-- eye visor -->
+    <path d='M120 140 h64' stroke='#ff1493'/>
+    <circle cx='150' cy='140' r='3' fill='#ff1493' stroke='#ff1493'/>
+  </g>
+  <!-- shoulder/coat -->
+  <g transform='translate(10,240)' fill='none' stroke='#8b5cf6' stroke-width='2' filter='url(#glow)' opacity='.7'>
+    <path d='M20 100 C40 60, 110 40, 160 54 C126 86, 100 124, 70 166' />
+    <path d='M16 130 C36 100, 94 74, 132 82' opacity='.6'/>
+  </g>
+</svg>

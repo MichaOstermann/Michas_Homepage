@@ -1,0 +1,34 @@
+{
+    "tracks": [
+        {
+            "id": "life-am-strand",
+            "title": "Life am Strand",
+            "category": "party",
+            "description": "Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.",
+            "cover": "cover1.svg",
+            "audio": "track1.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "keiner-hat-noch-geld",
+            "title": "Keiner hat noch Geld",
+            "category": "party",
+            "description": "Gesellschaftskritischer Party-Track mit Humor und Groove.",
+            "cover": "cover5.svg",
+            "audio": "Keiner hat noch Geld.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "fckw",
+            "title": "FCKW",
+            "category": "party",
+            "description": "Energiegeladener Party-Hit",
+            "cover": "covers\/fckw.svg",
+            "audio": "FCKW.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        }
+    ]
+}

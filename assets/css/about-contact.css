@@ -1,0 +1,646 @@
+/* ============================================
+   ABOUT & CONTACT - Premium Styling
+   ============================================ */
+
+/* Focus highlight when via nav anchor jumps to #contact */
+#contact.contact-focus {
+  outline: 3px solid #06FFF0;
+  box-shadow: 0 0 18px rgba(6, 255, 240, 0.6);
+  transition: outline 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* About Alien - Animated Profile */
+.about__media {
+  position: relative;
+  display: inline-block;
+}
+
+.about__alien-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 255, 240, 0.1) 0%, transparent 70%);
+  animation: alien-field-pulse 4s ease-in-out infinite;
+}
+
+.about__alien {
+  width: 200px;
+  height: 300px;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(6, 255, 240, 0.3))
+          drop-shadow(0 0 40px rgba(139, 92, 246, 0.2));
+  transition: all 0.5s ease;
+  animation: alien-float 3s ease-in-out infinite;
+}
+
+.about__alien-wrapper:hover .about__alien {
+  transform: scale(1.08) rotate(3deg);
+  filter: drop-shadow(0 0 30px rgba(6, 255, 240, 0.5))
+          drop-shadow(0 0 60px rgba(139, 92, 246, 0.4))
+          drop-shadow(0 0 80px rgba(255, 6, 240, 0.3));
+}
+
+/* Alien SVG Animations */
+.about__alien .alien-head {
+  animation: head-bob 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.about__alien .alien-eyes {
+  animation: eye-wiggle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.about__alien .alien-mouth-group {
+  animation: mouth-talk 3s ease-in-out infinite;
+  transform-origin: 100px 145px;
+}
+
+.about__alien .alien-antenna {
+  animation: antenna-wave 2.5s ease-in-out infinite;
+  transform-origin: 100px 30px;
+}
+
+.about__alien .alien-nose {
+  animation: nose-twitch 4s ease-in-out infinite;
+}
+
+.about__alien .temple-sensor {
+  animation: sensor-scan 3s ease-in-out infinite;
+}
+
+.about__alien .temple-left {
+  animation-delay: 0s;
+}
+
+.about__alien .temple-right {
+  animation-delay: 1.5s;
+}
+
+.about__alien .shoulder {
+  animation: shoulder-breathe 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.about__alien .data-stream text {
+  animation: data-flicker 2s ease-in-out infinite;
+}
+
+/* Rotating Ring around Avatar */
+.about__media::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #06FFF0;
+  border-right-color: #8B5CF6;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: ring-rotate 3s linear infinite;
+  z-index: 1;
+}
+
+.about__media::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: #FF06F0;
+  border-left-color: #06FFF0;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: ring-rotate 4s linear infinite reverse;
+  z-index: 1;
+}
+
+/* About Content */
+.about__content {
+  position: relative;
+}
+
+.about__content .section__title {
+  position: relative;
+  display: inline-block;
+}
+
+.about__content .section__title::before {
+  content: '👋';
+  position: absolute;
+  left: -2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: wave-hand 2s ease-in-out infinite;
+}
+
+/* Socials - Neon Pills */
+.socials {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.socials__link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: rgba(6, 255, 240, 0.05);
+  border: 1px solid rgba(6, 255, 240, 0.3);
+  border-radius: 50px;
+  color: #06FFF0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.socials__link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 255, 240, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.socials__link:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.socials__link:hover {
+  background: rgba(6, 255, 240, 0.15);
+  border-color: #06FFF0;
+  box-shadow: 
+    0 0 20px rgba(6, 255, 240, 0.4),
+    inset 0 0 20px rgba(6, 255, 240, 0.1);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.socials__link:nth-child(2) {
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #8B5CF6;
+}
+
+.socials__link:nth-child(2):hover {
+  border-color: #8B5CF6;
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.4),
+    inset 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+.socials__link:nth-child(3) {
+  border-color: rgba(255, 6, 240, 0.3);
+  color: #FF06F0;
+}
+
+.socials__link:nth-child(3):hover {
+  border-color: #FF06F0;
+  box-shadow: 
+    0 0 20px rgba(255, 6, 240, 0.4),
+    inset 0 0 20px rgba(255, 6, 240, 0.1);
+}
+
+/* Contact Section - Enhanced Glassmorphism */
+.contact-section {
+  background: rgba(11, 15, 22, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(6, 255, 240, 0.1);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  margin: 4rem auto 0 auto;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 80px rgba(6, 255, 240, 0.05);
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(6, 255, 240, 0.08) 0%, transparent 50%);
+  animation: contact-glow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.contact-section .section__title {
+  position: relative;
+  display: block;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-section .section__title::before {
+  content: '✉️';
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 2rem;
+  vertical-align: middle;
+  animation: mail-bounce 2s ease-in-out infinite;
+}
+
+/* Form Layout - Horizontal Grid */
+.contact__form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+  grid-template-areas:
+    "name email"
+    "message message"
+    "actions actions";
+  width: 100%;
+  max-width: 800px;
+}
+
+.form__field:nth-child(1) {
+  grid-area: name;
+}
+
+.form__field:nth-child(2) {
+  grid-area: email;
+}
+
+.form__field:nth-child(3) {
+  grid-area: message;
+}
+
+.form__actions {
+  grid-area: actions;
+}
+
+/* Form Fields - Neon Input */
+.form__field {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.form__field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #06FFF0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.form__field input,
+.form__field textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(6, 255, 240, 0.03);
+  border: 2px solid rgba(6, 255, 240, 0.2);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.form__field input:focus,
+.form__field textarea:focus {
+  outline: none;
+  border-color: #06FFF0;
+  background: rgba(6, 255, 240, 0.08);
+  box-shadow: 
+    0 0 0 4px rgba(6, 255, 240, 0.1),
+    0 0 20px rgba(6, 255, 240, 0.3),
+    inset 0 0 20px rgba(6, 255, 240, 0.05);
+  transform: translateY(-2px);
+}
+
+.form__field input:focus + label,
+.form__field textarea:focus + label {
+  text-shadow: 0 0 10px rgba(6, 255, 240, 0.6);
+}
+
+.form__field input::placeholder,
+.form__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Validation States */
+.form__field input:invalid:not(:placeholder-shown),
+.form__field textarea:invalid:not(:placeholder-shown) {
+  border-color: rgba(255, 100, 100, 0.5);
+  background: rgba(255, 100, 100, 0.05);
+}
+
+.form__field input:valid:not(:placeholder-shown),
+.form__field textarea:valid:not(:placeholder-shown) {
+  border-color: rgba(6, 255, 240, 0.5);
+  background: rgba(6, 255, 240, 0.05);
+}
+
+/* Form Actions */
+.form__actions {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.form__actions .btn {
+  min-width: 180px;
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+}
+
+.form__hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.form__hint.success {
+  color: #06FFF0;
+  text-shadow: 0 0 10px rgba(6, 255, 240, 0.4);
+}
+
+.form__hint.error {
+  color: #ff6464;
+  text-shadow: 0 0 10px rgba(255, 100, 100, 0.4);
+}
+
+/* Animations */
+@keyframes alien-field-pulse {
+  0%, 100% {
+    background: radial-gradient(circle, rgba(6, 255, 240, 0.1) 0%, transparent 70%);
+    transform: scale(1);
+  }
+  50% {
+    background: radial-gradient(circle, rgba(6, 255, 240, 0.2) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes alien-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes head-bob {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(2px) rotate(-1deg);
+  }
+}
+
+@keyframes eye-wiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes mouth-talk {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.95);
+  }
+}
+
+@keyframes antenna-wave {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes nose-twitch {
+  0%, 90%, 100% {
+    transform: translateX(0);
+  }
+  93%, 97% {
+    transform: translateX(1px);
+  }
+  95% {
+    transform: translateX(-1px);
+  }
+}
+
+@keyframes sensor-scan {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shoulder-breathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes data-flicker {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes ring-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes wave-hand {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  10%, 30% {
+    transform: translateY(-50%) rotate(14deg);
+  }
+  20%, 40% {
+    transform: translateY(-50%) rotate(-8deg);
+  }
+  50%, 60% {
+    transform: translateY(-50%) rotate(14deg);
+  }
+  70% {
+    transform: translateY(-50%) rotate(-8deg);
+  }
+  80% {
+    transform: translateY(-50%) rotate(14deg);
+  }
+}
+
+@keyframes mail-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes contact-glow {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(10%, 10%) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about__content .section__title::before,
+  .contact-section .section__title::before {
+    position: static;
+    display: block;
+    margin-bottom: 0.5rem;
+    transform: none;
+    animation: none;
+  }
+  
+  .about__alien-wrapper {
+    padding: 15px;
+  }
+  
+  .about__alien {
+    width: 150px;
+    height: 225px;
+  }
+
+  .contact-section {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Mobile: Stack Form Vertically */
+  .contact__form {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    grid-template-areas:
+      "name"
+      "email"
+      "message"
+      "actions";
+  }
+
+  .form__actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form__actions .btn {
+    width: 100%;
+  }
+
+  .socials {
+    gap: 0.75rem;
+  }
+
+  .socials__link {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact__form {
+    gap: 1.25rem 1.5rem;
+  }
+  
+  .form__actions {
+    gap: 1.25rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .about__alien-wrapper,
+  .about__alien,
+  .about__alien .alien-head,
+  .about__alien .alien-eyes,
+  .about__alien .alien-mouth-group,
+  .about__alien .alien-antenna,
+  .about__alien .alien-nose,
+  .about__alien .temple-sensor,
+  .about__alien .shoulder,
+  .about__alien .data-stream text,
+  .about__media::before,
+  .about__media::after,
+  .about__content .section__title::before,
+  .contact-section::before,
+  .contact-section .section__title::before {
+    animation: none !important;
+  }
+
+  .about__alien-wrapper:hover .about__alien,
+  .socials__link:hover,
+  .form__field input:focus,
+  .form__field textarea:focus {
+    transform: none !important;
+  }
+  
+  /* Disable SVG animations */
+  .about__alien circle[attributeName="cy"],
+  .about__alien circle[attributeName="opacity"],
+  .about__alien circle[attributeName="r"] {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#1a0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0A0A;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFACD;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFE4B5;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FFE4B5;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glowEffect">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="800" fill="url(#bgGradient)"/>
+  
+  <!-- Stars -->
+  <circle cx="100" cy="80" r="2" fill="#fff" opacity="0.8"/>
+  <circle cx="200" cy="120" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="350" cy="60" r="2" fill="#fff" opacity="0.9"/>
+  <circle cx="480" cy="100" r="1" fill="#fff" opacity="0.7"/>
+  <circle cx="650" cy="70" r="2" fill="#fff" opacity="0.8"/>
+  <circle cx="800" cy="90" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="950" cy="110" r="1" fill="#fff" opacity="0.7"/>
+  <circle cx="1050" cy="65" r="2" fill="#fff" opacity="0.9"/>
+  
+  <!-- Moon with glow -->
+  <circle cx="1000" cy="150" r="120" fill="url(#moonGlow)"/>
+  <circle cx="1000" cy="150" r="80" fill="#FFE4B5" opacity="0.9"/>
+  
+  <!-- Ground -->
+  <path d="M 0,650 Q 200,630 400,650 T 800,650 T 1200,650 L 1200,800 L 0,800 Z" fill="#1a1a1a"/>
+  
+  <!-- Fog -->
+  <ellipse cx="600" cy="680" rx="500" ry="80" fill="#ccc" opacity="0.1"/>
+  <ellipse cx="300" cy="700" rx="400" ry="60" fill="#fff" opacity="0.08"/>
+  <ellipse cx="900" cy="690" rx="450" ry="70" fill="#ccc" opacity="0.09"/>
+  
+  <!-- Haunted House -->
+  <g transform="translate(400, 300)">
+    <!-- Main roof -->
+    <polygon points="200,0 50,150 350,150" fill="#0d0d0d"/>
+    <polygon points="200,0 50,150 350,150" fill="none" stroke="#000" stroke-width="3"/>
+    
+    <!-- Chimney -->
+    <rect x="280" y="40" width="40" height="80" fill="#1a1a1a"/>
+    <rect x="275" y="35" width="50" height="10" fill="#0d0d0d"/>
+    
+    <!-- House body -->
+    <rect x="70" y="150" width="260" height="250" fill="#2a2a2a"/>
+    <rect x="70" y="150" width="260" height="250" fill="none" stroke="#000" stroke-width="3"/>
+    
+    <!-- Tower (left) -->
+    <rect x="20" y="180" width="80" height="220" fill="#1a1a1a"/>
+    <polygon points="60,150 20,180 100,180" fill="#0d0d0d"/>
+    
+    <!-- Windows with orange glow (haunted) -->
+    <rect x="110" y="200" width="50" height="70" fill="#ff6600" filter="url(#glowEffect)"/>
+    <line x1="135" y1="200" x2="135" y2="270" stroke="#000" stroke-width="3"/>
+    <line x1="110" y1="235" x2="160" y2="235" stroke="#000" stroke-width="3"/>
+    
+    <rect x="240" y="200" width="50" height="70" fill="#000"/>
+    <line x1="265" y1="200" x2="265" y2="270" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="240" y1="235" x2="290" y2="235" stroke="#1a1a1a" stroke-width="3"/>
+    
+    <!-- Tower window -->
+    <circle cx="60" cy="250" r="20" fill="#ff6600" opacity="0.8" filter="url(#glowEffect)"/>
+    
+    <!-- Attic window -->
+    <polygon points="200,80 170,120 230,120" fill="#ff3300" opacity="0.6" filter="url(#glowEffect)"/>
+    
+    <!-- Door -->
+    <rect x="170" y="320" width="60" height="80" fill="#0d0d0d"/>
+    <rect x="170" y="320" width="60" height="80" fill="none" stroke="#000" stroke-width="2"/>
+    <circle cx="215" cy="360" r="4" fill="#8B0000"/>
+    <path d="M 200,320 L 200,340 L 180,340" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Ghosts -->
+  <g transform="translate(200, 250)" opacity="0.6">
+    <ellipse cx="0" cy="0" rx="35" ry="45" fill="#F8F8FF"/>
+    <circle cx="-12" cy="-8" r="6" fill="#000"/>
+    <circle cx="12" cy="-8" r="6" fill="#000"/>
+    <ellipse cx="0" cy="8" rx="8" ry="5" fill="#000" opacity="0.5"/>
+    <path d="M -35,35 Q -25,45 -15,35 Q -5,45 5,35 Q 15,45 25,35 Q 30,40 35,35 L 35,0 L -35,0 Z" fill="#F8F8FF"/>
+  </g>
+  
+  <g transform="translate(950, 300)" opacity="0.5">
+    <ellipse cx="0" cy="0" rx="30" ry="40" fill="#F8F8FF"/>
+    <circle cx="-10" cy="-7" r="5" fill="#000"/>
+    <circle cx="10" cy="-7" r="5" fill="#000"/>
+    <path d="M -30,30 Q -20,38 -10,30 Q 0,38 10,30 Q 20,38 30,30 L 30,0 L -30,0 Z" fill="#F8F8FF"/>
+  </g>
+  
+  <!-- Bats -->
+  <path d="M 150,200 Q 140,195 135,200 Q 140,205 150,200 Q 160,205 165,200 Q 160,195 150,200 Z" fill="#000"/>
+  <path d="M 1100,250 Q 1090,245 1085,250 Q 1090,255 1100,250 Q 1110,255 1115,250 Q 1110,245 1100,250 Z" fill="#000"/>
+  <path d="M 300,180 Q 290,175 285,180 Q 290,185 300,180 Q 310,185 315,180 Q 310,175 300,180 Z" fill="#000"/>
+  
+  <!-- Dead tree (left) -->
+  <path d="M 150,550 L 150,650 M 150,580 L 120,600 M 150,600 L 180,620" stroke="#1a1a1a" stroke-width="6" fill="none"/>
+  
+  <!-- Dead tree (right) -->
+  <path d="M 1050,570 L 1050,650 M 1050,600 L 1020,620 M 1050,590 L 1080,610" stroke="#1a1a1a" stroke-width="6" fill="none"/>
+  
+  <!-- Title -->
+  <text x="600" y="750" font-family="Georgia, serif" font-size="80" font-weight="bold" fill="#8B0000" text-anchor="middle" filter="url(#textGlow)">HAUNTED MANSION</text>
+  <text x="600" y="785" font-family="Georgia, serif" font-size="24" fill="#F8F8FF" text-anchor="middle" opacity="0.8">Das verfluchte Herrenhaus</text>
+</svg>
+
+
+

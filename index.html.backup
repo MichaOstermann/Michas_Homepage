@@ -1,0 +1,2066 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Code & Beats by Micha – Musik Produzent, PowerShell Entwickler & Gaming Enthusiast | mcgv.de</title>
+  <meta name="description" content="🎵 Entdecke einzigartige Musik, professionelle PowerShell-Scripts und Gaming-Content von Micha. 22+ Songs, Rap, Party, Love Songs. Kostenlose Downloads & 5-Sterne Bewertungssystem. Jetzt reinhören!" />
+  <meta name="keywords" content="Musik Produzent, PowerShell Scripts, Gaming Blog, Micha mcgv, Rap Musik, Party Songs, Love Songs, deutscher Rapper, Ballermann Hits, IT Scripts, System Cleaner, Outlook Automation, ARK Gaming, Diablo 4, Code Beats" />
+  <meta name="author" content="Micha @ mcgv.de" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://mcgv.de/" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.gstatic.com" />
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+
+  <!-- OpenGraph / Social Media Optimization -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Code & Beats by Micha" />
+  <meta property="og:title" content="Code & Beats – Musik, PowerShell Scripts & Gaming von Micha" />
+  <meta property="og:description" content="🎵 22+ Songs | 💻 Professionelle PowerShell-Scripts | 🎮 Gaming Content | Kostenlos hören & downloaden!" />
+  <meta property="og:image" content="https://mcgv.de/assets/media/cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://mcgv.de/" />
+  <meta property="og:locale" content="de_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Code & Beats by Micha – Musik, Code & Gaming" />
+  <meta name="twitter:description" content="🎵 22+ Songs | 💻 PowerShell-Scripts | 🎮 Gaming Content" />
+  <meta name="twitter:image" content="https://mcgv.de/assets/media/cover.jpg" />
+  <meta name="twitter:creator" content="@mcgv_de" />
+
+  <!-- Schema.org Structured Data for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Code & Beats",
+    "alternateName": "mcgv.de",
+    "url": "https://mcgv.de/",
+    "description": "Musik, PowerShell Scripts und Gaming Content von Micha",
+    "author": {
+      "@type": "Person",
+      "name": "Micha",
+      "url": "https://mcgv.de/"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mcgv.de/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Micha @ Code & Beats",
+    "url": "https://mcgv.de/Musik/",
+    "genre": ["Rap", "Hip-Hop", "Party", "Ballermann", "Love Songs", "Electronic"],
+    "description": "Deutscher Musik-Produzent mit über 22 Songs in verschiedenen Genres",
+    "numberOfTracks": 22,
+    "sameAs": [
+      "https://mcgv.de/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mcgv.de/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Musik",
+        "item": "https://mcgv.de/Musik/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Scripts",
+        "item": "https://mcgv.de/scripts/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Gaming",
+        "item": "https://mcgv.de/gaming/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Prism.js (leichtes Theme + PowerShell) -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css"/>
+  <script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" data-autoloader-path="https://unpkg.com/prismjs@1.29.0/components/"></script>
+
+  <!-- Critical CSS (Above the fold) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/nav-modern.css" />
+  <link rel="stylesheet" href="assets/css/hero-mega.css" />
+  
+  <!-- Non-critical CSS (Below the fold, async) -->
+  <link rel="preload" href="assets/css/enhancements.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/about-contact.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/chatbot/mcgv-chatbot-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/templates-cards.css?v=20251117a" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/alien.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/hero-title.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/brand.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/footer-nav.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/section-titles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="assets/css/rating-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/enhancements.css" />
+    <link rel="stylesheet" href="assets/css/about-contact.css" />
+    <link rel="stylesheet" href="assets/chatbot/mcgv-chatbot-styles.css" />
+    <link rel="stylesheet" href="assets/css/templates-cards.css?v=20251117a" />
+    <link rel="stylesheet" href="assets/css/alien.css" />
+    <link rel="stylesheet" href="assets/css/hero-title.css" />
+    <link rel="stylesheet" href="assets/css/brand.css" />
+    <link rel="stylesheet" href="assets/css/footer-nav.css" />
+    <link rel="stylesheet" href="assets/css/section-titles.css" />
+    <link rel="stylesheet" href="assets/css/rating-styles.css" />
+  </noscript>
+  
+  <style>
+    /* MEGA VISUAL UPGRADES */
+    body {
+      background: #050810;
+      position: relative;
+    }
+    
+    /* Cyber Grid Background */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(6,255,240,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,255,240,0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    /* Hero Mega Enhancement */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle, rgba(255,20,147,0.15) 0%, transparent 70%);
+      animation: heroPulse 6s ease-in-out infinite;
+      z-index: 1;
+    }
+    
+    @keyframes heroPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.6; }
+    }
+    
+    /* Title Glitch Effect */
+    .hero__title {
+      position: relative;
+      animation: titleGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes titleGlow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 20px rgba(6,255,240,1)) 
+                drop-shadow(0 0 40px rgba(139,92,246,0.8));
+      }
+      50% { 
+        filter: drop-shadow(0 0 40px rgba(6,255,240,1)) 
+                drop-shadow(0 0 60px rgba(139,92,246,1))
+                drop-shadow(0 0 80px rgba(255,20,147,0.8));
+      }
+    }
+    
+    /* GLITCH TEXT Effect */
+    .glitch-text {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+
+    .glitch-text::before {
+      color: #06FFF0;
+      animation: glitch-1 0.3s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      z-index: -1;
+    }
+
+    .glitch-text::after {
+      color: #FF1493;
+      animation: glitch-2 0.3s infinite reverse;
+      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+      z-index: -1;
+    }
+
+    @keyframes glitch-1 {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitch-2 {
+      0% { transform: translate(0); }
+      20% { transform: translate(3px, -3px); }
+      40% { transform: translate(3px, 3px); }
+      60% { transform: translate(-3px, -3px); }
+      80% { transform: translate(-3px, 3px); }
+      100% { transform: translate(0); }
+    }
+    
+    /* PowerShell Cards Enhancement */
+    .script-card-horizontal {
+      position: relative;
+      background: rgba(11,15,22,0.7) !important;
+      backdrop-filter: blur(20px);
+    }
+    
+    .script-card-horizontal::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #06FFF0, #8B5CF6, #FF1493, #00FF88);
+      background-size: 400% 400%;
+      animation: borderGlow 8s ease infinite;
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .script-card-horizontal:hover::before {
+      opacity: 0.6;
+    }
+    
+    @keyframes borderGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Floating Animation for Icons */
+    .power-icon-float {
+      animation: iconFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(-5deg); }
+      75% { transform: translateY(-5px) rotate(5deg); }
+    }
+    
+    /* Section Dividers with Glow */
+    .section-glow-divider {
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(6,255,240,0.6) 50%, 
+        transparent 100%
+      );
+      margin: 6rem auto;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(6,255,240,0.5);
+      animation: dividerPulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes dividerPulse {
+      0%, 100% { opacity: 0.6; box-shadow: 0 0 20px rgba(6,255,240,0.5); }
+      50% { opacity: 1; box-shadow: 0 0 40px rgba(6,255,240,0.8); }
+    }
+    
+    /* Stats Badge Animation */
+    .stat-badge-mega {
+      background: rgba(11,15,22,0.8);
+      backdrop-filter: blur(20px);
+      border: 2px solid;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: badgeFloat 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-badge-mega::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: rotate(45deg);
+      animation: badgeShimmer 3s infinite;
+    }
+    
+    @keyframes badgeShimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js" defer></script>
+
+  <!-- Structured Data (JSON-LD) examples -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Code & Beats Blog",
+    "description": "Updates zu Musik, Skripten und Gaming.",
+    "inLanguage": "de",
+    "author": {"@type": "Person", "name": "Creator"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicRecording",
+    "name": "Track 1",
+    "byArtist": {"@type": "Person", "name": "Creator"},
+    "inAlbum": "Code & Beats",
+    "url": "assets/media/track1.mp3"
+  }
+  </script>
+</head>
+<body>
+  <!-- Cyberpunk Silhouette (debug visibility) -->
+  <img src="/assets/images/cyberpunk-left.svg" alt="Cyberpunk Silhouette" class="cyberpunk-left" aria-hidden="true" onerror="console.warn('Silhouette image failed, injecting inline fallback');(function(){var wrapper=document.createElement('div');wrapper.innerHTML=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='520' viewBox='0 0 360 720' style='position:fixed;left:8px;top:18vh;z-index:9999;opacity:.4'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='#00eaff'/><stop offset='1' stop-color='#ff1493'/></linearGradient></defs><path d='M40 120 C60 96, 88 80, 120 78 C150 76, 176 92, 182 122 C186 144, 176 168, 160 186 C132 216, 96 236, 68 252' stroke='url(#g)' stroke-width='4' fill='none'/><path d='M120 140 h64' stroke='#ff1493' stroke-width='4'/><circle cx='150' cy='140' r='6' fill='#ff1493'/></svg>`;document.body.appendChild(wrapper.firstChild);}())" />
+  <!-- Inline Silhouette (force visible) -->
+  <svg id="cyberpunkInline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 720" width="200" height="400" style="position:fixed;left:4px;top:20vh;z-index:10000;opacity:.33;pointer-events:none">
+    <defs>
+      <linearGradient id="cyberGrad" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#00eaff" />
+        <stop offset="1" stop-color="#ff1493" />
+      </linearGradient>
+    </defs>
+    <path d="M40 120 C60 96, 88 80, 120 78 C150 76, 176 92, 182 122 C186 144, 176 168, 160 186 C132 216, 96 236, 68 252" stroke="url(#cyberGrad)" stroke-width="3" fill="none" />
+    <path d="M120 140 h64" stroke="#ff1493" stroke-width="3" />
+    <circle cx="150" cy="140" r="5" fill="#ff1493" />
+  </svg>
+  <script>document.addEventListener('DOMContentLoaded',()=>{const el=document.querySelector('.cyberpunk-left');if(el){console.log('Silhouette element present',el.complete);if(!el.complete){console.log('Silhouette not complete yet');}else{console.log('Silhouette loaded dimensions',el.naturalWidth,el.naturalHeight);} } else {console.warn('Silhouette element missing in DOM');}});</script>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="#hero" class="brand navbar-brand" aria-label="Startseite">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#hero">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="templates/index.html">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#blog">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#newsletter">Newsletter</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#about">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="#contact">Kontakt</a></li>
+        <li role="none">
+          <button id="searchButton" class="nav__link" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;" aria-label="Suche öffnen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">STRG+K</span>
+          </button>
+        </li>
+      </ul>
+
+  <!-- Active indicator (animated) -->
+  <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+  <!-- Hover halo (soft glow following the cursor) -->
+  <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+
+  <!-- Theme toggle entfernt -->
+    </nav>
+    <!-- Scroll progress bar -->
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="hero" class="hero hero-section" aria-labelledby="hero-title" style="position: relative;">
+      <!-- Interactive Particles Layer -->
+      <canvas id="particlesCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;"></canvas>
+      <!-- HERO CANVAS - FIXED POSITION -->
+      <canvas id="heroViz" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none;"></canvas>
+      
+      <div class="hero__bg hero-background" aria-hidden="true">
+        
+        <!-- HERO BACKGROUND ANIMATION - INLINE -->
+        <script>
+(function() {
+  console.log('🌌 Hero Background Init');
+  
+  const canvas = document.getElementById('heroViz');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  // ALIEN BIO-TECH BACKGROUND
+  let time = 0;
+  const organisms = [];
+  
+  // Bio-Zellen / Organismen
+  for (let i = 0; i < 8; i++) {
+    organisms.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 60 + 40,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      pulseSpeed: Math.random() * 0.02 + 0.01,
+      pulseOffset: Math.random() * Math.PI * 2,
+      segments: Math.floor(Math.random() * 3) + 4
+    });
+  }
+  
+  // DNA Helix Punkte
+  const helixPoints = [];
+  for (let i = 0; i < 80; i++) {
+    helixPoints.push({
+      angle: (i / 80) * Math.PI * 8,
+      offset: i * 15,
+      radius: 30
+    });
+  }
+  
+  function drawBioCell(org) {
+    const pulse = Math.sin(time * org.pulseSpeed + org.pulseOffset);
+    const size = org.size + pulse * 10;
+    
+    // Äußere Membran (glow)
+    const gradient = ctx.createRadialGradient(org.x, org.y, 0, org.x, org.y, size);
+    gradient.addColorStop(0, 'rgba(6, 255, 240, 0.15)');
+    gradient.addColorStop(0.5, 'rgba(6, 255, 240, 0.05)');
+    gradient.addColorStop(1, 'rgba(6, 255, 240, 0)');
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(org.x, org.y, size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Innere Struktur (segmentiert wie Xenomorph)
+    ctx.strokeStyle = `rgba(6, 255, 240, ${0.3 + pulse * 0.1})`;
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < org.segments; i++) {
+      const angle = (i / org.segments) * Math.PI * 2 + time * 0.5;
+      const x1 = org.x + Math.cos(angle) * (size * 0.3);
+      const y1 = org.y + Math.sin(angle) * (size * 0.3);
+      const x2 = org.x + Math.cos(angle) * (size * 0.7);
+      const y2 = org.y + Math.sin(angle) * (size * 0.7);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+    
+    // Kern
+    ctx.fillStyle = `rgba(6, 255, 240, ${0.4 + pulse * 0.2})`;
+    ctx.beginPath();
+    ctx.arc(org.x, org.y, 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  
+  function drawDNAHelix() {
+    const centerX = canvas.width * 0.85;
+    const startY = 0;
+    
+    ctx.strokeStyle = 'rgba(6, 255, 240, 0.15)';
+    ctx.lineWidth = 2;
+    
+    for (let i = 0; i < helixPoints.length - 1; i++) {
+      const p1 = helixPoints[i];
+      const p2 = helixPoints[i + 1];
+      
+      const y1 = startY + p1.offset + time * 20;
+      const y2 = startY + p2.offset + time * 20;
+      
+      if (y1 > canvas.height) continue;
+      if (y2 < 0) continue;
+      
+      const x1 = centerX + Math.sin(p1.angle + time * 0.5) * p1.radius;
+      const x2 = centerX + Math.sin(p2.angle + time * 0.5) * p2.radius;
+      
+      ctx.beginPath();
+      ctx.moveTo(x1, y1 % canvas.height);
+      ctx.lineTo(x2, y2 % canvas.height);
+      ctx.stroke();
+      
+      // Verbindungsstriche
+      if (i % 4 === 0) {
+        const x1b = centerX - Math.sin(p1.angle + time * 0.5) * p1.radius;
+        ctx.strokeStyle = 'rgba(139, 92, 246, 0.2)';
+        ctx.beginPath();
+        ctx.moveTo(x1, y1 % canvas.height);
+        ctx.lineTo(x1b, y1 % canvas.height);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(6, 255, 240, 0.15)';
+      }
+    }
+  }
+  
+  function animate() {
+    ctx.fillStyle = 'rgba(11, 15, 22, 0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // DNA Helix
+    drawDNAHelix();
+    
+    // Bio-Zellen
+    organisms.forEach(org => {
+      drawBioCell(org);
+      
+      org.x += org.vx;
+      org.y += org.vy;
+      
+      // Bounce
+      if (org.x < 0 || org.x > canvas.width) org.vx *= -1;
+      if (org.y < 0 || org.y > canvas.height) org.vy *= -1;
+    });
+    
+    time += 0.05;
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+  console.log('✅ Hero Background läuft!');
+  
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+})();
+        </script>
+        
+        <!-- Animated Particles -->
+        <div class="hero-particles" id="heroParticles"></div>
+        
+        <!-- Floating 3D Elements -->
+        <div class="hero-float-element"><div class="float-icon">🎵</div></div>
+        <div class="hero-float-element"><div class="float-icon">💻</div></div>
+        <div class="hero-float-element"><div class="float-icon">🎮</div></div>
+      </div>
+      <div class="container hero__content">
+        <div class="hero-grid">
+          <div class="hero-col hero-col--text">
+            <h1 id="hero-title" class="hero__title hero-title glitch-text reveal" data-text="CODE & BEATS" data-delay="0" style="font-size: clamp(4rem, 12vw, 10rem); line-height: 0.9; margin-bottom: 1rem; font-weight: 900; background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 50%, #FF1493 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; position: relative; display: inline-block; white-space: nowrap;">CODE &amp; BEATS</h1>
+            <p class="hero__subtitle hero-subtitle reveal" data-delay="80" style="font-size: clamp(1.5rem, 3vw, 2.5rem); color: rgba(255,255,255,0.8); margin-bottom: 3rem; font-weight: 300; white-space: nowrap;">Where <span style="color: #FFD54A; font-weight: 700;">Human</span> & <span style="color: #00FF88; font-weight: 700;">AI</span> meets <span style="color: #06FFF0; font-weight: 700;">Code</span>, <span style="color: #FF1493; font-weight: 700;">Music</span>, <span style="color: #8B5CF6; font-weight: 700;">Gaming</span> & <span style="color: #FF6B00; font-weight: 700;">Templates</span></p>
+            <div class="reveal" data-delay="100" style="margin-bottom: 3rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+              <div class="stat-badge-mega" style="border-color: #06FFF0; animation-delay: 0s;">
+                <div style="font-size: 2.5rem; filter: drop-shadow(0 0 10px #06FFF0);">⚡</div>
+                <div>
+                  <div style="font-size: 2rem; font-weight: 900; color: #06FFF0; line-height: 1;">6</div>
+                  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">Power-Scripts</div>
+                </div>
+              </div>
+              <div class="stat-badge-mega" style="border-color: #8B5CF6; animation-delay: 0.3s;">
+                <div style="font-size: 2.5rem; filter: drop-shadow(0 0 10px #8B5CF6);">📝</div>
+                <div>
+                  <div style="font-size: 2rem; font-weight: 900; color: #8B5CF6; line-height: 1;">8</div>
+                  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">Blog-Beiträge</div>
+                </div>
+              </div>
+              <div class="stat-badge-mega" style="border-color: #FF1493; animation-delay: 0.6s;">
+                <div style="font-size: 2.5rem; filter: drop-shadow(0 0 10px #FF1493);">🎮</div>
+                <div>
+                  <div style="font-size: 2rem; font-weight: 900; color: #FF1493; line-height: 1;">4</div>
+                  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em;">Games</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="hero-col hero-col--alien">
+            <figure class="alien-wrap" id="alienWrap" aria-describedby="hero-title">
+              <div class="alien-wireframe" id="alienWireframe" aria-label="Neon Wireframe Alien">
+                <!-- Neon Wireframe Alien SVG -->
+                <svg class="alien-svg" viewBox="0 0 400 600" width="400" height="600" role="img" aria-labelledby="alienTitle alienDesc" xmlns="http://www.w3.org/2000/svg">
+                  <title id="alienTitle">Neon Wireframe Alien</title>
+                  <desc id="alienDesc">Stilisierte Wireframe-Form (Xenomorph+Tron): 3:1-Schädel, Doppel-Kiefer, segmentierte Wirbelsäule, technische Paneele.</desc>
+                  <defs>
+                    <!-- Neon glow filters: stdDeviation 4 + 8 -->
+                    <filter id="neon-main" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="m1" />
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="m2" />
+                      <feMerge>
+                        <feMergeNode in="m2" />
+                        <feMergeNode in="m1" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <filter id="neon-accent" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="a1" />
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="a2" />
+                      <feMerge>
+                        <feMergeNode in="a2" />
+                        <feMergeNode in="a1" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <!-- Stronger accent glow for inner teeth (stdDeviation 10) -->
+                    <filter id="neon-accent-strong" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="t1" />
+                      <feMerge>
+                        <feMergeNode in="t1" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  <!-- V2 GROUPS: Schädel, Kiefer, Wirbelsäule, Details -->
+                  <!-- SCHÄDEL (3:1, stromlinienförmig, segmentierte Platten) -->
+                  <g id="g-skull" class="g-skull" transform="rotate(6 200 200)">
+                    <!-- Noch bananiger: stärkere Krümmung, spitzer vorn, nach hinten gezogen -->
+                    <path class="wf-main wf-skull" d="M200 38 C 275 42, 340 110, 360 185 C 368 210, 365 232, 340 260" />
+                    <path class="wf-main wf-skull" d="M200 38 C 125 42, 60 110, 40 185 C 32 210, 35 232, 60 260" />
+                    <!-- Platten (7) -->
+                    <path class="wf-detail wf-skull" d="M200 75 C 245 83, 285 110, 305 145" />
+                    <path class="wf-detail wf-skull" d="M200 100 C 240 107, 270 127, 290 160" />
+                    <path class="wf-detail wf-skull" d="M200 125 C 235 132, 260 145, 275 175" />
+                    <path class="wf-detail wf-skull" d="M200 150 C 230 157, 250 167, 265 190" />
+                    <path class="wf-detail wf-skull" d="M200 175 C 225 181, 245 191, 258 203" />
+                    <path class="wf-detail wf-skull" d="M200 195 C 220 200, 235 208, 248 215" />
+                    <path class="wf-detail wf-skull" d="M200 212 C 218 216, 232 222, 242 228" />
+                    <!-- Augenhöhlen/Sensoren (violett) -->
+                    <ellipse class="wf-accent wf-detail wf-skull" cx="226" cy="178" rx="26" ry="14" />
+                    <ellipse class="wf-accent wf-detail wf-skull" cx="174" cy="178" rx="26" ry="14" />
+                    <circle class="wf-accent wf-detail wf-skull wf-eye" cx="222" cy="178" r="2.6" />
+                    <circle class="wf-accent wf-detail wf-skull wf-eye" cx="178" cy="178" r="2.6" />
+                    <!-- Seitenrippen -->
+                    <path class="wf-detail wf-skull" d="M210 205 C 240 210, 265 225, 280 250" />
+                    <path class="wf-detail wf-skull" d="M190 205 C 160 210, 135 225, 120 250" />
+                    <!-- Paneel-Linien -->
+                    <path class="wf-detail wf-skull" d="M160 215 L 240 215" />
+                    <path class="wf-detail wf-skull" d="M165 235 L 235 235" />
+                    <path class="wf-detail wf-skull" d="M170 255 L 230 255" />
+                    <!-- Panel-Linien (4-5 feine Nähte) -->
+                    <path class="wf-detail wf-skull wf-panels" d="M210 120 L 240 120" stroke-opacity="0.6" stroke-width="0.8" />
+                    <path class="wf-detail wf-skull wf-panels" d="M160 145 C 175 142, 190 142, 205 145" stroke-opacity="0.6" stroke-width="0.8" />
+                    <path class="wf-detail wf-skull wf-panels" d="M230 165 C 245 168, 255 175, 268 180" stroke-opacity="0.6" stroke-width="0.8" />
+                    <path class="wf-detail wf-skull wf-panels" d="M180 190 L 205 190" stroke-opacity="0.6" stroke-width="0.8" />
+                    <path class="wf-detail wf-skull wf-panels" d="M150 205 C 165 208, 175 210, 188 212" stroke-opacity="0.6" stroke-width="0.8" />
+                    <!-- Rivet/Kreuz-Markierungen (+) an Panel-Enden -->
+                    <g class="wf-detail wf-skull wf-rivets" stroke-width="0.8">
+                      <path d="M240 118 l -2 0 m 4 0 l -2 0 m 0 -2 l 0 4" />
+                      <path d="M160 145 l -2 0 m 4 0 l -2 0 m 0 -2 l 0 4" />
+                      <path d="M268 180 l -2 0 m 4 0 l -2 0 m 0 -2 l 0 4" />
+                      <path d="M205 190 l -2 0 m 4 0 l -2 0 m 0 -2 l 0 4" />
+                      <path d="M188 212 l -2 0 m 4 0 l -2 0 m 0 -2 l 0 4" />
+                    </g>
+                  </g>
+
+                  <!-- KIEFER (doppelt: äußere Lippen, innere Zähne violett; Scharniere sichtbar) -->
+                  <g id="g-jaw" class="g-jaw">
+                    <path class="wf-main wf-jaw" d="M185 295 C 192 310, 208 310, 215 295" />
+                    <circle class="wf-detail wf-jaw" cx="168" cy="292" r="4" />
+                    <circle class="wf-detail wf-jaw" cx="232" cy="292" r="4" />
+                    <!-- Innenzähne -->
+                    <path class="wf-accent wf-detail wf-jaw" d="M186 302 L 186 314" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M190 303 L 190 315" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M194 304 L 194 316" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M198 305 L 198 317" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M202 305 L 202 317" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M206 304 L 206 316" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M210 303 L 210 315" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M214 302 L 214 314" />
+                    <path class="wf-accent wf-detail wf-jaw" d="M218 301 L 218 313" />
+                    <!-- Innerer Kiefer-Schlitz + 5 Zähne (violett, stärkerer Glow) -->
+                    <path class="wf-accent wf-detail wf-jaw" d="M200 300 L 200 315" stroke="#8B5CF6" stroke-width="2" />
+                    <circle class="wf-detail wf-jaw wf-teeth" cx="192" cy="309" r="3" fill="#8B5CF6" filter="url(#neon-accent-strong)" />
+                    <circle class="wf-detail wf-jaw wf-teeth" cx="196" cy="311" r="3" fill="#8B5CF6" filter="url(#neon-accent-strong)" />
+                    <circle class="wf-detail wf-jaw wf-teeth" cx="200" cy="312" r="3" fill="#8B5CF6" filter="url(#neon-accent-strong)" />
+                    <circle class="wf-detail wf-jaw wf-teeth" cx="204" cy="311" r="3" fill="#8B5CF6" filter="url(#neon-accent-strong)" />
+                    <circle class="wf-detail wf-jaw wf-teeth" cx="208" cy="309" r="3" fill="#8B5CF6" filter="url(#neon-accent-strong)" />
+                  </g>
+
+                  <!-- WIRBELSÄULE (7 Ringe + Verbindungsrohre) -->
+                  <g id="g-spine" class="g-spine">
+                    <!-- S-Kurve: leichte horizontale Offsets -->
+                    <ellipse class="wf-main wf-spine" cx="196" cy="330" rx="22" ry="10" />
+                    <ellipse class="wf-main wf-spine" cx="198" cy="360" rx="20" ry="9" />
+                    <ellipse class="wf-main wf-spine" cx="200" cy="390" rx="18" ry="8" />
+                    <ellipse class="wf-main wf-spine" cx="200" cy="420" rx="16" ry="7" />
+                    <ellipse class="wf-main wf-spine" cx="202" cy="450" rx="14" ry="6" />
+                    <ellipse class="wf-main wf-spine" cx="204" cy="480" rx="12" ry="5" />
+                    <ellipse class="wf-main wf-spine" cx="206" cy="510" rx="10" ry="4" />
+                    <ellipse class="wf-main wf-spine" cx="208" cy="540" rx="8" ry="3" />
+                    <path class="wf-detail wf-spine" d="M188 340 L 188 500" />
+                    <path class="wf-detail wf-spine" d="M212 340 L 212 530" />
+                    <!-- Bolzen (links/rechts) pro Wirbel-Ring, violett -->
+                    <g class="wf-detail wf-spine wf-bolts">
+                      <circle cx="174" cy="330" r="2.5" fill="#8B5CF6" />
+                      <circle cx="218" cy="330" r="2.5" fill="#8B5CF6" />
+                      <circle cx="178" cy="360" r="2.5" fill="#8B5CF6" />
+                      <circle cx="218" cy="360" r="2.5" fill="#8B5CF6" />
+                      <circle cx="182" cy="390" r="2.5" fill="#8B5CF6" />
+                      <circle cx="218" cy="390" r="2.5" fill="#8B5CF6" />
+                      <circle cx="184" cy="420" r="2.5" fill="#8B5CF6" />
+                      <circle cx="216" cy="420" r="2.5" fill="#8B5CF6" />
+                      <circle cx="188" cy="450" r="2.5" fill="#8B5CF6" />
+                      <circle cx="216" cy="450" r="2.5" fill="#8B5CF6" />
+                      <circle cx="192" cy="480" r="2.5" fill="#8B5CF6" />
+                      <circle cx="216" cy="480" r="2.5" fill="#8B5CF6" />
+                      <circle cx="196" cy="510" r="2.5" fill="#8B5CF6" />
+                      <circle cx="216" cy="510" r="2.5" fill="#8B5CF6" />
+                      <circle cx="200" cy="540" r="2.5" fill="#8B5CF6" />
+                      <circle cx="216" cy="540" r="2.5" fill="#8B5CF6" />
+                    </g>
+                    <!-- Hydraulik-Schläuche: gestrichelte dünne Cyan-Kurven zwischen Ringen -->
+                    <g class="wf-spine wf-hydraulics">
+                      <path d="M178 330 C 176 340, 176 350, 178 360" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M222 330 C 224 340, 224 350, 222 360" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M180 360 C 178 370, 178 380, 180 390" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M220 360 C 222 370, 222 380, 220 390" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M182 390 C 180 400, 180 410, 182 420" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M218 390 C 220 400, 220 410, 218 420" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M184 420 C 182 430, 182 440, 184 450" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M216 420 C 218 430, 218 440, 216 450" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M188 450 C 186 460, 186 470, 188 480" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M214 450 C 216 460, 216 470, 214 480" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M192 480 C 190 490, 190 500, 192 510" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M210 480 C 212 490, 212 500, 210 510" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M196 510 C 194 520, 194 530, 196 540" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                      <path d="M206 510 C 208 520, 208 530, 206 540" stroke="#06FFF0" stroke-width="1" stroke-dasharray="3,2" fill="none" />
+                    </g>
+                  </g>
+
+                  <!-- DETAILS (Hydraulik, Paneele, Tron-Linien) -->
+                  <g id="g-details" class="g-details">
+                    <path class="wf-detail" d="M155 270 C 160 280, 160 300, 155 310" />
+                    <path class="wf-detail" d="M245 270 C 240 280, 240 300, 245 310" />
+                    <path class="wf-detail" d="M140 260 C 150 255, 160 255, 170 260" />
+                    <path class="wf-detail" d="M230 260 C 240 255, 250 255, 260 260" />
+                    <path class="wf-detail" d="M160 285 L 240 285" />
+                    <path class="wf-detail" d="M165 300 L 235 300" />
+                  </g>
+                </svg>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section id="music" class="section section--music music-section" aria-labelledby="music-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="music-title" class="section__title">Music</h2>
+          <figure class="mini-alien mini-alien--music" aria-hidden="true">
+            <svg width="120" height="140" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
+              <defs>
+                <!-- Local neon filters for mini icon to ensure glow independently -->
+                <filter id="neon-main-mini" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="mblur" />
+                  <feMerge>
+                    <feMergeNode in="mblur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <filter id="neon-accent-mini" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="ablur" />
+                  <feMerge>
+                    <feMergeNode in="ablur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <!-- Simplified skull (top-half), 3 plates, 2 eye sensors; rotate 6° -->
+              <g class="alien-skull-mini" filter="url(#neon-main-mini)" transform="rotate(6 60 40)" stroke="#06FFF0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 78 C24 60, 38 34, 70 28 C90 26, 102 36, 100 52 C99 60, 92 70, 78 76 C60 83, 40 84, 28 82" />
+                <path d="M34 72 C42 50, 60 38, 82 36" opacity="0.85" />
+                <path d="M30 76 C46 54, 66 46, 92 46" opacity="0.7" />
+                <path d="M28 79 C50 60, 72 56, 96 58" opacity="0.55" />
+                <g fill="#8B5CF6" stroke="#8B5CF6" filter="url(#neon-accent)">
+                  <circle cx="74" cy="52" r="2.2" />
+                  <circle cx="86" cy="46" r="2.2" />
+                </g>
+              </g>
+
+              <!-- Headphones: band + earcups (violet) -->
+              <g class="music-headphones" filter="url(#neon-accent-mini)" fill="none" stroke="#8B5CF6" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Band over skull -->
+                <path d="M28 42 C43 24, 77 22, 92 40" stroke-width="3" style="filter: url(#neon-accent-mini) drop-shadow(0 0 8px #8B5CF6);" />
+                <!-- Left earcup -->
+                <g>
+                  <rect x="16" y="54" width="18" height="22" rx="6" stroke-width="1.8" fill="#8B5CF6" fill-opacity="0.8" />
+                  <circle cx="25" cy="65" r="4.2" stroke-width="1.4" opacity="0.9" />
+                </g>
+                <!-- Right earcup -->
+                <g>
+                  <rect x="86" y="52" width="18" height="22" rx="6" stroke-width="1.8" fill="#8B5CF6" fill-opacity="0.8" />
+                  <circle cx="95" cy="63" r="4.2" stroke-width="1.4" opacity="0.9" />
+                </g>
+              </g>
+
+              <!-- Sound waves (cyan, pulsating) -->
+              <g class="wf-sound-waves" stroke="#06FFF0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6">
+                <!-- Left side -->
+                <g>
+                  <path d="M14 64 C8 62, 6 58, 6 54" />
+                  <path d="M12 68 C4 64, 2 58, 2 50" />
+                  <path d="M10 72 C0 66, -2 58, -2 46" />
+                </g>
+                <!-- Right side -->
+                <g>
+                  <path d="M106 62 C112 60, 114 56, 114 52" />
+                  <path d="M108 66 C116 62, 118 56, 118 48" />
+                  <path d="M110 70 C120 64, 122 56, 122 44" />
+                </g>
+              </g>
+            </svg>
+          </figure>
+          <div style="max-width: 750px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <p class="txt-dim" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1.5rem; text-align: center;">
+              Eine Auswahl meiner neuesten Tracks – jeder Song 100% selbst produziert mit Unterstützung moderner KI-Technologie! 🎵
+            </p>
+            
+            <p class="txt-dim" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: center; max-width: 700px;">
+              Von der ersten Idee bis zum finalen Master: Ich komponiere jede Melodie, jeden Beat und jede Harmonie selbst. 
+              KI ist mein kreatives Werkzeug – für realistische Vocals, cineastische Orchestrierungen und experimentelle Sounddesigns, 
+              die früher ein ganzes Studio-Team erfordert hätten.
+            </p>
+            
+            <p class="txt-dim" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; text-align: center; max-width: 700px;">
+              Das Ergebnis? <strong style="color: #06FFF0;">Musik ohne Grenzen!</strong> 🚀<br><br>
+              🎹 <strong>Meine Vision, KI-Power:</strong> Ob energetische Party-Beats, epische Synthwave-Atmosphären oder entspannte Ambient-Sounds – 
+              KI-gestützte Vocals, AI-Mastering und generative Synthesizer erweitern meine Produktionsmöglichkeiten ins Unendliche. 
+              Willkommen in der neuen Ära der Musikproduktion! ✨
+            </p>
+            <p style="font-size: 0.95rem; text-align: center;">
+              <span style="background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">
+                Entdecke die komplette Kollektion →
+              </span>
+              <a href="Musik/index.html" style="color: #06FFF0; text-decoration: none; font-weight: 600; margin-left: 0.5rem; transition: all 0.3s ease; display: inline-block;" onmouseover="this.style.transform='translateX(4px)'; this.style.color='#8B5CF6'" onmouseout="this.style.transform='translateX(0)'; this.style.color='#06FFF0'">
+                Alle Songs ansehen
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid--cards music-grid">
+          <!-- Card 1 -->
+          <article class="card card--track music-card reveal" data-delay="0" data-category="party">
+            <img class="card__media music-card-image" src="assets/media/cover1.svg" alt="Life am Strand Cover" loading="lazy" />
+            <div class="card__body">
+              <h3 class="card__title">Life am Strand</h3>
+              <p class="card__text txt-dim" style="margin-top: 0.5rem; font-size: 0.9rem;">Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.</p>
+              <div class="badge badge--new" aria-label="Neu">Neu</div>
+              <audio class="card__player music-player" controls preload="metadata">
+                <source src="assets/media/track1.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div class="rating-widget" data-song-id="life-am-strand">
+                <div class="rating-stars">
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                </div>
+                <div class="rating-info">
+                  <span class="rating-average">0.0</span>
+                  <span class="rating-count">(0 Bewertungen)</span>
+                </div>
+              </div>
+              <div class="card__actions">
+                <a class="btn btn--glass btn-download" href="assets/media/track1.mp3" download="Michael Ostermann - Life am Strand.mp3">Download</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 2 -->
+          <article class="card card--track music-card reveal" data-delay="60" data-category="party">
+            <img class="card__media music-card-image" src="assets/media/cover2.svg" alt="20 Jahre RDMC Oldenburg Cover" loading="lazy" />
+            <div class="card__body">
+              <h3 class="card__title">20 Jahre RDMC Oldenburg</h3>
+              <p class="card__text txt-dim" style="margin-top: 0.5rem; font-size: 0.9rem;">Jubiläums-Track mit Partystimmung. Artist: Michael Ostermann.</p>
+              <div class="badge badge--new" aria-label="Neu">Neu</div>
+              <audio class="card__player music-player" controls preload="metadata">
+                <source src="assets/media/track2.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div class="rating-widget" data-song-id="20-jahre-rdmc-oldenburg">
+                <div class="rating-stars">
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                </div>
+                <div class="rating-info">
+                  <span class="rating-average">0.0</span>
+                  <span class="rating-count">(0 Bewertungen)</span>
+                </div>
+              </div>
+              <div class="card__actions">
+                <a class="btn btn--glass btn-download" href="assets/media/track2.mp3" download="Michael Ostermann - 20 Jahre RDMC Oldenburg.mp3">Download</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article class="card card--track music-card reveal" data-delay="120" data-category="synth">
+            <img class="card__media music-card-image" src="assets/media/cover3.svg" alt="Aus dem Schatten Cover" loading="lazy" />
+            <div class="card__body">
+              <h3 class="card__title">Aus dem Schatten</h3>
+              <p class="card__text txt-dim" style="margin-top: 0.5rem; font-size: 0.9rem;">Dunkler Synthwave mit treibendem Beat und melancholischer Hook. Artist: Michael Ostermann.</p>
+              <div class="badge badge--new" aria-label="Neu">Neu</div>
+              <audio class="card__player music-player" controls preload="metadata">
+                <source src="assets/media/track3.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div class="rating-widget" data-song-id="aus-dem-schatten">
+                <div class="rating-stars">
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                </div>
+                <div class="rating-info">
+                  <span class="rating-average">0.0</span>
+                  <span class="rating-count">(0 Bewertungen)</span>
+                </div>
+              </div>
+              <div class="card__actions">
+                <a class="btn btn--glass btn-download" href="assets/media/track3.mp3" download="Michael Ostermann - Aus dem Schatten.mp3">Download</a>
+              </div>
+            </div>
+          </article>
+          <!-- Card 4 -->
+          <article class="card card--track music-card reveal" data-delay="180" data-category="party">
+            <img class="card__media music-card-image" src="assets/media/cover4.svg" alt="Kein Lied für Helden Cover" loading="lazy" />
+            <div class="card__body">
+              <h3 class="card__title">Kein Lied für Helden</h3>
+              <p class="card__text txt-dim" style="margin-top: 0.5rem; font-size: 0.9rem;">Kraftvoller Rocksong mit Message. Authentisch und direkt. Artist: Michael Ostermann.</p>
+              <div class="badge badge--new" aria-label="Neu">Neu</div>
+              <audio class="card__player music-player" controls preload="metadata">
+                <source src="assets/media/Kein Lied für Helden.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div class="rating-widget" data-song-id="kein-lied-fuer-helden">
+                <div class="rating-stars">
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                  <span class="rating-star">⭐</span>
+                </div>
+                <div class="rating-info">
+                  <span class="rating-average">0.0</span>
+                  <span class="rating-count">(0 Bewertungen)</span>
+                </div>
+              </div>
+              <div class="card__actions">
+                <a class="btn btn--glass btn-download" href="assets/media/Kein Lied für Helden.mp3" download="Michael Ostermann - Kein Lied für Helden.mp3">Download</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-glow-divider"></div>
+
+    <!-- PowerShell -->
+    <section id="powershell" class="section section--ps tools-section" aria-labelledby="ps-title">
+      <div class="container">
+        <div class="section__head" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+          <h2 id="ps-title" class="section__title" style="margin-bottom: 0;">PowerShell</h2>
+          <div style="text-align: center; max-width: 720px; padding: 1.75rem 2.5rem; background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(6,255,240,0.08) 100%); border: 2px solid rgba(139,92,246,0.3); border-radius: 16px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(139,92,246,0.2);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem; filter: drop-shadow(0 0 20px rgba(139,92,246,0.6));">⚡</div>
+            <p style="margin: 0 0 0.75rem 0; font-size: 1.2rem; line-height: 1.7; font-weight: 600;">
+              <span style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Production-Ready PowerShell Power!</span>
+            </p>
+            <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.8);">
+              🎮 Gaming-PC Optimizer · 📧 Outlook Spam Killer · 🛡️ Security Deep Scanner
+            </p>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);">
+              Keine Spielerei – echte Scripts die du täglich nutzen kannst!
+            </p>
+          </div>
+          <a class="btn btn--glass" href="scripts/index.html" aria-label="Alle PowerShell Scripts ansehen" style="background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,255,240,0.2) 100%); border: 2px solid rgba(139,92,246,0.4); box-shadow: 0 8px 32px rgba(139,92,246,0.3); font-weight: 600; font-size: 1.05rem; padding: 0.9rem 2rem; transition: all 0.3s ease;">
+            ⚡ Alle Scripts entdecken
+          </a>
+        </div>
+
+        <!-- Live Terminal Demo -->
+        <div class="reveal" data-delay="0" style="margin: 3rem auto 3rem; max-width: 900px;">
+          <div style="background: rgba(11,15,22,0.95); border: 2px solid rgba(139,92,246,0.4); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(139,92,246,0.3);">
+            <!-- Terminal Header -->
+            <div style="background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,255,240,0.15) 100%); padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(139,92,246,0.3); display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; gap: 0.5rem;">
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #FF5F57;"></div>
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #FEBC2E;"></div>
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #28C840;"></div>
+              </div>
+              <div style="color: #8B5CF6; font-family: monospace; font-size: 0.9rem; font-weight: 600;">PowerShell 7.x - Live Demo</div>
+              <div style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">⚡ Auto-Play</div>
+              </div>
+            <!-- Terminal Body -->
+            <div 
+              data-terminal='[
+                {"text": "# Gaming PC Turbo Cleaner - Live Demo", "type": "comment"},
+                {"text": ".\\Gaming-PC-Turbo-Cleaner.ps1"},
+                {"text": "🧹 Räume auf: User Temp...", "type": "output"},
+                {"text": "✓ User Temp bereinigt: 156.34 MB", "type": "output", "color": "#00FF88"},
+                {"text": "✓ Steam Cache bereinigt: 234.56 MB", "type": "output", "color": "#00FF88"},
+                {"text": "✓ Epic Games Cache bereinigt: 45.12 MB", "type": "output", "color": "#00FF88"},
+                {"text": "📊 Bereinigter Speicher: 525.23 MB", "type": "output", "color": "#06FFF0"}
+              ]'
+              style="padding: 1.5rem; font-family: 'Courier New', monospace; font-size: 0.95rem; min-height: 300px; position: relative;"
+            >
+              <div data-terminal-output></div>
+              <span data-terminal-cursor style="display: inline-block; width: 10px; height: 18px; background: #06FFF0; margin-left: 4px; vertical-align: middle;"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PowerShell Killer-Scripts Showcase -->
+        <div style="margin-top: 3rem;">
+          
+          <!-- Gaming PC Turbo Cleaner -->
+          <article class="card holo-card reveal script-card-horizontal" data-delay="0" style="background: linear-gradient(135deg, rgba(6,255,240,0.08) 0%, rgba(139,92,246,0.08) 100%); border: 2px solid rgba(6,255,240,0.3); border-radius: 16px; overflow: hidden; margin-bottom: 2rem; cursor: pointer;" onclick="window.location.href='scripts/gaming-pc-turbo-cleaner.html'">
+            <div style="display: grid; grid-template-columns: 280px 1fr; gap: 0;" class="script-card-horizontal">
+              <!-- Visual -->
+              <div class="script-card-visual" style="background: linear-gradient(135deg, rgba(6,255,240,0.15) 0%, rgba(139,92,246,0.15) 100%); padding: 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid rgba(6,255,240,0.3);">
+                <div class="power-icon-float" style="font-size: 5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 30px rgba(6,255,240,0.6));">🎮</div>
+                <div style="font-size: 2.5rem; font-weight: 900; color: #06FFF0; margin-bottom: 0.5rem;">500+</div>
+                <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); text-align: center;">MB bereinigt</div>
+              </div>
+              <!-- Content -->
+              <div style="padding: 2rem 2.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                  <h3 style="font-size: 1.8rem; font-weight: 700; color: #FFF; margin: 0;">Gaming PC Turbo Cleaner</h3>
+                  <span class="chip" style="background: rgba(0,255,136,0.2); color: #00FF88; border: 1px solid rgba(0,255,136,0.4); padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; white-space: nowrap;">✓ Verified</span>
+                </div>
+                <p class="txt-dim" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.05rem;">
+                  Maximale Performance für Gaming! Bereinigt automatisch Temp-Dateien, Browser-Cache, Gaming-Plattformen (Steam, Epic, Battle.net, Discord) und optimiert RAM. In unter 30 Sekunden!
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                  <span style="font-size: 0.85rem; color: #06FFF0;">⚡ < 30 Sekunden</span>
+                  <span style="color: rgba(255,255,255,0.3);">•</span>
+                  <span style="font-size: 0.85rem; color: #8B5CF6;">🎯 4+ Gaming-Plattformen</span>
+                  <span style="color: rgba(255,255,255,0.3);">•</span>
+                  <span style="font-size: 0.85rem; color: #00FF88;">💾 PS 5.1+</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <a href="scripts/gaming-pc-turbo-cleaner.html" class="btn btn--neon" style="padding: 0.7rem 1.75rem; font-size: 0.95rem;" onclick="event.stopPropagation();">Details ansehen</a>
+                  <a href="assets/media/Gaming-PC-Turbo-Cleaner.ps1" download class="btn" style="background: rgba(6,255,240,0.15); color: #06FFF0; border: 1px solid rgba(6,255,240,0.4); padding: 0.7rem 1.75rem; font-size: 0.95rem;" onclick="event.stopPropagation();">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+              </div>
+            </article>
+
+          <!-- Security Deep Scanner -->
+          <article class="card holo-card reveal script-card-horizontal" data-delay="160" style="background: linear-gradient(135deg, rgba(255,87,87,0.08) 0%, rgba(255,193,7,0.08) 100%); border: 2px solid rgba(255,87,87,0.3); border-radius: 16px; overflow: hidden; cursor: pointer;" onclick="window.location.href='scripts/security-deep-scanner.html'">
+            <div style="display: grid; grid-template-columns: 280px 1fr; gap: 0;" class="script-card-horizontal">
+              <!-- Visual -->
+              <div class="script-card-visual" style="background: linear-gradient(135deg, rgba(255,87,87,0.15) 0%, rgba(255,193,7,0.1) 100%); padding: 2.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid rgba(255,87,87,0.3);">
+                <div class="power-icon-float" style="font-size: 5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 30px rgba(255,87,87,0.6)); animation-delay: 0.5s;">🛡️</div>
+                <div style="font-size: 2.5rem; font-weight: 900; color: #FF5757; margin-bottom: 0.5rem;">5</div>
+                <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); text-align: center;">Scan-Module</div>
+              </div>
+              <!-- Content -->
+              <div style="padding: 2rem 2.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                  <h3 style="font-size: 1.8rem; font-weight: 700; color: #FFF; margin: 0;">Security Deep Scanner</h3>
+                  <span class="chip badge-pulse" style="background: rgba(0,255,136,0.2); color: #00FF88; border: 1px solid rgba(0,255,136,0.4); padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; white-space: nowrap;">✓ Verified</span>
+                </div>
+                <p class="txt-dim" style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.05rem;">
+                  Professional Threat Detection! Windows Defender Integration, Prozess-Analyse, Autostart-Check, Netzwerk-Scan. Mit 4-stufigem Threat-Level System (LOW/MEDIUM/HIGH/CRITICAL).
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                  <span style="font-size: 0.85rem; color: #FF5757;">🛡️ Defender Integration</span>
+                  <span style="color: rgba(255,255,255,0.3);">•</span>
+                  <span style="font-size: 0.85rem; color: #FFC107;">🚨 4 Threat-Levels</span>
+                  <span style="color: rgba(255,255,255,0.3);">•</span>
+                  <span style="font-size: 0.85rem; color: #00FF88;">💾 PS 5.1+</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <a href="scripts/security-deep-scanner.html" class="btn btn--neon" style="padding: 0.7rem 1.75rem; font-size: 0.95rem;" onclick="event.stopPropagation();">Details ansehen</a>
+                  <a href="assets/media/Security-Deep-Scanner.ps1" download class="btn" style="background: rgba(255,87,87,0.15); color: #FF5757; border: 1px solid rgba(255,87,87,0.4); padding: 0.7rem 1.75rem; font-size: 0.95rem;" onclick="event.stopPropagation();">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-glow-divider"></div>
+
+    <!-- Gaming - Kompakt -->
+    <section id="gaming" class="section section--gaming gaming-section" aria-labelledby="gaming-title">
+      <div class="container">
+        <div class="section__head" style="text-align: center; margin-bottom: 3rem;">
+          <h2 id="gaming-title" class="section__title">🎮 Gaming</h2>
+          <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-top: 1rem;">
+            Meine Abenteuer in Diablo IV, ARK, Enshrouded & Soulmask
+          </p>
+        </div>
+        
+        <!-- Compact Gaming Grid -->
+        <div class="grid grid--cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+          
+          <!-- Diablo IV Card -->
+          <article class="card reveal" data-delay="0" style="background: linear-gradient(135deg, rgba(139, 0, 0, 0.2) 0%, rgba(20, 0, 0, 0.4) 100%); border: 2px solid rgba(200, 0, 0, 0.3); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltf9ef4fee9c77a1b5/66df937c97d7ebef3679492b/d4-npe_story-launch-trailer_agnostic_960.webp" alt="Diablo IV" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy" />
+            <div style="padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #FF6666; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem;">ACTION-RPG</div>
+              <h3 style="font-size: 1.5rem; font-weight: 900; color: #FFF; margin: 0 0 0.75rem 0;">DIABLO IV</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.25rem;">
+                Sanktuario brennt! Necromancer Builds, Endgame-Guides & Season-Updates.
+              </p>
+              <a href="gaming/diablo.html" class="btn" style="background: linear-gradient(135deg, #C80000 0%, #8B0000 100%); color: white; padding: 0.7rem 1.5rem; width: 100%; text-align: center; display: block; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Mehr erfahren
+              </a>
+            </div>
+          </article>
+
+          <!-- ARK Card -->
+          <article class="card reveal" data-delay="100" style="background: linear-gradient(135deg, rgba(0, 100, 0, 0.2) 0%, rgba(0, 50, 0, 0.3) 100%); border: 2px solid rgba(0, 150, 0, 0.3); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/346110/ss_164a92a53f9bcbb728b391fc0719f9769c2e1249.1920x1080.jpg?t=1752704051" alt="ARK" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy" />
+            <div style="padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #32CD32; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem;">DINOSAUR SURVIVAL</div>
+              <h3 style="font-size: 1.5rem; font-weight: 900; color: #FFF; margin: 0 0 0.75rem 0;">ARK: SURVIVAL EVOLVED</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.25rem;">
+                Zähme Dinos, baue gewaltige Basen und dominiere die ARK! Mit Zucht-Guides.
+              </p>
+              <a href="gaming/ark.html" class="btn" style="background: linear-gradient(135deg, #228B22 0%, #006400 100%); color: white; padding: 0.7rem 1.5rem; width: 100%; text-align: center; display: block; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Mehr erfahren
+              </a>
+            </div>
+          </article>
+
+          <!-- Enshrouded Card -->
+          <article class="card reveal" data-delay="200" style="background: linear-gradient(135deg, rgba(184, 134, 11, 0.15) 0%, rgba(139, 69, 19, 0.25) 100%); border: 2px solid rgba(218, 165, 32, 0.3); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1203620/09a1e99c47ba7ffb2413c4708a9f5fbef1397652/ss_09a1e99c47ba7ffb2413c4708a9f5fbef1397652.1920x1080.jpg?t=1761294141" alt="Enshrouded" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy" />
+            <div style="padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #DAA520; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem;">SURVIVAL CO-OP</div>
+              <h3 style="font-size: 1.5rem; font-weight: 900; color: #FFF; margin: 0 0 0.75rem 0;">ENSHROUDED</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.25rem;">
+                Flammengeboren! Überlebe den Nebel und baue dein Königreich. Co-op Builds.
+              </p>
+              <a href="gaming/enshrouded.html" class="btn" style="background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%); color: white; padding: 0.7rem 1.5rem; width: 100%; text-align: center; display: block; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Mehr erfahren
+              </a>
+            </div>
+          </article>
+
+          <!-- Soulmask Card -->
+          <article class="card reveal" data-delay="300" style="background: linear-gradient(135deg, rgba(139, 0, 139, 0.2) 0%, rgba(75, 0, 130, 0.3) 100%); border: 2px solid rgba(138, 43, 226, 0.3); border-radius: 12px; overflow: hidden; transition: all 0.3s;">
+            <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/ss_a4dc740018530c079519eeb0c778b37b0c70abf5.1920x1080.jpg?t=1762330697" alt="Soulmask" style="width: 100%; height: 200px; object-fit: cover;" loading="lazy" />
+            <div style="padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #BA55D3; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem;">TRIBAL SURVIVAL</div>
+              <h3 style="font-size: 1.5rem; font-weight: 900; color: #FFF; margin: 0 0 0.75rem 0;">SOULMASK</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); margin-bottom: 1.25rem;">
+                Mystische Masken & primitives Überleben! Baue deinen Stamm mit 50 Spielern.
+              </p>
+              <a href="gaming/soulmask.html" class="btn" style="background: linear-gradient(135deg, #9370DB 0%, #8B008B 100%); color: white; padding: 0.7rem 1.5rem; width: 100%; text-align: center; display: block; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                Mehr erfahren
+              </a>
+            </div>
+          </article>
+          
+        </div>
+
+        <!-- "Alle Games" Button -->
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="gaming/" class="btn btn--glass" style="padding: 0.9rem 2.5rem; font-size: 1.05rem; box-shadow: 0 4px 20px rgba(6,255,240,0.2);">
+            🎮 Alle Gaming-Inhalte ansehen
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-glow-divider"></div>
+
+    <!-- Website Templates -->
+    <section id="templates" class="section section--templates" aria-labelledby="templates-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="templates-title" class="section__title">🎨 Website Templates</h2>
+          <p class="section__description">
+            Professionelle, moderne Website-Vorlagen zum Download. Responsive, schnell und einfach anpassbar.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="template-filters" style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 2.5rem;">
+          <button class="filter-btn active" data-filter="all">Alle Templates</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+          <button class="filter-btn" data-filter="portfolio">Portfolio</button>
+          <button class="filter-btn" data-filter="creative">Creative</button>
+          <button class="filter-btn" data-filter="landing">Landing Page</button>
+        </div>
+
+        <!-- Templates Grid -->
+        <div class="grid grid--templates" id="templatesGrid">
+          <p class="txt-dim">Templates werden geladen...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="templatesError" style="display: none; text-align: center; padding: 2rem; background: rgba(255,100,100,0.1); border: 1px solid rgba(255,100,100,0.3); border-radius: 12px; margin-top: 2rem;">
+          <p style="color: #ff6b6b; font-size: 1.1rem; margin: 0;">⚠️ Fehler beim Laden</p>
+          <p style="color: rgba(255,255,255,0.6); margin: 0.5rem 0 0 0;">Templates konnten nicht geladen werden. Bitte versuche es später erneut.</p>
+        </div>
+
+        <!-- All Templates Button -->
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="templates/" class="btn btn--glass" style="padding: 0.9rem 2.5rem; font-size: 1.05rem; box-shadow: 0 4px 20px rgba(6,255,240,0.2);">
+            🎨 Alle Templates ansehen
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-glow-divider"></div>
+
+    <!-- Blog / Updates -->
+    <section id="blog" class="section section--blog blog-section" aria-labelledby="blog-title">
+      <div class="container">
+        <div class="section__head" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+          <h2 id="blog-title" class="section__title" style="margin-bottom: 0;">Blog & Updates</h2>
+          <div style="text-align: center; max-width: 650px; padding: 1.25rem 2rem; background: linear-gradient(135deg, rgba(6,255,240,0.05) 0%, rgba(139,92,246,0.05) 100%); border: 1px solid rgba(6,255,240,0.2); border-radius: 12px; backdrop-filter: blur(10px);">
+            <p style="margin: 0; font-size: 1.05rem; line-height: 1.7;">
+              <span style="color: #06FFF0; font-weight: 600;">Die 3 neuesten Highlights</span>
+              <span style="color: rgba(255,255,255,0.7); margin: 0 0.5rem;">·</span>
+              <span style="color: rgba(255,255,255,0.85);">Es gibt noch viel mehr zu entdecken!</span>
+            </p>
+          </div>
+          <a class="btn btn--glass" href="blog/index.html" aria-label="Alle Blogbeiträge ansehen" data-blog-all-link style="box-shadow: 0 4px 20px rgba(6,255,240,0.2); transition: all 0.3s ease;">Alle Beiträge ansehen</a>
+        </div>
+
+        <div class="grid grid--cards blog-grid" data-blog-highlight>
+          <p class="txt-dim" data-blog-empty style="display:none;">Aktuell sind keine Blogbeiträge verfügbar.</p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- About / Contact -->
+    <section id="about" class="section section--about about-section" aria-labelledby="about-title">
+      <div class="container grid grid--about">
+        <div class="about__media reveal" data-delay="0">
+          <!-- Neural Network Visualizer -->
+          <div id="neuralNetworkViz" style="width: 100%; height: 400px; background: rgba(11,15,22,0.95); border: 2px solid rgba(6,255,240,0.3); border-radius: 16px; margin-bottom: 2rem; box-shadow: 0 10px 40px rgba(6,255,240,0.2);"></div>
+          <div class="about__alien-wrapper">
+            <img src="assets/media/about-alien.svg" class="about__alien" alt="Wireframe Alien Profile" width="200" height="300" loading="lazy"/>
+          </div>
+        </div>
+        <div class="about__content" style="max-width: 750px; margin: 0 auto;">
+          <h2 id="about-title" class="section__title reveal" data-delay="40">Über mich</h2>
+          
+          <p class="txt-dim reveal" data-delay="80" style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1.5rem; font-weight: 600;">
+            Moin Moin!
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="100" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Ich bin Michael und willkommen auf meiner digitalen Home-Base – einem Ort, wo Code auf Kreativität trifft und Technik auf Leidenschaft.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="120" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Tagsüber bin ich IT-Administrator und halte Systeme am Laufen, löse Probleme, bevor sie entstehen, und sorge dafür, dass die digitale Infrastruktur reibungslos funktioniert. Aber wenn die Bürolichter ausgehen, beginnt mein eigentliches Abenteuer.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="140" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Abends und nachts verwandelt sich mein Setup in eine kreative Kommandozentrale: Ich schreibe PowerShell-Skripte, die repetitive Tasks automatisieren und uns Admins wertvolle Lebenszeit zurückgeben. Jedes Skript ist ein kleines Puzzle – elegant, effizient und darauf ausgelegt, echte Probleme zu lösen. Von Active Directory-Automatisierung bis hin zu Monitoring-Tools: Wenn es den Workflow verbessert, bin ich dabei.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="160" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Parallel dazu tauche ich in die Welt der Musik ein. Mit Synthesizern, DAWs und einer Prise Nostalgie produziere ich elektronische Tracks – von pulsierendem Synthwave, der dich in neonbeleuchtete 80er-Jahre-Highways katapultiert, bis hin zu atmosphärischem Ambient, der perfekt für späte Coding-Sessions oder entspannte Stunden ist. Musik ist für mich mehr als Hobby – sie ist Ausdruck, Meditation und Experiment zugleich.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="180" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Und wenn ich mal eine Pause vom Terminal und den Synthesizern brauche? Dann streame ich Gaming-Sessions. Ob strategische Überlegungen in komplexen Simulationen, intensive Kämpfe in Action-Adventures oder entspanntes Erkunden offener Welten – Gaming ist mein Ventil, meine Inspiration und oft genug auch Quelle für neue kreative Ideen.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="200" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Was verbindet diese drei Welten? Die Liebe zum Detail, der unstillbare Drang zu optimieren und die pure Freude am Erschaffen. Ob ich Code debugge, einen Beat baue oder einen Boss besiege – alles folgt einem Flow, einer inneren Logik, die mich antreibt.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="220" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Diese Seite ist mein persönliches Showcase: Hier findest du meine Musik-Tracks zum Reinhören, nützliche PowerShell-Skripte zum Download und Gaming-Content, der Einblicke in meine virtuellen Abenteuer gibt.
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="240" style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem;">
+            Schau dich in Ruhe um, lass dich inspirieren, schnapp dir was Nützliches oder genieß einfach die Atmosphäre. Und wenn du Fragen hast, Feedback geben möchtest oder an einer Zusammenarbeit interessiert bist – melde dich gerne. Ich freue mich auf den Austausch!
+          </p>
+          
+          <p class="txt-dim reveal" data-delay="260" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; font-weight: 600; color: #06FFF0; text-align: center;">
+            Let's create something awesome together.
+          </p>
+        </div>
+        <div id="contact" class="contact contact-section reveal" data-delay="300" style="max-width: 800px; margin: 0 auto;">
+          <h2 class="section__title" style="text-align: center; margin-bottom: 2rem;">
+            📬 Kontakt
+          </h2>
+          
+          <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem; color: rgba(255,255,255,0.8);">
+            Hast du Fragen, Feedback oder Interesse an Zusammenarbeit? Schreib mir eine Nachricht!
+          </p>
+          
+          <form id="contactForm" style="display: block; max-width: 100%;">
+            
+            <div style="display: grid; gap: 1.5rem; grid-template-columns: repeat(2, 1fr); margin-bottom: 1.75rem;">
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label for="name" style="font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 0.5rem;">Name</label>
+                <input 
+                  id="name" 
+                  name="name" 
+                  type="text" 
+                  required 
+                  autocomplete="name"
+                  placeholder="Dein Name"
+                  style="width: 100%; background: rgba(11,15,22,0.6); border: 1.5px solid rgba(6,255,240,0.3); border-radius: 8px; padding: 0.85rem 1rem; font-size: 1rem; color: #fff; transition: all 0.3s; outline: none;"
+                  onfocus="this.style.borderColor='#06FFF0'; this.style.boxShadow='0 0 12px rgba(6,255,240,0.3)'"
+                  onblur="this.style.borderColor='rgba(6,255,240,0.3)'; this.style.boxShadow='none'"
+                />
+              </div>
+              
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label for="email" style="font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 0.5rem;">E-Mail</label>
+                <input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  required 
+                  autocomplete="email"
+                  placeholder="deine@email.de"
+                  style="width: 100%; background: rgba(11,15,22,0.6); border: 1.5px solid rgba(6,255,240,0.3); border-radius: 8px; padding: 0.85rem 1rem; font-size: 1rem; color: #fff; transition: all 0.3s; outline: none;"
+                  onfocus="this.style.borderColor='#06FFF0'; this.style.boxShadow='0 0 12px rgba(6,255,240,0.3)'"
+                  onblur="this.style.borderColor='rgba(6,255,240,0.3)'; this.style.boxShadow='none'"
+                />
+              </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.75rem;">
+              <label for="message" style="font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 0.5rem;">Nachricht</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                required
+                placeholder="Deine Nachricht..."
+                style="width: 100%; background: rgba(11,15,22,0.6); border: 1.5px solid rgba(6,255,240,0.3); border-radius: 8px; padding: 0.85rem 1rem; font-size: 1rem; color: #fff; resize: vertical; font-family: inherit; line-height: 1.6; transition: all 0.3s; outline: none;"
+                onfocus="this.style.borderColor='#06FFF0'; this.style.boxShadow='0 0 12px rgba(6,255,240,0.3)'"
+                onblur="this.style.borderColor='rgba(6,255,240,0.3)'; this.style.boxShadow='none'"
+              ></textarea>
+              <!-- Honeypot wird jetzt dynamisch via JS eingefügt (Feldname geändert) -->
+              <!-- (Verhindert Autofill / statische Bot-Regeln) -->
+            </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1rem;">
+              <button 
+                type="button"
+                id="sendBtn"
+                style="background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%); color: #0B0F16; font-weight: 700; padding: 1rem 3rem; border-radius: 8px; border: none; font-size: 1.05rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(6,255,240,0.3);"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 28px rgba(6,255,240,0.45)'"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(6,255,240,0.3)'"
+              >
+                📤 Nachricht senden
+              </button>
+              
+              <p style="font-size: 0.9rem; color: rgba(6,255,240,0.8); text-align: center; margin-top: 0.5rem; line-height: 1.6;">
+                ✉️ Deine Nachricht wird per E-Mail an mich gesendet.<br>
+                Ich antworte in der Regel innerhalb von 24 Stunden.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="section section--newsletter" style="background: linear-gradient(135deg, rgba(6,255,240,0.03) 0%, rgba(139,92,246,0.03) 100%); border-top: 2px solid rgba(6,255,240,0.2); border-bottom: 2px solid rgba(6,255,240,0.2); padding: 4rem 0;">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div style="font-size: 3.5rem; margin-bottom: 1rem;">📬</div>
+        <h2 style="font-size: 2.5rem; color: #06FFF0; margin-bottom: 1rem; font-weight: bold;">Stay Updated!</h2>
+        <p style="font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">
+          Verpasse keine Updates! Erhalte Benachrichtigungen über neue PowerShell-Scripts, frische Musik-Releases, Template-Drops und spannende Blog-Beiträge.
+        </p>
+      </div>
+
+      <form id="newsletterForm" style="background: rgba(11,15,22,0.8); border: 2px solid rgba(6,255,240,0.3); border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(6,255,240,0.2); backdrop-filter: blur(10px);">
+        <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
+          <div>
+            <label for="newsletter-name" style="display: block; font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 0.5rem;">Dein Name</label>
+            <input 
+              id="newsletter-name" 
+              name="name" 
+              type="text" 
+              required 
+              placeholder="Wie heißt du?"
+              style="width: 100%; background: rgba(11,15,22,0.6); border: 1.5px solid rgba(6,255,240,0.3); border-radius: 8px; padding: 1rem 1.2rem; font-size: 1rem; color: #fff; transition: all 0.3s; outline: none;"
+              onfocus="this.style.borderColor='#06FFF0'; this.style.boxShadow='0 0 12px rgba(6,255,240,0.3)'"
+              onblur="this.style.borderColor='rgba(6,255,240,0.3)'; this.style.boxShadow='none'"
+            />
+          </div>
+          
+          <div>
+            <label for="newsletter-email" style="display: block; font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 0.5rem;">Deine E-Mail</label>
+            <input 
+              id="newsletter-email" 
+              name="email" 
+              type="email" 
+              required 
+              placeholder="deine@email.de"
+              style="width: 100%; background: rgba(11,15,22,0.6); border: 1.5px solid rgba(6,255,240,0.3); border-radius: 8px; padding: 1rem 1.2rem; font-size: 1rem; color: #fff; transition: all 0.3s; outline: none;"
+              onfocus="this.style.borderColor='#06FFF0'; this.style.boxShadow='0 0 12px rgba(6,255,240,0.3)'"
+              onblur="this.style.borderColor='rgba(6,255,240,0.3)'; this.style.boxShadow='none'"
+            />
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.95rem; font-weight: 600; color: #06FFF0; margin-bottom: 1rem;">Was interessiert dich?</label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.background='rgba(6,255,240,0.1)'; this.style.borderColor='rgba(6,255,240,0.4)'" onmouseout="this.style.background='rgba(6,255,240,0.05)'; this.style.borderColor='rgba(6,255,240,0.2)'">
+                <input type="checkbox" name="interests[]" value="music" style="width: 18px; height: 18px; accent-color: #06FFF0; cursor: pointer;" />
+                <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">🎵 Musik</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.background='rgba(6,255,240,0.1)'; this.style.borderColor='rgba(6,255,240,0.4)'" onmouseout="this.style.background='rgba(6,255,240,0.05)'; this.style.borderColor='rgba(6,255,240,0.2)'">
+                <input type="checkbox" name="interests[]" value="powershell" style="width: 18px; height: 18px; accent-color: #06FFF0; cursor: pointer;" />
+                <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">💻 PowerShell</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.background='rgba(6,255,240,0.1)'; this.style.borderColor='rgba(6,255,240,0.4)'" onmouseout="this.style.background='rgba(6,255,240,0.05)'; this.style.borderColor='rgba(6,255,240,0.2)'">
+                <input type="checkbox" name="interests[]" value="templates" style="width: 18px; height: 18px; accent-color: #06FFF0; cursor: pointer;" />
+                <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">🎨 Templates</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.background='rgba(6,255,240,0.1)'; this.style.borderColor='rgba(6,255,240,0.4)'" onmouseout="this.style.background='rgba(6,255,240,0.05)'; this.style.borderColor='rgba(6,255,240,0.2)'">
+                <input type="checkbox" name="interests[]" value="gaming" style="width: 18px; height: 18px; accent-color: #06FFF0; cursor: pointer;" />
+                <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">🎮 Gaming</span>
+              </label>
+              
+              <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; padding: 0.75rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; transition: all 0.3s;" onmouseover="this.style.background='rgba(6,255,240,0.1)'; this.style.borderColor='rgba(6,255,240,0.4)'" onmouseout="this.style.background='rgba(6,255,240,0.05)'; this.style.borderColor='rgba(6,255,240,0.2)'">
+                <input type="checkbox" name="interests[]" value="blog" style="width: 18px; height: 18px; accent-color: #06FFF0; cursor: pointer;" />
+                <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">📝 Blog</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" style="width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%); border: none; border-radius: 10px; color: #0B0F16; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 20px rgba(6,255,240,0.4);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 30px rgba(6,255,240,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(6,255,240,0.4)'">
+          ✅ Jetzt anmelden & Updates erhalten
+        </button>
+
+        <p style="text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 1.5rem; line-height: 1.6;">
+          🔒 Deine Daten sind sicher. Kein Spam. Jederzeit abmeldbar.
+        </p>
+      </form>
+
+      <!-- Success Message (hidden by default) -->
+      <div id="newsletterSuccess" style="display: none; background: rgba(0,255,135,0.1); border: 2px solid rgba(0,255,135,0.4); border-radius: 16px; padding: 2.5rem; text-align: center; animation: fadeIn 0.5s ease;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+        <h3 style="color: #00FF87; font-size: 2rem; margin-bottom: 1rem;">Erfolgreich angemeldet!</h3>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.7;">
+          Willkommen in der Community! 🎉<br>
+          Du bekommst ab sofort Updates zu deinen ausgewählten Bereichen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer site-footer" role="contentinfo">
+    <div class="container footer__top">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation">
+        <a class="nav__link nav-link" href="#hero">Home</a>
+        <a class="nav__link nav-link" href="#music">Music</a>
+        <a class="nav__link nav-link" href="#powershell">PowerShell</a>
+        <a class="nav__link nav-link" href="templates/index.html">Templates</a>
+        <a class="nav__link nav-link" href="#gaming">Gaming</a>
+        <a class="nav__link nav-link" href="#blog">Blog</a>
+        <a class="nav__link nav-link" href="#newsletter">Newsletter</a>
+        <a class="nav__link nav-link" href="#about">About</a>
+        <a class="nav__link nav-link" href="#contact">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <small>(C) 2025 by Michael Ostermann · <a href="/impressum.html" class="nav-link">Impressum</a> · <a href="/datenschutz.html" class="nav-link">Datenschutz</a></small>
+  <!-- Theme toggle im Footer entfernt -->
+    </div>
+  </footer>
+
+  <!-- Bot Widget -->
+  <button id="botFab" class="bot" aria-label="Assistant öffnen" aria-expanded="false" aria-controls="botPanel">
+    Assistant
+    <span class="bot__ring" aria-hidden="true"></span>
+  </button>
+  <aside id="botPanel" class="botpanel" aria-labelledby="botTitle" role="dialog" aria-modal="false" hidden>
+    <header class="botpanel__header">
+      <h2 id="botTitle">Assistant</h2>
+      <button class="botpanel__close" id="botClose" aria-label="Assistant schließen">×</button>
+    </header>
+    <div class="botpanel__body">
+      <p>Hi! Was möchtest du sehen?</p>
+      <div class="botpanel__actions">
+        <button class="btn btn--glass" data-bot="songs">Neueste Songs</button>
+        <button class="btn btn--glass" data-bot="scripts">Letzte Skripte</button>
+        <button class="btn btn--glass" data-bot="gaming">Gaming-Highlights</button>
+      </div>
+      <div class="botpanel__results" id="botResults" aria-live="polite"></div>
+    </div>
+  </aside>
+
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  
+  <!-- 🛡️ SECURITY PROTECTION - TEMPORÄR DEAKTIVIERT (Server-Problem) -->
+  <!-- <script src="assets/js/security-protection.js" defer></script> -->
+  
+  <!-- Core App Scripts (kritisch) - MUSS LADEN -->
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/nav-enhanced.js" defer></script>
+  <script src="assets/js/reveal.js" defer></script>
+  
+  <!-- Content Renderers - NORMAL GELADEN -->
+  <script src="assets/js/templates-renderer.js?v=20251117a" defer></script>
+  <script src="assets/js/scripts-renderer.js" defer></script>
+  <script src="assets/js/gaming-renderer.js" defer></script>
+  <script src="assets/js/blog-renderer.js" defer></script>
+  
+  <!-- Enhancement Scripts -->
+  <script src="assets/js/smooth-interactions.js" defer></script>
+  <script src="assets/js/scroll-progress.js" defer></script>
+  
+  <!-- Optional Effects -->
+  <script src="assets/js/alien.js" defer></script>
+  <script src="assets/js/ultimate-enhancements.js" defer></script>
+  <script src="assets/js/blog-cards.js" defer></script>
+  <script src="assets/js/scripts-cards.js" defer></script>
+  <script src="assets/js/kpi-updater.js" defer></script>
+  <script src="assets/js/matrix-rain.js" defer></script>
+
+  <!-- MCGV Chatbot START -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🎵</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen bei Code & Beats. Ich bin dein Guide durch Musik, PowerShell und Gaming. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+      <button class="quick-reply" data-message="Über Michael">👤 About</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- MCGV Chatbot ENDE -->
+
+  <script>
+    // Inline Video Player System for Gaming Section
+    (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Initializing inline game video players...');
+        
+        // Select all play buttons
+        const allPlayButtons = document.querySelectorAll('.game-play-btn');
+        console.log('Found play buttons:', allPlayButtons.length);
+        
+        allPlayButtons.forEach(function(btn) {
+          const gameId = btn.getAttribute('data-game');
+          const container = document.getElementById('video-container-' + gameId);
+          const thumbnail = document.getElementById('thumbnail-' + gameId);
+          const videoId = container.getAttribute('data-video');
+          
+          console.log('Setting up inline player for:', gameId, 'with video ID:', videoId);
+          
+          // Click handler - try iframe first, fallback to new tab
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Play button clicked for:', gameId);
+            console.log('Video ID:', videoId);
+            
+            // Special handling: For enshrouded and soulmask, open directly in new tab
+            // (These games have embedding restrictions)
+            if (gameId === 'enshrouded' || gameId === 'soulmask') {
+              console.log('Opening in new tab due to embedding restrictions:', gameId);
+              window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
+              return;
+            }
+            
+            // For diablo and ark: Try iframe embed
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('height', '100%');
+            iframe.setAttribute('src', 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('loading', 'lazy');
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            
+            console.log('Creating iframe with URL:', iframe.src);
+            
+            // Hide thumbnail and play button
+            thumbnail.style.display = 'none';
+            btn.style.display = 'none';
+            
+            // Add iframe to container
+            container.appendChild(iframe);
+            
+            console.log('Iframe added to container');
+          });
+          
+          // Hover effects
+          btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translate(-50%, -50%) scale(1.1)';
+          });
+          
+          btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translate(-50%, -50%) scale(1)';
+          });
+        });
+      });
+    })();
+  </script>
+
+  <!-- Professional Contact Form Handler -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contactForm');
+      const sendBtn = document.getElementById('sendBtn');
+      // Dynamisch Honeypot-Feld einfügen (verhindert statische Bot-Anpassung)
+      (function injectHoneypot(){
+        if (!form) return;
+        if (document.getElementById('hp_field')) return; // bereits vorhanden
+        const wrapper = document.createElement('div');
+        wrapper.style.position='absolute';
+        wrapper.style.left='-9999px';
+        wrapper.style.top='-9999px';
+        wrapper.style.width='1px';
+        wrapper.style.height='1px';
+        wrapper.style.overflow='hidden';
+        const input = document.createElement('input');
+        input.type='text';
+        input.id='hp_field';
+        input.name='hp_field';
+        input.setAttribute('tabindex','-1');
+        input.setAttribute('autocomplete','off');
+        input.setAttribute('aria-hidden','true');
+        wrapper.appendChild(input);
+        // Füge hinter dem Nachricht-Textarea ein
+        const messageEl = document.getElementById('message');
+        if (messageEl && messageEl.parentNode) {
+          messageEl.parentNode.appendChild(wrapper);
+        } else {
+          form.appendChild(wrapper);
+        }
+      })();
+      
+      if (!form || !sendBtn) return;
+      
+      sendBtn.addEventListener('click', async function() {
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+  const hp_value = (document.getElementById('hp_field')?.value || '').trim();
+        
+        // Validation
+        if (!name || !email || !message) {
+          showNotification('⚠️ Bitte fülle alle Felder aus!', 'error');
+          return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showNotification('⚠️ Bitte gib eine gültige E-Mail-Adresse ein!', 'error');
+          return;
+        }
+        
+        // Disable button and show loading
+        const originalText = sendBtn.textContent;
+        sendBtn.disabled = true;
+        sendBtn.textContent = '⏳ Sende...';
+        sendBtn.style.opacity = '0.6';
+        sendBtn.style.cursor = 'not-allowed';
+        
+        try {
+          // Send to PHP backend (einfache Version)
+          const response = await fetch('contact-simple.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              message: message,
+              hp_field: hp_value
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            // Erfolg immer anzeigen; differenziere stillen Mail-Fehler
+            if (result.mailFailed) {
+              console.warn('Admin-Mail fehlgeschlagen (mailFailed=true)');
+            }
+            showNotification('✅ Nachricht erfolgreich versendet! Wir melden uns schnellstmöglich zurück.', 'success');
+            if (result.honeypotTriggered) {
+              console.warn('Honeypot triggered – silent success.');
+            }
+            form.reset();
+            
+            // Success animation
+            sendBtn.textContent = '✅ Versendet!';
+            sendBtn.style.background = 'linear-gradient(135deg, #28C840 0%, #06FFF0 100%)';
+            
+            setTimeout(() => {
+              sendBtn.textContent = originalText;
+              sendBtn.style.background = 'linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%)';
+              sendBtn.disabled = false;
+              sendBtn.style.opacity = '1';
+              sendBtn.style.cursor = 'pointer';
+            }, 3000);
+          } else {
+            throw new Error(result.message || 'Fehler beim Versenden');
+          }
+        } catch (error) {
+          console.error('Contact form error:', error);
+          if (error && error.message && error.message.includes('Fehler beim Versenden')) {
+            console.warn('Mail-Versand fehlgeschlagen – siehe Server-Log contact-log.txt');
+          }
+          showNotification('❌ Fehler beim Versenden. Bitte versuche es später erneut.', 'error');
+          
+          // Reset button
+          sendBtn.textContent = originalText;
+          sendBtn.disabled = false;
+          sendBtn.style.opacity = '1';
+          sendBtn.style.cursor = 'pointer';
+        }
+      });
+      
+      // Notification system
+      function showNotification(message, type) {
+        // Remove existing notification
+        const existing = document.querySelector('.contact-notification');
+        if (existing) existing.remove();
+        
+        // Create notification
+        const notification = document.createElement('div');
+        notification.className = 'contact-notification';
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === 'success' ? 'linear-gradient(135deg, #28C840, #06FFF0)' : 
+                        type === 'error' ? 'linear-gradient(135deg, #FF5F57, #FF1744)' : 
+                        'linear-gradient(135deg, #06FFF0, #8B5CF6)'};
+          color: #fff;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+          font-weight: 600;
+          z-index: 10000;
+          animation: slideIn 0.3s ease-out;
+          max-width: 400px;
+          font-size: 0.95rem;
+          line-height: 1.4;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+          notification.style.animation = 'slideOut 0.3s ease-out';
+          setTimeout(() => notification.remove(), 300);
+        }, 5000);
+      }
+      
+      // Add animations
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes slideIn {
+          from { transform: translateX(400px); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(400px); opacity: 0; }
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Ctrl+Enter support
+      const messageField = document.getElementById('message');
+      if (messageField) {
+        messageField.addEventListener('keydown', function(e) {
+          if (e.ctrlKey && e.key === 'Enter') {
+            sendBtn.click();
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- MCGV Chatbot Script -->
+  <script src="assets/chatbot/mcgv-chatbot-script.js" defer></script>
+  
+  <!-- Rating System Scripts -->
+  <script src="assets/js/firebase-config.js" defer></script>
+  <script src="assets/js/rating-system.js" defer></script>
+  
+  <!-- Hero Mega Effects -->
+  <script src="assets/js/hero-mega.js" defer></script>
+  <script src="assets/js/hero-background-simple.js" defer></script>
+  <!-- Smooth Contact Scroll & Focus -->
+  <script>
+    (function() {
+      const targetId = 'contact';
+      const links = document.querySelectorAll('a[href="#' + targetId + '"]');
+      const target = document.getElementById(targetId);
+      if (links.length && target) {
+        links.forEach(l => {
+          l.addEventListener('click', function(e) {
+            // Prevent default to enforce smooth scroll & focus even if already at position
+            e.preventDefault();
+            target.scrollIntoView({behavior: 'smooth', block: 'start'});
+            // Visual highlight & focus for accessibility
+            target.classList.add('contact-focus');
+            setTimeout(() => {
+              const nameField = document.getElementById('name');
+              if (nameField) nameField.focus();
+            }, 550);
+            // Remove highlight after animation
+            setTimeout(() => target.classList.remove('contact-focus'), 1600);
+          });
+        });
+        // If page is loaded with #contact in URL directly
+        if (window.location.hash === '#' + targetId) {
+          setTimeout(() => {
+            target.classList.add('contact-focus');
+            const nameField = document.getElementById('name');
+            if (nameField) nameField.focus();
+            setTimeout(() => target.classList.remove('contact-focus'), 1600);
+          }, 120);
+        }
+      }
+    })();
+  </script>
+  <!-- Cookie Consent -->
+  <script src="assets/js/cookie-consent.js" defer></script>
+
+  <!-- Universal Search Modal -->
+  <div id="searchModal" style="display: none; opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 10000; transition: opacity 0.3s ease; padding: 2rem;">
+    <div style="max-width: 800px; margin: 5rem auto; background: linear-gradient(135deg, rgba(11,15,22,0.95) 0%, rgba(20,20,30,0.98) 100%); border: 2px solid rgba(6,255,240,0.3); border-radius: 20px; box-shadow: 0 20px 60px rgba(6,255,240,0.3); overflow: hidden;">
+      <!-- Header -->
+      <div style="padding: 2rem; border-bottom: 1px solid rgba(6,255,240,0.2); display: flex; align-items: center; gap: 1rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Durchsuche Blog, Scripts & mehr..." 
+          style="flex: 1; background: none; border: none; color: #FFF; font-size: 1.3rem; outline: none;"
+          autocomplete="off"
+        />
+        <button id="searchClose" style="background: rgba(255,87,87,0.2); border: 1px solid rgba(255,87,87,0.4); color: #FF5757; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+          ESC
+        </button>
+      </div>
+      <!-- Results -->
+      <div id="searchResults" style="max-height: 60vh; overflow-y: auto; padding: 1.5rem;">
+        <div style="text-align: center; padding: 3rem; color: rgba(255,255,255,0.5);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+          <p>Tippe um zu suchen...</p>
+          <p style="font-size: 0.85rem; margin-top: 0.5rem; color: rgba(255,255,255,0.4);">Tipp: Verwende STRG+K zum schnellen Öffnen</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Features -->
+  <script src="assets/js/universal-search.js" defer></script>
+  <script src="assets/js/audio-player-advanced.js" defer></script>
+  <script src="assets/js/download-tracker.js" defer></script>
+  
+  <!-- Optional Advanced Effects -->
+  <script src="assets/js/animated-terminal.js" defer></script>
+  <script src="assets/js/multi-layer-dashboard.js" defer></script>
+  <script src="assets/js/particles-interactive.js" defer></script>
+  <script src="assets/js/hero-parallax-3d.js" defer></script>
+
+  <!-- Newsletter Handler -->
+  <script>
+    document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerHTML;
+      
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ Wird gesendet...';
+      
+      const name = document.getElementById('newsletter-name').value;
+      const email = document.getElementById('newsletter-email').value;
+      const interests = Array.from(document.querySelectorAll('input[name="interests[]"]:checked'))
+                             .map(cb => cb.value);
+      
+      // Save to localStorage (Backup)
+      const subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+      subscribers.push({
+        name: name,
+        email: email,
+        interests: interests,
+        timestamp: new Date().toISOString(),
+        status: 'active'
+      });
+      localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+      
+      try {
+        // Try to send to PHP backend (only works on live server with PHP)
+        const response = await fetch('newsletter-subscribe.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, interests })
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Newsletter via PHP gesendet:', result);
+        }
+      } catch (error) {
+        // PHP not available - that's ok, we have localStorage
+        console.log('PHP nicht verfügbar, nur LocalStorage:', error.message);
+      }
+      
+      // Always show success
+      document.getElementById('newsletterForm').style.display = 'none';
+      document.getElementById('newsletterSuccess').style.display = 'block';
+      document.getElementById('newsletterSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>

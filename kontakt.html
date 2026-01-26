@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kontakt | CodeBeats Studio GmbH</title>
+    <meta name="description" content="Kontaktieren Sie CodeBeats Studio GmbH für Projekte in Musikproduktion, Softwareentwicklung und künstlicher Intelligenz.">
+    <link rel="stylesheet" href="css/styles.css?v=20251108">
+    <script src="js/main.js?v=20251108" defer></script>
+</head>
+<body>
+    <header class="subpage-header">
+        <div class="container">
+            <a class="logo-link" href="index.html" aria-label="Zurück zur Startseite">
+                <img src="images/logo.svg" alt="CodeBeats Studio Logo" width="156" height="36">
+            </a>
+            <nav aria-label="Sekundärnavigation">
+                <a href="index.html#kontakt-section">Zurück</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="contact">
+        <div class="container contact__layout">
+            <section class="contact__intro">
+                <h1>Kontakt aufnehmen</h1>
+                <p class="lead">Wir hören zu, analysieren und liefern erste Impulse innerhalb von 24 Stunden. Lassen Sie uns starten.</p>
+                <div class="contact__info">
+                    <article>
+                        <h2>Studio Berlin</h2>
+                        <p>Oranienstraße 24, 10999 Berlin</p>
+                        <p><a href="tel:+493012345678">+49 30 1234 5678</a></p>
+                    </article>
+                    <article>
+                        <h2>Projektanfragen</h2>
+                        <p><a href="mailto:studio@codebeats.de">studio@codebeats.de</a></p>
+                        <p>Mo–Fr, 09:00–18:00 Uhr (CET)</p>
+                    </article>
+                    <article>
+                        <h2>Community & Events</h2>
+                        <p><a href="mailto:events@codebeats.de">events@codebeats.de</a></p>
+                        <p>@codebeats-studio auf allen Plattformen</p>
+                    </article>
+                </div>
+                <div class="contact__map" role="img" aria-label="Standortkarte von CodeBeats Studio in Berlin">
+                    <img src="images/map-berlin.svg" alt="Stilisierte Karte von Berlin mit Markierung des Studios" width="480" height="280">
+                </div>
+            </section>
+
+            <section class="contact__form-section">
+                <form class="contact-form" id="contact-form" novalidate>
+                    <h2>Projektbriefing</h2>
+                    <p>Wir nutzen Ihre Angaben ausschließlich zur Bearbeitung Ihrer Anfrage. Pflichtfelder sind mit einem * markiert.</p>
+
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="company">Firma / Organisation</label>
+                            <input type="text" id="company" name="company" autocomplete="organization">
+                        </div>
+                        <div class="form-field">
+                            <label for="contact-name">Name *</label>
+                            <input type="text" id="contact-name" name="contact-name" required autocomplete="name">
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">E-Mail *</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="^[0-9+()\s-]{6,}$">
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="project-type">Projektart *</label>
+                            <select id="project-type" name="project-type" required>
+                                <option value="">Bitte wählen</option>
+                                <option>Musikproduktion & Sounddesign</option>
+                                <option>Software-/App-Entwicklung</option>
+                                <option>KI-Strategie & Implementierung</option>
+                                <option>Workshop / Beratung</option>
+                            </select>
+                            <span class="error-message" aria-live="polite"></span>
+                        </div>
+                        <div class="form-field">
+                            <label for="budget">Budgetrahmen</label>
+                            <select id="budget" name="budget">
+                                <option value="">Noch offen</option>
+                                <option>Bis 10.000 €</option>
+                                <option>10.000 – 50.000 €</option>
+                                <option>50.000 – 150.000 €</option>
+                                <option>Über 150.000 €</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="timeline">Zeitplan</label>
+                        <input type="text" id="timeline" name="timeline" placeholder="z. B. Launch im März 2026">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="message">Projektbeschreibung *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                        <span class="error-message" aria-live="polite"></span>
+                    </div>
+
+                    <fieldset class="form-field">
+                        <legend>Zusätzliche Services</legend>
+                        <label>
+                            <input type="checkbox" name="services" value="audit">
+                            Technologie- & Code-Audit
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services" value="sound-branding">
+                            Sonic Branding Workshop
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services" value="ai-training">
+                            AI-Enablement Training
+                        </label>
+                    </fieldset>
+
+                    <div class="form-field form-field--consent">
+                        <label>
+                            <input type="checkbox" name="privacy" required>
+                            Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere die Verarbeitung meiner Daten zur Bearbeitung der Anfrage.
+                        </label>
+                        <span class="error-message" aria-live="polite"></span>
+                    </div>
+
+                    <button type="submit" class="button button--primary">Anfrage senden</button>
+                    <p class="form-success" role="status" aria-live="polite" hidden>Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="subpage-footer">
+        <div class="container">
+            <p>&copy; <span data-current-year></span> CodeBeats Studio GmbH</p>
+            <nav aria-label="Footer Navigation">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <button class="cookie-settings" type="button">Cookie-Einstellungen</button>
+            </nav>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" role="dialog" aria-modal="true" aria-live="polite" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-description" tabindex="-1" hidden>
+        <div class="cookie-banner__content">
+            <h2 id="cookie-banner-title">Cookie-Einstellungen</h2>
+            <p id="cookie-banner-description">Wir verwenden Cookies, um notwendige Websitefunktionen bereitzustellen. Analytische Cookies werden nur mit Ihrer Zustimmung gesetzt. Details in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+            <fieldset>
+                <legend>Cookie-Kategorien</legend>
+                <label>
+                    <input type="checkbox" name="essential" checked disabled>
+                    Notwendig (immer aktiv)
+                </label>
+                <label>
+                    <input type="checkbox" name="analytics">
+                    Analytics (anonymisierte Nutzungsstatistiken)
+                </label>
+            </fieldset>
+            <div class="cookie-banner__actions">
+                <button type="button" class="button button--ghost" data-cookie-decline>Nur notwendige Cookies</button>
+                <button type="button" class="button button--primary" data-cookie-accept>Akzeptieren</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

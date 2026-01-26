@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <polygon points="0,0 300,0 0,300" fill="#FFD700" opacity="0.15"/>
+	<polygon points="1200,0 900,0 1200,300" fill="#FF8C00" opacity="0.15"/>
+	<polygon points="0,1200 300,1200 0,900" fill="#FF8C00" opacity="0.15"/>
+	<polygon points="1200,1200 900,1200 1200,900" fill="#FFD700" opacity="0.15"/>
+	<circle cx="600" cy="600" r="350" fill="none" stroke="url(#g)" stroke-width="3" opacity="0.2"/>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="108" fill="url(#g)" filter="url(#glow)">Straßen</text>
+  <text x="600" y="758" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Rapp
+  </text>
+</svg>

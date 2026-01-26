@@ -1,0 +1,123 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E293B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg-gradient)"/>
+  
+  <!-- Code Rain Effect (simplified) -->
+  <g opacity="0.2">
+    <text x="50" y="100" fill="#0EA5E9" font-family="monospace" font-size="14">01010101</text>
+    <text x="150" y="200" fill="#0EA5E9" font-family="monospace" font-size="14">11001100</text>
+    <text x="250" y="150" fill="#0EA5E9" font-family="monospace" font-size="14">10101010</text>
+    <text x="350" y="250" fill="#0EA5E9" font-family="monospace" font-size="14">00110011</text>
+    <text x="450" y="180" fill="#0EA5E9" font-family="monospace" font-size="14">11110000</text>
+    <text x="550" y="220" fill="#0EA5E9" font-family="monospace" font-size="14">01100110</text>
+    <text x="650" y="160" fill="#0EA5E9" font-family="monospace" font-size="14">10011001</text>
+    <text x="750" y="240" fill="#0EA5E9" font-family="monospace" font-size="14">00001111</text>
+  </g>
+  
+  <!-- Glass Card -->
+  <rect x="100" y="150" width="600" height="300" rx="20" 
+        fill="rgba(30, 41, 59, 0.7)" 
+        stroke="rgba(148, 163, 184, 0.3)" 
+        stroke-width="2"/>
+  
+  <!-- Lightning Icon -->
+  <g filter="url(#glow)">
+    <path d="M 200 220 L 180 280 L 220 280 L 210 340 L 250 270 L 220 270 Z" 
+          fill="url(#blue-gradient)"/>
+  </g>
+  
+  <!-- TechFlow Text -->
+  <text x="280" y="260" 
+        font-family="Arial, sans-serif" 
+        font-size="48" 
+        font-weight="900" 
+        fill="#F8FAFC">
+    TechFlow
+  </text>
+  
+  <!-- Solutions Text -->
+  <text x="280" y="300" 
+        font-family="Arial, sans-serif" 
+        font-size="32" 
+        font-weight="600" 
+        fill="url(#blue-gradient)">
+    Solutions
+  </text>
+  
+  <!-- Tech Radar Circle -->
+  <g opacity="0.6">
+    <circle cx="600" cy="350" r="80" fill="none" stroke="#0EA5E9" stroke-width="2"/>
+    <circle cx="600" cy="350" r="60" fill="none" stroke="#7C3AED" stroke-width="2"/>
+    <circle cx="600" cy="350" r="40" fill="none" stroke="#10B981" stroke-width="2"/>
+    <line x1="600" y1="350" x2="680" y2="350" stroke="#0EA5E9" stroke-width="2"/>
+    <line x1="600" y1="350" x2="600" y2="270" stroke="#7C3AED" stroke-width="2"/>
+    <circle cx="660" cy="310" r="5" fill="#0EA5E9" filter="url(#glow)"/>
+    <circle cx="640" cy="380" r="5" fill="#10B981" filter="url(#glow)"/>
+    <circle cx="580" cy="300" r="5" fill="#7C3AED" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Feature Pills -->
+  <rect x="150" y="370" width="120" height="30" rx="15" 
+        fill="rgba(14, 165, 233, 0.2)" 
+        stroke="#0EA5E9" 
+        stroke-width="1"/>
+  <text x="180" y="391" 
+        font-family="Arial, sans-serif" 
+        font-size="14" 
+        font-weight="600" 
+        fill="#0EA5E9">
+    Glassmorphism
+  </text>
+  
+  <rect x="280" y="370" width="100" height="30" rx="15" 
+        fill="rgba(124, 58, 237, 0.2)" 
+        stroke="#7C3AED" 
+        stroke-width="1"/>
+  <text x="302" y="391" 
+        font-family="Arial, sans-serif" 
+        font-size="14" 
+        font-weight="600" 
+        fill="#7C3AED">
+    Tech Radar
+  </text>
+  
+  <rect x="390" y="370" width="110" height="30" rx="15" 
+        fill="rgba(16, 185, 129, 0.2)" 
+        stroke="#10B981" 
+        stroke-width="1"/>
+  <text x="410" y="391" 
+        font-family="Arial, sans-serif" 
+        font-size="14" 
+        font-weight="600" 
+        fill="#10B981">
+    Dark/Light
+  </text>
+  
+  <!-- Bottom Label -->
+  <text x="400" y="550" 
+        text-anchor="middle"
+        font-family="Arial, sans-serif" 
+        font-size="16" 
+        font-weight="500" 
+        fill="#94A3B8">
+    Professional IT Service Provider Template
+  </text>
+</svg>

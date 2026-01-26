@@ -1,0 +1,86 @@
+{
+    "tracks": [
+        {
+            "id": "mein-kleiner-koenig",
+            "title": "Mein kleiner König",
+            "category": "gemischt",
+            "description": "Emotionale Ballade für die Kleinen. Warm, persönlich und von Herzen.",
+            "cover": "cover7.svg",
+            "audio": "Mein kleiner König.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "die-nacht-zaehlt-mit-uns",
+            "title": "Die Nacht zählt mit uns",
+            "category": "gemischt",
+            "description": "Nächtlicher Synthwave-Track. Atmosphärisch, mystisch und hypnotisch.",
+            "cover": "cover8.svg",
+            "audio": "Die Nacht zählt mit uns....mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "20-jahre-rdmc-oldenburg",
+            "title": "20 Jahre RDMC Oldenburg",
+            "category": "gemischt",
+            "description": "Fetziger Rock Song",
+            "cover": "covers\/20-jahre-rdmc-oldenburg.svg",
+            "audio": "track2.mp3",
+            "folder": "assets\/media",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "20-years-rdmc-oldenburg-englisch-efdb54",
+            "title": "20 Years RDMC Oldenburg Englisch",
+            "category": "gemischt",
+            "description": "Jubiläums Song zum 20. Anni Red Devils Oldenburg",
+            "cover": "covers\/20-years-rdmc-oldenburg-englisch-efdb54.svg",
+            "coverGenerated": true,
+            "audio": "20_Jahre_RDMC_Oldenburg_Englisch.mp3",
+            "folder": "Musik_beta\/audio\/gemischt",
+            "isNew": true
+        },
+        {
+            "id": "micha-2025",
+            "title": "Micha 2025",
+            "category": "gemischt",
+            "description": "Persönlicher Track für 2025",
+            "cover": "covers\/micha-2025.svg",
+            "audio": "Micha 2025.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "micha-final-10-anni",
+            "title": "Micha Final 10 Anni",
+            "category": "gemischt",
+            "description": "Jubiläums-Track",
+            "cover": "covers\/micha-final-10-anni.svg",
+            "audio": "Micha_Final_10_Anni.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "my-life-englisch",
+            "title": "My Life Englisch",
+            "category": "gemischt",
+            "description": "Englische Version",
+            "cover": "covers\/my-life-englisch.svg",
+            "audio": "My Life Englisch.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "von-den-highways-nach-visbek",
+            "title": "Von den Highways nach Visbek",
+            "category": "gemischt",
+            "description": "Roadtrip-Track",
+            "cover": "covers\/von-den-highways-nach-visbek.svg",
+            "audio": "Von den Highways nach Visbek.mp3",
+            "folder": "Musik",
+            "isNew": true
+        }
+    ]
+}

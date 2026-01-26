@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hogwarts School of Witchcraft and Wizardry</title>
+  <meta name="description" content="Magical Harry Potter inspired website template with enchanting effects" />
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+  
+  <!-- Protection Script -->
+  <script src="protected.js"></script>
+</head>
+<body>
+  <!-- Floating Candles Background -->
+  <div class="candles-container">
+    <div class="candle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="candle" style="left: 25%; animation-delay: 2s;"></div>
+    <div class="candle" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="candle" style="left: 55%; animation-delay: 3s;"></div>
+    <div class="candle" style="left: 70%; animation-delay: 1.5s;"></div>
+    <div class="candle" style="left: 85%; animation-delay: 2.5s;"></div>
+  </div>
+
+  <!-- Magic Particles -->
+  <canvas id="magicCanvas" class="magic-canvas"></canvas>
+
+  <!-- Flying Letters Background -->
+  <div class="letters-container" id="lettersContainer"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-magical">
+    <div class="container nav-content">
+      <div class="brand">
+        <span class="hogwarts-initial">H</span>
+        <span class="brand-text">Hogwarts</span>
+      </div>
+      <div class="nav-links">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#houses" class="nav-link">Houses</a>
+        <a href="#spells" class="nav-link">Spells</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-magic">
+        <span class="wand-icon">🪄</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <div class="hogwarts-crest">
+        <div class="crest-shield">
+          <div class="crest-quarter gryffindor">G</div>
+          <div class="crest-quarter slytherin">S</div>
+          <div class="crest-quarter ravenclaw">R</div>
+          <div class="crest-quarter hufflepuff">H</div>
+        </div>
+        <div class="crest-banner">DRACO DORMIENS NUNQUAM TITILLANDUS</div>
+      </div>
+      
+      <h1 class="hero-title">
+        <span class="title-line">Hogwarts School</span>
+        <span class="title-line-sub">of Witchcraft and Wizardry</span>
+      </h1>
+      
+      <p class="hero-description">
+        A magical website template inspired by the Wizarding World.<br>
+        Perfect for fantasy projects, creative portfolios, or enchanting landing pages.
+      </p>
+      
+      <div class="hero-buttons">
+        <button class="btn btn-golden">
+          <span class="btn-icon">✨</span>
+          Start Your Journey
+        </button>
+        <button class="btn btn-outline">
+          <span class="btn-icon">📜</span>
+          View Spellbook
+        </button>
+      </div>
+    </div>
+    
+    <!-- Golden Snitch -->
+    <div class="golden-snitch"></div>
+  </section>
+
+  <!-- Houses Section -->
+  <section id="houses" class="section houses-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-ornament">✦</span>
+        The Four Houses
+        <span class="title-ornament">✦</span>
+      </h2>
+      <p class="section-subtitle">Choose your house and embrace your destiny</p>
+      
+      <div class="houses-grid">
+        <!-- Gryffindor -->
+        <article class="house-card gryffindor-card">
+          <div class="house-emblem">🦁</div>
+          <h3 class="house-name">Gryffindor</h3>
+          <p class="house-traits">Courage • Bravery • Determination</p>
+          <div class="house-colors">
+            <span class="color-dot" style="background: #740001;"></span>
+            <span class="color-dot" style="background: #D3A625;"></span>
+          </div>
+          <p class="house-description">
+            Where dwell the brave at heart. Their daring, nerve, and chivalry set Gryffindors apart.
+          </p>
+          <button class="btn-house">Join Gryffindor</button>
+        </article>
+
+        <!-- Slytherin -->
+        <article class="house-card slytherin-card">
+          <div class="house-emblem">🐍</div>
+          <h3 class="house-name">Slytherin</h3>
+          <p class="house-traits">Ambition • Cunning • Leadership</p>
+          <div class="house-colors">
+            <span class="color-dot" style="background: #1A472A;"></span>
+            <span class="color-dot" style="background: #5D5D5D;"></span>
+          </div>
+          <p class="house-description">
+            Those cunning folk use any means to achieve their ends. Resourceful and determined.
+          </p>
+          <button class="btn-house">Join Slytherin</button>
+        </article>
+
+        <!-- Ravenclaw -->
+        <article class="house-card ravenclaw-card">
+          <div class="house-emblem">🦅</div>
+          <h3 class="house-name">Ravenclaw</h3>
+          <p class="house-traits">Intelligence • Wisdom • Creativity</p>
+          <div class="house-colors">
+            <span class="color-dot" style="background: #0E1A40;"></span>
+            <span class="color-dot" style="background: #946B2D;"></span>
+          </div>
+          <p class="house-description">
+            Where those of wit and learning will always find their kind. Valued knowledge above all.
+          </p>
+          <button class="btn-house">Join Ravenclaw</button>
+        </article>
+
+        <!-- Hufflepuff -->
+        <article class="house-card hufflepuff-card">
+          <div class="house-emblem">🦡</div>
+          <h3 class="house-name">Hufflepuff</h3>
+          <p class="house-traits">Loyalty • Patience • Hard Work</p>
+          <div class="house-colors">
+            <span class="color-dot" style="background: #FFD800;"></span>
+            <span class="color-dot" style="background: #000000;"></span>
+          </div>
+          <p class="house-description">
+            Where they are just and loyal. Patient Hufflepuffs are true and unafraid of toil.
+          </p>
+          <button class="btn-house">Join Hufflepuff</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spells Section -->
+  <section id="spells" class="section spells-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-ornament">⚡</span>
+        Magical Spells
+        <span class="title-ornament">⚡</span>
+      </h2>
+      <p class="section-subtitle">Master the ancient arts of magic</p>
+      
+      <div class="spells-grid">
+        <div class="spell-card" data-spell="lumos">
+          <div class="spell-icon">💡</div>
+          <h3 class="spell-name">Lumos</h3>
+          <p class="spell-effect">Wand-Lighting Charm</p>
+          <p class="spell-description">Creates a brilliant light at the tip of the wand, illuminating dark spaces.</p>
+        </div>
+
+        <div class="spell-card" data-spell="expecto">
+          <div class="spell-icon">🦌</div>
+          <h3 class="spell-name">Expecto Patronum</h3>
+          <p class="spell-effect">Patronus Charm</p>
+          <p class="spell-description">Conjures a protective guardian to defend against dark creatures.</p>
+        </div>
+
+        <div class="spell-card" data-spell="accio">
+          <div class="spell-icon">🧲</div>
+          <h3 class="spell-name">Accio</h3>
+          <p class="spell-effect">Summoning Charm</p>
+          <p class="spell-description">Summons objects to the caster from a distance.</p>
+        </div>
+
+        <div class="spell-card" data-spell="wingardium">
+          <div class="spell-icon">🪶</div>
+          <h3 class="spell-name">Wingardium Leviosa</h3>
+          <p class="spell-effect">Levitation Charm</p>
+          <p class="spell-description">Makes objects fly and levitate through the air.</p>
+        </div>
+
+        <div class="spell-card" data-spell="expelliarmus">
+          <div class="spell-icon">⚔️</div>
+          <h3 class="spell-name">Expelliarmus</h3>
+          <p class="spell-effect">Disarming Charm</p>
+          <p class="spell-description">Disarms opponents by forcing them to release their wand.</p>
+        </div>
+
+        <div class="spell-card" data-spell="protego">
+          <div class="spell-icon">🛡️</div>
+          <h3 class="spell-name">Protego</h3>
+          <p class="spell-effect">Shield Charm</p>
+          <p class="spell-description">Creates an invisible magical barrier for protection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section features-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="title-ornament">✦</span>
+        Template Features
+        <span class="title-ornament">✦</span>
+      </h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🕯️</div>
+          <h3>Floating Candles</h3>
+          <p>Animated floating candles with parallax effect, just like the Great Hall.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>Magic Particles</h3>
+          <p>Canvas-based particle system with golden sparkles and magical effects.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📜</div>
+          <h3>Parchment Style</h3>
+          <p>Authentic aged parchment design with medieval typography.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏰</div>
+          <h3>House System</h3>
+          <p>All four Hogwarts houses with authentic colors and emblems.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🪄</div>
+          <h3>Wand Cursor</h3>
+          <p>Custom cursor trail that follows mouse movement like a wand.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Spell Animations</h3>
+          <p>Interactive spell cards with magical hover effects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <h2 class="section-title">
+          <span class="title-ornament">🦉</span>
+          Send an Owl
+          <span class="title-ornament">🦉</span>
+        </h2>
+        <p class="section-subtitle">Reach out via magical communication</p>
+        
+        <form class="contact-form">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Harry Potter" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Owl Post Address</label>
+            <input type="email" class="form-input" placeholder="wizard@hogwarts.edu" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Your Message</label>
+            <textarea class="form-textarea" rows="5" placeholder="Write your magical message..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-golden btn-submit">
+            <span class="btn-icon">🦉</span>
+            Send Owl
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-quote">"It does not do to dwell on dreams and forget to live."</p>
+        <p class="footer-author">— Albus Dumbledore</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">(C) 2025 by Michael Ostermann</p>
+        <div style="margin-top:12px">
+          <a href="/templates/" class="btn btn-outline" style="margin-right:8px">← Back to Templates</a>
+          <a href="/impressum.html" class="btn btn-outline" style="margin-right:8px">Impressum</a>
+          <a href="/datenschutz.html" class="btn btn-outline">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

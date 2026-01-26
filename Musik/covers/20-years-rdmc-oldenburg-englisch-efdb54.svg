@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06FFF0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <defs>
+		<linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0%" stop-color="#8B5CF6" stop-opacity="0"/>
+			<stop offset="100%" stop-color="#06FFF0" stop-opacity="0.3"/>
+		</linearGradient>
+	</defs>
+	<rect x="0" y="700" width="1200" height="500" fill="url(#g2)"/>
+	<g opacity="0.15" stroke="#8B5CF6" stroke-width="2">
+		<line x1="0" y1="700" x2="600" y2="1200"/>
+		<line x1="200" y1="700" x2="600" y2="1100"/>
+		<line x1="400" y1="700" x2="600" y2="1000"/>
+		<line x1="600" y1="700" x2="600" y2="900"/>
+		<line x1="800" y1="700" x2="600" y2="1000"/>
+		<line x1="1000" y1="700" x2="600" y2="1100"/>
+		<line x1="1200" y1="700" x2="600" y2="1200"/>
+	</g>
+	<circle cx="600" cy="250" r="180" fill="#06FFF0" opacity="0.15" filter="url(#glow)"/>
+  <text x="600" y="545" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">20 Years RDMC</text><text x="600" y="655" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">Oldenburg Englisch</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Gemischt
+  </text>
+</svg>

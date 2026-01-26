@@ -1,0 +1,5 @@
+# Beispiel-Datei für SMTP Passwort
+# Speichere hier NUR das Passwort, ohne Leerzeichen oder weitere Zeilen.
+# Diese Datei NICHT committen, sondern eine Kopie smtp-pass.txt erstellen.
+# Beispiel:
+# Darkman2012!

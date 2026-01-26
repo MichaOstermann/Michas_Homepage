@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF006E"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.15">
+		<path d="M0,300 Q300,200 600,300 T1200,300" stroke="#FF006E" stroke-width="3" fill="none"/>
+		<path d="M0,500 Q300,400 600,500 T1200,500" stroke="#FF8C00" stroke-width="3" fill="none"/>
+		<path d="M0,700 Q300,600 600,700 T1200,700" stroke="#FF006E" stroke-width="3" fill="none"/>
+		<path d="M0,900 Q300,800 600,900 T1200,900" stroke="#FF8C00" stroke-width="3" fill="none"/>
+	</g>
+	<circle cx="200" cy="250" r="120" fill="#FF006E" opacity="0.1" filter="url(#glow)"/>
+	<circle cx="1000" cy="950" r="150" fill="#FF8C00" opacity="0.1" filter="url(#glow)"/>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="108" fill="url(#g)" filter="url(#glow)">Alles wird gut...</text>
+  <text x="600" y="758" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Love
+  </text>
+</svg>

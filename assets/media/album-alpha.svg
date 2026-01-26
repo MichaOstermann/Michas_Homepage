@@ -1,0 +1,106 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradAlpha" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wolfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B8B8B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D3D3D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#696969;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="alphaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06FFF0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="moonGlowAlpha">
+      <stop offset="0%" style="stop-color:#FFF;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#06FFF0;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glowAlpha">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlowAlpha">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="400" fill="url(#bgGradAlpha)"/>
+  
+  <!-- Full Moon -->
+  <g transform="translate(320, 80)">
+    <circle cx="0" cy="0" r="50" fill="#E8E8E8" opacity="0.9"/>
+    <circle cx="0" cy="0" r="60" fill="url(#moonGlowAlpha)" opacity="0.3"/>
+  </g>
+  
+  <!-- Mountains Silhouette -->
+  <g fill="#0f0f1e" opacity="0.8">
+    <path d="M0,300 L80,200 L160,250 L240,180 L320,240 L400,200 L400,400 L0,400 Z"/>
+    <path d="M0,320 L60,260 L120,280 L180,240 L240,270 L300,230 L360,260 L400,240 L400,400 L0,400 Z" opacity="0.6"/>
+  </g>
+  
+  <!-- Wolf Head (Howling at Moon) -->
+  <g transform="translate(200, 200)" filter="url(#strongGlowAlpha)">
+    <!-- Head -->
+    <path d="M0,-80 C-20,-75 -35,-60 -40,-40 L-45,-20 C-45,-10 -42,0 -35,5 L-30,10 C-25,15 -20,18 -15,18 L-10,15 L-5,10 L0,0 L5,10 L10,15 L15,18 C20,18 25,15 30,10 L35,5 C42,0 45,-10 45,-20 L40,-40 C35,-60 20,-75 0,-80 Z" 
+          fill="url(#wolfGrad)" stroke="#696969" stroke-width="2"/>
+    
+    <!-- Snout -->
+    <path d="M0,0 L-8,15 L0,25 L8,15 Z" fill="#505050" stroke="#696969" stroke-width="1.5"/>
+    
+    <!-- Ears -->
+    <path d="M-25,-70 L-35,-50 L-30,-45 Z" fill="url(#wolfGrad)" stroke="#696969" stroke-width="1.5"/>
+    <path d="M25,-70 L35,-50 L30,-45 Z" fill="url(#wolfGrad)" stroke="#696969" stroke-width="1.5"/>
+    
+    <!-- Eyes (Glowing) -->
+    <circle cx="-15" cy="-30" r="5" fill="#06FFF0" filter="url(#glowAlpha)"/>
+    <circle cx="15" cy="-30" r="5" fill="#06FFF0" filter="url(#glowAlpha)"/>
+    
+    <!-- Nose -->
+    <circle cx="0" cy="25" r="4" fill="#2C2C2C"/>
+    
+    <!-- Howl Lines (Sound Waves) -->
+    <g stroke="#06FFF0" stroke-width="2" fill="none" opacity="0.6">
+      <path d="M-50,-60 Q-60,-80 -70,-100"/>
+      <path d="M-40,-70 Q-45,-90 -50,-110"/>
+      <path d="M50,-60 Q60,-80 70,-100"/>
+      <path d="M40,-70 Q45,-90 50,-110"/>
+    </g>
+  </g>
+  
+  <!-- Stars -->
+  <g fill="#FFF" opacity="0.8">
+    <circle cx="60" cy="60" r="2"/>
+    <circle cx="120" cy="40" r="1.5"/>
+    <circle cx="180" cy="70" r="2"/>
+    <circle cx="100" cy="100" r="1"/>
+    <circle cx="140" cy="90" r="1.5"/>
+  </g>
+  
+  <!-- Alpha Symbol (Greek Letter) -->
+  <g transform="translate(200, 340)" filter="url(#glowAlpha)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-weight="900" font-size="48" fill="url(#alphaGrad)" text-anchor="middle">α</text>
+  </g>
+  
+  <!-- Album Title -->
+  <g transform="translate(200, 370)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-weight="900" font-size="18" fill="#06FFF0" text-anchor="middle" filter="url(#glowAlpha)">LONE WOLF</text>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <g stroke="url(#alphaGrad)" stroke-width="2" fill="none" opacity="0.4">
+    <circle cx="40" cy="360" r="6"/>
+    <circle cx="360" cy="360" r="6"/>
+    <line x1="50" y1="360" x2="150" y2="360"/>
+    <line x1="250" y1="360" x2="350" y2="360"/>
+  </g>
+</svg>

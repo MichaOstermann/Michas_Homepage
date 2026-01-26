@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-labelledby="mapTitle">
+  <title id="mapTitle">Stilisierte Karte von Berlin</title>
+  <defs>
+    <linearGradient id="mapGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111638"/>
+      <stop offset="1" stop-color="#1c2550"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="320" rx="28" fill="url(#mapGrad)"/>
+  <path d="M120 60 280 40l120 40 40 100-50 90-160 30-130-70 20-120z" fill="none" stroke="rgba(45,227,209,0.4)" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M170 118c48-10 96-10 144 0 45 10 90 30 110 64" fill="none" stroke="rgba(92,92,255,0.45)" stroke-width="4" stroke-dasharray="12 10"/>
+  <circle cx="270" cy="150" r="90" fill="rgba(92,92,255,0.12)"/>
+  <circle cx="320" cy="170" r="60" fill="rgba(45,227,209,0.18)"/>
+  <g transform="translate(300 140)">
+    <circle cx="0" cy="0" r="16" fill="#2de3d1"/>
+    <path d="M0-22c10 0 18 8 18 18 0 11-8 16-18 32-10-16-18-21-18-32 0-10 8-18 18-18z" fill="#5c5cff"/>
+  </g>
+  <rect x="60" y="240" width="160" height="12" rx="6" fill="#2de3d1" opacity="0.35"/>
+  <rect x="240" y="260" width="220" height="10" rx="5" fill="#5c5cff" opacity="0.3"/>
+  <text x="320" y="210" font-family="Segoe UI, sans-serif" font-size="18" fill="#ffffff">CodeBeats Studio</text>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

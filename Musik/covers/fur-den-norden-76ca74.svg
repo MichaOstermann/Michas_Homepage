@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06FFF0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.1"><polygon points="787,869 933,869 860,1015" fill="#8B5CF6"/><polygon points="484,545 619,545 551.5,680" fill="#06FFF0"/><polygon points="462,320 561,320 511.5,419" fill="url(#g)"/><polygon points="390,266 515,266 452.5,391" fill="#8B5CF6"/><polygon points="268,903 368,903 318,1003" fill="#06FFF0"/><polygon points="337,346 459,346 398,468" fill="url(#g)"/><polygon points="166,427 291,427 228.5,552" fill="#8B5CF6"/><polygon points="734,414 844,414 789,524" fill="#06FFF0"/><polygon points="154,621 240,621 197,707" fill="url(#g)"/><polygon points="677,671 802,671 739.5,796" fill="#8B5CF6"/><polygon points="127,697 259,697 193,829" fill="#06FFF0"/><polygon points="129,238 230,238 179.5,339" fill="url(#g)"/></g>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="108" fill="url(#g)" filter="url(#glow)">Für den Norden</text>
+  <text x="600" y="758" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Gemischt
+  </text>
+</svg>

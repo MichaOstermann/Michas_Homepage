@@ -1,0 +1,15 @@
+# Protection for demo templates
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noimageindex, noarchive"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Block hotlinking of static assets when referer is not our domain/local
+  RewriteCond %{HTTP_REFERER} !^$ 
+  RewriteCond %{HTTP_REFERER} !mcgv\.de [NC]
+  RewriteCond %{HTTP_REFERER} !codebeats [NC]
+  RewriteCond %{HTTP_REFERER} !localhost [NC]
+  RewriteCond %{HTTP_REFERER} !127\.0\.0\.1 [NC]
+  RewriteRule ^(.+\.(?:png|jpe?g|svg|gif|webp|mp4|webm|css|js))$ - [F,L]
+</IfModule>

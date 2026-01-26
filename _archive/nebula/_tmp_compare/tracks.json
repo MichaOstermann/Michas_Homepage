@@ -1,0 +1,96 @@
+{
+    "tracks": [
+        {
+            "id": "life-am-strand",
+            "title": "Life am Strand",
+            "category": "party",
+            "description": "Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.",
+            "cover": "cover1.svg",
+            "audio": "track1.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "20-jahre-rdmc-oldenburg",
+            "title": "20 Jahre RDMC Oldenburg",
+            "category": "gemischt",
+            "description": "Fetziger Rock Song",
+            "cover": "covers\/20-jahre-rdmc-oldenburg.svg",
+            "audio": "track2.mp3",
+            "folder": "assets\/media",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "aus-dem-schatten",
+            "title": "Aus dem Schatten",
+            "category": "gemischt",
+            "description": "Dunkler Synthwave mit treibendem Beat und melancholischer Hook.",
+            "cover": "cover3.svg",
+            "audio": "track3.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "kein-lied-fuer-helden",
+            "title": "Kein Lied für Helden",
+            "category": "rapp",
+            "description": "Kraftvoller Rocksong mit Message. Authentisch und direkt.",
+            "cover": "cover4.svg",
+            "audio": "Kein Lied für Helden.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "keiner-hat-noch-geld",
+            "title": "Keiner hat noch Geld",
+            "category": "party",
+            "description": "Gesellschaftskritischer Party-Track mit Humor und Groove.",
+            "cover": "cover5.svg",
+            "audio": "Keiner hat noch Geld.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "love-2025",
+            "title": "Love 2025",
+            "category": "love",
+            "description": "Moderne Liebesballade mit elektronischen Elementen. Zukunft trifft Emotion.",
+            "cover": "cover6.svg",
+            "audio": "Love 2025.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "mein-kleiner-koenig",
+            "title": "Mein kleiner König",
+            "category": "gemischt",
+            "description": "Emotionale Ballade für die Kleinen. Warm, persönlich und von Herzen.",
+            "cover": "cover7.svg",
+            "audio": "Mein kleiner König.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "die-nacht-zaehlt-mit-uns",
+            "title": "Die Nacht zählt mit uns",
+            "category": "gemischt",
+            "description": "Nächtlicher Synthwave-Track. Atmosphärisch, mystisch und hypnotisch.",
+            "cover": "cover8.svg",
+            "audio": "Die Nacht zählt mit uns....mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "20-years-rdmc-oldenburg-englisch-efdb54",
+            "title": "20 Years RDMC Oldenburg Englisch",
+            "category": "gemischt",
+            "description": "Jubiläums Song zum 20. Anni Red Devils Oldenburg",
+            "cover": "covers\/20-years-rdmc-oldenburg-englisch-efdb54.svg",
+            "coverGenerated": true,
+            "audio": "20_Jahre_RDMC_Oldenburg_Englisch.mp3",
+            "folder": "Musik_beta\/audio\/gemischt",
+            "isNew": true
+        }
+    ]
+}

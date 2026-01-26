@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B8B8B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#C0C0C0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#505050;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FF0033;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF1744;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#8B0000;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Skull Structure -->
+  <g fill="url(#metalGrad)" stroke="#202020" stroke-width="2">
+    <!-- Cranium -->
+    <ellipse cx="100" cy="90" rx="55" ry="60" />
+    
+    <!-- Jaw -->
+    <path d="M 50 110 Q 50 150 75 160 L 125 160 Q 150 150 150 110 Z" />
+    
+    <!-- Cheekbones -->
+    <ellipse cx="70" cy="100" rx="15" ry="20" opacity="0.7"/>
+    <ellipse cx="130" cy="100" rx="15" ry="20" opacity="0.7"/>
+    
+    <!-- Teeth -->
+    <g fill="#E8E8E8" stroke="#505050" stroke-width="1">
+      <rect x="85" y="145" width="6" height="10" rx="1"/>
+      <rect x="93" y="145" width="6" height="10" rx="1"/>
+      <rect x="101" y="145" width="6" height="10" rx="1"/>
+      <rect x="109" y="145" width="6" height="10" rx="1"/>
+    </g>
+  </g>
+  
+  <!-- Eye Sockets with RED GLOW -->
+  <g>
+    <!-- Left Eye Socket -->
+    <ellipse cx="80" cy="85" rx="18" ry="22" fill="#000000"/>
+    <ellipse cx="80" cy="85" rx="14" ry="18" fill="url(#eyeGlow)" filter="url(#glow)"/>
+    <circle cx="80" cy="85" r="8" fill="#FF0033" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Right Eye Socket -->
+    <ellipse cx="120" cy="85" rx="18" ry="22" fill="#000000"/>
+    <ellipse cx="120" cy="85" rx="14" ry="18" fill="url(#eyeGlow)" filter="url(#glow)"/>
+    <circle cx="120" cy="85" r="8" fill="#FF0033" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Nose Cavity -->
+  <ellipse cx="100" cy="110" rx="8" ry="12" fill="#000000"/>
+  
+  <!-- Metal Details -->
+  <g stroke="#808080" stroke-width="1" fill="none" opacity="0.5">
+    <line x1="60" y1="70" x2="70" y2="60"/>
+    <line x1="140" y1="70" x2="130" y2="60"/>
+    <circle cx="100" cy="60" r="3" fill="#C0C0C0"/>
+    <path d="M 55 95 Q 50 100 55 105"/>
+    <path d="M 145 95 Q 150 100 145 105"/>
+  </g>
+  
+  <!-- Circuit Lines -->
+  <g stroke="#FF0033" stroke-width="0.5" fill="none" opacity="0.3">
+    <path d="M 60 80 L 50 75 L 45 70"/>
+    <path d="M 140 80 L 150 75 L 155 70"/>
+    <circle cx="45" cy="70" r="2" fill="#FF0033"/>
+    <circle cx="155" cy="70" r="2" fill="#FF0033"/>
+  </g>
+</svg>

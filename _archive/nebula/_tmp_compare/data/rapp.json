@@ -1,0 +1,16 @@
+{
+	"tracks": [
+		{
+			"id": "kein-lied-fuer-helden",
+			"title": "Kein Lied für Helden",
+			"category": "rapp",
+			"description": "Kraftvoller Rocksong mit Message. Authentisch und direkt.",
+			"cover": "cover4.svg",
+			"audio": "Kein Lied für Helden.mp3",
+			"folder": "assets/media",
+			"isNew": true
+		}
+	]
+}
+
+

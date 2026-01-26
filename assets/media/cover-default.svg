@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Standard Musik Cover</title>
+  <desc id="desc">Abstraktes, neutrales Platzhalter-Cover mit dunklem Hintergrund und dezentem neonfarbigen Ring.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0f1e"/>
+      <stop offset="50%" stop-color="#181835"/>
+      <stop offset="100%" stop-color="#10101f"/>
+    </linearGradient>
+    <radialGradient id="ring" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#06fff0" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <circle cx="512" cy="512" r="360" fill="url(#ring)"/>
+  <text x="50%" y="50%" fill="#ffffff" font-size="56" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle" dominant-baseline="middle" opacity="0.85" font-weight="600">Music</text>
+</svg>

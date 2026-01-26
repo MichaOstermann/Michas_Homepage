@@ -1,0 +1,43 @@
+{
+  "tracks": [
+    {
+      "title": "Life am Strand",
+      "description": "Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.",
+      "category": "party",
+      "cover": "assets/media/cover1.svg",
+      "audio": "assets/media/track1.mp3",
+      "downloadName": "Michael Ostermann - Life am Strand.mp3"
+    },
+    {
+      "title": "20 Jahre RDMC Oldenburg",
+      "description": "Jubiläums-Track mit Partystimmung. Artist: Michael Ostermann.",
+      "category": "party",
+      "cover": "assets/media/cover2.svg",
+      "audio": "assets/media/track2.mp3",
+      "downloadName": "Michael Ostermann - 20 Jahre RDMC Oldenburg.mp3"
+    },
+    {
+      "title": "Aus dem Schatten",
+      "description": "Dunkler Synthwave mit treibendem Beat und melancholischer Hook. Artist: Michael Ostermann.",
+      "category": "synth",
+      "cover": "assets/media/cover3.svg",
+      "audio": "assets/media/track3.mp3",
+      "downloadName": "Michael Ostermann - Aus dem Schatten.mp3"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

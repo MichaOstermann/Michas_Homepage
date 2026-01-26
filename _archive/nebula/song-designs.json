@@ -1,0 +1,87 @@
+{
+  "20 Jahre RDMC Oldenburg": {
+    "theme": "motorcycle_anniversary",
+    "colors": ["#FF6B00", "#000000", "#FFD700"],
+    "elements": ["motorcycle", "road", "20_years_text", "oldenburg"]
+  },
+  "ALPHA": {
+    "theme": "alpha_wolf_leader",
+    "colors": ["#000000", "#FFD700", "#DC143C"],
+    "elements": ["detailed_wolf", "moon", "mountain_silhouette", "alpha_text"]
+  },
+  "LONE WOLF II – ASCHE & STAHL": {
+    "theme": "industrial_wolf",
+    "colors": ["#2C2C2C", "#C0C0C0", "#FF4500"],
+    "elements": ["wolf_ash", "steel_texture", "fire_embers", "industrial_bg"]
+  },
+  "LONE WOLF III – FEUER BLEIBT": {
+    "theme": "fire_wolf",
+    "colors": ["#FF4500", "#FFD700", "#000000"],
+    "elements": ["flame_wolf", "eternal_fire", "dramatic_text"]
+  },
+  "LONE WOLF IV – REBORN": {
+    "theme": "rebirth_phoenix",
+    "colors": ["#FFD700", "#FF6B00", "#000000"],
+    "elements": ["phoenix_rise", "ash_ground", "new_beginning"]
+  },
+  "Aus dem Schatten": {
+    "theme": "emerging_shadows",
+    "colors": ["#1a1a2e", "#16213e", "#00FFFF"],
+    "elements": ["shadow_figure", "neon_city", "emergence_light"]
+  },
+  "Aus dem Nichts": {
+    "theme": "void_creation",
+    "colors": ["#000000", "#4A90E2", "#FFFFFF"],
+    "elements": ["void_space", "light_burst", "creation_particles"]
+  },
+  "Concrete Jungle Tales": {
+    "theme": "urban_jungle",
+    "colors": ["#2C3E50", "#27AE60", "#E74C3C"],
+    "elements": ["concrete_buildings", "jungle_vines", "urban_wildlife"]
+  },
+  "Die Nacht zählt mit uns": {
+    "theme": "night_warriors",
+    "colors": ["#0B0F16", "#8B00FF", "#00FFFF"],
+    "elements": ["night_sky", "warrior_silhouettes", "counting_stars"]
+  },
+  "Einsamer Wolf": {
+    "theme": "lonely_wolf_mountain",
+    "colors": ["#34495E", "#95A5A6", "#2C3E50"],
+    "elements": ["lone_wolf_howl", "mountain_peak", "full_moon", "isolation"]
+  },
+  "Ich liebe dich sagen": {
+    "theme": "love_declaration",
+    "colors": ["#FF69B4", "#FFB6C1", "#FFFFFF"],
+    "elements": ["speech_bubble", "hearts", "romantic_scene", "confession"]
+  },
+  "Kein Lied für Helden": {
+    "theme": "anti_hero",
+    "colors": ["#8B0000", "#000000", "#696969"],
+    "elements": ["broken_crown", "dark_figure", "rejection_symbol"]
+  },
+  "Keiner hat noch Geld": {
+    "theme": "broke_party",
+    "colors": ["#FFD700", "#000000", "#FF6B6B"],
+    "elements": ["empty_wallet", "party_lights", "humor_graphics"]
+  },
+  "Life am Strand": {
+    "theme": "beach_life_realistic",
+    "colors": ["#87CEEB", "#FFD700", "#00CED1"],
+    "elements": ["detailed_beach", "ocean_waves", "sunset", "relaxation"]
+  },
+  "Love 2025": {
+    "theme": "futuristic_love",
+    "colors": ["#FF1493", "#00FFFF", "#8B5CF6"],
+    "elements": ["tech_hearts", "future_couple", "2025_text", "digital_romance"]
+  },
+  "Mein kleiner König": {
+    "theme": "little_king",
+    "colors": ["#FFD700", "#4169E1", "#FFFFFF"],
+    "elements": ["crown", "child_silhouette", "royal_background", "love_theme"]
+  },
+  "Von den Highways dieser Welt": {
+    "theme": "world_highways",
+    "colors": ["#2C3E50", "#E67E22", "#F39C12"],
+    "elements": ["highway_perspective", "world_map", "road_lines", "travel"]
+  }
+}

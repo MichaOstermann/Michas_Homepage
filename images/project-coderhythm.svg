@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="coderhythmTitle">
+  <title id="coderhythmTitle">CodeRhythm Plattform Visual</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111738"/>
+      <stop offset="1" stop-color="#0f122c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2de3d1"/>
+      <stop offset="1" stop-color="#5c5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#bg)"/>
+  <rect x="80" y="80" width="480" height="200" rx="20" fill="#14183a" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <rect x="110" y="110" width="130" height="26" rx="13" fill="#1f244d"/>
+  <circle cx="130" cy="123" r="6" fill="#5c5cff"/>
+  <circle cx="160" cy="123" r="6" fill="#2de3d1"/>
+  <circle cx="190" cy="123" r="6" fill="#8a7bff"/>
+  <path d="M250 200h260" stroke="#1f244d" stroke-width="120" stroke-linecap="round"/>
+  <path d="M260 200c18-38 54-38 72 0s54 38 72 0 54-38 72 0 54 38 72 0" fill="none" stroke="url(#accent)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="120" y="270" width="120" height="12" rx="6" fill="#5c5cff" opacity="0.6"/>
+  <rect x="260" y="270" width="160" height="12" rx="6" fill="#2de3d1" opacity="0.6"/>
+  <rect x="440" y="270" width="120" height="12" rx="6" fill="#8a7bff" opacity="0.6"/>
+  <rect x="360" y="110" width="170" height="80" rx="16" fill="#0c1029" stroke="rgba(255,255,255,0.1)"/>
+  <path d="M380 150h30v-16h-30zm40 32h30v-48h-30zm40-24h30v-24h-30z" fill="#2de3d1"/>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

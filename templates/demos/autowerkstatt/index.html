@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPro Werkstatt – Ihre KFZ-Profis in Ihrer Nähe</title>
+    
+    <!-- COPYRIGHT PROTECTION -->
+    <meta name="template-author" content="Michael Ostermann">
+    <meta name="template-copyright" content="© 2025 Michael Ostermann - KFZ Werkstatt Template">
+    <meta name="template-source" content="https://mcgv.de">
+    <meta name="template-protection" content="enabled">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inline-cms.css">
+</head>
+<body>
+    <!--
+    ═══════════════════════════════════════════════════════════════════════════════
+      KFZ WERKSTATT TEMPLATE
+      © 2025 Michael Ostermann
+      Website: https://mcgv.de
+      
+      WARNUNG: Das Entfernen dieser Copyright-Hinweise ist ILLEGAL
+      und verstößt gegen das Urheberrecht (§ 97 UrhG)!
+    ═══════════════════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🔧</span>
+                <span class="logo-text">AUTO<span class="highlight">PRO</span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <button class="btn-primary">Termin buchen</button>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>✓ TÜV-zertifiziert</span>
+                <span>✓ 30+ Jahre Erfahrung</span>
+            </div>
+            <h1 class="hero-title">
+                Ihre <span class="highlight">KFZ-Profis</span>
+                <br>des Vertrauens
+            </h1>
+            <p class="hero-subtitle">Professioneller Service • Faire Preise • Schnelle Termine</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary">Jetzt Termin vereinbaren</button>
+                <button class="btn btn-secondary">Leistungen ansehen</button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">😊</div>
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Zufriedene Kunden</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-number" data-target="25000">0</div>
+                    <div class="stat-label">Reparaturen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Sterne Bewertung</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Unsere <span class="highlight">Leistungen</span></h2>
+            <p class="section-subtitle">Alles aus einer Hand – Von der Inspektion bis zur Unfallreparatur</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Inspektion & Wartung</h3>
+                    <p>Regelmäßige Inspektionen nach Herstellervorgaben. Alle Fabrikate, alle Modelle.</p>
+                    <ul class="service-list">
+                        <li>✓ Jahresinspektion</li>
+                        <li>✓ Durchsicht nach Herstellervorgabe</li>
+                        <li>✓ Verschleißteile-Check</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Reparaturen</h3>
+                    <p>Professionelle Reparaturen an Motor, Getriebe, Bremsen und mehr.</p>
+                    <ul class="service-list">
+                        <li>✓ Motor & Getriebe</li>
+                        <li>✓ Bremsen & Fahrwerk</li>
+                        <li>✓ Elektronik & Elektrik</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <h3>TÜV/AU Vorbereitung</h3>
+                    <p>Wir bereiten Ihr Fahrzeug optimal auf die Hauptuntersuchung vor.</p>
+                    <ul class="service-list">
+                        <li>✓ Kompletter Fahrzeug-Check</li>
+                        <li>✓ Mängelbeseitigung</li>
+                        <li>✓ AU Abgasuntersuchung</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Reifenservice</h3>
+                    <p>Kompetenter Service rund um Ihre Reifen – Wechsel, Einlagerung, Auswuchten.</p>
+                    <ul class="service-list">
+                        <li>✓ Reifenwechsel</li>
+                        <li>✓ Einlagerung mit Hotel</li>
+                        <li>✓ Auswuchten & Montage</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3>Klimaservice</h3>
+                    <p>Professionelle Wartung und Reparatur Ihrer Klimaanlage.</p>
+                    <ul class="service-list">
+                        <li>✓ Klimaanlagen-Check</li>
+                        <li>✓ Desinfektion</li>
+                        <li>✓ Befüllung & Wartung</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Lackierung & Smart Repair</h3>
+                    <p>Kleine und große Lackschäden professionell beseitigen.</p>
+                    <ul class="service-list">
+                        <li>✓ Smart Repair (Spot-Lackierung)</li>
+                        <li>✓ Komplettlackierung</li>
+                        <li>✓ Delle ohne Lackieren</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💥</div>
+                    <h3>Unfallreparatur</h3>
+                    <p>Schnelle und fachgerechte Unfallreparatur mit Versicherungsabwicklung.</p>
+                    <ul class="service-list">
+                        <li>✓ Karosserie-Instandsetzung</li>
+                        <li>✓ Gutachtenerstellung</li>
+                        <li>✓ Versicherungsabwicklung</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Diagnose & Fehlersuche</h3>
+                    <p>Moderne Diagnosegeräte für alle Fabrikate und Modelle.</p>
+                    <ul class="service-list">
+                        <li>✓ Motor-Diagnose</li>
+                        <li>✓ Fehlerspeicher auslesen</li>
+                        <li>✓ Software-Updates</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛢️</div>
+                    <h3>Ölwechsel & Filter</h3>
+                    <p>Schneller Ölwechsel und Filtertausch auch ohne Termin möglich.</p>
+                    <ul class="service-list">
+                        <li>✓ Motoröl-Wechsel</li>
+                        <li>✓ Öl-, Luft-, Pollenfilter</li>
+                        <li>✓ Getriebeöl-Service</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📢</div>
+                    <h3>Auspuff & Abgasanlage</h3>
+                    <p>Reparatur und Austausch von Auspuff und Katalysator.</p>
+                    <ul class="service-list">
+                        <li>✓ Auspuff-Reparatur</li>
+                        <li>✓ Katalysator-Tausch</li>
+                        <li>✓ Abgasanlage-Check</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔋</div>
+                    <h3>Batterie & Elektrik</h3>
+                    <p>Check und Austausch von Batterie und elektrischen Komponenten.</p>
+                    <ul class="service-list">
+                        <li>✓ Batterie-Test</li>
+                        <li>✓ Lichtmaschine-Check</li>
+                        <li>✓ Starter-Reparatur</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚙</div>
+                    <h3>Fahrwerk & Achsvermessung</h3>
+                    <p>Professionelle Fahrwerksreparatur und Achsvermessung.</p>
+                    <ul class="service-list">
+                        <li>✓ Stoßdämpfer-Wechsel</li>
+                        <li>✓ Achsvermessung</li>
+                        <li>✓ Spureinstellung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Warum <span class="highlight">AutoPro?</span></h2>
+                    <p>Seit über 30 Jahren sind wir Ihre zuverlässige KFZ-Werkstatt in der Region. Unser erfahrenes Team steht für Qualität, Ehrlichkeit und faire Preise.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <div>
+                                <h4>TÜV-zertifiziert</h4>
+                                <p>Geprüfte Qualität und Sicherheit</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <div>
+                                <h4>Alle Fabrikate</h4>
+                                <p>Von VW bis Mercedes, von Audi bis BMW</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <div>
+                                <h4>Faire Preise</h4>
+                                <p>Transparente Kostenvoranschläge</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <div>
+                                <h4>Schnelle Termine</h4>
+                                <p>Meistens noch am selben Tag</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Wird per CSS mit Bild gefüllt -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2 class="section-title">Unser <span class="highlight">Team</span></h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image team-1"></div>
+                    <h3 class="team-name">Michael Schneider</h3>
+                    <p class="team-position">Werkstattleiter & Meister</p>
+                    <p class="team-info">30 Jahre Erfahrung</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-2"></div>
+                    <h3 class="team-name">Thomas Weber</h3>
+                    <p class="team-position">KFZ-Mechatroniker</p>
+                    <p class="team-info">15 Jahre Erfahrung</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-3"></div>
+                    <h3 class="team-name">Julia Müller</h3>
+                    <p class="team-position">Serviceberaterin</p>
+                    <p class="team-info">10 Jahre Erfahrung</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-4"></div>
+                    <h3 class="team-name">David Klein</h3>
+                    <p class="team-position">Lackierer-Meister</p>
+                    <p class="team-info">20 Jahre Erfahrung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Termin <span class="highlight">Vereinbaren</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>📍 Kontakt</h3>
+                    <p><strong>AutoPro Werkstatt</strong></p>
+                    <p>Industriestraße 123<br>12345 Musterstadt</p>
+                    <p><strong>Telefon:</strong><br>+49 123 456789</p>
+                    <p><strong>E-Mail:</strong><br>info@autopro-werkstatt.de</p>
+                    <p><strong>Öffnungszeiten:</strong><br>Mo-Fr: 08:00 - 18:00 Uhr<br>Sa: 09:00 - 13:00 Uhr</p>
+                    
+                    <div class="emergency-box">
+                        <h4>🚨 Notfall-Service</h4>
+                        <p>Pannenhilfe 24/7 erreichbar:<br><strong>+49 170 123456</strong></p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ihr Name *" required>
+                    <input type="email" placeholder="Ihre E-Mail *" required>
+                    <input type="tel" placeholder="Ihre Telefonnummer *" required>
+                    <input type="text" placeholder="Fahrzeug (z.B. VW Golf 7)">
+                    <select required>
+                        <option value="">Gewünschte Leistung wählen</option>
+                        <option value="inspektion">Inspektion & Wartung</option>
+                        <option value="reparatur">Reparatur</option>
+                        <option value="tuev">TÜV/AU Vorbereitung</option>
+                        <option value="reifen">Reifenservice</option>
+                        <option value="klima">Klimaservice</option>
+                        <option value="lackierung">Lackierung</option>
+                        <option value="unfall">Unfallreparatur</option>
+                        <option value="diagnose">Diagnose</option>
+                        <option value="sonstiges">Sonstiges</option>
+                    </select>
+                    <textarea placeholder="Ihre Nachricht / Beschreibung des Problems" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary">Termin anfragen</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🔧</span>
+                    <p>AUTO<span class="highlight">PRO</span> Werkstatt</p>
+                    <p class="footer-slogan">Ihr Vertrauen ist unser Antrieb</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#services">Leistungen</a>
+                    <a href="#about">Über uns</a>
+                    <a href="#team">Team</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Ostermann • KFZ Werkstatt Template</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DEMO PROTECTION -->
+    <script src="demo-protection.js"></script>
+    
+    <!-- COPYRIGHT PROTECTION -->
+    <script src="copyright-protection.js"></script>
+    
+    <script src="inline-cms.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

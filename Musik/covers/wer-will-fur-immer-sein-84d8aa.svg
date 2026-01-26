@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06FFF0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.1" stroke-width="2"><line x1="100" y1="0" x2="0" y2="100" stroke="#8B5CF6"/><line x1="1200" y1="100" x2="100" y2="1200" stroke="#06FFF0"/><line x1="180" y1="0" x2="0" y2="180" stroke="#8B5CF6"/><line x1="1200" y1="180" x2="180" y2="1200" stroke="#06FFF0"/><line x1="260" y1="0" x2="0" y2="260" stroke="#8B5CF6"/><line x1="1200" y1="260" x2="260" y2="1200" stroke="#06FFF0"/><line x1="340" y1="0" x2="0" y2="340" stroke="#8B5CF6"/><line x1="1200" y1="340" x2="340" y2="1200" stroke="#06FFF0"/><line x1="420" y1="0" x2="0" y2="420" stroke="#8B5CF6"/><line x1="1200" y1="420" x2="420" y2="1200" stroke="#06FFF0"/><line x1="500" y1="0" x2="0" y2="500" stroke="#8B5CF6"/><line x1="1200" y1="500" x2="500" y2="1200" stroke="#06FFF0"/><line x1="580" y1="0" x2="0" y2="580" stroke="#8B5CF6"/><line x1="1200" y1="580" x2="580" y2="1200" stroke="#06FFF0"/><line x1="660" y1="0" x2="0" y2="660" stroke="#8B5CF6"/><line x1="1200" y1="660" x2="660" y2="1200" stroke="#06FFF0"/><line x1="740" y1="0" x2="0" y2="740" stroke="#8B5CF6"/><line x1="1200" y1="740" x2="740" y2="1200" stroke="#06FFF0"/><line x1="820" y1="0" x2="0" y2="820" stroke="#8B5CF6"/><line x1="1200" y1="820" x2="820" y2="1200" stroke="#06FFF0"/><line x1="900" y1="0" x2="0" y2="900" stroke="#8B5CF6"/><line x1="1200" y1="900" x2="900" y2="1200" stroke="#06FFF0"/><line x1="980" y1="0" x2="0" y2="980" stroke="#8B5CF6"/><line x1="1200" y1="980" x2="980" y2="1200" stroke="#06FFF0"/><line x1="1060" y1="0" x2="0" y2="1060" stroke="#8B5CF6"/><line x1="1200" y1="1060" x2="1060" y2="1200" stroke="#06FFF0"/><line x1="1140" y1="0" x2="0" y2="1140" stroke="#8B5CF6"/><line x1="1200" y1="1140" x2="1140" y2="1200" stroke="#06FFF0"/><line x1="1220" y1="0" x2="0" y2="1220" stroke="#8B5CF6"/><line x1="1200" y1="1220" x2="1220" y2="1200" stroke="#06FFF0"/></g><polygon points="600,300 750,600 600,900 450,600" fill="url(#g)" opacity="0.12"/>
+  <text x="600" y="545" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">Wer will für</text><text x="600" y="655" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">immer sein</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Gemischt
+  </text>
+</svg>

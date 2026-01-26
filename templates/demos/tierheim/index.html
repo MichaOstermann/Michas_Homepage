@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pfötchen Tierheim – Wir retten Tiere & vermitteln Liebe</title>
+    
+    <!-- COPYRIGHT PROTECTION -->
+    <meta name="template-author" content="Michael Ostermann">
+    <meta name="template-copyright" content="© 2025 Michael Ostermann - Tierheim Template">
+    <meta name="template-source" content="https://mcgv.de">
+    <meta name="template-protection" content="enabled">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inline-cms.css">
+</head>
+<body>
+    <!--
+    ═══════════════════════════════════════════════════════════════════════════════
+      TIERHEIM & TIERRETTUNG TEMPLATE
+      © 2025 Michael Ostermann
+      Website: https://mcgv.de
+      
+      WARNUNG: Das Entfernen dieser Copyright-Hinweise ist ILLEGAL
+      und verstößt gegen das Urheberrecht (§ 97 UrhG)!
+    ═══════════════════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- Floating Paws -->
+    <div class="paws-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">PFÖTCHEN <span class="highlight">TIERHEIM</span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#animals">Tiere</a></li>
+                <li><a href="#adopt">Adoption</a></li>
+                <li><a href="#help">Helfen</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <button class="btn-donate">❤️ Jetzt Spenden</button>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🏆 Seit 25 Jahren aktiv</span>
+                <span>❤️ Über 5000 Tiere vermittelt</span>
+            </div>
+            <h1 class="hero-title">
+                Jedes Tier verdient
+                <br><span class="highlight">eine zweite Chance</span>
+            </h1>
+            <p class="hero-subtitle">Wir retten, pflegen & vermitteln Tiere in liebevolle Hände</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary">Tier adoptieren</button>
+                <button class="btn btn-secondary">Uns unterstützen</button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </header>
+
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="container">
+            <span class="emergency-icon">🚨</span>
+            <p><strong>Tier-Notfall?</strong> Unsere 24/7 Notfall-Hotline: <strong>+49 170 TIER SOS</strong></p>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🐕</div>
+                    <div class="stat-number" data-target="5000">0</div>
+                    <div class="stat-label">Vermittelte Tiere</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Aktuell in Pflege</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Herzblut</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animals Section -->
+    <section class="animals-section" id="animals">
+        <div class="container">
+            <h2 class="section-title">Unsere <span class="highlight">Schützlinge</span></h2>
+            <p class="section-subtitle">Diese wundervollen Tiere suchen ein liebevolles Zuhause</p>
+            
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="hunde">🐶 Hunde</button>
+                <button class="filter-btn" data-filter="katzen">🐱 Katzen</button>
+                <button class="filter-btn" data-filter="kleintiere">🐰 Kleintiere</button>
+            </div>
+
+            <div class="animals-grid" id="animalsGrid">
+                <!-- Wird dynamisch geladen -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Adoption Process Section -->
+    <section class="adoption-section" id="adopt">
+        <div class="container">
+            <h2 class="section-title">So funktioniert die <span class="highlight">Adoption</span></h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🔍</div>
+                    <h3>Tier aussuchen</h3>
+                    <p>Stöbern Sie durch unsere Schützlinge und finden Sie Ihren neuen besten Freund.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">📞</div>
+                    <h3>Kontakt aufnehmen</h3>
+                    <p>Rufen Sie uns an oder schreiben Sie uns. Wir beantworten alle Ihre Fragen.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🤝</div>
+                    <h3>Kennenlernen</h3>
+                    <p>Besuchen Sie uns und lernen Sie Ihr Wunschtier persönlich kennen.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🏡</div>
+                    <h3>Vorkontrolle</h3>
+                    <p>Wir schauen uns Ihr Zuhause an, um sicherzustellen, dass alles passt.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">❤️</div>
+                    <h3>Adoption</h3>
+                    <p>Herzlichen Glückwunsch! Ihr neues Familienmitglied zieht ein.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Unsere <span class="highlight">Leistungen</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Tierarzt-Versorgung</h3>
+                    <p>Alle unsere Tiere werden tierärztlich untersucht, geimpft und bei Bedarf behandelt.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚑</div>
+                    <h3>Tier-Rettung</h3>
+                    <p>24/7 Notfall-Hotline für verletzte, ausgesetzte oder misshandelte Tiere.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Vermittlung</h3>
+                    <p>Wir vermitteln Tiere in geprüfte, liebevolle Zuhause mit Nachkontrolle.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💉</div>
+                    <h3>Kastration</h3>
+                    <p>Alle Tiere werden vor der Vermittlung kastriert und gechippt.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Beratung</h3>
+                    <p>Kostenlose Beratung zu Haltung, Ernährung und Erziehung.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🦴</div>
+                    <h3>Pension</h3>
+                    <p>Vorübergehende Unterbringung in Notfällen oder bei Urlaub.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="stories-section">
+        <div class="container">
+            <h2 class="section-title">Erfolgs<span class="highlight">geschichten</span></h2>
+            <p class="section-subtitle">Diese Tiere haben ihr Für-Immer-Zuhause gefunden ❤️</p>
+            <div class="stories-grid" id="storiesGrid">
+                <!-- Wird dynamisch geladen -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="help-section" id="help">
+        <div class="container">
+            <h2 class="section-title">So können Sie <span class="highlight">helfen</span></h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <div class="help-icon">💰</div>
+                    <h3>Geldspende</h3>
+                    <p>Jede Spende hilft uns, Futter, Medikamente und Tierarztkosten zu decken.</p>
+                    <button class="btn btn-primary">Jetzt spenden</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">🎁</div>
+                    <h3>Sachspende</h3>
+                    <p>Wir freuen uns über Futter, Decken, Spielzeug und Pflegeartikel.</p>
+                    <button class="btn btn-secondary">Spendenliste ansehen</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">🤝</div>
+                    <h3>Ehrenamt</h3>
+                    <p>Helfen Sie bei der Tierpflege, Gassi gehen oder bei Veranstaltungen.</p>
+                    <button class="btn btn-secondary">Freiwillig helfen</button>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">🏡</div>
+                    <h3>Pflegestelle</h3>
+                    <p>Nehmen Sie ein Tier vorübergehend bei sich auf, bis es vermittelt wird.</p>
+                    <button class="btn btn-secondary">Pflegestelle werden</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Über <span class="highlight">uns</span></h2>
+                    <p>Seit über 25 Jahren setzen wir uns mit Herz und Seele für Tiere in Not ein. Unser Tierheim ist mehr als nur eine Unterkunft – es ist ein Ort der Hoffnung, der Heilung und der Liebe.</p>
+                    
+                    <div class="mission-box">
+                        <h3>🎯 Unsere Mission</h3>
+                        <p>Jedes Tier verdient ein Leben in Würde, Sicherheit und Liebe. Wir retten Tiere aus schlechter Haltung, kümmern uns um Fundtiere und vermitteln sie in geprüfte, liebevolle Hände.</p>
+                    </div>
+
+                    <div class="values-list">
+                        <div class="value-item">
+                            <span class="value-icon">❤️</span>
+                            <div>
+                                <h4>Mit Herz</h4>
+                                <p>Jedes Tier wird individuell betreut und geliebt</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">🏆</span>
+                            <div>
+                                <h4>Professionell</h4>
+                                <p>Qualifiziertes Personal und tierärztliche Betreuung</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon">🌍</span>
+                            <div>
+                                <h4>Transparent</h4>
+                                <p>Offene Kommunikation und Nachkontrollen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Wird per CSS mit Bild gefüllt -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Unser <span class="highlight">Team</span></h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image team-1"></div>
+                    <h3 class="team-name">Anna Hoffmann</h3>
+                    <p class="team-position">Tierheimleitung</p>
+                    <p class="team-info">Tierärztin mit 20 Jahren Erfahrung</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-2"></div>
+                    <h3 class="team-name">Michael Berg</h3>
+                    <p class="team-position">Tierpfleger</p>
+                    <p class="team-info">Spezialist für Hunde</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-3"></div>
+                    <h3 class="team-name">Sarah Klein</h3>
+                    <p class="team-position">Tierpflegerin</p>
+                    <p class="team-info">Expertin für Katzen</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-image team-4"></div>
+                    <h3 class="team-name">Tom Müller</h3>
+                    <p class="team-position">Vermittlung</p>
+                    <p class="team-info">Beratung & Nachkontrolle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt <span class="highlight">aufnehmen</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>📍 Besuchen Sie uns</h3>
+                    <p><strong>Pfötchen Tierheim</strong></p>
+                    <p>Tierheimstraße 123<br>12345 Musterstadt</p>
+                    <p><strong>Telefon:</strong><br>+49 123 456789</p>
+                    <p><strong>E-Mail:</strong><br>info@pfoetchen-tierheim.de</p>
+                    
+                    <div class="opening-hours">
+                        <h4>🕒 Öffnungszeiten</h4>
+                        <p>Mo-Fr: 14:00 - 18:00 Uhr<br>Sa-So: 10:00 - 16:00 Uhr</p>
+                    </div>
+                    
+                    <div class="emergency-box-contact">
+                        <h4>🚨 Notfall-Hotline</h4>
+                        <p>24/7 erreichbar:<br><strong>+49 170 TIER SOS</strong></p>
+                    </div>
+
+                    <div class="donation-box">
+                        <h4>💰 Spendenkonto</h4>
+                        <p><strong>IBAN:</strong> DE12 3456 7890 1234 5678 90<br><strong>BIC:</strong> ABCDEFGH123<br>Pfötchen Tierheim e.V.</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Ihr Name *" required>
+                    <input type="email" placeholder="Ihre E-Mail *" required>
+                    <input type="tel" placeholder="Ihre Telefonnummer">
+                    <select>
+                        <option value="">Ihr Anliegen</option>
+                        <option value="adoption">Tier adoptieren</option>
+                        <option value="visit">Besuch vereinbaren</option>
+                        <option value="donate">Spenden</option>
+                        <option value="volunteer">Ehrenamtlich helfen</option>
+                        <option value="foster">Pflegestelle werden</option>
+                        <option value="emergency">Tier-Notfall</option>
+                        <option value="other">Sonstiges</option>
+                    </select>
+                    <textarea placeholder="Ihre Nachricht" rows="5"></textarea>
+                    <button type="submit" class="btn btn-primary">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🐾</span>
+                    <p>PFÖTCHEN <span class="highlight">TIERHEIM</span></p>
+                    <p class="footer-slogan">Mit Herz für Tiere seit 25 Jahren</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <a href="#hero">Home</a>
+                    <a href="#animals">Tiere</a>
+                    <a href="#adopt">Adoption</a>
+                    <a href="#help">Helfen</a>
+                    <a href="#about">Über uns</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                    <a href="#">Satzung</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Folgen Sie uns</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">📘</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Ostermann • Tierheim Template</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DEMO PROTECTION -->
+    <script src="demo-protection.js"></script>
+    
+    <!-- COPYRIGHT PROTECTION -->
+    <script src="copyright-protection.js"></script>
+    
+    <script src="inline-cms.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

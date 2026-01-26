@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soulmask – Mein Stamm & Abenteuer</title>
+  <meta name="description" content="Meine persönliche Soulmask Seite mit Stamm, Masken und Erfahrungen aus der primitiven Welt." />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  
+  <style>
+    :root {
+      --soulmask-purple: #9370DB;
+      --soulmask-dark-purple: #8B008B;
+      --soulmask-magenta: #BA55D3;
+      --soulmask-indigo: #4B0082;
+    }
+    
+    body {
+      background: #1A0A1A;
+      color: #E0E0E0;
+    }
+    
+    /* Hero Section - Soulmask Style */
+    .soulmask-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(26, 10, 26, 0.9) 0%, rgba(40, 20, 40, 0.7) 100%),
+                  url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2646460/header.jpg') center/cover;
+      overflow: hidden;
+    }
+    
+    .soulmask-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence baseFrequency="0.7" numOctaves="1" /><feColorMatrix values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.07 0"/></filter><rect width="100" height="100" filter="url(%23n)"/></svg>');
+      opacity: 0.4;
+    }
+    
+    .soulmask-hero__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+    
+    .soulmask-logo {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--soulmask-magenta);
+      text-shadow: 
+        0 0 20px rgba(186, 85, 211, 0.8),
+        0 0 40px rgba(138, 43, 226, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+    }
+    
+    .soulmask-subtitle {
+      font-size: 1.5rem;
+      color: var(--soulmask-purple);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Mask Icons */
+    .mask-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .mask-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(147, 112, 219, 0.2) 0%, rgba(138, 43, 226, 0.15) 100%);
+      border: 2px solid rgba(138, 43, 226, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .mask-icon:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 30px rgba(138, 43, 226, 0.6);
+      border-color: var(--soulmask-magenta);
+    }
+    
+    .mask-icon::after {
+      content: attr(data-mask);
+      position: absolute;
+      bottom: -28px;
+      font-size: 0.7rem;
+      color: var(--soulmask-purple);
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    
+    /* Content Sections */
+    .soulmask-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(138, 43, 226, 0.15);
+    }
+    
+    .soulmask-section__title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--soulmask-magenta);
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 20px rgba(186, 85, 211, 0.4);
+    }
+    
+    .soulmask-card {
+      background: linear-gradient(135deg, rgba(40, 20, 40, 0.6) 0%, rgba(60, 30, 60, 0.3) 100%);
+      border: 2px solid rgba(138, 43, 226, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .soulmask-card:hover {
+      border-color: var(--soulmask-magenta);
+      box-shadow: 0 10px 40px rgba(138, 43, 226, 0.3);
+      transform: translateY(-4px);
+    }
+    
+    .soulmask-card__title {
+      font-size: 1.8rem;
+      color: var(--soulmask-purple);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .soulmask-card__text {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .soulmask-badge {
+      display: inline-block;
+      background: rgba(138, 43, 226, 0.2);
+      color: var(--soulmask-magenta);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(138, 43, 226, 0.4);
+      margin-right: 0.5rem;
+    }
+    
+    /* Grid Layout */
+    .soulmask-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(138, 43, 226, 0.2);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--soulmask-purple);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      background: var(--soulmask-purple);
+      box-shadow: 0 0 20px rgba(147, 112, 219, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .soulmask-logo { font-size: 2.5rem; }
+      .soulmask-subtitle { font-size: 1.2rem; }
+      .mask-icons { gap: 1rem; }
+      .mask-icon { width: 70px; height: 70px; font-size: 2rem; }
+      .soulmask-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation" style="background: rgba(26, 10, 26, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite" style="color: var(--soulmask-magenta); text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten" style="display: none; background: none; border: none; cursor: pointer;">
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--soulmask-magenta); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--soulmask-magenta); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--soulmask-magenta); margin: 5px 0; transition: 0.3s;"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../templates/index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming" style="color: var(--soulmask-magenta); text-decoration: none; font-weight: bold; transition: color 0.3s;">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <a href="../index.html#gaming" class="back-btn" style="display: inline-block; margin: 1rem 2rem; color: var(--soulmask-magenta); text-decoration: none; font-weight: bold;">← Zurück zu Gaming</a>
+  
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
+  
+  <!-- Hero Section -->
+  <section class="soulmask-hero">
+    <div class="soulmask-hero__content">
+      <div class="soulmask-logo">SOULMASK</div>
+      <div class="soulmask-subtitle">Meister der Masken & Stammesführer</div>
+      <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto 2rem;">
+        Mit der Macht der uralten Masken führe ich meinen Stamm durch die Wildnis. 
+        Hier teile ich meine Erfahrungen aus der primitiven Welt voller Geheimnisse.
+      </p>
+      
+      <!-- Mask Icons -->
+      <div class="mask-icons">
+        <div class="mask-icon" data-mask="Krieger">🎭</div>
+        <div class="mask-icon" data-mask="Jäger">🦅</div>
+        <div class="mask-icon" data-mask="Schamane">🔮</div>
+        <div class="mask-icon" data-mask="Assassin">🗡️</div>
+        <div class="mask-icon" data-mask="Elementar">⚡</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Soulmask -->
+  <section class="soulmask-section">
+    <div class="container">
+      <h2 class="soulmask-section__title">Was ist Soulmask?</h2>
+      <div class="soulmask-card">
+        <p class="soulmask-card__text">
+          Soulmask ist ein einzigartiges Survival-Sandbox-Game mit einem revolutionären Feature: 
+          Du kannst die Körper deiner Stammesmitglieder übernehmen und so jeden NPC spielen! 
+          Mit der mystischen Maske verschmelze dein Bewusstsein mit anderen und nutze ihre Talente.
+        </p>
+        <p class="soulmask-card__text">
+          Erkunde eine riesige Welt mit Regenwäldern, Wüsten, Vulkanen und Schneebergen. 
+          Baue eine blühende Zivilisation auf, rekrutiere talentierte Stammesmitglieder mit 
+          einzigartigen Persönlichkeiten, automatisiere deine Basis und entdecke 10+ mächtige Masken 
+          antiker Helden. Bis zu 50 Spieler im Co-op oder PvP!
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <span class="soulmask-badge">TRIBAL SURVIVAL</span>
+          <span class="soulmask-badge">BODY-SWAP</span>
+          <span class="soulmask-badge">50 PLAYER</span>
+          <span class="soulmask-badge">500+ HOURS</span>
+          <span class="soulmask-badge">AUTOMATION</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- My Tribe Section -->
+  <section id="tribe" class="soulmask-section" style="background: linear-gradient(180deg, rgba(26, 10, 26, 0.3) 0%, rgba(26, 10, 26, 0) 100%);">
+    <div class="container">
+      <h2 class="soulmask-section__title">Mein Stamm</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Die besten Mitglieder meiner Zivilisation und ihre Spezialisierungen.
+      </p>
+      
+      <div class="soulmask-grid">
+        <!-- Tribesman 1 -->
+        <div class="soulmask-card">
+          <div class="soulmask-card__title">⚔️ Kargath – Hauptkrieger</div>
+          <p class="soulmask-card__text">
+            <strong>Rolle:</strong> Tank & Verteidigung<br>
+            <strong>Talent:</strong> Kraft ⭐⭐⭐⭐⭐<br>
+            <strong>Skills:</strong> Zweihandwaffen, Schildblock<br>
+            <strong>Aufgabe:</strong> Basis-Verteidigung, Boss-Fights
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="soulmask-badge">KRIEGER</span>
+            <span class="soulmask-badge">ELITE</span>
+          </div>
+        </div>
+        
+        <!-- Tribesman 2 -->
+        <div class="soulmask-card">
+          <div class="soulmask-card__title">🏹 Lyra – Meisterjägerin</div>
+          <p class="soulmask-card__text">
+            <strong>Rolle:</strong> Fernkampf & Jagd<br>
+            <strong>Talent:</strong> Präzision ⭐⭐⭐⭐⭐<br>
+            <strong>Skills:</strong> Bogenschießen, Spurenlesen<br>
+            <strong>Aufgabe:</strong> Food-Gathering, Patrouille
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="soulmask-badge">JÄGER</span>
+            <span class="soulmask-badge">AUTO-FARM</span>
+          </div>
+        </div>
+        
+        <!-- Tribesman 3 -->
+        <div class="soulmask-card">
+          <div class="soulmask-card__title">🔨 Thorin – Meisterschmied</div>
+          <p class="soulmask-card__text">
+            <strong>Rolle:</strong> Crafting & Produktion<br>
+            <strong>Talent:</strong> Handwerk ⭐⭐⭐⭐⭐<br>
+            <strong>Skills:</strong> Schmieden, Ingenieurskunst<br>
+            <strong>Aufgabe:</strong> Waffen-/Rüstungsproduktion
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="soulmask-badge">CRAFTER</span>
+            <span class="soulmask-badge">LEGENDARY</span>
+          </div>
+        </div>
+        
+        <!-- Placeholder -->
+        <div class="soulmask-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px; opacity: 0.5;">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">👥</div>
+            <div style="color: var(--soulmask-magenta); font-weight: 600;">35+ weitere Stammesmitglieder</div>
+            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">Alle mit eigenen Aufgaben</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Masks Collection -->
+  <section class="soulmask-section">
+    <div class="container">
+      <h2 class="soulmask-section__title">Meine Masken-Kollektion</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Gefundene Masken antiker Helden mit einzigartigen Fähigkeiten.
+      </p>
+      
+      <div class="soulmask-grid">
+        <div class="soulmask-card">
+          <div class="soulmask-card__title">🎭 Maske des Unsterblichen</div>
+          <p class="soulmask-card__text">
+            Die erste Maske. Verleiht erhöhte Regeneration und verlängerte Lebenszeit. 
+            Perfekt für lange Erkundungstouren durch gefährliche Gebiete.
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="soulmask-badge">REGENERATION</span>
+            <span class="soulmask-badge">STARTER</span>
+          </div>
+        </div>
+        
+        <div class="soulmask-card">
+          <div class="soulmask-card__title">⚡ Maske des Blitzes</div>
+          <p class="soulmask-card__text">
+            Verleiht Geschwindigkeit und elektrische Angriffe. Ideal für schnelle Hit-and-Run-Taktiken 
+            und das Ausweichen von Gefahren.
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="soulmask-badge">SPEED</span>
+            <span class="soulmask-badge">ELEMENT</span>
+          </div>
+        </div>
+        
+        <div class="soulmask-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px; opacity: 0.5;">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎭</div>
+            <div style="color: var(--soulmask-magenta); font-weight: 600;">8+ weitere Masken zu entdecken</div>
+            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">In verschiedenen Ruinen versteckt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Personal Stats -->
+  <section class="soulmask-section">
+    <div class="container">
+      <h2 class="soulmask-section__title">Meine Statistiken</h2>
+      <div class="soulmask-grid">
+        <div class="soulmask-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--soulmask-magenta); font-weight: 900; margin-bottom: 0.5rem;">280+</div>
+          <div style="color: var(--soulmask-purple); font-weight: 600;">Spielstunden</div>
+        </div>
+        <div class="soulmask-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--soulmask-magenta); font-weight: 900; margin-bottom: 0.5rem;">38</div>
+          <div style="color: var(--soulmask-purple); font-weight: 600;">Stammesmitglieder</div>
+        </div>
+        <div class="soulmask-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--soulmask-magenta); font-weight: 900; margin-bottom: 0.5rem;">6/10</div>
+          <div style="color: var(--soulmask-purple); font-weight: 600;">Masken gefunden</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Community -->
+  <section class="soulmask-section" style="border-bottom: none;">
+    <div class="container">
+      <h2 class="soulmask-section__title">Tritt meinem Stamm bei</h2>
+      <div class="soulmask-card" style="text-align: center;">
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+          Du spielst auch Soulmask? Lass uns gemeinsam eine Zivilisation aufbauen!
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn" style="background: var(--soulmask-purple); color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;">
+            Steam hinzufügen
+          </a>
+          <a href="#" class="btn" style="background: rgba(138, 43, 226, 0.2); color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 700; border: 2px solid var(--soulmask-purple); transition: all 0.3s;">
+            Server beitreten
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer site-footer" role="contentinfo" style="background: rgba(26, 10, 26, 0.95); border-top: 2px solid var(--soulmask-purple); padding: 3rem 2rem 2rem; margin-top: 4rem;">
+    <div class="container footer__top" style="max-width: 1200px; margin: 0 auto;">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: var(--soulmask-magenta); text-decoration: none; transition: all 0.3s;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(147, 112, 219, 0.3);">
+      <small style="color: rgba(255, 255, 255, 0.6); display: block; margin-bottom: 1rem;">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Datenschutz</a></small>
+      <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">
+        <p>Soulmask® ist eine eingetragene Marke von CampFire Studio.</p>
+        <p style="margin-top: 0.5rem;">Diese Seite ist ein Fan-Projekt und nicht offiziell mit CampFire Studio verbunden.</p>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+	"tracks": [
+		{
+			"id": "love-2025",
+			"title": "Love 2025",
+			"category": "love",
+			"description": "Moderne Liebesballade mit elektronischen Elementen. Zukunft trifft Emotion.",
+			"cover": "cover6.svg",
+			"audio": "Love 2025.mp3",
+			"folder": "assets/media",
+			"isNew": true
+		}
+	]
+}
+
+

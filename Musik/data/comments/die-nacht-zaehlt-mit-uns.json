@@ -1,0 +1,14 @@
+{
+    "pending": [],
+    "approved": [
+        {
+            "id": "1aada347358e590b",
+            "name": "Sabinem Meyer",
+            "message": "Traurig aber super schön!",
+            "createdAt": "2025-11-17T14:22:10+00:00",
+            "ipHash": "bbc7d1de1a37c42bf95f38a5",
+            "status": "approved",
+            "approvedAt": "2025-11-17T14:22:21+00:00"
+        }
+    ]
+}

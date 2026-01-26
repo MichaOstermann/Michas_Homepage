@@ -1,0 +1,85 @@
+[
+    {
+        "id": "ps_1764616550_8562",
+        "name": "System_Bereinigung",
+        "slug": "systembereinigung",
+        "description": "Windows Temp-Dateien: Löscht C:\\Windows\\Temp, Prefetch und Windows Update Cache\r\nBenutzer Temp-Dateien: Bereinigt temporäre Dateien aller Benutzerprofile\r\nBrowser-Cache: Entfernt Cache von Chrome, Edge, Firefox und IE\r\nPapierkorb: Leert den Papierkorb mittels COM-Objekt (stabiler Fix ohne Loop-Bug)\r\nThumbnail\/Icon Cache: Löscht Windows Explorer-Caches\r\nDNS-Cache: Führt ipconfig \/flushdns aus\r\nWindows Datenträgerbereinigung: Nutzt cleanmgr.exe für Systemdateien\r\n\r\nVoraussetzungen:\r\n\r\n    Administrator-Rechte → Das Skript erfordert #Requires -RunAsAdministrator\r\n    Windows-System mit PowerShell (mind. Version 5.1 empfohlen)\r\n    Schreibrechte für C:\\Temp (Log-Verzeichnis)\r\n    Optional: cleanmgr.exe muss verfügbar sein (Standard bei Windows)\r\n\r\nAusführung: Rechtsklick auf das Skript → „Als Administrator ausführen&quot;",
+        "category": "System",
+        "version": "1.0",
+        "ps_version": "5.1+",
+        "tags": [
+            "System Cleaner",
+            "More Performance"
+        ],
+        "features": [
+            "Detailliertes Logging nach C:\\Temp\\SystemCleanup_*.log",
+            "Speicherplatz-Übersicht vor\/nach Bereinigung",
+            "Farbcodierte Konsolenausgabe",
+            "Fehlerbehandlung mit try-catch",
+            "Anzeige von freigegebenem Speicher in MB"
+        ],
+        "file_path": "cms\/uploads\/ps_1764616550_8562.ps1",
+        "downloads": 1,
+        "views": 37,
+        "rating": 5,
+        "rating_count": 1,
+        "created": "",
+        "updated": "2025-12-01 20:15:50",
+        "active": 1,
+        "is_premium": 0,
+        "price": 0,
+        "file_type": "ps1",
+        "comments": [
+            {
+                "id": "692decef20da0",
+                "author": "Andreas",
+                "text": "Ganz Cool, kann ich das auch als monatlichen Task einbinden? Und wenn ja kannst du mir sagen wie? Danke",
+                "date": "2025-12-01 20:30:55"
+            }
+        ]
+    },
+    {
+        "id": "ps_1764618635_1678",
+        "name": "Exchange Postfach wieder herstellen wenn es ausversehentlich gelöscht wurde",
+        "slug": "exchange-postfach-wieder-herstellen-wenn-es-ausversehentlich-gelscht-wurde",
+        "description": "Das Skript stellt getrennte oder gelöschte Exchange-Postfächer wieder her und verbindet sie mit einem Active Directory-Benutzer. Es unterstützt sowohl lokale Exchange Management Shell als auch Remote-Verwaltung über PSSession.\r\nAblauf:\r\n\r\n    Verbindung zum Exchange Server (lokal oder remote)\r\n    Suche nach getrennten Postfächern in allen Datenbanken\r\n    Anzeige gefundener Postfächer mit Details (Größe, Trennungsgrund, Datum)\r\n    Auswahl des wiederherzustellenden Postfachs\r\n    Verknüpfung mit einem AD-Benutzerkonto via Connect-Mailbox\r\n",
+        "category": "Network",
+        "version": "1.0",
+        "ps_version": "5.1+",
+        "tags": [
+            "Rettung"
+        ],
+        "features": [
+            "Exchange Postfach Rettungs PS"
+        ],
+        "file_path": "cms\/uploads\/ps_1764618635_1678.ps1",
+        "downloads": 2,
+        "views": 14,
+        "rating": 4,
+        "rating_count": 1,
+        "created": "",
+        "updated": "2025-12-01 20:50:35",
+        "active": 1,
+        "is_premium": 1,
+        "price": 5,
+        "file_type": "ps1",
+        "comments": [
+            {
+                "id": "692df1e7d34e9",
+                "author": "Markus",
+                "text": "Hat mir den Arsch gerettet!!!!! Danke",
+                "date": "2025-12-01 20:52:07",
+                "is_admin": false,
+                "reply_to": null
+            },
+            {
+                "id": "692df21c0380d",
+                "author": "⚡ Michael (Admin)",
+                "text": "Sehr gerne Markus. Wenn du was brauchst, melde dich!",
+                "date": "2025-12-01 20:53:00",
+                "is_admin": true,
+                "reply_to": "Markus"
+            }
+        ]
+    }
+]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.12" fill="none" stroke-width="2"><path d="M0,100 Q300,50 600,100 T1200,100" stroke="#FFD700"/><path d="M0,200 Q300,150 600,200 T1200,200" stroke="#FF8C00"/><path d="M0,300 Q300,250 600,300 T1200,300" stroke="#FFD700"/><path d="M0,400 Q300,350 600,400 T1200,400" stroke="#FF8C00"/><path d="M0,500 Q300,450 600,500 T1200,500" stroke="#FFD700"/><path d="M0,600 Q300,550 600,600 T1200,600" stroke="#FF8C00"/><path d="M0,700 Q300,650 600,700 T1200,700" stroke="#FFD700"/><path d="M0,800 Q300,750 600,800 T1200,800" stroke="#FF8C00"/><path d="M0,900 Q300,850 600,900 T1200,900" stroke="#FFD700"/><path d="M0,1000 Q300,950 600,1000 T1200,1000" stroke="#FF8C00"/></g><circle cx="250" cy="300" r="180" fill="#FFD700" opacity="0.08" filter="url(#glow)"/>
+  <text x="600" y="545" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">Keiner hat noch</text><text x="600" y="655" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">Geld</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Rapp
+  </text>
+</svg>

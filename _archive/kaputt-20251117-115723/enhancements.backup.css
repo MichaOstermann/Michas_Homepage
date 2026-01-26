@@ -1,0 +1,64 @@
+/* Glassmorphism Enhancements */
+:root{
+  --glass-bg: rgba(11, 15, 22, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  --neon-cyan: #06FFF0;
+  --neon-violet: #8B5CF6;
+}
+
+.card, .btn--glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Micro-interactions */
+.card:hover { transform: translateY(-2px) scale(1.01); transition: transform 200ms ease, box-shadow 200ms ease; }
+.card:focus-within { outline: 2px solid rgba(6,255,240,0.35); outline-offset: 2px; }
+
+.btn--glass { transition: transform 160ms ease, box-shadow 160ms ease; }
+.btn--glass:hover { transform: translateY(-1px); box-shadow: 0 10px 36px rgba(11,15,22,0.45), inset 0 1px 0 rgba(255,255,255,0.12); }
+.btn--glass:focus-visible { outline: 2px solid rgba(139,92,246,0.6); outline-offset: 2px; }
+
+/* Fallback for browsers lacking backdrop-filter */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card, .btn--glass { background: rgba(11, 15, 22, 0.9); }
+}
+
+/* Background layers subtle parallax (CSS-only hint) */
+.hero__bg .layer { will-change: transform; }
+
+/* Reduced motion: keep UX calm */
+@media (prefers-reduced-motion: reduce){
+  .card:hover, .btn--glass:hover { transform: none; }
+}
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 600ms cubic-bezier(0.4,0,0.2,1), transform 600ms cubic-bezier(0.4,0,0.2,1); transition-delay: var(--reveal-delay, 0ms); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Nav active state (visual hint) */
+.nav .nav__link.is-active, .footer-nav .nav__link.is-active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(6,255,240,0.6);
+}
+
+/* Bot widget pulse and panel transitions */
+.bot { position: fixed; right: 24px; bottom: 24px; }
+.bot__ring { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--neon-violet); box-shadow: 0 0 12px rgba(139,92,246,0.9); animation: bot-pulse 1.6s ease-in-out infinite; margin-left: 8px; vertical-align: middle; }
+@keyframes bot-pulse { 0%,100%{ transform: scale(0.9); opacity: 0.7;} 50%{ transform: scale(1.15); opacity: 1; } }
+
+.botpanel { transition: transform 260ms ease, opacity 260ms ease; transform: translateY(16px); opacity: 0; }
+.botpanel[hidden] { display: block !important; opacity: 0; pointer-events: none; }
+.botpanel.is-open { transform: translateY(0); opacity: 1; }
+
+/* Native audio element – light theming where possible */
+.card .card__player audio, .card__player audio {
+  accent-color: var(--neon-cyan);
+}
+/* WebKit-only polish (best-effort, harmless if unsupported) */
+audio::-webkit-media-controls-panel { background-color: rgba(11,15,22,0.35); backdrop-filter: blur(10px) saturate(160%); }
+audio::-webkit-media-controls-play-button { filter: drop-shadow(0 0 6px rgba(6,255,240,0.6)); }

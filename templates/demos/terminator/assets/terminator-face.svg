@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <radialGradient id="redEyeGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FF0033;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FF1744;stop-opacity:0.9" />
+      <stop offset="70%" style="stop-color:#8B0000;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+    </radialGradient>
+    
+    <radialGradient id="metalGradient" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#B8B8B8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6B6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2A2A2A;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="darkMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#505050;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2A2A2A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A1A1A;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="metallic">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark Background -->
+  <rect width="800" height="600" fill="#000000" opacity="0.9"/>
+  
+  <!-- Head/Skull Base -->
+  <g opacity="0.95">
+    <!-- Main Cranium -->
+    <ellipse cx="400" cy="280" rx="140" ry="160" fill="url(#metalGradient)" stroke="#1A1A1A" stroke-width="3" filter="url(#metallic)"/>
+    
+    <!-- Jaw Structure -->
+    <path d="M 280 320 Q 270 390 320 420 L 480 420 Q 530 390 520 320 Z" 
+          fill="url(#darkMetal)" 
+          stroke="#1A1A1A" 
+          stroke-width="3"/>
+    
+    <!-- Upper Jaw -->
+    <path d="M 300 350 Q 300 370 320 375 L 480 375 Q 500 370 500 350 Z"
+          fill="url(#metalGradient)"
+          stroke="#2A2A2A"
+          stroke-width="2"/>
+    
+    <!-- Cheekbone Structure -->
+    <ellipse cx="310" cy="300" rx="30" ry="40" fill="url(#darkMetal)" opacity="0.8"/>
+    <ellipse cx="490" cy="300" rx="30" ry="40" fill="url(#darkMetal)" opacity="0.8"/>
+    
+    <!-- Forehead Plates -->
+    <path d="M 300 200 Q 350 180 400 180 Q 450 180 500 200 L 480 240 Q 400 230 320 240 Z"
+          fill="url(#metalGradient)"
+          stroke="#1A1A1A"
+          stroke-width="2"/>
+    
+    <!-- Temple Details -->
+    <circle cx="280" cy="250" r="15" fill="url(#darkMetal)" stroke="#505050" stroke-width="2"/>
+    <circle cx="520" cy="250" r="15" fill="url(#darkMetal)" stroke="#505050" stroke-width="2"/>
+    
+    <!-- Cranium Panels -->
+    <path d="M 350 190 L 360 210 L 350 230" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+    <path d="M 450 190 L 440 210 L 450 230" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+    <circle cx="400" cy="200" r="8" fill="#2A2A2A" stroke="#505050" stroke-width="1"/>
+  </g>
+  
+  <!-- Left Eye Socket (Dark) -->
+  <g>
+    <ellipse cx="350" cy="270" rx="35" ry="45" fill="#000000"/>
+    <ellipse cx="350" cy="270" rx="30" ry="40" fill="#0A0A0A"/>
+    <path d="M 320 260 Q 350 250 380 260" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+    <path d="M 320 280 Q 350 290 380 280" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Right Eye Socket (RED GLOWING) -->
+  <g>
+    <!-- Socket Base -->
+    <ellipse cx="450" cy="270" rx="35" ry="45" fill="#000000"/>
+    <ellipse cx="450" cy="270" rx="32" ry="42" fill="#050505"/>
+    
+    <!-- Glowing Red Eye -->
+    <ellipse cx="450" cy="270" rx="40" ry="50" fill="url(#redEyeGlow)" opacity="0.6"/>
+    <ellipse cx="450" cy="270" rx="28" ry="38" fill="url(#redEyeGlow)" filter="url(#strongGlow)"/>
+    <circle cx="450" cy="270" r="22" fill="#FF0033" opacity="0.9" filter="url(#strongGlow)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="22;25;22" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="270" r="15" fill="#FF1744" filter="url(#strongGlow)">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="445" cy="265" r="6" fill="#FFFFFF" opacity="0.8"/>
+    
+    <!-- Socket Details -->
+    <path d="M 420 260 Q 450 250 480 260" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+    <path d="M 420 280 Q 450 290 480 280" stroke="#1A1A1A" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Nose Cavity -->
+  <path d="M 390 320 Q 400 335 410 320 L 405 340 L 395 340 Z" 
+        fill="#000000" 
+        stroke="#1A1A1A" 
+        stroke-width="2"/>
+  
+  <!-- Teeth Structure -->
+  <g fill="#E8E8E8" stroke="#505050" stroke-width="1" opacity="0.9">
+    <!-- Upper Teeth -->
+    <rect x="360" y="380" width="12" height="18" rx="2"/>
+    <rect x="374" y="380" width="12" height="18" rx="2"/>
+    <rect x="388" y="380" width="12" height="18" rx="2"/>
+    <rect x="402" y="380" width="12" height="18" rx="2"/>
+    <rect x="416" y="380" width="12" height="18" rx="2"/>
+    <rect x="430" y="380" width="12" height="18" rx="2"/>
+    
+    <!-- Lower Teeth -->
+    <rect x="365" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+    <rect x="377" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+    <rect x="389" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+    <rect x="401" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+    <rect x="413" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+    <rect x="425" y="400" width="10" height="15" rx="2" opacity="0.8"/>
+  </g>
+  
+  <!-- Metal Damage Details -->
+  <g stroke="#1A1A1A" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 330 230 L 340 245"/>
+    <path d="M 470 230 L 460 245"/>
+    <path d="M 310 300 L 320 310"/>
+    <path d="M 490 300 L 480 310"/>
+  </g>
+  
+  <!-- Mechanical Details -->
+  <g opacity="0.7">
+    <circle cx="270" cy="280" r="5" fill="#505050" stroke="#2A2A2A" stroke-width="1"/>
+    <circle cx="530" cy="280" r="5" fill="#505050" stroke="#2A2A2A" stroke-width="1"/>
+    <rect x="375" y="350" width="5" height="15" fill="#2A2A2A" stroke="#505050" stroke-width="1"/>
+    <rect x="420" y="350" width="5" height="15" fill="#2A2A2A" stroke="#505050" stroke-width="1"/>
+  </g>
+  
+  <!-- Hydraulic/Cable Details -->
+  <g stroke="#FF0033" stroke-width="1" fill="none" opacity="0.3">
+    <path d="M 450 240 L 470 230 L 480 220"/>
+    <path d="M 450 300 L 470 310 L 480 320"/>
+    <circle cx="480" cy="220" r="3" fill="#FF0033" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="320" r="3" fill="#FF0033" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Red Glow Emanating from Eye -->
+  <ellipse cx="450" cy="270" rx="80" ry="90" fill="url(#redEyeGlow)" opacity="0.3">
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  
+  <!-- Scan Lines Effect -->
+  <g opacity="0.15">
+    <line x1="0" y1="200" x2="800" y2="200" stroke="#FF0033" stroke-width="1">
+      <animate attributeName="y1" values="100;500;100" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="100;500;100" dur="4s" repeatCount="indefinite"/>
+    </line>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E74C3C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2C3E50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A1A1A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="badge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F39C12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E67E22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Wrench Icon -->
+  <circle cx="200" cy="100" r="50" fill="rgba(231, 76, 60, 0.3)"/>
+  <text x="200" y="125" font-size="60" text-anchor="middle" fill="#E74C3C">🔧</text>
+  
+  <!-- Title -->
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="#FFFFFF">AUTO</text>
+  <text x="200" y="210" font-family="Arial, sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="#E74C3C">PRO</text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="240" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ECF0F1" font-weight="600">KFZ-Werkstatt</text>
+  
+  <!-- Badge -->
+  <rect x="10" y="10" width="120" height="30" rx="15" fill="url(#badge)"/>
+  <text x="70" y="30" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#FFFFFF">GÜNSTIG</text>
+  
+  <!-- Icons -->
+  <text x="50" y="280" font-size="24">✓</text>
+  <text x="140" y="280" font-size="24">🏆</text>
+  <text x="230" y="280" font-size="24">⭐</text>
+  <text x="320" y="280" font-size="24">💰</text>
+</svg>
+
+
+

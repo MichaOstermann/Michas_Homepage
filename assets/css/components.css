@@ -1,0 +1,172 @@
+/* ============================================
+   COMPONENT LIBRARY - Professional Structure
+   ============================================ */
+
+/* ===== STAT BADGES ===== */
+.stat-badge {
+  background: rgba(11,15,22,0.8);
+  backdrop-filter: blur(20px);
+  border: 2px solid;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: badgeFloat 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-badge::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: rotate(45deg);
+  animation: shimmerMove 3s infinite;
+}
+
+.stat-badge--cyan { border-color: #06FFF0; }
+.stat-badge--violet { border-color: #8B5CF6; animation-delay: 0.3s; }
+.stat-badge--pink { border-color: #FF1493; animation-delay: 0.6s; }
+
+.stat-badge__icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.stat-badge__number {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stat-badge__label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ===== POWER CARDS ===== */
+.power-card {
+  background: rgba(11,15,22,0.7);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(6,255,240,0.3);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.power-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #06FFF0, #8B5CF6, #FF1493, #00FF88);
+  background-size: 400% 400%;
+  animation: borderGlow 8s ease infinite;
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.power-card:hover::before {
+  opacity: 0.6;
+}
+
+.power-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(6,255,240,0.8);
+  box-shadow: 0 30px 80px rgba(6,255,240,0.4);
+}
+
+.power-card__icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 30px currentColor);
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+.power-card__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #FFF;
+}
+
+.power-card__desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+}
+
+.power-card__stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.power-stat {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ===== SECTION DIVIDERS ===== */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(6,255,240,0.6) 50%, 
+    transparent 100%
+  );
+  margin: 6rem auto;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(6,255,240,0.5);
+  animation: dividerPulse 3s ease-in-out infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmerMove {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes borderGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  75% { transform: translateY(-5px) rotate(5deg); }
+}
+
+@keyframes dividerPulse {
+  0%, 100% { 
+    opacity: 0.6; 
+    box-shadow: 0 0 20px rgba(6,255,240,0.5); 
+  }
+  50% { 
+    opacity: 1; 
+    box-shadow: 0 0 40px rgba(6,255,240,0.8); 
+  }
+}
+

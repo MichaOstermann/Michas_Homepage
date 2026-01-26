@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06FFF0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.1"><polygon points="236,295 328,295 282,387" fill="#8B5CF6"/><polygon points="676,535 776,535 726,635" fill="#06FFF0"/><polygon points="584,748 710,748 647,874" fill="url(#g)"/><polygon points="121,525 289,525 205,693" fill="#8B5CF6"/><polygon points="579,335 678,335 628.5,434" fill="#06FFF0"/><polygon points="715,486 846,486 780.5,617" fill="url(#g)"/><polygon points="961,394 1087,394 1024,520" fill="#8B5CF6"/><polygon points="641,140 786,140 713.5,285" fill="#06FFF0"/><polygon points="308,497 390,497 349,579" fill="url(#g)"/><polygon points="522,921 671,921 596.5,1070" fill="#8B5CF6"/><polygon points="997,220 1128,220 1062.5,351" fill="#06FFF0"/><polygon points="614,418 745,418 679.5,549" fill="url(#g)"/></g>
+  <text x="600" y="600" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="108" fill="url(#g)" filter="url(#glow)">test</text>
+  <text x="600" y="758" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Gemischt
+  </text>
+</svg>

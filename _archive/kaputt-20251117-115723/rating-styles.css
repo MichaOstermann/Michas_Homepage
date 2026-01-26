@@ -1,0 +1,219 @@
+/**
+ * Star Rating Styles - Neon Glow Design
+ * Passt zum Code & Beats Dark/Neon Theme
+ */
+
+.rating-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(11, 15, 22, 0.6);
+  border: 1px solid rgba(6, 255, 240, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.rating-widget:hover {
+  border-color: rgba(6, 255, 240, 0.4);
+  box-shadow: 0 0 20px rgba(6, 255, 240, 0.2);
+}
+
+/* Stars Container */
+.rating-stars {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Individual Star */
+.rating-star {
+  font-size: 1.75rem;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+  user-select: none;
+}
+
+/* Star Hover Effect */
+.rating-star:hover {
+  transform: scale(1.2) rotate(-15deg);
+  color: #FFD700;
+  filter: drop-shadow(0 0 8px #FFD700);
+}
+
+/* Active/Selected Star */
+.rating-star.active {
+  color: #FFD700;
+  filter: drop-shadow(0 0 12px #FFD700);
+  animation: starGlow 2s ease-in-out infinite;
+}
+
+@keyframes starGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px #FFD700);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px #FFD700) drop-shadow(0 0 24px rgba(255, 215, 0, 0.5));
+  }
+}
+
+/* Rated State - No more interaction */
+.rating-widget.rated .rating-star {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Rating Info Display */
+.rating-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Average Rating */
+.rating-average {
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #06FFF0 0%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: transform 0.2s ease;
+}
+
+/* Rating Count */
+.rating-count {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Ranking Badges */
+.rating-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+.rating-badge.badge-top {
+  background: linear-gradient(135deg, #FF006E 0%, #FF8C00 100%);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.6);
+}
+
+.rating-badge.badge-popular {
+  background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%);
+  color: #000;
+  box-shadow: 0 0 20px rgba(6, 255, 240, 0.4);
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Success Message */
+.rating-success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(6, 255, 240, 0.95);
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 0 30px rgba(6, 255, 240, 0.8);
+  animation: successFade 3s ease-in-out forwards;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@keyframes successFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* Rating Widget in Card */
+.card__body .rating-widget {
+  margin-top: 1rem;
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rating-star {
+    font-size: 1.5rem;
+  }
+  
+  .rating-average {
+    font-size: 1.25rem;
+  }
+  
+  .rating-widget {
+    padding: 0.75rem;
+  }
+}
+
+/* Loading State */
+.rating-widget.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rating-widget.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(6, 255, 240, 0.3);
+  border-top-color: #06FFF0;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Dark Mode Enhancement */
+@media (prefers-color-scheme: dark) {
+  .rating-widget {
+    background: rgba(11, 15, 22, 0.8);
+  }
+}

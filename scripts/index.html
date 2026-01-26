@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>PowerShell Scripts – Code & Beats</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/nav-modern.css" />
+  <link rel="stylesheet" href="../assets/css/rating-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../templates/index.html">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact">Kontakt</a></li>
+      </ul>
+
+      <!-- Active indicator (animated) -->
+      <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+      <!-- Hover halo (soft glow following the cursor) -->
+      <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+    </nav>
+    <!-- Scroll progress bar -->
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+  
+  <script src="../assets/js/app.js" defer></script>
+
+  <main style="padding-top: 6rem;">
+    <div class="container" style="max-width: 1200px;">
+      <h1 class="section__title" style="text-align: center; margin-bottom: 1.5rem;">⚡ PowerShell Scripts</h1>
+      
+      <!-- Intro Text -->
+      <div style="max-width: 900px; margin: 0 auto 3rem auto; text-align: center;">
+        <p style="font-size: 1.2rem; line-height: 1.8; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem;">
+          Willkommen in meiner <strong style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PowerShell-Script-Sammlung</strong>! 
+          Hier findest du <strong style="color: #06FFF0;">production-ready Scripts</strong> für verschiedenste Einsatzzwecke – 
+          von <span style="color: #06FFF0;">Gaming-Optimierung</span> über <span style="color: #FF5757;">Security-Scans</span> 
+          bis hin zu <span style="color: #00FF87;">System-Automatisierung</span>.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <div style="background: linear-gradient(135deg, rgba(6,255,240,0.1) 0%, rgba(6,255,240,0.05) 100%); border: 2px solid rgba(6,255,240,0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀</div>
+            <div style="color: #06FFF0; font-weight: 700; margin-bottom: 0.3rem;">Sofort einsatzbereit</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Copy & Paste – fertig!</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(139,92,246,0.05) 100%); border: 2px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🛡️</div>
+            <div style="color: #8B5CF6; font-weight: 700; margin-bottom: 0.3rem;">Sicher & getestet</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Mehrfach geprüft</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%); border: 2px solid rgba(0,255,136,0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📦</div>
+            <div style="color: #00FF88; font-weight: 700; margin-bottom: 0.3rem;">Kostenlos & Open</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Keine Einschränkungen</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,193,7,0.05) 100%); border: 2px solid rgba(255,193,7,0.3); border-radius: 12px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💡</div>
+            <div style="color: #FFC107; font-weight: 700; margin-bottom: 0.3rem;">Gut dokumentiert</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Mit Beispielen</div>
+          </div>
+        </div>
+        
+        <p style="margin-top: 2rem; font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7;">
+          <strong style="color: #8B5CF6;">💡 Tipp:</strong> Alle Scripts sind für <strong>PowerShell 5.1+</strong> optimiert und funktionieren 
+          sowohl unter Windows PowerShell als auch PowerShell Core. Bei komplexen Scripts mit mehreren Dateien erhältst du ein 
+          <strong style="color: #06FFF0;">komplettes Package (📦 ZIP)</strong> zum Download.
+        </p>
+      </div>
+      
+      <!-- Filter Bar -->
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+        <button class="filter-btn active" data-category="all" style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,255,240,0.2) 100%); border: 2px solid rgba(139,92,246,0.4); border-radius: 8px; color: #fff; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          Alle Scripts
+        </button>
+        <button class="filter-btn" data-category="Gaming" style="padding: 0.8rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          🎮 Gaming
+        </button>
+        <button class="filter-btn" data-category="Security" style="padding: 0.8rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          🛡️ Security
+        </button>
+        <button class="filter-btn" data-category="System" style="padding: 0.8rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          ⚙️ System
+        </button>
+        <button class="filter-btn" data-category="Automation" style="padding: 0.8rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.2); border-radius: 8px; color: rgba(255,255,255,0.7); font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          🤖 Automation
+        </button>
+      </div>
+
+      <style>
+        .filter-btn:hover {
+          background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(6,255,240,0.15) 100%);
+          border-color: rgba(139,92,246,0.6);
+          transform: translateY(-2px);
+        }
+        .filter-btn.active {
+          background: linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(6,255,240,0.3) 100%);
+          border-color: #8B5CF6;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      </style>
+      
+      <div id="scriptsGrid" class="grid grid--cards" data-scripts-list style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+        <p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5);">⏳ Lade Scripts...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: linear-gradient(135deg, rgba(11,15,22,0.98) 0%, rgba(30,30,40,0.98) 100%); border: 2px solid rgba(255,215,0,0.5); border-radius: 20px; padding: 2.5rem; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(255,215,0,0.4);">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">💎</div>
+        <h3 id="checkoutTitle" style="color: #FFD700; margin-bottom: 0.5rem; font-size: 1.8rem;">Premium Script</h3>
+        <p id="checkoutPrice" style="color: #fff; font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">€0.00</p>
+      </div>
+      
+      <div style="background: rgba(255,215,0,0.1); border: 2px solid rgba(255,215,0,0.3); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+        <p style="color: rgba(255,255,255,0.9); line-height: 1.6; margin-bottom: 1rem;">
+          <strong style="color: #FFD700;">📧 Kontakt für Kauf:</strong><br>
+          Sende eine E-Mail an <strong style="color: #06FFF0;">info@mcgv.de</strong> mit dem Script-Namen und du erhältst eine Rechnung sowie den Download-Link.
+        </p>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0;">
+          💳 Zahlung per PayPal, Überweisung oder Kreditkarte möglich.
+        </p>
+      </div>
+      
+      <div style="display: flex; gap: 1rem;">
+        <button onclick="window.location.href='mailto:info@mcgv.de?subject=Premium Script Kauf: ' + encodeURIComponent(document.getElementById('checkoutTitle').textContent)" style="flex: 1; padding: 1rem; background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%); color: #000; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
+          📧 Jetzt E-Mail senden
+        </button>
+        <button onclick="closeCheckoutModal()" style="flex: 1; padding: 1rem; background: rgba(255,87,87,0.2); border: 2px solid #FF5757; color: #FF5757; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem;">
+          Abbrechen
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Rating Modal -->
+  <div id="ratingModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+    <div style="background: linear-gradient(135deg, rgba(11,15,22,0.95) 0%, rgba(30,30,40,0.98) 100%); border: 2px solid rgba(139,92,246,0.5); border-radius: 20px; padding: 2rem; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(139,92,246,0.4);">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">⭐</div>
+      <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.5rem;">Vielen Dank!</h3>
+      <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem;">Deine Bewertung wurde gespeichert.</p>
+      <button onclick="closeRatingModal()" style="padding: 0.8rem 2rem; background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: #000; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;">OK</button>
+    </div>
+  </div>
+
+  <footer class="footer site-footer" role="contentinfo">
+    <div class="container footer__top">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(6,255,240,0.2);">
+      <small style="color: rgba(255,255,255,0.6);">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Datenschutz</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // Load Scripts from CMS
+    async function loadScripts() {
+      try {
+        const response = await fetch('cms/data/scripts.json');
+        const scripts = await response.json();
+        
+        if (!scripts || scripts.length === 0) {
+          document.getElementById('scriptsGrid').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5);">Noch keine Scripts verfügbar.</p>';
+          return;
+        }
+        
+        const activeScripts = scripts.filter(s => s.active);
+        renderScripts(activeScripts);
+        setupFilters(scripts);
+        trackViews(activeScripts);
+      } catch (error) {
+        console.error('Error loading scripts:', error);
+        document.getElementById('scriptsGrid').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(255,87,87,0.7);">⚠️ Fehler beim Laden der Scripts.</p>';
+      }
+    }
+    
+    function renderScripts(scripts) {
+      const grid = document.getElementById('scriptsGrid');
+      
+      if (scripts.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(255,255,255,0.5);">Keine Scripts in dieser Kategorie gefunden.</p>';
+        return;
+      }
+      
+      grid.innerHTML = scripts.map(script => `
+        <article class="script-card" data-category="${script.category}" style="background: linear-gradient(135deg, rgba(11,15,22,0.8) 0%, rgba(30,30,40,0.9) 100%); border: 2px solid ${script.is_premium ? 'rgba(255,215,0,0.4)' : 'rgba(139,92,246,0.2)'}; border-radius: 16px; padding: 1.5rem; transition: all 0.3s; animation: fadeIn 0.5s ease-out; position: relative; overflow: hidden;">
+          
+          ${script.is_premium ? `
+            <div style="position: absolute; top: 0; left: 0; padding: 0.5rem 1rem; background: linear-gradient(135deg, rgba(255,215,0,0.3) 0%, rgba(255,193,7,0.2) 100%); border-bottom-right-radius: 12px; border: 2px solid rgba(255,215,0,0.6); border-top: none; border-left: none; z-index: 10;">
+              <span style="color: #FFD700; font-weight: 700; font-size: 0.85rem;">💎 PREMIUM</span>
+            </div>
+          ` : ''}
+          
+          <div style="position: absolute; top: 0; right: 0; padding: 0.4rem 0.8rem; background: rgba(139,92,246,0.2); border-bottom-left-radius: 12px; border: 2px solid rgba(139,92,246,0.4); border-top: none; border-right: none;">
+            <span style="color: #8B5CF6; font-weight: 700; font-size: 0.8rem;">${getCategoryIcon(script.category)} ${script.category}</span>
+          </div>
+          
+          <h3 style="margin: 1.8rem 0 0.8rem 0; font-size: 1.3rem; color: #fff;">${script.name}</h3>
+          <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; line-height: 1.5; font-size: 0.95rem;">${script.description}</p>
+          
+          ${script.features && script.features.length > 0 ? `
+            <div style="margin-bottom: 1rem;">
+              <strong style="color: #8B5CF6; font-size: 0.85rem;">Features:</strong>
+              <ul style="margin: 0.3rem 0; padding-left: 1.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.4;">
+                ${script.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;">
+            ${script.tags.map(tag => `<span style="padding: 0.3rem 0.8rem; background: rgba(6,255,240,0.1); border: 1px solid rgba(6,255,240,0.3); border-radius: 12px; font-size: 0.85rem; color: #06FFF0;">${tag}</span>`).join('')}
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.8rem; border-top: 1px solid rgba(139,92,246,0.2); flex-wrap: wrap; gap: 0.8rem;">
+            <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); align-items: center; flex-wrap: wrap;">
+              <span>⬇️ ${script.downloads || 0}</span>
+              <span>👁️ ${script.views || 0}</span>
+              <div class="rating-display" style="display: flex; align-items: center; gap: 0.4rem;">
+                <div class="stars" data-script-id="${script.id}" style="display: flex; gap: 0.2rem; cursor: pointer;">
+                  ${[1,2,3,4,5].map(star => `
+                    <span class="star" data-value="${star}" style="font-size: 1.2rem; transition: all 0.2s; filter: grayscale(${star <= Math.round(script.rating || 0) ? 0 : 1});">
+                      ${star <= Math.round(script.rating || 0) ? '⭐' : '☆'}
+                    </span>
+                  `).join('')}
+                </div>
+                <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">${(script.rating || 0).toFixed(1)} (${script.rating_count || 0})</span>
+              </div>
+              ${script.is_premium ? `
+                <span style="font-weight: 700; font-size: 1.1rem; color: #FFD700; margin-left: 0.5rem;">€${parseFloat(script.price || 0).toFixed(2)}</span>
+              ` : `
+                <span style="font-weight: 700; color: #00FF88;">KOSTENLOS</span>
+              `}
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              ${script.file_path ? (
+                script.is_premium ? `
+                  <button onclick="checkoutPremium('${script.id}', '${script.name}', ${script.price})" style="padding: 0.6rem 1.2rem; background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%); color: #000; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; transition: all 0.3s; display: inline-block;">
+                    💳 Kaufen (€${parseFloat(script.price || 0).toFixed(2)})
+                  </button>
+                ` : `
+                  <a href="${script.file_path}" download onclick="trackDownload('${script.id}')" style="padding: 0.6rem 1.2rem; background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: #000; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.3s; display: inline-block;">
+                    ${script.file_type === 'zip' ? '📦 Package' : '📥 Download'}
+                  </a>
+                `
+              ) : ''}
+              <button onclick="toggleComments('${script.id}')" style="padding: 0.6rem 1.2rem; background: rgba(139,92,246,0.2); border: 2px solid rgba(139,92,246,0.4); color: #8B5CF6; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                💬 Kommentare (${(script.comments || []).length})
+              </button>
+            </div>
+          </div>
+          
+          <!-- Comments Section -->
+          <div id="comments-${script.id}" class="comments-section" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(139,92,246,0.2);">
+            <h4 style="color: #8B5CF6; margin-bottom: 1rem; font-size: 1.1rem;">💬 Kommentare</h4>
+            
+            <!-- Comment Form -->
+            <div style="margin-bottom: 1.5rem;">
+              <input type="text" id="author-${script.id}" placeholder="Dein Name" style="width: 100%; padding: 0.6rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.3); border-radius: 8px; color: #fff; margin-bottom: 0.5rem;" maxlength="50">
+              <textarea id="comment-${script.id}" placeholder="Dein Kommentar..." style="width: 100%; padding: 0.6rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(139,92,246,0.3); border-radius: 8px; color: #fff; min-height: 80px; resize: vertical; margin-bottom: 0.5rem;" maxlength="500"></textarea>
+              <button onclick="submitComment('${script.id}')" style="padding: 0.6rem 1.2rem; background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: #000; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;">📤 Kommentar absenden</button>
+            </div>
+            
+            <!-- Comments List -->
+            <div id="comments-list-${script.id}" style="display: flex; flex-direction: column; gap: 1rem;">
+              ${(script.comments || []).map(comment => `
+                <div style="background: ${comment.is_admin ? 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(6,255,240,0.1) 100%)' : 'rgba(11,15,22,0.6)'}; border: 1px solid ${comment.is_admin ? 'rgba(139,92,246,0.4)' : 'rgba(139,92,246,0.2)'}; border-radius: 8px; padding: 1rem; ${comment.reply_to ? 'margin-left: 2rem; border-left: 3px solid #8B5CF6;' : ''}">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <strong style="color: ${comment.is_admin ? '#8B5CF6' : '#06FFF0'};">${comment.author}</strong>
+                      ${comment.is_admin ? '<span style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: #000; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700;">ADMIN</span>' : ''}
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">${new Date(comment.date).toLocaleDateString('de-DE')}</span>
+                      <button onclick="replyToComment('${script.id}', '${comment.id}', '${comment.author}')" style="background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); color: #8B5CF6; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s;">↩️ Antworten</button>
+                    </div>
+                  </div>
+                  ${comment.reply_to ? `<div style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-bottom: 0.5rem;">↩️ Antwort auf ${comment.reply_to}</div>` : ''}
+                  <p style="color: rgba(255,255,255,0.8); margin: 0; line-height: 1.5;">${comment.text}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </article>
+      `).join('');
+      
+      // Add hover effects
+      document.querySelectorAll('.script-card').forEach(card => {
+        const isPremium = card.querySelector('[style*="PREMIUM"]');
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+          if (isPremium) {
+            this.style.borderColor = 'rgba(255,215,0,0.8)';
+            this.style.boxShadow = '0 20px 40px rgba(255,215,0,0.4)';
+          } else {
+            this.style.borderColor = 'rgba(139,92,246,0.6)';
+            this.style.boxShadow = '0 20px 40px rgba(139,92,246,0.3)';
+          }
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+          if (isPremium) {
+            this.style.borderColor = 'rgba(255,215,0,0.4)';
+          } else {
+            this.style.borderColor = 'rgba(139,92,246,0.2)';
+          }
+          this.style.boxShadow = 'none';
+        });
+      });
+      
+      // Setup rating system
+      setupRatingSystem();
+    }
+    
+    function getCategoryIcon(category) {
+      const icons = {
+        'Gaming': '🎮',
+        'Security': '🛡️',
+        'System': '⚙️',
+        'Automation': '🤖',
+        'Network': '🌐',
+        'Tools': '🔧'
+      };
+      return icons[category] || '📦';
+    }
+    
+    function setupFilters(scripts) {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Update active state
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'rgba(11,15,22,0.8)';
+            b.style.borderColor = 'rgba(139,92,246,0.2)';
+          });
+          this.classList.add('active');
+          this.style.background = 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(6,255,240,0.3) 100%)';
+          this.style.borderColor = '#8B5CF6';
+          
+          // Filter scripts
+          const category = this.dataset.category;
+          const filtered = category === 'all' 
+            ? scripts.filter(s => s.active)
+            : scripts.filter(s => s.active && s.category === category);
+          
+          renderScripts(filtered);
+        });
+      });
+    }
+    
+    // Checkout Premium Script
+    function checkoutPremium(scriptId, scriptName, price) {
+      document.getElementById('checkoutTitle').textContent = scriptName;
+      document.getElementById('checkoutPrice').textContent = `€${parseFloat(price).toFixed(2)}`;
+      document.getElementById('checkoutModal').style.display = 'flex';
+    }
+    
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+    
+    // Track View on Page Load
+    function trackViews(scripts) {
+      scripts.forEach(script => {
+        if (script.id && script.active) {
+          fetch('cms/api/track.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ script_id: script.id, type: 'view' })
+          }).catch(err => console.error('View tracking error:', err));
+        }
+      });
+    }
+    
+    // Track Download
+    function trackDownload(scriptId) {
+      fetch('cms/api/track.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ script_id: scriptId, type: 'download' })
+      }).then(() => {
+        // Reload to update download count
+        setTimeout(() => loadScripts(), 500);
+      }).catch(err => console.error('Download tracking error:', err));
+    }
+    
+    // Toggle Comments Section
+    function toggleComments(scriptId) {
+      const section = document.getElementById(`comments-${scriptId}`);
+      if (section.style.display === 'none') {
+        section.style.display = 'block';
+        loadComments(scriptId);
+      } else {
+        section.style.display = 'none';
+      }
+    }
+    
+    // Load Comments
+    async function loadComments(scriptId) {
+      try {
+        const response = await fetch(`cms/api/comments.php?script_id=${scriptId}`);
+        const result = await response.json();
+        
+        if (result.success) {
+          const list = document.getElementById(`comments-list-${scriptId}`);
+          if (result.comments.length === 0) {
+            list.innerHTML = '<p style="color: rgba(255,255,255,0.5); text-align: center;">Noch keine Kommentare. Sei der Erste!</p>';
+          } else {
+            list.innerHTML = result.comments.map(comment => `
+              <div style="background: ${comment.is_admin ? 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(6,255,240,0.1) 100%)' : 'rgba(11,15,22,0.6)'}; border: 1px solid ${comment.is_admin ? 'rgba(139,92,246,0.4)' : 'rgba(139,92,246,0.2)'}; border-radius: 8px; padding: 1rem; ${comment.reply_to ? 'margin-left: 2rem; border-left: 3px solid #8B5CF6;' : ''}">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <strong style="color: ${comment.is_admin ? '#8B5CF6' : '#06FFF0'};">${comment.author}</strong>
+                    ${comment.is_admin ? '<span style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: #000; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700;">ADMIN</span>' : ''}
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">${new Date(comment.date).toLocaleDateString('de-DE')}</span>
+                    <button onclick="replyToComment('${comment.script_id || scriptId}', '${comment.id}', '${comment.author}')" style="background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.4); color: #8B5CF6; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s;">↩️ Antworten</button>
+                  </div>
+                </div>
+                ${comment.reply_to ? `<div style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-bottom: 0.5rem;">↩️ Antwort auf ${comment.reply_to}</div>` : ''}
+                <p style="color: rgba(255,255,255,0.8); margin: 0; line-height: 1.5;">${comment.text}</p>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (error) {
+        console.error('Load comments error:', error);
+      }
+    }
+    
+    // Reply to Comment
+    let currentReply = null;
+    
+    function replyToComment(scriptId, commentId, commentAuthor) {
+      currentReply = { commentId, commentAuthor };
+      const authorInput = document.getElementById(`author-${scriptId}`);
+      const textArea = document.getElementById(`comment-${scriptId}`);
+      
+      // Check if Admin
+      const isAdmin = prompt('Admin-Passwort (oder leer lassen für normale Antwort):');
+      if (isAdmin === 'Darkman2012!') {
+        authorInput.value = '⚡ Michael (Admin)';
+        authorInput.readOnly = true;
+      } else {
+        authorInput.readOnly = false;
+      }
+      
+      textArea.placeholder = `Antwort auf ${commentAuthor}...`;
+      textArea.focus();
+      
+      // Add reply info display
+      const form = textArea.parentElement;
+      let replyInfo = document.getElementById(`reply-info-${scriptId}`);
+      if (!replyInfo) {
+        replyInfo = document.createElement('div');
+        replyInfo.id = `reply-info-${scriptId}`;
+        form.insertBefore(replyInfo, authorInput);
+      }
+      replyInfo.innerHTML = `<div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 4px; padding: 0.5rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;"><span style="color: #8B5CF6; font-size: 0.85rem;">↩️ Antwort auf: <strong>${commentAuthor}</strong></span><button onclick="cancelReply('${scriptId}')" style="background: transparent; border: none; color: #FF5757; cursor: pointer; font-weight: 700;">✕</button></div>`;
+    }
+    
+    function cancelReply(scriptId) {
+      currentReply = null;
+      const replyInfo = document.getElementById(`reply-info-${scriptId}`);
+      if (replyInfo) replyInfo.remove();
+      const authorInput = document.getElementById(`author-${scriptId}`);
+      authorInput.readOnly = false;
+      document.getElementById(`comment-${scriptId}`).placeholder = 'Dein Kommentar...';
+    }
+    
+    // Submit Comment
+    async function submitComment(scriptId) {
+      const author = document.getElementById(`author-${scriptId}`).value.trim();
+      const text = document.getElementById(`comment-${scriptId}`).value.trim();
+      
+      if (!author || !text) {
+        alert('Bitte fülle beide Felder aus!');
+        return;
+      }
+      
+      try {
+        const isAdmin = author.includes('Admin');
+        const payload = { 
+          script_id: scriptId, 
+          author, 
+          text,
+          is_admin: isAdmin
+        };
+        
+        if (currentReply) {
+          payload.reply_to = currentReply.commentAuthor;
+        }
+        
+        const response = await fetch('cms/api/comments.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          // Clear form
+          const authorInput = document.getElementById(`author-${scriptId}`);
+          authorInput.value = '';
+          authorInput.readOnly = false;
+          document.getElementById(`comment-${scriptId}`).value = '';
+          document.getElementById(`comment-${scriptId}`).placeholder = 'Dein Kommentar...';
+          // Clear reply state
+          cancelReply(scriptId);
+          // Reload comments
+          loadComments(scriptId);
+          // Update comment count
+          setTimeout(() => loadScripts(), 500);
+        } else {
+          alert('Fehler beim Speichern des Kommentars.');
+        }
+      } catch (error) {
+        console.error('Submit comment error:', error);
+        alert('Fehler beim Speichern des Kommentars.');
+      }
+    }
+    
+    // Rating System
+    function setupRatingSystem() {
+      document.querySelectorAll('.stars').forEach(starsContainer => {
+        const stars = starsContainer.querySelectorAll('.star');
+        const scriptId = starsContainer.dataset.scriptId;
+        
+        stars.forEach(star => {
+          star.addEventListener('mouseenter', function() {
+            const value = parseInt(this.dataset.value);
+            highlightStars(stars, value);
+          });
+          
+          star.addEventListener('click', async function() {
+            const value = parseInt(this.dataset.value);
+            await submitRating(scriptId, value);
+          });
+        });
+        
+        starsContainer.addEventListener('mouseleave', function() {
+          const currentRating = Math.round(parseFloat(starsContainer.closest('.rating-display').querySelector('span').textContent));
+          highlightStars(stars, currentRating);
+        });
+      });
+    }
+    
+    function highlightStars(stars, value) {
+      stars.forEach((star, index) => {
+        if (index < value) {
+          star.textContent = '⭐';
+          star.style.filter = 'grayscale(0)';
+          star.style.transform = 'scale(1.2)';
+        } else {
+          star.textContent = '☆';
+          star.style.filter = 'grayscale(1)';
+          star.style.transform = 'scale(1)';
+        }
+      });
+    }
+    
+    async function submitRating(scriptId, rating) {
+      try {
+        const response = await fetch('cms/api/rate.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ script_id: scriptId, rating: rating })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          showRatingModal();
+          // Reload scripts to update rating
+          setTimeout(() => loadScripts(), 1500);
+        } else {
+          alert('Fehler beim Speichern der Bewertung.');
+        }
+      } catch (error) {
+        console.error('Rating error:', error);
+        alert('Fehler beim Speichern der Bewertung.');
+      }
+    }
+    
+    function showRatingModal() {
+      const modal = document.getElementById('ratingModal');
+      modal.style.display = 'flex';
+    }
+    
+    function closeRatingModal() {
+      const modal = document.getElementById('ratingModal');
+      modal.style.display = 'none';
+    }
+    
+    // Load on page ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadScripts);
+    } else {
+      loadScripts();
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06FFF0"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#0B0F16"/>
+  <g opacity="0.12" stroke="#06FFF0" stroke-width="2" fill="none">
+		<polygon points="600,200 800,400 600,600 400,400"/>
+		<polygon points="600,300 750,450 600,600 450,450"/>
+		<polygon points="600,400 700,500 600,600 500,500"/>
+	</g>
+	<g opacity="0.12" stroke="#8B5CF6" stroke-width="2" fill="none">
+		<circle cx="600" cy="600" r="350"/>
+		<circle cx="600" cy="600" r="280"/>
+		<circle cx="600" cy="600" r="210"/>
+	</g>
+	<rect x="100" y="100" width="200" height="200" fill="url(#g)" opacity="0.08" transform="rotate(45 200 200)"/>
+  <text x="600" y="545" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">Leila war gestern</text><text x="600" y="655" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="100" fill="url(#g)" filter="url(#glow)">:-)</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="54" fill="#E5E7EB" opacity="0.85">
+    Michael Ostermann · Party
+  </text>
+</svg>

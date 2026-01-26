@@ -1,0 +1,45 @@
+{
+  "name": "Code & Beats by Micha - Musik, Scripts & Gaming",
+  "short_name": "CodeBeats",
+  "description": "🎵 22+ Songs, professionelle PowerShell-Scripts und Gaming-Content von Micha @ mcgv.de",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F16",
+  "theme_color": "#06FFF0",
+  "orientation": "portrait-primary",
+  "categories": ["music", "entertainment", "productivity", "education"],
+  "lang": "de",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "assets/media/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Musik",
+      "short_name": "Musik",
+      "description": "Alle Songs durchstöbern",
+      "url": "/Musik/",
+      "icons": [{"src": "assets/media/favicon.svg", "sizes": "any"}]
+    },
+    {
+      "name": "Scripts",
+      "short_name": "Scripts",
+      "description": "PowerShell Scripts",
+      "url": "/scripts/",
+      "icons": [{"src": "assets/media/favicon.svg", "sizes": "any"}]
+    },
+    {
+      "name": "Gaming",
+      "short_name": "Gaming",
+      "description": "Gaming Content",
+      "url": "/gaming/",
+      "icons": [{"src": "assets/media/favicon.svg", "sizes": "any"}]
+    }
+  ]
+}
+

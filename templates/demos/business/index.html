@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive" />
+  <title>Business Pro Landing – Demo</title>
+  <meta name="description" content="Elegantes Business-Template – Hero, Trust, Leistungen, Referenzen, Pricing, CTA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">Business<span>Pro</span></div>
+      <nav class="menu">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#preise">Preise</a>
+        <a href="#kontakt" class="btn btn-primary">Jetzt starten</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-video-bg">
+        <video autoplay muted loop playsinline id="heroVideo">
+          <source src="https://cdn.coverr.co/videos/coverr-abstract-waves-of-blue-particles-7836/1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <button class="video-control" id="videoControl" aria-label="Video pausieren">
+        <span class="pause-icon">⏸</span>
+        <span class="play-icon" style="display:none">▶</span>
+      </button>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1>Wachse schneller mit einem klaren Auftritt</h1>
+          <p>Ein modernes, seriöses Template für Agenturen, SaaS und Dienstleister. Klar strukturiert, responsiv und auf Conversion optimiert.</p>
+          <div class="hero-cta">
+            <a href="#kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a>
+            <a href="#leistungen" class="btn btn-ghost">Mehr erfahren</a>
+          </div>
+          <div class="trustbar" aria-label="Vertrauen">
+            <img src="assets/trust-iso.svg" alt="ISO" />
+            <img src="assets/trust-gdpr.svg" alt="GDPR" />
+            <img src="assets/trust-ssl.svg" alt="SSL" />
+            <img src="assets/trust-award.svg" alt="Award" />
+          </div>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <div class="card kpi">
+            <div class="kpi-num">+132%</div>
+            <div class="kpi-label">Leads in 90 Tagen</div>
+          </div>
+          <div class="card gradient"></div>
+          <div class="card chart"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="section">
+      <div class="container">
+        <h2 class="section-title">Leistungen, die Ergebnisse liefern</h2>
+        <p class="section-sub">Fokussiert auf Klarheit, Geschwindigkeit und Wirkung – für echte Business-Ziele.</p>
+        <div class="grid services">
+          <article class="service">
+            <div class="icon">🚀</div>
+            <h3>Schnelle Landingpages</h3>
+            <p>Optimiert für Conversions, messbar und skalierbar. Pixelgenaues Design trifft saubere Struktur.</p>
+          </article>
+          <article class="service">
+            <div class="icon">🎯</div>
+            <h3>Brand & Messaging</h3>
+            <p>Klarer Fokus, klare Sprache: Mach aus Besuchern Interessenten – und aus Interessenten Kunden.</p>
+          </article>
+          <article class="service">
+            <div class="icon">⚡</div>
+            <h3>Performance & SEO</h3>
+            <p>Leichtgewichtige Komponenten, Core Web Vitals im Blick und strukturierte Daten on board.</p>
+          </article>
+          <article class="service">
+            <div class="icon">🔒</div>
+            <h3>Security Basics</h3>
+            <p>HTTPS, DSGVO, Consent – seriöse Basis ohne Reibungsverluste. Auf Wunsch erweiterbar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="referenzen" class="section alt">
+      <div class="container">
+        <h2 class="section-title">Was Kund:innen sagen</h2>
+        <div class="grid testimonials">
+          <article class="t-card">
+            <p>„Unser Launch war in 2 Wochen live – klar, schnell, professionell. Die Conversion ist um 40% gestiegen.“</p>
+            <div class="t-meta">
+              <div class="avatar">AM</div>
+              <div><strong>Anna Müller</strong><br><span>CMO, SaaSify</span></div>
+            </div>
+          </article>
+          <article class="t-card">
+            <p>„Schönes Design, aber vor allem: wirkungsvoll. Sehr strukturierte Zusammenarbeit und messbare Ergebnisse.“</p>
+            <div class="t-meta">
+              <div class="avatar">JS</div>
+              <div><strong>Jonas Schmidt</strong><br><span>Founder, GrowthLabs</span></div>
+            </div>
+          </article>
+          <article class="t-card">
+            <p>„Wir haben die Vorlage angepasst und binnen Tagen Anfragen verdoppelt. Sehr zu empfehlen.“</p>
+            <div class="t-meta">
+              <div class="avatar">LK</div>
+              <div><strong>Laura Klein</strong><br><span>CEO, ConsultX</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Comparison Table -->
+    <section class="section comparison-section">
+      <div class="container">
+        <h2 class="section-title">Detaillierter Feature-Vergleich</h2>
+        <p class="section-sub">Alle Funktionen im Überblick</p>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th class="feature-col">Features</th>
+                <th>Starter</th>
+                <th class="highlight-col">Pro</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-col">Template-Dateien (HTML/CSS/JS)</td>
+                <td><span class="check">✓</span></td>
+                <td class="highlight-col"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">Responsive Design</td>
+                <td><span class="check">✓</span></td>
+                <td class="highlight-col"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">Kommerzielle Nutzung</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">Varianten & Themes</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">Updates (Monate)</td>
+                <td>0</td>
+                <td class="highlight-col">12</td>
+                <td>∞ Lifetime</td>
+              </tr>
+              <tr>
+                <td class="feature-col">Support</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col">Email</td>
+                <td>Priority + Call</td>
+              </tr>
+              <tr>
+                <td class="feature-col">Individuelle Anpassungen</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col"><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">API-Integrationen</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col"><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <td class="feature-col">Video-Onboarding</td>
+                <td><span class="cross">✗</span></td>
+                <td class="highlight-col"><span class="cross">✗</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="preise" class="section">
+      <div class="container">
+        <h2 class="section-title">Transparente Pakete</h2>
+        <p class="section-sub">Wähle das Paket, das zu deinen Zielen passt</p>
+        <div class="grid pricing">
+          <article class="price">
+            <h3>Starter</h3>
+            <div class="num">€ 0</div>
+            <div class="price-period">Einmalig</div>
+            <ul>
+              <li>✓ Template-Dateien</li>
+              <li>✓ Basis-Abschnitte</li>
+              <li>✓ Lizenz: nicht-kommerziell</li>
+              <li class="muted">✗ Updates</li>
+              <li class="muted">✗ Support</li>
+            </ul>
+            <a href="#kontakt" class="btn btn-ghost">Anfragen</a>
+          </article>
+          <article class="price featured">
+            <div class="pill">⭐ Beliebt</div>
+            <h3>Pro</h3>
+            <div class="num">€ 79</div>
+            <div class="price-period">Einmalig</div>
+            <ul>
+              <li>✓ Full Template + Varianten</li>
+              <li>✓ Kommerzielle Nutzung</li>
+              <li>✓ 12 Monate Updates</li>
+              <li>✓ Basis-Support</li>
+              <li>✓ Doku & Snippets</li>
+            </ul>
+            <a href="#kontakt" class="btn btn-primary pulse-cta">Jetzt starten</a>
+          </article>
+          <article class="price">
+            <h3>Enterprise</h3>
+            <div class="num">€ 249</div>
+            <div class="price-period">Einmalig</div>
+            <ul>
+              <li>✓ Individuelle Anpassungen</li>
+              <li>✓ API-Integrationen</li>
+              <li>✓ Lifetime Updates</li>
+              <li>✓ Priorisierter Support</li>
+              <li>✓ Video-Onboarding</li>
+            </ul>
+            <a href="#kontakt" class="btn btn-ghost">Beratung buchen</a>
+          </article>
+        </div>
+        <p style="text-align:center;margin-top:32px;color:var(--muted);font-size:.9rem">Alle Preise zzgl. MwSt. · 14 Tage Geld-zurück-Garantie</p>
+      </div>
+    </section>
+
+    <section id="kontakt" class="cta">
+      <div class="container cta-inner">
+        <h2>Bereit loszulegen?</h2>
+        <p>Fordere die Vorlage an oder lass uns kurz sprechen, was du brauchst.</p>
+        <a href="/templates/" class="btn btn-primary">Zurück zu Templates</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center">
+      <div>
+        <a href="/templates/" class="btn btn-ghost" style="margin-right:8px">← Zurück zu Templates</a>
+        <a href="/impressum.html" class="btn btn-ghost" style="margin-right:8px">Impressum</a>
+        <a href="/datenschutz.html" class="btn btn-ghost">Datenschutz</a>
+      </div>
+      <small style="color:var(--muted)">(C) 2025 by Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- Live Chat Widget -->
+  <div class="chat-widget" id="chatWidget">
+    <button class="chat-fab" id="chatFab" aria-label="Chat öffnen">
+      <span class="chat-icon">💬</span>
+      <span class="chat-badge">1</span>
+    </button>
+    <div class="chat-panel" id="chatPanel" style="display:none">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">BP</div>
+          <div>
+            <div class="chat-title">BusinessPro Support</div>
+            <div class="chat-status">● Online</div>
+          </div>
+        </div>
+        <button class="chat-close" id="chatClose" aria-label="Schließen">✕</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message bot">
+          <div class="message-bubble">Hallo! 👋 Wie kann ich dir helfen?</div>
+        </div>
+      </div>
+      <div class="chat-quick-replies">
+        <button class="quick-reply" data-reply="Preise">💰 Preise</button>
+        <button class="quick-reply" data-reply="Demo">🎯 Demo buchen</button>
+        <button class="quick-reply" data-reply="Support">🛠️ Support</button>
+      </div>
+      <div class="chat-input-wrapper">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Nachricht schreiben..." />
+        <button class="chat-send" id="chatSend" aria-label="Senden">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Nach oben" style="display:none">
+    <span>↑</span>
+  </button>
+
+  <script src="script.js" defer></script>
+  <script src="protected.js" defer></script>
+</body>
+</html>

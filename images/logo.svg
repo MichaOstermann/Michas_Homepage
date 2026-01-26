@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" role="img" aria-labelledby="title">
+  <title id="title">CodeBeats Studio</title>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2de3d1"/>
+      <stop offset="100%" stop-color="#5c5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="56" rx="14" fill="rgba(11,16,38,0.95)"/>
+  <g transform="translate(18 34)" fill="none" stroke="url(#grad)" stroke-width="4" stroke-linecap="round">
+    <path d="M0-4c9 0 9 12 18 12s9-12 18-12 9 12 18 12"/>
+    <path opacity="0.6" d="M0-10c9 0 9 18 18 18s9-18 18-18 9 18 18 18"/>
+  </g>
+  <text x="120" y="34" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" fill="#e8ecf8">
+    CodeBeats Studio
+  </text>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

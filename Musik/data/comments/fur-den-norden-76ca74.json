@@ -1,0 +1,14 @@
+{
+    "pending": [],
+    "approved": [
+        {
+            "id": "1c3c089e7519a131",
+            "name": "Michael",
+            "message": "Nicht schlecht :-)",
+            "createdAt": "2025-12-23T17:12:20+00:00",
+            "ipHash": "8467070ab04556b38727536e",
+            "status": "approved",
+            "approvedAt": "2025-12-23T17:17:33+00:00"
+        }
+    ]
+}

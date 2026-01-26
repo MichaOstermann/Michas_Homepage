@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI PowerShell Generator – Code & Beats</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/premium-enhancements.css" />
+  <link rel="stylesheet" href="assets/css/holographic-cards.css" />
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css"/>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a class="nav__brand" href="index.html">Code & Beats</a>
+      <a href="index.html" class="btn btn--glass">← Zurück</a>
+    </nav>
+  </header>
+
+  <main style="padding-top: 8rem;">
+    <div class="container" style="max-width: 1200px;">
+      
+      <header style="text-align: center; margin-bottom: 4rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem; animation: float 3s ease-in-out infinite;">🤖</div>
+        <h1 class="text-gradient-animate" style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 1rem;">
+          AI PowerShell Generator
+        </h1>
+        <p class="txt-dim" style="font-size: 1.2rem;">
+          Beschreibe was du brauchst - die KI generiert das PowerShell-Script!
+        </p>
+      </header>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
+        
+        <!-- Input -->
+        <div class="holo-card" style="padding: 2.5rem;">
+          <h2 style="font-size: 1.8rem; color: #06FFF0; margin-bottom: 2rem;">📝 Deine Anfrage</h2>
+          
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; margin-bottom: 0.75rem; color: #8B5CF6; font-weight: 600;">Was soll das Script tun?</label>
+            <textarea 
+              id="aiPrompt" 
+              rows="6" 
+              placeholder="z.B. 'Erstelle ein Script das alle Dateien größer als 100MB findet und in eine CSV exportiert'"
+              style="width: 100%; background: rgba(11,15,22,0.8); border: 1px solid rgba(6,255,240,0.3); border-radius: 12px; padding: 1rem; color: #FFF; font-family: inherit; font-size: 1rem; resize: vertical;"
+            ></textarea>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; margin-bottom: 0.75rem; color: #8B5CF6; font-weight: 600;">Kategorie</label>
+            <select 
+              id="aiCategory" 
+              style="width: 100%; background: rgba(11,15,22,0.8); border: 1px solid rgba(6,255,240,0.3); border-radius: 12px; padding: 0.75rem; color: #FFF; font-size: 1rem;"
+            >
+              <option value="system">System</option>
+              <option value="admin">Admin</option>
+              <option value="network">Netzwerk</option>
+            </select>
+          </div>
+
+          <button 
+            id="generateBtn" 
+            class="btn btn--neon" 
+            style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700;"
+          >
+            🤖 Script generieren
+          </button>
+        </div>
+
+        <!-- Output -->
+        <div class="holo-card" style="padding: 2.5rem;">
+          <h2 style="font-size: 1.8rem; color: #8B5CF6; margin-bottom: 2rem;">⚡ Generiertes Script</h2>
+          
+          <div id="aiOutput" style="background: rgba(11,15,22,0.95); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 1.5rem; min-height: 400px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5);">
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">💻</div>
+              <p>Beschreibe deine Anforderung und die AI generiert das Script...</p>
+            </div>
+          </div>
+
+          <div id="aiActions" style="display: none; margin-top: 1.5rem; gap: 1rem;">
+            <button id="copyGenerated" class="btn btn--glass" style="flex: 1;">Code kopieren</button>
+            <button id="downloadGenerated" class="btn btn--neon" style="flex: 1;">Als .ps1 herunterladen</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Example Prompts -->
+      <div style="margin-bottom: 4rem;">
+        <h2 style="font-size: 1.8rem; color: #06FFF0; margin-bottom: 2rem; text-align: center;">💡 Beispiel-Anfragen</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div class="holo-card example-prompt" style="padding: 1.5rem; cursor: pointer;" data-prompt="Erstelle ein Script das alle Log-Dateien älter als 30 Tage löscht">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">🗑️</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">Log-Cleanup</div>
+            <div class="txt-dim" style="font-size: 0.9rem;">Lösche alte Log-Dateien automatisch</div>
+          </div>
+          
+          <div class="holo-card example-prompt" style="padding: 1.5rem; cursor: pointer;" data-prompt="Script für Backup aller User-Profile auf externe Festplatte">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">💾</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">Backup-Automation</div>
+            <div class="txt-dim" style="font-size: 0.9rem;">Automatisches User-Backup</div>
+          </div>
+          
+          <div class="holo-card example-prompt" style="padding: 1.5rem; cursor: pointer;" data-prompt="Überwache CPU und RAM Auslastung und sende Alert wenn > 90%">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">📊</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">System-Monitoring</div>
+            <div class="txt-dim" style="font-size: 0.9rem;">CPU/RAM Alerts</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+  <script>
+    // AI Code Generator Logic
+    const templates = {
+      system: `#Requires -Version 5.1
+#Requires -RunAsAdministrator
+
+<#
+.SYNOPSIS
+    {TITLE}
+.DESCRIPTION
+    {DESCRIPTION}
+.EXAMPLE
+    .\\{FILENAME}
+#>
+
+[CmdletBinding()]
+param()
+
+# Main Script
+Write-Host "Starting {TITLE}..." -ForegroundColor Cyan
+
+# {TASK}
+
+Write-Host "Complete!" -ForegroundColor Green`,
+
+      admin: `#Requires -Version 5.1
+#Requires -RunAsAdministrator
+
+<#
+.SYNOPSIS
+    {TITLE} - Admin Tool
+.DESCRIPTION
+    {DESCRIPTION}
+#>
+
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$false)]
+    [string]$Target
+)
+
+# {TASK}
+
+Write-Host "Admin task completed!" -ForegroundColor Green`,
+
+      network: `#Requires -Version 5.1
+
+<#
+.SYNOPSIS
+    {TITLE} - Network Tool
+.DESCRIPTION
+    {DESCRIPTION}
+#>
+
+[CmdletBinding()]
+param()
+
+# {TASK}
+
+Write-Host "Network task completed!" -ForegroundColor Cyan`
+    };
+
+    document.getElementById('generateBtn').addEventListener('click', generateScript);
+    
+    document.querySelectorAll('.example-prompt').forEach(card => {
+      card.addEventListener('click', function() {
+        document.getElementById('aiPrompt').value = this.dataset.prompt;
+        generateScript();
+      });
+    });
+
+    function generateScript() {
+      const prompt = document.getElementById('aiPrompt').value;
+      const category = document.getElementById('aiCategory').value;
+      
+      if (!prompt) {
+        alert('Bitte beschreibe was das Script tun soll!');
+        return;
+      }
+
+      // Show loading
+      const output = document.getElementById('aiOutput');
+      output.innerHTML = `
+        <div class="loading" style="text-align: center; width: 100%;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
+          <p style="color: #06FFF0;">AI generiert Script...</p>
+        </div>
+      `;
+
+      // Simulate AI generation (in real app: call OpenAI API)
+      setTimeout(() => {
+        const title = prompt.split(' ').slice(0, 3).join(' ');
+        const filename = title.replace(/\s+/g, '-') + '.ps1';
+        
+        let code = templates[category]
+          .replace(/{TITLE}/g, title)
+          .replace(/{DESCRIPTION}/g, prompt)
+          .replace(/{FILENAME}/g, filename)
+          .replace(/{TASK}/g, `# TODO: ${prompt}\n# Hier würde die KI den spezifischen Code generieren`);
+
+        output.innerHTML = `<pre style="margin: 0; overflow-x: auto;"><code class="language-powershell">${escapeHtml(code)}</code></pre>`;
+        
+        // Highlight
+        if (typeof Prism !== 'undefined') {
+          Prism.highlightAll();
+        }
+
+        // Show actions
+        document.getElementById('aiActions').style.display = 'flex';
+
+        // Store generated code
+        window.generatedCode = code;
+        window.generatedFilename = filename;
+      }, 2000);
+    }
+
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    document.getElementById('copyGenerated').addEventListener('click', () => {
+      navigator.clipboard.writeText(window.generatedCode);
+      alert('✓ Code kopiert!');
+    });
+
+    document.getElementById('downloadGenerated').addEventListener('click', () => {
+      const blob = new Blob([window.generatedCode], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = window.generatedFilename;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
+

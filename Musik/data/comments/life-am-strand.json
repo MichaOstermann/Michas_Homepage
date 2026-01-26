@@ -1,0 +1,23 @@
+{
+    "pending": [],
+    "approved": [
+        {
+            "id": "585eba9f5b05c596",
+            "name": "Philipp",
+            "message": "Das ja mal nen mega Party Laune Hit! Cool, mach weiter so!!!",
+            "createdAt": "2025-11-11T20:03:36+00:00",
+            "ipHash": "aa8f5b5aafd277868d6cb47c",
+            "status": "approved",
+            "approvedAt": "2025-11-11T20:03:49+00:00"
+        },
+        {
+            "id": "0cebe3e70015cd5f",
+            "name": "Micha",
+            "message": "vielen Dank! Ich gebe mir Mühe weiter so zu produzieren! Schau mal wieder rein!",
+            "createdAt": "2025-11-14T15:24:21+00:00",
+            "ipHash": "b13c8fc058a47099d34081b5",
+            "status": "approved",
+            "approvedAt": "2025-11-14T15:24:53+00:00"
+        }
+    ]
+}

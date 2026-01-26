@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A0A0A;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  
+  <!-- Moon -->
+  <circle cx="320" cy="60" r="40" fill="#FFE4B5" opacity="0.8"/>
+  
+  <!-- Haunted House -->
+  <g>
+    <!-- Roof -->
+    <polygon points="200,80 120,140 280,140" fill="#1a1a1a"/>
+    
+    <!-- House Body -->
+    <rect x="130" y="140" width="140" height="120" fill="#2a2a2a"/>
+    
+    <!-- Windows (Orange glow) -->
+    <rect x="150" y="160" width="30" height="40" fill="#ff6600" filter="url(#glow)"/>
+    <rect x="220" y="160" width="30" height="40" fill="#000"/>
+    
+    <!-- Door -->
+    <rect x="185" y="210" width="30" height="50" fill="#0d0d0d"/>
+  </g>
+  
+  <!-- Ghost -->
+  <g transform="translate(80, 100)">
+    <ellipse cx="0" cy="0" rx="20" ry="25" fill="#F8F8FF" opacity="0.7"/>
+    <circle cx="-7" cy="-5" r="3" fill="#000"/>
+    <circle cx="7" cy="-5" r="3" fill="#000"/>
+    <path d="M -20,20 Q -15,25 -10,20 Q -5,25 0,20 Q 5,25 10,20 Q 15,25 20,20 L 20,0 L -20,0 Z" fill="#F8F8FF" opacity="0.7"/>
+  </g>
+  
+  <!-- Bat -->
+  <path d="M 320,120 Q 310,115 305,120 Q 310,125 320,120 Q 330,125 335,120 Q 330,115 320,120 Z" fill="#000"/>
+  
+  <!-- Title -->
+  <text x="200" y="280" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#8B0000" text-anchor="middle" filter="url(#glow)">HAUNTED</text>
+</svg>
+
+
+

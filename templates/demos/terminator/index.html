@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyberdyne Systems - Terminator Template</title>
+  <meta name="description" content="Futuristic Terminator-inspired website template with HUD design" />
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Protection Script -->
+  <script src="protected.js"></script>
+</head>
+<body>
+  <!-- Terminator HUD Overlay -->
+  <div class="terminator-hud">
+    <div class="hud-text hud-text--tl">
+      CYBERDYNE SYSTEMS<br>
+      <span style="color: #00FF41;">● ACTIVE</span>
+    </div>
+    <div class="hud-text hud-text--tr">
+      T-800 MODEL 101<br>
+      <span style="color: #00F0FF;">PWR: 98.7%</span>
+    </div>
+    <div class="hud-text hud-text--bl">
+      THREAT LEVEL: <span style="color: #00FF41;">LOW</span>
+    </div>
+    <div class="hud-text hud-text--br">
+      <span style="color: #00F0FF;">SCANNING...</span>
+    </div>
+  </div>
+  
+  <!-- Red Vision Overlay -->
+  <div class="red-vision-overlay"></div>
+  
+  <!-- Matrix Background -->
+  <canvas id="matrixCanvas" class="matrix-bg"></canvas>
+  
+  <!-- Particle System -->
+  <canvas id="particleCanvas" class="particle-bg"></canvas>
+  
+  <!-- Scanline Overlay -->
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <!-- Animated HUD Corners -->
+  <div class="hud-corner hud-corner--tl">
+    <div class="corner-pulse"></div>
+  </div>
+  <div class="hud-corner hud-corner--tr">
+    <div class="corner-pulse"></div>
+  </div>
+  <div class="hud-corner hud-corner--bl">
+    <div class="corner-pulse"></div>
+  </div>
+  <div class="hud-corner hud-corner--br">
+    <div class="corner-pulse"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="hud-nav">
+    <div class="nav-brand">
+      <span class="brand-icon">◢</span>
+      <span class="brand-text">CYBERDYNE SYSTEMS</span>
+      <span class="brand-version">v8.1.2</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-link active">HOME</a></li>
+      <li><a href="#contact" class="nav-link">CONTACT</a></li>
+      <li><a href="#impressum" class="nav-link">IMPRESSUM</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="status-indicator"></span>
+      <span class="status-text">SYSTEM ONLINE</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="section section--home">
+      <div class="cyber-grid"></div>
+      <div class="target-reticle"></div>
+      <div class="floating-data">
+        <div class="data-stream" style="top: 10%; left: 5%;">01001001</div>
+        <div class="data-stream" style="top: 30%; right: 8%;">SKYNET</div>
+        <div class="data-stream" style="top: 50%; left: 12%;">SYSTEM</div>
+        <div class="data-stream" style="top: 70%; right: 15%;">T-800</div>
+        <div class="data-stream" style="top: 85%; left: 25%;">ONLINE</div>
+      </div>
+      <div class="hex-pattern"></div>
+      
+  <!-- Terminator Graphics -->
+  <img src="assets/t800-skull.svg" class="t800-skull t800-skull--top" alt="T-800">
+  <img src="assets/cyberdyne-logo.svg" class="cyberdyne-logo" alt="Cyberdyne Systems">
+  <img src="assets/target-overlay.svg" class="target-overlay" alt="Target">      <div class="hero">
+        <div class="hero__content">
+          <div class="terminal-header">
+            <span class="terminal-label">SKYNET CORE SYSTEM</span>
+            <span class="terminal-time" id="terminalTime"></span>
+          </div>
+          
+          <div class="title-container">
+            <h1 class="glitch" data-text="CYBERDYNE T-800">
+              CYBERDYNE T-800
+            </h1>
+            <div class="title-decoration">
+              <div class="deco-line"></div>
+              <div class="deco-circle"></div>
+              <div class="deco-line"></div>
+            </div>
+          </div>
+          
+          <div class="type-writer">
+            <div class="terminal-cursor"></div>
+            <p class="terminal-text" id="typingText">
+              <span class="typing-line">&gt; INITIALIZING NEURAL NET PROCESSOR...</span><br>
+              <span class="typing-line">&gt; CYBERDYNE SYSTEMS MODEL 101</span><br>
+              <span class="typing-line">&gt; CPU: NEURAL NET PROCESSOR • LEARNING COMPUTER</span><br>
+              <span class="typing-line">&gt; STATUS: <span class="status-active">● ONLINE</span></span><br>
+              <span class="typing-line">&gt; POWER CELL: <span class="status-active">98.7% OPTIMAL</span></span><br>
+              <span class="typing-line">&gt; PRIMARY OBJECTIVE: <span class="mission-text">TERMINATION PROTOCOLS ENGAGED</span></span>
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label">POWER LEVEL</div>
+              <div class="stat-bar">
+                <div class="stat-fill" style="width: 98%"></div>
+              </div>
+              <div class="stat-value">98%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">THREAT LEVEL</div>
+              <div class="stat-bar">
+                <div class="stat-fill" style="width: 15%"></div>
+              </div>
+              <div class="stat-value">LOW</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">SYSTEMS INTEGRITY</div>
+              <div class="stat-bar">
+                <div class="stat-fill" style="width: 100%"></div>
+              </div>
+              <div class="stat-value">OPTIMAL</div>
+            </div>
+          </div>
+
+          <div class="cta-buttons">
+            <button class="btn btn--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              <span class="btn-glow"></span>
+              <span class="btn-icon">▶</span>
+              <span>INITIATE CONTACT</span>
+              <span class="btn-particles"></span>
+            </button>
+            <button class="btn btn--secondary">
+              <span class="btn-glow"></span>
+              <span class="btn-icon">◈</span>
+              <span>SYSTEM SPECS</span>
+              <span class="btn-particles"></span>
+            </button>
+          </div>
+          
+          <div class="tech-badges">
+            <div class="badge">
+              <div class="badge-icon">⚡</div>
+              <div class="badge-text">REAL-TIME<br>PROCESSING</div>
+            </div>
+            <div class="badge">
+              <div class="badge-icon">🛡️</div>
+              <div class="badge-text">MILITARY<br>GRADE</div>
+            </div>
+            <div class="badge">
+              <div class="badge-icon">🎯</div>
+              <div class="badge-text">TARGET<br>LOCK</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hud-frame">
+            <div class="scan-grid"></div>
+            <div class="target-box">
+              <canvas id="hudCanvas" width="600" height="400"></canvas>
+              <div class="target-corners"></div>
+              <div class="target-scan"></div>
+              <div class="hud-overlay">
+                <div class="hud-data-left">
+                  <div class="data-line">SYSTEM: <span class="value-green">OPERATIONAL</span></div>
+                  <div class="data-line">PWR: <span class="value-cyan">98.7%</span></div>
+                  <div class="data-line">TEMP: <span class="value-green">37.2°C</span></div>
+                  <div class="data-line">MEM: <span class="value-cyan">2047/2048 GB</span></div>
+                </div>
+                <div class="hud-data-right">
+                  <div class="data-line">TARGET: <span class="value-red">LOCKED</span></div>
+                  <div class="data-line">DIST: <span class="value-cyan">2.4m</span></div>
+                  <div class="data-line">THREAT: <span class="value-green">LOW</span></div>
+                  <div class="data-line">MODE: <span class="value-orange">STANDBY</span></div>
+                </div>
+                <div class="crosshair">
+                  <div class="crosshair-h"></div>
+                  <div class="crosshair-v"></div>
+                  <div class="crosshair-center"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="features">
+        <div class="section-bg-overlay"></div>
+        <h2 class="section-title">
+          <span class="title-prefix">//</span> SYSTEM CAPABILITIES
+          <span class="title-glow-line"></span>
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">◢</div>
+            <h3>Neural Network</h3>
+            <p>Advanced AI processing with autonomous learning capabilities and real-time threat assessment.</p>
+            <div class="feature-stats">
+              <span>99.7% accuracy</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">◪</div>
+            <h3>Combat Protocols</h3>
+            <p>Military-grade tactical systems with predictive combat algorithms and target acquisition.</p>
+            <div class="feature-stats">
+              <span>1200+ scenarios</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">◈</div>
+            <h3>HUD Interface</h3>
+            <p>Real-time heads-up display with biometric scanning and environmental analysis.</p>
+            <div class="feature-stats">
+              <span>360° coverage</span>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">◉</div>
+            <h3>Power Cell</h3>
+            <p>Hydrogen fuel cell technology providing 120 years of continuous operation.</p>
+            <div class="feature-stats">
+              <span>120 year lifespan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section--contact">
+      <div class="cyber-grid cyber-grid--contact"></div>
+      <div class="circuit-pattern"></div>
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-prefix">//</span> ESTABLISH CONNECTION
+          <span class="title-glow-line"></span>
+        </h2>
+        
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="info-block">
+              <div class="info-icon">◢</div>
+              <h3>CYBERDYNE SYSTEMS</h3>
+              <p>Headquarters, Skynet Division</p>
+            </div>
+            
+            <div class="info-block">
+              <div class="info-icon">◈</div>
+              <h3>COORDINATES</h3>
+              <p>18144 El Camino Real<br>Sunnyvale, CA 94087</p>
+            </div>
+            
+            <div class="info-block">
+              <div class="info-icon">◉</div>
+              <h3>TRANSMISSION</h3>
+              <p>Email: contact@cyberdyne.sys<br>Secure Line: +1-555-SKYNET</p>
+            </div>
+
+            <div class="system-status">
+              <div class="status-line">
+                <span>NETWORK STATUS:</span>
+                <span class="status-active">ONLINE</span>
+              </div>
+              <div class="status-line">
+                <span>ENCRYPTION:</span>
+                <span class="status-active">ACTIVE</span>
+              </div>
+              <div class="status-line">
+                <span>RESPONSE TIME:</span>
+                <span class="status-active">&lt; 1ms</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">IDENTIFICATION</label>
+                <input type="text" id="name" name="name" required placeholder="Enter designation..." />
+              </div>
+              
+              <div class="form-group">
+                <label for="email">TRANSMISSION ADDRESS</label>
+                <input type="email" id="email" name="email" required placeholder="Enter email protocol..." />
+              </div>
+              
+              <div class="form-group">
+                <label for="message">MESSAGE CONTENT</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Enter transmission data..."></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn--primary btn--full">
+                <span class="btn-icon">▶</span>
+                TRANSMIT MESSAGE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impressum Section -->
+    <section id="impressum" class="section section--impressum">
+      <div class="data-matrix"></div>
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-prefix">//</span> LEGAL PROTOCOLS
+          <span class="title-glow-line"></span>
+        </h2>
+        
+        <div class="legal-content">
+          <div class="legal-block">
+            <h3>ANGABEN GEMÄSS § 5 TMG</h3>
+            <p>
+              <strong>Cyberdyne Systems Corporation</strong><br>
+              Skynet Defense Division<br>
+              18144 El Camino Real<br>
+              Sunnyvale, CA 94087<br>
+              United States
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>KONTAKT</h3>
+            <p>
+              Telefon: +1-555-SKYNET<br>
+              E-Mail: legal@cyberdyne.sys<br>
+              Secure Channel: cyberdyne.darkweb
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>VERTRETUNGSBERECHTIGTE</h3>
+            <p>
+              CEO: Miles Bennett Dyson<br>
+              CTO: Dr. Peter Silberman<br>
+              Director AI Research: Dr. Sarah Connor
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>HAFTUNGSAUSSCHLUSS</h3>
+            <h4>Haftung für Inhalte</h4>
+            <p>
+              Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, 
+              Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. 
+              Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
+              nach den allgemeinen Gesetzen verantwortlich.
+            </p>
+            
+            <h4>Haftung für Links</h4>
+            <p>
+              Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen 
+              Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
+              Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
+              Seiten verantwortlich.
+            </p>
+
+            <h4>Urheberrecht</h4>
+            <p>
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
+              dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
+              der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
+              Zustimmung des jeweiligen Autors bzw. Erstellers.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>DATENSCHUTZ</h3>
+            <p>
+              Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. 
+              Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder 
+              eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. 
+              Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
+            </p>
+          </div>
+
+          <div class="warning-block">
+            <div class="warning-icon">⚠</div>
+            <div class="warning-text">
+              <strong>WARNING:</strong> This is a fictional template inspired by the Terminator franchise. 
+              All company names, products, and technologies mentioned are purely fictional and for 
+              demonstration purposes only.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <span class="brand-icon">◢</span>
+          <span>CYBERDYNE SYSTEMS</span>
+        </div>
+        <p class="footer-tagline">Building the future of autonomous systems</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>NAVIGATION</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#impressum">Impressum</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>SYSTEM INFO</h4>
+        <ul>
+          <li>Version: 8.1.2</li>
+          <li>Build: 29082024</li>
+          <li>Status: Operational</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bar"></div>
+      <p>(C) 2025 by Michael Ostermann</p>
+      <div style="margin-top:8px">
+        <a href="/templates/" style="color:#9fe7ff;text-decoration:none;margin-right:12px">← Zurück zu Templates</a>
+        <a href="/impressum.html" style="color:#9fe7ff;text-decoration:none;margin-right:12px">Impressum</a>
+        <a href="/datenschutz.html" style="color:#9fe7ff;text-decoration:none">Datenschutz</a>
+      </div>
+      <div class="footer-indicators">
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+:root{
+  --bg:#070a12;--fg:#e9f2ff;--dim:rgba(233,242,255,.72);
+  --c1:#00eaff;--c2:#8b5cf6;--c3:#ff6b00;--c4:#ff1493;
+  --panel:rgba(12,16,26,.82);--brd:rgba(255,255,255,.12);
+}
+/* Accent Switch Theme */
+[data-accent="gold"]{--c1:#ffd166;--c2:#06d6a0;--c3:#ef476f;--c4:#118ab2}
+*{box-sizing:border-box}
+html,body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(0,234,255,.06),transparent),radial-gradient(900px 600px at 100% 0%,rgba(139,92,246,.05),transparent),#050810;color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,'Helvetica Neue',Arial,'Apple Color Emoji','Segoe UI Emoji';}
+
+.nc-container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Header */
+.nc-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(5,8,16,.95),rgba(5,8,16,.7));backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--brd)}
+.nc-header .nc-container{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.nc-brand{font-weight:900;letter-spacing:.06em;color:var(--c1);filter:drop-shadow(0 0 18px rgba(0,234,255,.35));}
+.nc-brand span{color:var(--c2)}
+.nc-nav a{color:var(--dim);text-decoration:none;margin-left:18px;font-weight:600;border-bottom:2px solid transparent}
+.nc-nav a:hover{color:var(--c1);border-bottom-color:var(--c1)}
+/* Accent button */
+.nc-accent{margin-left:auto;background:linear-gradient(135deg,var(--c3),var(--c4));color:#fff;border:none;border-radius:10px;padding:.55rem .8rem;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(255,107,0,.25)}
+
+/* Hero */
+.nc-hero{position:relative;padding:72px 0 48px;overflow:hidden}
+.nc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;filter:saturate(130%) contrast(110%) brightness(90%) blur(0.2px)}
+.nc-particles{z-index:1}
+.nc-hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.nc-hero-copy p{color:var(--dim);line-height:1.7;max-width:60ch}
+.glitch{font-size: clamp(40px,7vw,84px);font-weight:900;line-height:1;margin:.1em 0;background:linear-gradient(135deg,var(--c1),var(--c4));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;mix-blend-mode:screen;filter:blur(.6px)}
+.glitch::before{color:#0ff;transform:translate(1px,0)}
+.glitch::after{color:#f0f;transform:translate(-1px,0)}
+.nc-cta-row{display:flex;gap:12px;margin-top:18px}
+.nc-btn{display:inline-block;padding:.85rem 1.3rem;border-radius:10px;border:2px solid var(--brd);text-decoration:none;font-weight:800;letter-spacing:.02em}
+.nc-btn.primary{background:linear-gradient(135deg,var(--c3),var(--c4));color:white;border-color:transparent}
+.nc-btn.ghost{background:rgba(255,255,255,.04);color:var(--fg)}
+
+.nc-hero-visual{display:grid;gap:10px;grid-template-areas:'a b' 'a c';position:relative}
+.panel{border-radius:14px;border:1px solid var(--brd);background:var(--panel);min-height:140px;position:relative;overflow:hidden}
+.panel.neon{grid-area:a;min-height:230px;box-shadow:0 0 0 1px rgba(0,234,255,.2),0 10px 40px rgba(0,234,255,.2) inset}
+.panel.scan{grid-area:b;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));}
+.panel.scan::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04),rgba(255,255,255,.04) 1px,transparent 1px,transparent 3px);opacity:.25}
+.panel.grid{grid-area:c;background:radial-gradient(400px 200px at 50% 0%,rgba(255,107,0,.08),transparent),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(0deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:cover, 24px 24px, 24px 24px}
+
+.nc-hero-glow{position:absolute;inset:-30% -10% auto -10%;height:60%;background:radial-gradient(60% 60% at 20% 40%,rgba(0,234,255,.2),transparent),radial-gradient(80% 60% at 70% 30%,rgba(255,20,147,.18),transparent);filter:blur(40px);pointer-events:none}
+
+/* skyline and particles */
+.nc-skyline{position:absolute;inset:auto 0 0 0;width:100%;height:180px;opacity:.8;mix-blend-mode:screen;filter:drop-shadow(0 0 24px rgba(0,234,255,.15))}
+.nc-particles{position:absolute;inset:0;width:100%;height:100%;opacity:.6;mix-blend-mode:screen;pointer-events:none}
+
+/* Sections */
+.nc-section{padding:56px 0;border-top:1px solid var(--brd)}
+.nc-section.alt{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01))}
+.nc-title{font-size: clamp(26px,4vw,36px);margin:0 0 18px;font-weight:900;color:#fff}
+
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.feat{border:1px solid var(--brd);background:var(--panel);border-radius:14px;padding:18px;position:relative}
+.feat-ico{font-size:1.6rem;filter:drop-shadow(0 0 12px rgba(255,107,0,.35))}
+/* holographic animated border */
+.feat.holo::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(135deg,var(--c1),var(--c4));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:holo 6s linear infinite}
+@keyframes holo{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+
+.ticker{display:flex;gap:24px;flex-wrap:wrap;color:var(--dim);margin-bottom:14px}
+.tick{padding:.45rem .8rem;background:rgba(255,255,255,.04);border:1px solid var(--brd);border-radius:999px}
+.card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{border:1px solid var(--brd);background:var(--panel);border-radius:14px;padding:16px}
+
+/* marquee */
+.nc-marquee{overflow:hidden;border:1px solid var(--brd);border-radius:12px;background:rgba(255,255,255,.03);margin-bottom:12px}
+.nc-marquee-track{display:flex;gap:40px;white-space:nowrap;animation:marq 22s linear infinite;padding:.6rem 1rem;color:var(--dim)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* terminal */
+.nc-terminal{background:radial-gradient(600px 300px at 10% 0%,rgba(0,234,255,.06),transparent),#0a0f18;border:1px solid var(--brd);border-radius:14px;padding:16px;box-shadow:0 10px 40px rgba(0,234,255,.12) inset}
+.nc-terminal-out{margin:0;font-family:"Fira Code",Consolas,Monaco,monospace;font-size:14px;line-height:1.55;color:#d6fffb;height:360px;overflow:auto;white-space:pre-wrap;display:block;padding-right:6px}
+.nc-terminal-out .muted{color:rgba(214,255,251,.5)}
+.nc-terminal-out .ok{color:#00ff9c}
+.nc-terminal-out .warn{color:#ffd166}
+.nc-terminal-out .err{color:#ff6688}
+
+.panel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.p-item{border:1px solid var(--brd);border-radius:14px;min-height:140px;background:radial-gradient(220px 140px at 50% 0%,rgba(0,234,255,.1),transparent),linear-gradient(135deg,rgba(255,20,147,.1),transparent);box-shadow:0 10px 40px rgba(0,234,255,.12) inset}
+.p1{background-image:radial-gradient(300px 160px at 60% 0%,rgba(0,234,255,.14),transparent),linear-gradient(135deg,rgba(255,20,147,.12),transparent)}
+.p2{background-image:radial-gradient(300px 160px at 40% 0%,rgba(255,107,0,.14),transparent),linear-gradient(135deg,rgba(0,234,255,.12),transparent)}
+.p3{background-image:radial-gradient(300px 160px at 70% 0%,rgba(139,92,246,.18),transparent),linear-gradient(135deg,rgba(255,107,0,.08),transparent)}
+.p4{background-image:radial-gradient(300px 160px at 30% 0%,rgba(255,20,147,.18),transparent),linear-gradient(135deg,rgba(139,92,246,.08),transparent)}
+.p5{background-image:radial-gradient(300px 160px at 50% 0%,rgba(0,234,255,.16),transparent),linear-gradient(135deg,rgba(255,20,147,.08),transparent)}
+.p6{background-image:radial-gradient(300px 160px at 40% 0%,rgba(255,107,0,.14),transparent),linear-gradient(135deg,rgba(0,234,255,.08),transparent)}
+
+/* CTA */
+.cta{display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+/* Footer */
+.nc-footer{border-top:1px solid var(--brd);background:linear-gradient(0deg,rgba(5,8,16,.95),rgba(5,8,16,.8));padding:24px 0}
+.nc-footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nc-footer-nav a{color:var(--dim);text-decoration:none;margin-right:16px}
+.nc-footer-nav a:hover{color:var(--c3)}
+.nc-copy{color:var(--dim)}
+
+/* Responsive */
+@media (max-width: 900px){
+  .nc-hero-grid{grid-template-columns:1fr}
+}

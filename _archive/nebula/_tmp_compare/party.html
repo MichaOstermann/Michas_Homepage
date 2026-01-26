@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Party Songs" />
+  <title>Party Lieder – Code & Beats</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/media/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/rating-styles.css" />
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  
+  <style>
+    /* Animated Background */
+    body {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6,255,240,0.08) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(139,92,246,0.08) 0%, transparent 30%);
+      animation: breathe 8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    
+    /* Floating Particles */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #06FFF0;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06FFF0;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 15s linear infinite;
+    }
+    
+    .particle:nth-child(2n) {
+      background: #8B5CF6;
+      box-shadow: 0 0 10px #8B5CF6;
+      animation-duration: 20s;
+      animation-delay: -5s;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .main {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Enhanced Music Cards */
+    .music-card {
+      background: linear-gradient(135deg, rgba(11,15,22,0.8) 0%, rgba(20,20,30,0.8) 100%);
+      border: 2px solid rgba(6,255,240,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+    
+    .music-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6,255,240,0.1) 0%, rgba(139,92,246,0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .music-card:hover::before {
+      opacity: 1;
+    }
+    
+    .music-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #06FFF0;
+      box-shadow: 
+        0 20px 60px rgba(6,255,240,0.3),
+        0 0 40px rgba(139,92,246,0.2);
+    }
+    
+    .music-card:hover .card__media {
+      transform: scale(1.1) rotate(3deg);
+    }
+    
+    .card__media {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card__media::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 3rem;
+      color: #fff;
+      background: rgba(6,255,240,0.9);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(6,255,240,0.8);
+    }
+    
+    .music-card:hover .card__media::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    
+    /* Badge Enhancements */
+    .badge--new {
+      background: linear-gradient(135deg, #FF006E 0%, #FF8C00 100%);
+      animation: pulse 2s ease-in-out infinite;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255,0,110,0.6);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Grid Enhancement */
+    .grid--cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Audio Player Styles */
+    .card__player,
+    .music-player {
+      width: 100%;
+      margin: 1rem 0;
+      display: block;
+      border-radius: 8px;
+      background: rgba(11,15,22,0.8);
+      border: 1px solid rgba(6,255,240,0.3);
+      padding: 0.5rem;
+      outline: none;
+    }
+    
+    .card__player::-webkit-media-controls-panel {
+      background: rgba(11,15,22,0.9);
+    }
+    
+    .card__player::-webkit-media-controls-play-button,
+    .card__player::-webkit-media-controls-current-time-display,
+    .card__player::-webkit-media-controls-time-remaining-display {
+      color: #06FFF0;
+      filter: brightness(1.2);
+    }
+    
+    .card__player::-webkit-media-controls-timeline {
+      background: rgba(6,255,240,0.2);
+      border-radius: 4px;
+    }
+    
+    .card__player::-webkit-media-controls-timeline::-webkit-slider-thumb {
+      background: #06FFF0;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06FFF0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 25%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 40%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 75%; animation-delay: 3s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 5s;"></div>
+  
+  <header class="header" role="banner">
+    <nav class="nav container" role="navigation" aria-label="Hauptnavigation">
+      <a class="nav__logo" href="../index.html" aria-label="Zurück zur Startseite">Code & Beats</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Navigation öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a class="nav__link" href="./index.html">← Alle Songs</a></li>
+        <li><a class="nav__link" href="./upload.php">+ Upload</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="section section--music music-section" style="padding-top: 8rem;" aria-labelledby="music-title">
+      <div class="container">
+        <div style="margin-bottom: 2rem;">
+          <a href="./index.html" class="btn btn--glass" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>←</span> Zurück zu allen Songs
+          </a>
+        </div>
+        
+        <h1 id="music-title">🎉 Party Lieder</h1>
+        <p class="txt-dim" style="max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.8; font-size: 1.05rem;">
+          Alle Songs der Kategorie Party – Fetzige Hits für die beste Stimmung!
+        </p>
+
+        <div class="grid grid--cards music-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small class="txt-dim">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link">Impressum</a> · <a href="../datenschutz.html" class="nav-link">Datenschutz</a></small>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="../assets/js/cookie-consent.js" defer></script>
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/rating-system.js"></script>
+  <script src="../assets/js/nav-enhanced.js" defer></script>
+  <script src="../assets/js/category-renderer.js"></script>
+  <script>
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', () => window.renderCategory('./data/party.json'));
+    } else {
+      window.renderCategory('./data/party.json');
+    }
+  </script>
+  
+  <!-- Automatische Cover-Generierung nach Upload -->
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const songId = urlParams.get('generateCover');
+      if (songId) {
+        fetch('./generate-cover.php?songId=' + encodeURIComponent(songId))
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              console.log('✓ Cover generiert:', data.cover);
+              window.history.replaceState({}, document.title, window.location.pathname);
+              setTimeout(() => window.location.reload(), 500);
+            } else {
+              console.warn('Cover-Generierung fehlgeschlagen:', data.error);
+              window.history.replaceState({}, document.title, window.location.pathname);
+            }
+          })
+          .catch(err => {
+            console.error('Cover-Generierung Fehler:', err);
+            window.history.replaceState({}, document.title, window.location.pathname);
+          });
+      }
+    })();
+  </script>
+</body>
+</html>

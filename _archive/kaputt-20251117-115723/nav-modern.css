@@ -1,0 +1,245 @@
+/* Enhanced Navigation Styles (nav-modern.css)
+   Focus: premium glass aesthetic, neon active indicator, accessibility, reduced motion support */
+
+:root {
+  --nav-bg: rgba(11,15,22,0.72);
+  --nav-border-grad: linear-gradient(90deg, rgba(6,255,240,0.35), rgba(139,92,246,0.35));
+  --nav-link-color: #cdd3db;
+  --nav-link-hover: #ffffff;
+  --nav-active-grad: linear-gradient(135deg,#06FFF0 0%,#8B5CF6 100%);
+  --nav-active-glow: 0 0 12px rgba(6,255,240,0.55), 0 0 26px rgba(139,92,246,0.4);
+  --nav-transition-fast: 180ms cubic-bezier(.4,.0,.2,1);
+  --nav-transition-medium: 360ms cubic-bezier(.4,.0,.2,1);
+  --nav-blur: 16px;
+  --nav-progress-height: 2px;
+  --nav-focus-outline: 2px solid #06FFF0;
+  --nav-halo-size: 46px;
+  --nav-halo-grad: radial-gradient(circle at center, rgba(6,255,240,0.35) 0%, rgba(139,92,246,0.28) 60%, transparent 72%);
+  --neon-1: #06FFF0;
+  --neon-2: #8B5CF6;
+  --neon-3: #2EE7FF;
+  --progress: 0; /* JS sets --ratio too for spark */
+}
+
+/* Animations */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 18px rgba(6,255,240,0.35), 0 0 34px rgba(139,92,246,0.3), inset 0 0 22px rgba(6,255,240,0.2); }
+  50% { box-shadow: 0 0 24px rgba(6,255,240,0.55), 0 0 46px rgba(139,92,246,0.45), inset 0 0 28px rgba(6,255,240,0.33); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --nav-transition-fast: 0ms linear;
+    --nav-transition-medium: 0ms linear;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(var(--nav-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--nav-blur)) saturate(140%);
+  transition: box-shadow var(--nav-transition-medium), background-color var(--nav-transition-medium);
+  position: sticky;
+}
+
+/* Top neon glow ribbon */
+.header::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 32px;
+  background: radial-gradient(120% 100% at 50% -10%, rgba(6,255,240,0.18), rgba(139,92,246,0.14) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1.4rem;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Shadow on scroll */
+.header.header--scrolled .navbar {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  background: rgba(11,15,22,0.82);
+}
+
+/* Gradient border pseudo */
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-1), var(--neon-2), var(--neon-3), var(--neon-2), var(--neon-1));
+  background-size: 200% 100%;
+  animation: gradient-pan 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav__menu {
+  display: flex;
+  gap: .75rem;
+  position: relative;
+  z-index: 3;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--nav-link-color);
+  text-decoration: none;
+  padding: .48rem .85rem .54rem;
+  letter-spacing: .4px;
+  border-radius: 7px;
+  border: 1px solid rgba(6,255,240,0.16);
+  background: rgba(18,23,31,0.55);
+  backdrop-filter: blur(5px) saturate(140%);
+  -webkit-backdrop-filter: blur(5px) saturate(140%);
+  transition: background var(--nav-transition-fast), color var(--nav-transition-fast), border-color var(--nav-transition-fast), box-shadow var(--nav-transition-fast);
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  background: linear-gradient(135deg, rgba(6,255,240,0.22), rgba(139,92,246,0.22));
+  color: #fff;
+  border-color: rgba(6,255,240,0.42);
+  box-shadow: 0 0 6px rgba(6,255,240,0.35), 0 0 10px rgba(139,92,246,0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__link:hover,
+  .nav__link:focus { transform: none; letter-spacing: .4px; }
+}
+
+.nav__link:focus-visible {
+  outline: var(--nav-focus-outline);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Visuelles Active-Highlight über aria-current */
+.nav__link[aria-current="page"] {
+  background: linear-gradient(135deg, rgba(6,255,240,0.42), rgba(139,92,246,0.42));
+  border-color: rgba(6,255,240,0.65);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(6,255,240,0.55), 0 0 16px rgba(139,92,246,0.4);
+}
+
+/* Active Indicator */
+.nav__active-indicator {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(90deg, var(--neon-1), var(--neon-2));
+  border-radius: 2px;
+  box-shadow: 0 0 4px rgba(6,255,240,0.55), 0 0 8px rgba(139,92,246,0.45);
+  transform-origin: left center;
+  transition: transform var(--nav-transition-medium), width var(--nav-transition-fast);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nav__active-indicator.is-pulsing { box-shadow: 0 0 14px rgba(6,255,240,0.7), 0 0 24px rgba(139,92,246,0.6); }
+
+/* Hover halo removed for unified control-bar look */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__active-indicator { transition: none; }
+}
+
+/* Scroll Progress Bar */
+.nav-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: calc(var(--nav-progress-height) + 1px);
+  background: linear-gradient(90deg,#06FFF0,#8B5CF6 60%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 40ms linear;
+  will-change: transform;
+  mix-blend-mode: screen;
+  z-index: 2000;
+}
+
+.nav-progress::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 8px; height: 100%;
+  border-radius: 2px;
+  background: radial-gradient(circle at 70% 50%, #fff, var(--neon-1) 40%, transparent 70%);
+  filter: drop-shadow(0 0 6px var(--neon-1)) drop-shadow(0 0 10px var(--neon-2));
+  transform: translateX(calc(var(--ratio, 0) * 100%));
+  transition: transform 40ms linear;
+}
+
+/* Theme button refinements */
+.nav__theme {
+  position: relative;
+  font-size: .75rem;
+  padding: .55rem 1rem;
+  border-radius: 8px;
+  backdrop-filter: blur(8px) saturate(160%);
+  background: linear-gradient(135deg, rgba(6,255,240,0.15), rgba(139,92,246,0.15));
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #d5dbe0;
+  transition: background var(--nav-transition-fast), color var(--nav-transition-fast);
+}
+
+.nav__theme:hover,
+.nav__theme:focus { background: linear-gradient(135deg, rgba(6,255,240,0.3), rgba(139,92,246,0.3)); color: #fff; }
+
+.nav__theme:focus-visible { outline: var(--nav-focus-outline); outline-offset: 3px; }
+
+/* Mobile adjustments */
+@media (max-width: 820px) {
+  .nav__menu { gap: .9rem; }
+  .nav__link { 
+    padding: .75rem .8rem; 
+    font-size: .9rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .nav__active-indicator { height: 2px; }
+}
+
+@media (max-width: 480px) {
+  .nav__menu { gap: .5rem; }
+  .nav__link { 
+    padding: .6rem .7rem; 
+    font-size: .85rem; 
+  }
+}
+
+/* Fallback if no backdrop-filter support */
+@supports not ((backdrop-filter: blur(4px))) {
+  .navbar { background: linear-gradient(135deg,#0B0F16 0%,#111a24 100%); }
+}
+
+/* High contrast mode adjustments (forced colors) */
+@media (forced-colors: active) {
+  .nav__link { color: ButtonText; }
+  .nav__link:focus-visible { outline: 2px solid Highlight; }
+  .nav__active-indicator { background: Highlight; box-shadow: none; }
+  .nav-progress { background: Highlight; }
+}

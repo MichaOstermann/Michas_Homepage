@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Templates – Code & Beats</title>
+  <meta name="description" content="Professionelle Website-Templates zum Download. Modern, responsive und einfach anpassbar." />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/nav-modern.css" />
+  <link rel="stylesheet" href="../assets/css/rating-styles.css" />
+  <style>
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .template-card {
+      background: rgba(11,15,22,0.8);
+      border: 2px solid rgba(255,107,0,0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .template-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,107,0,0.6);
+      box-shadow: 0 20px 50px rgba(255,107,0,0.3), 0 0 30px rgba(255,20,147,0.2);
+    }
+    
+    .template-card:hover .template-preview img {
+      transform: scale(1.05);
+    }
+
+    .template-preview {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,20,147,0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .template-preview img {
+      transition: transform 0.4s ease;
+    }
+
+    .template-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .template-card:hover .template-preview img {
+      transform: scale(1.05);
+    }
+
+    .template-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255,107,0,0.9);
+      color: #000;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .template-badge--new,
+    .template-badge--featured {
+      background: linear-gradient(135deg, #FF6B00 0%, #FF1493 100%);
+      color: #fff;
+    }
+    
+    .template-badge--soon {
+      background: rgba(139,92,246,0.9);
+      color: #fff;
+    }
+
+    .template-content {
+      padding: 2rem;
+    }
+
+    .template-title {
+      font-size: 1.5rem;
+      color: #FF6B00;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .template-desc {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .template-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .template-tag {
+      background: rgba(255,107,0,0.1);
+      color: #FF6B00;
+      padding: 0.3rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+    }
+
+    .template-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-template {
+      flex: 1;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-preview {
+      background: rgba(255,107,0,0.1);
+      color: #FF6B00;
+      border: 2px solid rgba(255,107,0,0.3);
+    }
+
+    .btn-preview:hover {
+      background: rgba(255,107,0,0.2);
+      border-color: #FF6B00;
+    }
+
+    .btn-request {
+      background: linear-gradient(135deg, #FF6B00 0%, #FF1493 100%);
+      color: #fff;
+      border: 2px solid transparent;
+    }
+
+    .btn-request:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255,107,0,0.3);
+    }
+
+    .hero-templates {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-templates h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      background: linear-gradient(135deg, #FF6B00 0%, #FF1493 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero-templates p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.5rem;
+      background: rgba(255,107,0,0.1);
+      color: rgba(255,255,255,0.7);
+      border: 2px solid rgba(255,107,0,0.2);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(255,107,0,0.2);
+      border-color: #FF6B00;
+      color: #FF6B00;
+    }
+
+    /* Rating System */
+    .template-rating-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .template-rating-stars {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .rating-star {
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      opacity: 0.3;
+      filter: grayscale(1);
+    }
+
+    .rating-star.active {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+
+    .rating-star.user-rated {
+      opacity: 1;
+      filter: grayscale(0);
+      animation: starPulse 0.5s ease-out;
+      text-shadow: 0 0 10px rgba(255,215,0,0.8);
+    }
+
+    .rating-star:hover {
+      transform: scale(1.2);
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    @keyframes starPulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.3);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .rating-text {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Rating Overview */
+    .rating-overview {
+      background: rgba(255,107,0,0.05);
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .rating-overview-title {
+      text-align: center;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .rating-overview-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .rating-overview-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 6px;
+      border: 1px solid rgba(255,107,0,0.1);
+      transition: all 0.3s;
+    }
+
+    .rating-overview-item:hover {
+      background: rgba(255,107,0,0.1);
+      border-color: rgba(255,107,0,0.3);
+      transform: translateX(5px);
+    }
+
+    .rating-overview-name {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    .rating-overview-emoji {
+      font-size: 1.5rem;
+    }
+
+    .rating-overview-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .rating-overview-stars {
+      color: #FFD700;
+      font-size: 1rem;
+      display: flex;
+      gap: 0.1rem;
+    }
+
+    .rating-overview-number {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FF6B00;
+      min-width: 2rem;
+      text-align: right;
+    }
+
+    .rating-overview-count {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact">Kontakt</a></li>
+      </ul>
+
+      <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+      <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+    </nav>
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+
+  <script src="../assets/js/app.js" defer></script>
+
+  <main style="padding-top: 6rem;">
+    <div class="container" style="max-width: 1400px;">
+      
+      <div style="background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(255,107,0,0.15) 100%); border: 2px solid rgba(139,92,246,0.4); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
+        <p style="margin: 0; font-size: 1.05rem; color: rgba(255,255,255,0.9);">
+          <span style="font-size: 1.5rem;">🎉</span> <strong>Alle Templates verfügbar:</strong> <strong style="color:#FF6B00;">22 professionelle Website-Templates</strong> sind jetzt live! Von <strong style="color:#06FFF0;">Business</strong> über <strong style="color:#FF1493;">Creative</strong> bis <strong style="color:#8B5CF6;">Portfolio</strong> – für jeden Zweck das passende Template.
+        </p>
+      </div>
+      
+      <div class="hero-templates">
+        <h1>🎨 Website Templates</h1>
+        <p>Professionelle, moderne Website-Vorlagen zum Download. Responsive, schnell und einfach anpassbar. Perfekt für dein nächstes Projekt!</p>
+        
+        <div style="display: inline-flex; gap: 1rem; align-items: center; background: rgba(255,107,0,0.1); padding: 1rem 2rem; border-radius: 12px; border: 2px solid rgba(255,107,0,0.3); margin-top: 1rem;">
+          <div style="font-size: 1.8rem;">🔒</div>
+          <div style="text-align: left;">
+            <div style="font-weight: 700; color: #FF6B00; margin-bottom: 0.25rem;">Download-System</div>
+            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">Anfrage stellen → Freigabe erhalten → Download-Link per Email</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Alle Templates</button>
+        <button class="filter-btn" data-filter="business">Business</button>
+        <button class="filter-btn" data-filter="portfolio">Portfolio</button>
+        <button class="filter-btn" data-filter="creative">Creative</button>
+        <button class="filter-btn" data-filter="landing">Landing Page</button>
+      </div>
+
+      <!-- Rating Overview -->
+      <div class="rating-overview" id="ratingOverview">
+        <div class="rating-overview-title">📊 Template Bewertungen</div>
+        <div class="rating-overview-list" id="ratingOverviewList">
+          <!-- Wird dynamisch gefüllt -->
+        </div>
+      </div>
+
+      <div id="templatesError" style="display: none; padding: 3rem; text-align: center; color: #FF6B00; background: rgba(255,107,0,0.1); border: 2px solid rgba(255,107,0,0.3); border-radius: 12px; margin: 2rem 0;">
+        <h3>⚠️ Templates konnten nicht geladen werden</h3>
+        <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">Öffne die Browser-Console (F12) für Details.</p>
+      </div>
+
+      <div class="template-grid" id="templatesGrid">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: rgba(255,255,255,0.5);">
+          ⏳ Lade Templates...
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer site-footer" role="contentinfo">
+    <div class="container footer__top">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255,255,255,0.7); text-decoration: none;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255,255,255,0.7); text-decoration: none;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255,255,255,0.7); text-decoration: none;">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: rgba(255,255,255,0.7); text-decoration: none;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255,255,255,0.7); text-decoration: none;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255,255,255,0.7); text-decoration: none;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255,255,255,0.7); text-decoration: none;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(6,255,240,0.2);">
+      <small style="color: rgba(255,255,255,0.6);">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Datenschutz</a></small>
+    </div>
+  </footer>
+
+  <script src="../assets/js/templates-renderer.js?v=20251203"></script>
+</body>
+</html>

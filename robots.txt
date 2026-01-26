@@ -1,0 +1,35 @@
+# robots.txt für Code & Beats (mcgv.de)
+# Optimiert für maximale Suchmaschinen-Sichtbarkeit
+
+User-agent: *
+Allow: /
+Allow: /Musik/
+Allow: /blog/
+Allow: /scripts/
+Allow: /gaming/
+Allow: /assets/
+Disallow: /templates/demos/
+
+# Blockiere Admin-Bereiche und sensible Dateien
+Disallow: /Musik/ratings-admin.php
+Disallow: /Musik/manage.php
+Disallow: /Musik/config/
+Disallow: /_archive/
+Disallow: /tmp/
+Disallow: *.backup$
+Disallow: *.bak$
+
+# Bevorzugte Crawl-Rate für Google
+Crawl-delay: 0
+
+# Sitemap für schnellere Indexierung
+Sitemap: https://mcgv.de/sitemap.xml
+
+# Spezifische Anweisungen für große Crawler
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0

@@ -1,0 +1,23 @@
+{
+    "pending": [],
+    "approved": [
+        {
+            "id": "ef7772cd9f526dd1",
+            "name": "Pit",
+            "message": "OMG wie schön und doch traurig!!!!",
+            "createdAt": "2025-11-14T19:13:40+00:00",
+            "ipHash": "b13c8fc058a47099d34081b5",
+            "status": "approved",
+            "approvedAt": "2025-11-14T19:51:17+00:00"
+        },
+        {
+            "id": "bf0a48a2f65e7ddd",
+            "name": "Elena",
+            "message": "Das ist soooooo schön und zugleich so traurig :-) Wunderschön gemacht! Das machst du echt super und denkst auch an Sachen die in der Welt passieren. \nMach bloß weiter\n\nLG",
+            "createdAt": "2025-11-14T19:10:30+00:00",
+            "ipHash": "b13c8fc058a47099d34081b5",
+            "status": "approved",
+            "approvedAt": "2025-11-14T19:51:18+00:00"
+        }
+    ]
+}

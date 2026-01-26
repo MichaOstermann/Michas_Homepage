@@ -1,0 +1,912 @@
+/* Harley Schrauber Community Template */
+/* © 2025 Michael Ostermann */
+
+/* DEMO PROTECTION - CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+}
+
+input, textarea, select, button {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+}
+
+:root {
+    --chrome: linear-gradient(135deg, #E8E8E8 0%, #FFFFFF 25%, #C0C0C0 50%, #808080 75%, #404040 100%);
+    --fire-orange: #FF6B00;
+    --fire-red: #FF0000;
+    --fire-yellow: #FFD700;
+    --dark: #0A0A0A;
+    --darker: #000000;
+    --metal: #2C2C2C;
+    --rust: #B7410E;
+}
+
+body {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    background: var(--dark);
+    color: #FFFFFF;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Sparks Container */
+.sparks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--fire-orange);
+    box-shadow: 0 5px 30px rgba(255, 107, 0, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px var(--fire-orange));
+}
+
+.logo-text {
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 5px rgba(255, 107, 0, 0.8));
+    letter-spacing: 2px;
+}
+
+.highlight {
+    color: var(--fire-orange);
+    text-shadow: 0 0 20px var(--fire-orange);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--fire-orange) 0%, var(--fire-red) 100%);
+    transition: width 0.3s;
+    box-shadow: 0 0 10px var(--fire-orange);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-menu a:hover {
+    color: var(--fire-orange);
+    text-shadow: 0 0 15px var(--fire-orange);
+}
+
+.btn-join {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, var(--fire-orange) 0%, var(--fire-red) 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 25px rgba(255, 107, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-join::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) rotate(45deg); }
+}
+
+.btn-join:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(255, 107, 0, 0.8);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 35px;
+    height: 4px;
+    background: var(--fire-orange);
+    transition: all 0.3s;
+    box-shadow: 0 0 10px var(--fire-orange);
+}
+
+/* Buttons */
+.btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--fire-orange) 0%, var(--fire-red) 100%);
+    color: #FFFFFF;
+    box-shadow: 0 10px 40px rgba(255, 107, 0, 0.6);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(255, 107, 0, 0.8);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border: 3px solid var(--fire-orange);
+    box-shadow: inset 0 0 20px rgba(255, 107, 0, 0.2);
+}
+
+.btn-secondary:hover {
+    background: var(--fire-orange);
+    box-shadow: 0 10px 40px rgba(255, 107, 0, 0.6);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 80px;
+    /* ECHTES FREIES BILD: Harley Davidson */
+    background-image: url('https://images.unsplash.com/photo-1558981033-6f0338a1f84a?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(10, 10, 10, 0.9) 0%, 
+        rgba(255, 107, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.9) 100%);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1200px;
+}
+
+.hero-badge {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.hero-badge span {
+    background: rgba(255, 107, 0, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--fire-orange);
+    color: #FFFFFF;
+    box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
+}
+
+.hero-title {
+    font-size: 6rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 1.1;
+}
+
+.chrome-text {
+    display: block;
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.5));
+    animation: chrome-glow 3s infinite alternate;
+}
+
+@keyframes chrome-glow {
+    0%, 100% { filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.5)); }
+    50% { filter: drop-shadow(0 5px 25px rgba(255, 255, 255, 0.8)); }
+}
+
+.fire-text {
+    display: block;
+    background: linear-gradient(180deg, var(--fire-yellow) 0%, var(--fire-orange) 50%, var(--fire-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 5px 30px var(--fire-orange));
+    animation: fire-flicker 2s infinite;
+}
+
+@keyframes fire-flicker {
+    0%, 100% { 
+        filter: drop-shadow(0 5px 30px var(--fire-orange));
+        transform: scaleY(1);
+    }
+    50% { 
+        filter: drop-shadow(0 5px 40px var(--fire-red));
+        transform: scaleY(1.02);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    color: #E0E0E0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Scroll Indicator - Wheel */
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: bounce-wheel 2s infinite;
+}
+
+.wheel {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--fire-orange);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 20px var(--fire-orange);
+}
+
+.wheel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--fire-orange);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--fire-orange);
+}
+
+@keyframes bounce-wheel {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--darker) 0%, var(--metal) 100%);
+    position: relative;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(44, 44, 44, 0.5) 100%);
+    border: 3px solid var(--fire-orange);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 107, 0, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine-stat 4s infinite;
+}
+
+@keyframes shine-stat {
+    0%, 100% { transform: translateX(-100%) rotate(45deg); }
+    50% { transform: translateX(100%) rotate(45deg); }
+}
+
+.stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--fire-red);
+    box-shadow: 0 20px 50px rgba(255, 107, 0, 0.5);
+}
+
+.stat-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 15px var(--fire-orange));
+}
+
+.stat-number {
+    font-size: 5rem;
+    font-weight: 900;
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    color: #E0E0E0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Sections */
+section {
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.section-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Projects Section */
+.projects-section {
+    background: var(--dark);
+    /* ECHTES FREIES BILD: Garage/Workshop */
+    background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.projects-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 0;
+}
+
+.projects-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #B0B0B0;
+    margin-bottom: 4rem;
+    font-weight: 600;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Features Section */
+.features-section {
+    background: linear-gradient(135deg, var(--metal) 0%, var(--darker) 100%);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.05) 0%, rgba(0, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(255, 107, 0, 0.3);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--fire-orange) 0%, var(--fire-red) 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover::after {
+    transform: scaleX(1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--fire-orange);
+    box-shadow: 0 20px 50px rgba(255, 107, 0, 0.4);
+}
+
+.feature-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 15px var(--fire-orange));
+}
+
+.feature-card h3 {
+    font-size: 1.8rem;
+    color: var(--fire-orange);
+    margin-bottom: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.feature-card p {
+    color: #D0D0D0;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Tips Section */
+.tips-section {
+    background: var(--darker);
+}
+
+.tips-categories,
+.category-btn,
+.trade-filters,
+.trade-filter-btn {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.category-btn,
+.trade-filter-btn {
+    padding: 1rem 2.5rem;
+    background: rgba(255, 107, 0, 0.1);
+    color: #FFFFFF;
+    border: 2px solid var(--fire-orange);
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.category-btn.active,
+.trade-filter-btn.active,
+.category-btn:hover,
+.trade-filter-btn:hover {
+    background: var(--fire-orange);
+    box-shadow: 0 5px 25px rgba(255, 107, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.tips-grid,
+.trade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Trade Section */
+.trade-section {
+    background: linear-gradient(135deg, var(--metal) 0%, var(--dark) 100%);
+}
+
+.trade-cta {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* Gallery Section */
+.gallery-section {
+    background: var(--darker);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* About Section */
+.about-section {
+    background: var(--dark);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    text-align: left;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    color: #D0D0D0;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.manifesto-box {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--fire-orange);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+}
+
+.manifesto-box h3 {
+    color: var(--fire-orange);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.value-item {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+}
+
+.value-icon {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px var(--fire-orange));
+}
+
+.value-item h4 {
+    font-size: 1.5rem;
+    color: var(--fire-orange);
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.value-item p {
+    color: #D0D0D0;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.about-image {
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    /* ECHTES FREIES BILD: Harley Detail */
+    background-image: url('https://images.unsplash.com/photo-1558980664-769d59546b3d?w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    border: 5px solid var(--fire-orange);
+    box-shadow: 0 20px 60px rgba(255, 107, 0, 0.5);
+}
+
+/* Join Section */
+.join-section {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.2) 0%, rgba(0, 0, 0, 0.9) 100%);
+    /* ECHTES FREIES BILD: Harley Group */
+    background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+}
+
+.join-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.join-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.join-content p {
+    font-size: 1.3rem;
+    color: #D0D0D0;
+    margin-bottom: 3rem;
+}
+
+.join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.join-form input,
+.join-form select,
+.join-form textarea {
+    padding: 1.5rem;
+    border: 2px solid var(--fire-orange);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.join-form input:focus,
+.join-form select:focus,
+.join-form textarea:focus {
+    outline: none;
+    border-color: var(--fire-red);
+    box-shadow: 0 0 25px rgba(255, 107, 0, 0.5);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.join-form option {
+    background: #000;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+    padding: 4rem 2rem 2rem;
+    border-top: 3px solid var(--fire-orange);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand .logo-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.footer-slogan {
+    font-size: 1.1rem !important;
+    color: #808080;
+    font-style: italic;
+    font-weight: 600 !important;
+}
+
+.footer-links h4 {
+    color: var(--fire-orange);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: #B0B0B0;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: var(--fire-orange);
+    transform: translateX(5px);
+    text-shadow: 0 0 10px var(--fire-orange);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    font-size: 2.5rem;
+    transition: all 0.3s;
+    filter: grayscale(1);
+}
+
+.social-icon:hover {
+    transform: scale(1.2) rotate(10deg);
+    filter: grayscale(0) drop-shadow(0 0 15px var(--fire-orange));
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 107, 0, 0.3);
+    color: #808080;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-links {
+        align-items: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+
+

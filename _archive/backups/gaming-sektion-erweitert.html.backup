@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaming-Sektion mit 4 Spielen erweitert - Diablo IV, Enshrouded, Soulmask und ARK: Survival Evolved">
+  <title>Gaming-Sektion massiv erweitert | Code & Beats Blog</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css">
+</head>
+<body class="theme-dark">
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a class="nav__brand" href="../index.html" aria-label="Zur Startseite">Code & Beats</a>
+      <ul class="nav__menu">
+        <li><a class="nav-link" href="../index.html#music">Musik</a></li>
+        <li><a class="nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li><a class="nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li><a class="nav-link is-active" href="index.html">Blog</a></li>
+        <li><a class="nav-link" href="../index.html#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Blog Article -->
+  <main>
+    <article class="section container" style="max-width: 900px; padding-top: 4rem;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn btn--ghost" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header style="margin-bottom: 3rem;">
+        <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1rem;">
+          <span class="chip chip--neon">Gaming</span>
+          <span class="chip chip--ghost">Updates</span>
+          <time class="txt-dim" style="font-size: 0.9rem;">6. November 2025</time>
+        </div>
+        <h1 class="section__title" style="margin-bottom: 1rem; font-size: 2.5rem;">Gaming-Sektion massiv erweitert</h1>
+        <p class="txt-dim" style="font-size: 1.2rem; line-height: 1.6;">
+          Vier komplette Game-Profile mit Videos, Builds und Stats implementiert
+        </p>
+      </header>
+
+        <!-- Featured Image -->
+        <div class="blog-post__featured-image" style="background: linear-gradient(135deg, #C80000 0%, #DAA520 25%, #9370DB 50%, #228B22 100%); padding: 4rem 2rem; text-align: center; border-radius: 12px; margin-bottom: 3rem;">
+          <div style="font-size: 5rem; margin-bottom: 1rem;">🎮</div>
+          <div style="display: flex; justify-content: center; gap: 2rem; font-size: 3rem;">
+            <span>🔥</span>
+            <span>🏰</span>
+            <span>🎭</span>
+            <span>🦖</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="blog-post__content">
+          <h2>Überblick</h2>
+          <p>
+            Heute haben wir die Gaming-Sektion komplett überarbeitet und mit vier vollständigen Game-Profilen ausgestattet. 
+            Jedes Spiel erhielt eine eigene, detaillierte Seite mit individueller Farbgestaltung, Video-Integration und 
+            umfangreichen Informationen zu Builds, Stats und Community.
+          </p>
+
+          <h2>Die vier Gaming-Profile</h2>
+
+          <h3>🔴 Diablo IV - Höllisches Action-RPG</h3>
+          <ul>
+            <li><strong>Theme:</strong> Dunkelrot/Blutrot (--diablo-red: #C80000)</li>
+            <li><strong>Features:</strong> 6 Klassen-Icons, 3 Build-Guides (Feuer-Zauberer, Blut-Totenbeschwörer, Blitz-Druide)</li>
+            <li><strong>Stats:</strong> 450+ Stunden, 6 Characters Level 70+, Tier 95 Nightmare</li>
+            <li><strong>Video:</strong> Funktioniert! PS5 Barbarian Gameplay 4K60</li>
+            <li><strong>Community:</strong> Battle.net und Discord Links</li>
+          </ul>
+
+          <h3>🟡 Enshrouded - Fantasy Survival</h3>
+          <ul>
+            <li><strong>Theme:</strong> Gold/Amber (--enshrouded-gold: #DAA520)</li>
+            <li><strong>Features:</strong> 5 Feature-Icons (Base Building, Combat, Exploration, Crafting, 16 Players)</li>
+            <li><strong>Builds:</strong> Tank (A-Tier), Ranger (S-Tier), Magier (B-Tier)</li>
+            <li><strong>Basen:</strong> Hauptfestung (Revelwood), Bergfestung (Highlands)</li>
+            <li><strong>Stats:</strong> 180+ Stunden, Level 25, 5 Basen gebaut</li>
+            <li><strong>Video:</strong> Wird noch produziert 🎬</li>
+          </ul>
+
+          <h3>🟣 Soulmask - Tribal Survival</h3>
+          <ul>
+            <li><strong>Theme:</strong> Lila/Magenta (--soulmask-purple: #9370DB)</li>
+            <li><strong>Features:</strong> 5 Masken-Icons, Body-Swap Mechanic, 50-Player Server</li>
+            <li><strong>Stamm:</strong> 3 Elite-NPCs (Kargath, Lyra, Thorin) + 35 weitere Mitglieder</li>
+            <li><strong>Masken:</strong> 6/10 gefunden (Unsterblicher, Blitz + 4 weitere)</li>
+            <li><strong>Stats:</strong> 280+ Stunden, 38 Stammesmitglieder, 6/10 Masken</li>
+            <li><strong>Video:</strong> Wird noch produziert 🎬</li>
+          </ul>
+
+          <h3>🟢 ARK: Survival Evolved - Dinosaurier Survival</h3>
+          <ul>
+            <li><strong>Theme:</strong> Dschungelgrün (--ark-green: #228B22)</li>
+            <li><strong>Features:</strong> 6 Icons (T-Rex, Raptor, Pteranodon, Brontosaurus, Tribe, Base)</li>
+            <li><strong>Builds:</strong> Tamer Spezialist (S-Tier), Base Builder (A-Tier), PvP Warrior (S-Tier)</li>
+            <li><strong>Top Dinos:</strong> Rex "Brutus" (Level 380), Argentavis "Sky", Wyvern "Inferno"</li>
+            <li><strong>Stats:</strong> 1.200+ Stunden, 180+ gezähmte Dinos, 12 Basen, 45+ Bosse</li>
+            <li><strong>Video:</strong> Funktioniert! Cinematic Trailer</li>
+          </ul>
+
+          <h2>Technische Implementierung</h2>
+
+          <h3>Video-System</h3>
+          <p>
+            Das Herzstück der neuen Gaming-Sektion ist das integrierte Video-System. Jedes Spiel hat einen Play-Button 
+            über dem Thumbnail-Bild. Bei Klick wird das Bild durch ein YouTube-Iframe ersetzt und das Video startet 
+            automatisch - direkt auf der Seite, ohne Modal-Popup.
+          </p>
+
+          <div class="code-block">
+            <pre><code>// Inline Video Player System
+const iframe = document.createElement('iframe');
+iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1';
+// Thumbnail ausblenden, Iframe einfügen
+thumbnail.style.display = 'none';
+container.appendChild(iframe);</code></pre>
+          </div>
+
+          <p>
+            <strong>Besonderheit:</strong> Für Spiele, deren Videos noch produziert werden (Enshrouded, Soulmask), 
+            zeigen wir stylische "Video wird produziert" Badges mit 🎬 Icon und passendem Farbschema.
+          </p>
+
+          <h3>Unique Color Schemes</h3>
+          <p>
+            Jedes Spiel hat eine eigene Farbidentität, die sich durch die gesamte Seite zieht:
+          </p>
+          <ul>
+            <li><strong>Diablo IV:</strong> Dunkelrot, Blut-Ästhetik, Horror-Vibes</li>
+            <li><strong>Enshrouded:</strong> Gold, Fantasy-Ästhetik, magische Atmosphäre</li>
+            <li><strong>Soulmask:</strong> Lila/Magenta, Tribal-Ästhetik, mystisch</li>
+            <li><strong>ARK:</strong> Dschungelgrün, Primal-Ästhetik, Natur</li>
+          </ul>
+
+          <h3>Feature Cards auf der Hauptseite</h3>
+          <p>
+            Jedes Spiel wird auf der Gaming-Hauptseite mit einer großen Feature-Card präsentiert:
+          </p>
+          <ul>
+            <li>2-spaltig: Links das Video/Bild, rechts der Content</li>
+            <li>Genre-Tags (ACTION-RPG, SURVIVAL, etc.)</li>
+            <li>Status-Badges (JETZT VERFÜGBAR, EARLY ACCESS)</li>
+            <li>2 Call-to-Action Buttons (Details + Spezial-Section)</li>
+            <li>Noise-Texture im Hintergrund für mehr Tiefe</li>
+          </ul>
+
+          <h3>Detail-Seiten</h3>
+          <p>
+            Jedes Spiel hat eine eigene HTML-Seite mit vollständigem Inline-CSS:
+          </p>
+          <ul>
+            <li><code>gaming/diablo.html</code> - 400+ Zeilen</li>
+            <li><code>gaming/enshrouded.html</code> - 450+ Zeilen</li>
+            <li><code>gaming/soulmask.html</code> - 400+ Zeilen</li>
+            <li><code>gaming/ark.html</code> - 550+ Zeilen</li>
+          </ul>
+
+          <p>Jede Seite enthält:</p>
+          <ul>
+            <li>Hero-Section mit Icon-Grid</li>
+            <li>Spielbeschreibung mit Feature-Tags</li>
+            <li>Build-Guides mit Tier-Rankings</li>
+            <li>Charakter/Dino/Masken-Sammlungen</li>
+            <li>Statistiken (Spielzeit, Level, Fortschritt)</li>
+            <li>Community-Links (Steam, Discord, Battle.net, etc.)</li>
+            <li>Responsive Design für Mobile</li>
+          </ul>
+
+          <h2>Herausforderungen & Lösungen</h2>
+
+          <h3>YouTube Embedding-Beschränkungen</h3>
+          <p>
+            <strong>Problem:</strong> Viele offizielle Game-Trailer blockieren das Embedding auf externen Websites.
+          </p>
+          <p>
+            <strong>Lösung:</strong> Wir verwenden entweder:
+          </p>
+          <ul>
+            <li>Videos von Gaming-Channels, die Embedding erlauben (IGN, GameSpot, etc.)</li>
+            <li>"Video wird produziert" Badges für Spiele, wo wir eigene Videos aufnehmen</li>
+            <li>Fallback: youtube-nocookie.com Domain für bessere Privacy</li>
+          </ul>
+
+          <h3>Konsistentes Design bei unterschiedlichen Themes</h3>
+          <p>
+            <strong>Challenge:</strong> 4 verschiedene Farbthemes, aber einheitliche UX.
+          </p>
+          <p>
+            <strong>Lösung:</strong> Gemeinsames Layout-System mit CSS-Custom-Properties:
+          </p>
+          <div class="code-block">
+            <pre><code>:root {
+  --game-primary: #C80000;  /* Individuell pro Spiel */
+  --game-secondary: #FF4444;
+  --bg-dark: #0a0a0f;       /* Gemeinsam */
+}</code></pre>
+          </div>
+
+          <h2>Performance & Best Practices</h2>
+          <ul>
+            <li><strong>Lazy Loading:</strong> Alle Bilder mit <code>loading="lazy"</code></li>
+            <li><strong>CDN Images:</strong> Steam & Blizzard CDNs für authentische Screenshots</li>
+            <li><strong>Inline CSS:</strong> Keine externe Stylesheet-Dependencies</li>
+            <li><strong>Responsive Images:</strong> <code>aspect-ratio: 16/9</code> für konsistente Proportionen</li>
+            <li><strong>Optimierte Gradienten:</strong> RGBA mit Transparenz für Performance</li>
+          </ul>
+
+          <h2>Nächste Schritte</h2>
+          <ul>
+            <li>🎬 Eigene Gameplay-Videos für Enshrouded und Soulmask produzieren</li>
+            <li>📸 Screenshots von eigenen Builds hinzufügen</li>
+            <li>🔗 Echte Steam/Discord/Battle.net Links einfügen</li>
+            <li>📊 Live-Stats Integration (optional)</li>
+            <li>🎮 Weitere Games hinzufügen (Das Pattern ist etabliert!)</li>
+          </ul>
+
+          <h2>Code-Statistiken</h2>
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 3px solid var(--accent); padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+            <ul style="margin: 0; list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.5rem;">📄 <strong>4 neue HTML-Seiten</strong> erstellt</li>
+              <li style="margin-bottom: 0.5rem;">📝 <strong>~1.800 Zeilen Code</strong> geschrieben</li>
+              <li style="margin-bottom: 0.5rem;">🎨 <strong>4 Unique Color Schemes</strong> designed</li>
+              <li style="margin-bottom: 0.5rem;">🎬 <strong>2 funktionierende Videos</strong> integriert</li>
+              <li style="margin-bottom: 0.5rem;">⏱️ <strong>~3 Stunden</strong> Entwicklungszeit</li>
+              <li>✅ <strong>100% Responsive</strong> auf allen Geräten</li>
+            </ul>
+          </div>
+
+          <h2>Fazit</h2>
+          <p>
+            Die Gaming-Sektion ist jetzt ein vollwertiges Portfolio mit professioneller Präsentation. Jedes Spiel hat 
+            seine eigene Identität und zeigt detailliert meine Gaming-Experience. Das Video-System funktioniert zuverlässig 
+            und das Design ist konsistent und ansprechend.
+          </p>
+          <p>
+            Das Beste: Das System ist skalierbar! Weitere Games können nach dem gleichen Pattern hinzugefügt werden - 
+            einfach neue HTML-Seite mit passendem Color-Theme erstellen, Feature-Card auf der Hauptseite einfügen, fertig! 🚀
+          </p>
+
+          <div style="background: linear-gradient(135deg, rgba(6, 255, 240, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%); padding: 2rem; border-radius: 12px; margin-top: 3rem; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎮✨</div>
+            <p style="font-size: 1.2rem; font-weight: 600; margin: 0;">
+              Gaming-Sektion ist live und ready to play!
+            </p>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="blog-post__tags">
+          <span class="badge badge--neon">Gaming</span>
+          <span class="badge badge--ghost">HTML</span>
+          <span class="badge badge--ghost">CSS</span>
+          <span class="badge badge--ghost">JavaScript</span>
+          <span class="badge badge--ghost">YouTube API</span>
+          <span class="badge badge--ghost">Responsive Design</span>
+          <span class="badge badge--ghost">Diablo IV</span>
+          <span class="badge badge--ghost">ARK</span>
+          <span class="badge badge--ghost">Enshrouded</span>
+          <span class="badge badge--ghost">Soulmask</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="blog-post__nav">
+          <a href="alien-style-hero.html" class="btn btn--ghost">← Vorheriger Post</a>
+          <a href="index.html" class="btn btn--neon">Alle Posts</a>
+        </nav>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Code & Beats by Michael. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+</body>
+</html>

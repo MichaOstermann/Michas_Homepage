@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SV Werder Bremen – Lebenslang Grün-Weiß</title>
+    
+    <!-- COPYRIGHT PROTECTION - DO NOT REMOVE! -->
+    <meta name="template-author" content="Michael Ostermann">
+    <meta name="template-copyright" content="© 2025 Michael Ostermann - Werder Fans Community Template">
+    <meta name="template-source" content="https://mcgv.de">
+    <meta name="template-protection" content="enabled">
+    <!-- END COPYRIGHT PROTECTION -->
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="inline-cms.css">
+</head>
+<body>
+    <!--
+    ═══════════════════════════════════════════════════════════════════════════════
+      WERDER FANS COMMUNITY TEMPLATE
+      © 2025 Michael Ostermann
+      Website: https://mcgv.de
+      
+      WARNUNG: Das Entfernen dieser Copyright-Hinweise ist ILLEGAL
+      und verstößt gegen das Urheberrecht (§ 97 UrhG)!
+      
+      Bei Missbrauch werden rechtliche Schritte eingeleitet!
+    ═══════════════════════════════════════════════════════════════════════════════
+    -->
+    
+    <!-- Rauten-Hintergrund -->
+    <canvas id="rautenCanvas"></canvas>
+    
+    <!-- Floating Fußbälle -->
+    <div class="footballs-container"></div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-badge">
+            <div class="shield">
+                <div class="shield-top"></div>
+                <div class="shield-text">SVW</div>
+            </div>
+        </div>
+        <h1 class="hero-title">
+            <span class="gruen">WERDER FANS</span>
+            <span class="weiss">COMMUNITY</span>
+        </h1>
+        <p class="hero-subtitle">Unsere Fan-Gemeinschaft • Leidenschaft • Zusammenhalt • Lebenslang Grün-Weiß</p>
+        <div class="hero-cta">
+            <button class="btn btn-primary">Mitglied werden</button>
+            <button class="btn btn-secondary">Fan-Profil erstellen</button>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="250">0</div>
+                    <div class="stat-label">Aktive Mitglieder</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="1200">0</div>
+                    <div class="stat-label">Hochgeladene Fotos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="85">0</div>
+                    <div class="stat-label">Fan-Stories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="42">0</div>
+                    <div class="stat-label">Community-Events</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fan Profile Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Unsere <span class="highlight">Community</span></h2>
+            <div class="team-grid">
+                <div class="player-card">
+                    <div class="player-number">👤</div>
+                    <div class="player-image"></div>
+                    <h3 class="player-name">Thomas M.</h3>
+                    <p class="player-position">Fan seit 1995</p>
+                </div>
+                <div class="player-card">
+                    <div class="player-number">👤</div>
+                    <div class="player-image"></div>
+                    <h3 class="player-name">Sarah K.</h3>
+                    <p class="player-position">Fan seit 2010</p>
+                </div>
+                <div class="player-card">
+                    <div class="player-number">👤</div>
+                    <div class="player-image"></div>
+                    <h3 class="player-name">Markus B.</h3>
+                    <p class="player-position">Fan seit 1987</p>
+                </div>
+                <div class="player-card">
+                    <div class="player-number">👤</div>
+                    <div class="player-image"></div>
+                    <h3 class="player-name">Julia S.</h3>
+                    <p class="player-position">Fan seit 2018</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Community Event -->
+    <section class="match-section">
+        <div class="container">
+            <h2 class="section-title">Nächstes <span class="highlight">Fan-Treffen</span></h2>
+            <div class="match-card">
+                <div class="match-team">
+                    <div class="team-logo werder-logo"></div>
+                    <h3>Public Viewing</h3>
+                </div>
+                <div class="match-vs">
+                    <div class="match-time">Samstag, 23.11.2025</div>
+                    <div class="match-score">15:00 Uhr</div>
+                    <div class="match-location">Fan-Stammtisch "Zur Raute"</div>
+                </div>
+                <div class="match-team">
+                    <div class="team-logo opponent-logo"></div>
+                    <h3>Zusammen Anfeuern!</h3>
+                </div>
+            </div>
+            <div class="ticket-cta">
+                <button class="btn btn-glow">Jetzt anmelden</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Events Section -->
+    <section class="spielplan-section">
+        <div class="container">
+            <h2 class="section-title">Kommende <span class="highlight">Events</span></h2>
+            <div id="spielplan-list" class="spielplan-list">
+                <!-- Wird dynamisch von JavaScript befüllt -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section class="galerie-section">
+        <div class="container">
+            <h2 class="section-title">Fan <span class="highlight">Galerie</span></h2>
+            <div id="galerie-grid" class="galerie-grid">
+                <!-- Wird dynamisch von JavaScript befüllt -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section">
+        <div class="container">
+            <h2 class="section-title">Video <span class="highlight">Highlights</span></h2>
+            <div id="videos-grid" class="videos-grid">
+                <!-- Wird dynamisch von JavaScript befüllt -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Fan Stories Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2 class="section-title">Fan <span class="highlight">Stories</span></h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-badge">Story</div>
+                    <h3 class="news-title">Mein erstes Spiel im Weserstadion</h3>
+                    <p class="news-excerpt">Als 7-Jähriger das erste Mal live dabei – ein Moment, den ich nie vergessen werde. Die Atmosphäre war unbeschreiblich...</p>
+                    <a href="#" class="news-link">Weiterlesen →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-badge">Reise</div>
+                    <h3 class="news-title">Auswärtssieg in München!</h3>
+                    <p class="news-excerpt">15 Stunden Busfahrt, aber es hat sich gelohnt! Der Sieg in der Allianz Arena war legendär...</p>
+                    <a href="#" class="news-link">Weiterlesen →</a>
+                </div>
+                <div class="news-card">
+                    <div class="news-badge">Community</div>
+                    <h3 class="news-title">Fan-Stammtisch seit 20 Jahren</h3>
+                    <p class="news-excerpt">Jeden Freitag treffen wir uns – durch dick und dünn. Werder verbindet Generationen...</p>
+                    <a href="#" class="news-link">Weiterlesen →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="shield-small">
+                        <div class="shield-top-small"></div>
+                        <div class="shield-text-small">SVW</div>
+                    </div>
+                    <p>Lebenslang Grün-Weiß</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">Kontakt</a>
+                    <a href="#">Community</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Ostermann • Werder Fans Community Template</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DEMO PROTECTION - AKTIV BIS ZUR FREIGABE! -->
+    <script src="demo-protection.js"></script>
+    <!-- END DEMO PROTECTION -->
+    
+    <!-- COPYRIGHT PROTECTION SYSTEM - DO NOT REMOVE! -->
+    <script src="copyright-protection.js"></script>
+    <!-- END COPYRIGHT PROTECTION -->
+    
+    <script src="inline-cms.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

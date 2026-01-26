@@ -1,0 +1,37 @@
+/* ©2025 MICHAEL OSTERMANN - SALON STYLE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --primary: #FF1493;
+    --secondary: #FFD700;
+    --dark: #2C2C2C;
+    --light: #F8F8F8;
+}
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--dark); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.hero { min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1600&q=80') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+.hero-subtitle { font-size: 1.5rem; margin-bottom: 2rem; }
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: transform 0.3s; border: none; cursor: pointer; font-size: 1.1rem; }
+.btn-primary:hover { transform: translateY(-3px); }
+section { padding: 5rem 0; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary); }
+.services-grid, .gallery-grid, .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.service-card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-10px); }
+.service-icon { font-size: 3rem; margin-bottom: 1rem; }
+.service-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary); }
+.price { display: block; margin-top: 1rem; font-size: 1.3rem; font-weight: 700; color: var(--secondary); }
+.gallery-section { background: var(--light); }
+.gallery-item img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; transition: transform 0.3s; }
+.gallery-item img:hover { transform: scale(1.05); }
+.team-member { text-align: center; }
+.team-member img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid var(--primary); }
+.team-member h3 { color: var(--primary); margin-bottom: 0.5rem; }
+.booking-section { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+.booking-form { max-width: 600px; margin: 0 auto; }
+.booking-form input, .booking-form select, .booking-form textarea { width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-radius: 10px; font-size: 1rem; }
+.footer { background: var(--dark); color: white; padding: 2rem 0; text-align: center; }
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .services-grid, .gallery-grid, .team-grid { grid-template-columns: 1fr; } }
+
+
+

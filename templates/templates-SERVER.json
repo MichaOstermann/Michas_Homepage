@@ -1,0 +1,53 @@
+{
+  "templates": [
+    {
+      "id": "terminator-t800",
+      "name": "Terminator T-800 HUD",
+      "category": "creative",
+      "description": "Futuristische T-800 Terminal-Oberfläche mit Matrix-Rain, Partikeln und HUD-Overlay. Sci-Fi Cyberpunk Design.",
+      "preview": "demos/terminator/preview.jpg",
+      "demoUrl": "demos/terminator/index.html",
+      "downloadUrl": "#",
+      "tags": ["Sci-Fi", "Cyberpunk", "Dark", "Interactive"],
+      "features": ["Matrix Rain Effect", "Particle System", "HUD Overlay", "Terminal Animation"],
+      "rating": 4.9,
+      "ratingCount": 18,
+      "downloads": 234,
+      "lastUpdated": "2025-11-17"
+    },
+    {
+      "id": "hogwarts-magic",
+      "name": "Hogwarts Magic Academy",
+      "category": "creative",
+      "description": "Magisches Hogwarts-Theme mit schwebenden Kerzen, Zaubersprüchen und House-Selection. Fantasy-Design mit Particle-Effekten.",
+      "preview": "demos/hogwarts/preview.jpg",
+      "demoUrl": "demos/hogwarts/index.html",
+      "downloadUrl": "#",
+      "tags": ["Fantasy", "Magic", "Harry Potter", "Interactive"],
+      "features": ["Floating Candles", "Magic Particles", "4 Houses", "Spell Cards"],
+      "rating": 4.8,
+      "ratingCount": 15,
+      "downloads": 189,
+      "lastUpdated": "2025-11-17"
+    },
+    {
+      "id": "werder-bremen",
+      "name": "Werder Bremen Fan-Seite",
+      "category": "sports",
+      "description": "Komplettes Fußball-Template mit CMS-Backend! Verwalte Spielpläne, Foto-Galerie, Videos und mehr. Multi-User-System mit Admin-Freigabe. Perfekt für Sportvereine!",
+      "previewImage": "demos/werder/thumb.svg",
+      "demoUrl": "demos/werder/index.html",
+      "downloadUrl": "#",
+      "tags": ["Fußball", "Werder Bremen", "CMS", "Sport", "Multi-User"],
+      "features": ["Live CMS Backend", "Spielplan-Verwaltung", "Foto-Galerie", "Video-Upload", "Multi-User-System", "E-Mail-Freigabe"],
+      "rating": 5.0,
+      "ratingCount": 0,
+      "downloads": 0,
+      "lastUpdated": "2025-11-21",
+      "badge": "NEW"
+    }
+  ]
+}
+
+
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Studio Nebula Audio & Code Archive – Höre Sessions, lade Toolkits und bewerte Releases."
+    />
+    <title>Studio Nebula · Archive</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script defer src="scripts/music.js"></script>
+  </head>
+  <body class="theme-nebula">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand__symbol">◎</span>
+        <span class="brand__text">Studio Nebula · Micha PH</span>
+      </div>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        Menü
+      </button>
+      <nav id="primary-nav" class="nav" aria-expanded="false">
+        <a href="index.html">Overview</a>
+        <a href="music.html" aria-current="page">Archive</a>
+        <a href="contact.html">Connect</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section archive-hero" id="latest">
+        <header class="section__header">
+          <p class="eyebrow">Archive Streams</p>
+          <h1>Experimente, Releases & Code Packs in einer Timeline.</h1>
+          <p>
+            Höre direkt in Sessions rein, downloade die passenden PS Codes und hinterlasse deine Bewertung.
+            Die Daten bleiben lokal – perfekt fürs Prototyping.
+          </p>
+        </header>
+        <div class="archive__grid" id="library-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section upload">
+        <header class="section__header">
+          <p class="eyebrow">Upload Console</p>
+          <h2>Bereite neue Drops lokal vor und simuliere den Rollout.</h2>
+        </header>
+        <form class="upload__form" id="upload-form">
+          <div class="upload__grid">
+            <label>
+              Titel*
+              <input type="text" name="title" required placeholder="Track oder Pack Name" />
+            </label>
+            <label>
+              Genre
+              <input type="text" name="genre" placeholder="Leftfield Electronica …" />
+            </label>
+            <label>
+              BPM
+              <input type="number" name="bpm" min="0" placeholder="120" />
+            </label>
+            <label>
+              Key
+              <input type="text" name="key" placeholder="G# Phrygian" />
+            </label>
+          </div>
+          <label>
+            Beschreibung
+            <textarea
+              name="description"
+              rows="4"
+              placeholder="Mood, mitwirkende Instrumente, Visual Hooks …"
+            ></textarea>
+          </label>
+
+          <div class="upload__grid">
+            <label class="upload__file">
+              Audio (MP3/WAV)*
+              <input type="file" name="audio" accept="audio/*" required />
+            </label>
+            <label class="upload__file">
+              Artwork (PNG/SVG)
+              <input type="file" name="artwork" accept="image/*" />
+            </label>
+            <label class="upload__file">
+              PS Code (ZIP/JSX)
+              <input type="file" name="code" accept=".zip,.pscode,.jsx" />
+            </label>
+          </div>
+
+          <label class="contact__switch">
+            <input type="checkbox" name="aiCopy" />
+            <span class="switch__visual"></span>
+            <span>AI Draft für Beschreibung generieren</span>
+          </label>
+
+          <button type="submit" class="btn btn--outline">Upload lokal simulieren</button>
+          <p class="form-success" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>Studio Nebula</strong>
+        <span>Built by Micha PH · Köln · Remote EU</span>
+      </div>
+      <div class="footer__links">
+        <a href="index.html">Overview</a>
+        <a href="contact.html">Connect</a>
+        <a href="#" data-role="newsletter">Newsletter (Beta)</a>
+      </div>
+      <p class="footer__note">Bewertungen werden ausschließlich im Browser gespeichert.</p>
+    </footer>
+  </body>
+</html>
+
+
+
+
+
+

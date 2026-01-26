@@ -1,0 +1,461 @@
+<?php
+// Songs verwalten (passwortgeschützt)
+session_start();
+
+// Passwortkonfiguration laden
+$configFile = __DIR__ . '/config/config.php';
+if (!file_exists($configFile)) {
+    http_response_code(500);
+    echo 'Konfigurationsdatei fehlt: config/config.php';
+    exit;
+}
+require_once $configFile;
+
+if (!isset($manage_password_hash, $manage_password_salt)) {
+    http_response_code(500);
+    echo 'Passwortkonfiguration unvollständig.';
+    exit;
+}
+
+function verify_manage_password(string $input, string $salt, string $hash): bool {
+    $candidate = hash('sha256', $input . '|' . $salt);
+    return hash_equals($hash, $candidate);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
+    if (verify_manage_password($_POST['password'], $manage_password_salt, $manage_password_hash)) {
+        $_SESSION['authenticated'] = true;
+        header('Location: manage.php');
+        exit;
+    } else {
+        $loginError = 'Falsches Passwort!';
+    }
+}
+
+if (isset($_GET['logout'])) {
+	unset($_SESSION['authenticated']);
+	header('Location: manage.php');
+	exit;
+}
+
+$isAuthenticated = isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true;
+
+if (!$isAuthenticated) {
+	// Login-Formular anzeigen
+	?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Songs verwalten (Beta) – Login</title>
+	<link rel="icon" type="image/svg+xml" href="../assets/media/favicon.svg" />
+	<link rel="stylesheet" href="../assets/css/styles.css" />
+	<style>
+		body { background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%); }
+		.login-box {
+			max-width: 400px;
+			margin: 8rem auto;
+			padding: 2.5rem;
+			background: linear-gradient(135deg, rgba(11,15,22,0.9) 0%, rgba(20,20,30,0.9) 100%);
+			border: 2px solid rgba(6,255,240,0.3);
+			border-radius: 16px;
+			backdrop-filter: blur(10px);
+		}
+		.login-box h1 {
+			font-size: 1.8rem;
+			margin-bottom: 1rem;
+			color: #06FFF0;
+		}
+		.form__input {
+			width: 100%;
+			padding: 0.85rem;
+			background: rgba(11,15,22,0.8);
+			border: 2px solid rgba(6,255,240,0.3);
+			border-radius: 10px;
+			color: #fff;
+			font-size: 1rem;
+			margin-bottom: 1rem;
+		}
+		.form__input:focus {
+			outline: none;
+			border-color: #06FFF0;
+			box-shadow: 0 0 15px rgba(6,255,240,0.5);
+		}
+		.error {
+			color: #FF006E;
+			margin-bottom: 1rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="login-box">
+		<h1>🔒 Songs verwalten</h1>
+		<p class="txt-dim" style="margin-bottom: 1.5rem;">Bitte Passwort eingeben:</p>
+		<?php if (isset($loginError)): ?>
+			<p class="error"><?= htmlspecialchars($loginError) ?></p>
+		<?php endif; ?>
+		<form method="post">
+			<input class="form__input" type="password" name="password" placeholder="Passwort" required autofocus>
+			<button class="btn btn--neon" type="submit" style="width: 100%;">Anmelden</button>
+		</form>
+		<p class="txt-dim" style="margin-top: 1.5rem; text-align: center;">
+			<a href="./index.html" class="nav-link">← Zurück zur Musik</a>
+		</p>
+	</div>
+</body>
+</html>
+	<?php
+	exit;
+}
+
+// Ab hier: Authentifiziert
+$baseDir = __DIR__;
+$dataDir = $baseDir . DIRECTORY_SEPARATOR . 'data';
+$tracksJson = $baseDir . DIRECTORY_SEPARATOR . 'tracks.json';
+
+// CSRF Token
+if (!isset($_SESSION['csrf_manage'])) {
+	$_SESSION['csrf_manage'] = bin2hex(random_bytes(16));
+}
+$csrfToken = $_SESSION['csrf_manage'];
+
+// Alle Tracks aus allen Kategorien laden
+$allTracks = [];
+$categories = ['party', 'rapp', 'love', 'traurig', 'gemischt'];
+foreach ($categories as $cat) {
+	$catJson = $dataDir . DIRECTORY_SEPARATOR . $cat . '.json';
+	if (file_exists($catJson)) {
+		$data = json_decode(@file_get_contents($catJson), true);
+		if (is_array($data) && isset($data['tracks']) && is_array($data['tracks'])) {
+			foreach ($data['tracks'] as $track) {
+				$track['_category'] = $cat; // Kategorie hinzufügen für Anzeige
+				$allTracks[] = $track;
+			}
+		}
+	}
+}
+
+usort($allTracks, function($a, $b) {
+    $catA = strtolower($a['_category'] ?? '');
+    $catB = strtolower($b['_category'] ?? '');
+    if ($catA !== $catB) {
+        return $catA <=> $catB;
+    }
+    return strtolower($a['title'] ?? '') <=> strtolower($b['title'] ?? '');
+});
+
+function h($s){ return htmlspecialchars((string)$s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
+?>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Songs verwalten (Beta)</title>
+	<link rel="icon" type="image/svg+xml" href="../assets/media/favicon.svg" />
+	<link rel="stylesheet" href="../assets/css/styles.css" />
+	<style>
+		body { background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%); }
+		.manage-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+		.manage-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+		.manage-header h1 {
+			font-size: 2rem;
+			background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		.track-list {
+			display: grid;
+			gap: 1rem;
+		}
+		.track-item {
+			background: linear-gradient(135deg, rgba(11,15,22,0.9) 0%, rgba(20,20,30,0.9) 100%);
+			border: 2px solid rgba(6,255,240,0.2);
+			border-radius: 12px;
+			padding: 1.5rem;
+			display: grid;
+			grid-template-columns: auto 1fr auto auto;
+			gap: 1.5rem;
+			align-items: center;
+		}
+		.track-item:hover {
+			border-color: #06FFF0;
+		}
+		.track-cover {
+			width: 80px;
+			height: 80px;
+			border-radius: 8px;
+			object-fit: cover;
+		}
+		.track-info h3 {
+			margin: 0 0 0.25rem 0;
+			color: #06FFF0;
+		}
+		.track-info p {
+			margin: 0;
+			font-size: 0.9rem;
+			opacity: 0.7;
+		}
+		.track-category {
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			font-size: 0.85rem;
+			font-weight: 600;
+			background: rgba(6,255,240,0.2);
+			border: 1px solid rgba(6,255,240,0.3);
+		}
+		.btn-delete {
+			padding: 0.75rem 1.5rem;
+			background: rgba(255,0,110,0.2);
+			border: 2px solid rgba(255,0,110,0.4);
+			color: #FF006E;
+			border-radius: 10px;
+			cursor: pointer;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+		.btn-delete:hover {
+			background: rgba(255,0,110,0.3);
+			border-color: #FF006E;
+			box-shadow: 0 0 15px rgba(255,0,110,0.4);
+		}
+		.empty-state {
+			text-align: center;
+			padding: 3rem;
+			opacity: 0.6;
+		}
+		.filter-controls {
+			display: flex;
+			gap: 1rem;
+			margin-bottom: 2rem;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+		.search-box {
+			flex: 1;
+			min-width: 250px;
+			padding: 0.75rem 1rem;
+			background: rgba(11,15,22,0.9);
+			border: 2px solid rgba(6,255,240,0.3);
+			border-radius: 10px;
+			color: white;
+			font-size: 1rem;
+		}
+		.search-box:focus {
+			outline: none;
+			border-color: #06FFF0;
+			box-shadow: 0 0 15px rgba(6,255,240,0.3);
+		}
+		.filter-btn {
+			padding: 0.75rem 1.5rem;
+			background: rgba(6,255,240,0.1);
+			border: 2px solid rgba(6,255,240,0.3);
+			color: #06FFF0;
+			border-radius: 10px;
+			cursor: pointer;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+		.filter-btn:hover {
+			background: rgba(6,255,240,0.2);
+			border-color: #06FFF0;
+		}
+		.filter-btn.active {
+			background: #06FFF0;
+			color: #0B0F16;
+			border-color: #06FFF0;
+		}
+		.track-item.hidden {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<nav class="nav container">
+			<a class="nav__logo" href="./index.html">← Musik (Beta)</a>
+		</nav>
+	</header>
+	<main class="main" style="padding-top: 6rem;">
+		<div class="manage-container">
+			<?php
+			// Cover-Regenerierung nach Edit
+			if (isset($_GET['regenerateCover'])) {
+				$regenerateSongId = trim($_GET['regenerateCover']);
+				echo '<div style="padding: 1rem; margin-bottom: 1rem; background: rgba(6,255,240,0.2); border: 2px solid rgba(6,255,240,0.4); border-radius: 10px; text-align: center;">
+					<p style="margin: 0;">🎨 Cover wird neu generiert...</p>
+					<script>
+						fetch("./generate-cover.php?songId=' . urlencode($regenerateSongId) . '")
+							.then(r => r.json())
+							.then(d => {
+								if (d.success) {
+									alert("✓ Cover wurde neu generiert!");
+									window.location.href = "./manage.php";
+								} else {
+									alert("❌ Fehler: " + (d.error || "Unbekannt"));
+									window.location.href = "./manage.php";
+								}
+							});
+					</script>
+				</div>';
+			}
+			// Update-Bestätigung
+			if (isset($_GET['updated'])) {
+				echo '<div style="padding: 1rem; margin-bottom: 1rem; background: rgba(0,255,136,0.2); border: 2px solid rgba(0,255,136,0.4); border-radius: 10px;">
+					<p style="margin: 0; color: #00FF88; font-weight: 600;">✓ Song erfolgreich aktualisiert!</p>
+				</div>';
+			}
+			?>
+			<div class="manage-header">
+				<h1>🗑️ Songs verwalten</h1>
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+					<a href="./ratings-admin.php" class="btn btn--glass">⭐ Ratings</a>
+					<a href="./comments-manage.php" class="btn btn--glass">💬 Kommentare</a>
+					<a href="./upload.php" class="btn btn--neon">+ Song hochladen</a>
+					<a href="?logout" class="btn btn--glass">Abmelden</a>
+				</div>
+			</div>
+
+			<div class="filter-controls">
+				<input type="text" class="search-box" id="searchBox" placeholder="🔍 Song suchen (Titel, Beschreibung, Dateiname)...">
+			<button class="filter-btn active" data-filter="all">Alle (<?= count($allTracks) ?>)</button>
+			<button class="filter-btn" data-filter="gemischt">Gemischt</button>
+			<button class="filter-btn" data-filter="love">Love</button>
+			<button class="filter-btn" data-filter="party">Party</button>
+			<button class="filter-btn" data-filter="rapp">Rapp</button>
+			<button class="filter-btn" data-filter="traurig">Traurig</button>
+			</div>
+
+			<?php if (empty($allTracks)): ?>
+				<div class="empty-state">
+					<p class="txt-dim">Noch keine Songs vorhanden.</p>
+				</div>
+			<?php else: ?>
+				<div class="track-list">
+					<?php foreach ($allTracks as $track): ?>
+						<div class="track-item" data-category="<?= h($track['_category'] ?? 'gemischt') ?>" data-title="<?= h(strtolower($track['title'] ?? '')) ?>" data-description="<?= h(strtolower($track['description'] ?? '')) ?>" data-audio="<?= h(strtolower($track['audio'] ?? '')) ?>">
+							<img class="track-cover" src="../assets/media/<?= h($track['cover'] ?? 'cover-default.svg') ?>" alt="Cover">
+							<div class="track-info">
+								<h3><?= h($track['title'] ?? 'Unbekannt') ?></h3>
+								<p><?= h($track['description'] ?? '') ?></p>
+								<p style="font-size: 0.8rem; margin-top: 0.25rem;">Datei: <?= h($track['audio'] ?? '') ?></p>
+							</div>
+							<span class="track-category"><?= h(ucfirst($track['_category'] ?? 'gemischt')) ?></span>
+							<div style="display: flex; gap: 0.5rem;">
+								<a href="./edit.php?id=<?= urlencode($track['id'] ?? '') ?>&cat=<?= urlencode($track['_category'] ?? '') ?>" 
+									class="btn btn--glass" 
+									style="padding: 0.75rem 1.25rem; font-size: 0.9rem; background: rgba(6,255,240,0.2); border-color: rgba(6,255,240,0.4); color: #06FFF0;">
+									✏️ Bearbeiten
+								</a>
+								<button class="btn-delete" 
+									onclick="deleteSong('<?= h($track['id'] ?? '') ?>', '<?= h($track['_category'] ?? '') ?>', '<?= h($track['title'] ?? '') ?>')">
+									🗑️ Löschen
+								</button>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</main>
+
+	<script>
+		// Filter & Search Funktionalität
+		const searchBox = document.getElementById('searchBox');
+		const filterBtns = document.querySelectorAll('.filter-btn');
+		const trackItems = document.querySelectorAll('.track-item');
+		let activeFilter = 'all';
+
+		// Kategorie-Filter
+		filterBtns.forEach(btn => {
+			btn.addEventListener('click', () => {
+				filterBtns.forEach(b => b.classList.remove('active'));
+				btn.classList.add('active');
+				activeFilter = btn.dataset.filter;
+				applyFilters();
+			});
+		});
+
+		// Suchfeld
+		searchBox.addEventListener('input', applyFilters);
+
+		function applyFilters() {
+			const searchTerm = searchBox.value.toLowerCase().trim();
+			let visibleCount = 0;
+
+			trackItems.forEach(item => {
+				const category = item.dataset.category;
+				const title = item.dataset.title;
+				const description = item.dataset.description;
+				const audio = item.dataset.audio;
+
+				// Kategorie-Filter
+				const categoryMatch = activeFilter === 'all' || category === activeFilter;
+
+				// Such-Filter
+				const searchMatch = !searchTerm || 
+					title.includes(searchTerm) || 
+					description.includes(searchTerm) || 
+					audio.includes(searchTerm);
+
+				if (categoryMatch && searchMatch) {
+					item.classList.remove('hidden');
+					visibleCount++;
+				} else {
+					item.classList.add('hidden');
+				}
+			});
+
+			// Zeige "Keine Ergebnisse" wenn nichts gefunden
+			const trackList = document.querySelector('.track-list');
+			let noResults = trackList.querySelector('.no-results');
+			
+			if (visibleCount === 0) {
+				if (!noResults) {
+					noResults = document.createElement('div');
+					noResults.className = 'empty-state no-results';
+					noResults.innerHTML = '<p class="txt-dim">Keine Songs gefunden.</p>';
+					trackList.appendChild(noResults);
+				}
+			} else if (noResults) {
+				noResults.remove();
+			}
+		}
+
+		async function deleteSong(songId, category, title) {
+			if (!confirm('Song "' + title + '" wirklich löschen?\n\nDies kann nicht rückgängig gemacht werden!')) {
+				return;
+			}
+
+			const formData = new FormData();
+			formData.append('songId', songId);
+			formData.append('category', category);
+			formData.append('csrf', '<?= h($csrfToken) ?>');
+
+			try {
+				const res = await fetch('./delete.php', { method: 'POST', body: formData });
+				const data = await res.json();
+				if (data.success) {
+					alert('✓ Song erfolgreich gelöscht!');
+					window.location.reload();
+				} else {
+					alert('❌ Fehler: ' + (data.error || 'Unbekannt'));
+				}
+			} catch (e) {
+				alert('❌ Fehler beim Löschen: ' + e.message);
+			}
+		}
+	</script>
+</body>
+</html>
+
+

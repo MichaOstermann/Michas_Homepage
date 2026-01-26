@@ -1,0 +1,58 @@
+{
+    "tracks": [
+        {
+            "id": "fur-die-kampfer-der-ukraine-1c5413",
+            "title": "Für die Kämpfer der Ukraine",
+            "category": "traurig",
+            "description": "Für das elend im Krieg der Ukraine.",
+            "cover": "covers\/fur-die-kampfer-der-ukraine-1c5413.svg",
+            "coverGenerated": true,
+            "audio": "Für_die_Ukraine__-_.mp3",
+            "folder": "Musik\/audio\/gemischt",
+            "isNew": true
+        },
+        {
+            "id": "eltern-aus-dem-krieg-0ba8da",
+            "title": "Eltern aus dem Krieg ...",
+            "category": "traurig",
+            "description": "Traurig aber wahr :-(",
+            "cover": "covers\/eltern-aus-dem-krieg-0ba8da.svg",
+            "coverGenerated": true,
+            "audio": "Nur_Eltern_verstehen......mp3",
+            "folder": "Musik\/audio\/gemischt",
+            "isNew": true
+        },
+        {
+            "id": "kein-lied-fuer-helden",
+            "title": "Kein Lied für Helden",
+            "category": "traurig",
+            "description": "Ukraine Krieg, furchtbar , doch real :-(",
+            "cover": "cover4.svg",
+            "audio": "Kein Lied für Helden.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "ruhe-sanft-meine-liebe-mama-7077f7",
+            "title": "Ruhe sanft meine liebe Mama",
+            "category": "traurig",
+            "description": "Ruhe in Friedn liebe Mama\r\n+ 11.12.2025",
+            "cover": "covers\/ruhe-sanft-meine-liebe-mama-7077f7.svg",
+            "coverGenerated": true,
+            "audio": "Meine_Mom.mp3",
+            "folder": "Musik\/audio\/traurig",
+            "isNew": true
+        },
+        {
+            "id": "wenn-alles-zerbricht-2f801d",
+            "title": "Wenn alles zerbricht",
+            "category": "traurig",
+            "description": "Was ist noch da?",
+            "cover": "covers\/wenn-alles-zerbricht-2f801d.svg",
+            "coverGenerated": true,
+            "audio": "Wenn_alles_zerbricht.mp3",
+            "folder": "Musik\/audio\/traurig",
+            "isNew": true
+        }
+    ]
+}

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sounddesign: Neon Atmos – Blog</title>
+  <meta name="description" content="Pads, Arps und Texturen für moderne Tracks: Tipps aus der Praxis." />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/hero-title.css" />
+  <link rel="stylesheet" href="../assets/css/brand.css" />
+  <link rel="stylesheet" href="../assets/css/about-contact.css" />
+  <link rel="stylesheet" href="../assets/css/footer-nav.css" />
+  <link rel="stylesheet" href="../assets/css/section-titles.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <h1 class="section__title" style="background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(6,255,240,0.3); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.75rem;">Sounddesign: Neon Atmos</h1>
+      <p class="txt-dim" style="margin: .5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          12. Oktober 2025
+        </span>
+        <span style="color: #8B5CF6;">•</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" aria-hidden="true">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Lesezeit: 4 min
+        </span>
+      </p>
+      <figure style="background: linear-gradient(135deg, rgba(6,255,240,0.06) 0%, rgba(139,92,246,0.06) 100%); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden;">
+        <svg viewBox="0 0 800 400" style="max-width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sounddesign Neon Atmos Illustration">
+          <defs>
+            <linearGradient id="sdGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#06FFF0;stop-opacity:0.8" />
+              <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:0.8" />
+              <stop offset="100%" style="stop-color:#06FFF0;stop-opacity:0.8" />
+            </linearGradient>
+            <filter id="sdGlow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="sdGlowStrong">
+              <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Sound Waveform (Zentral) -->
+          <g filter="url(#sdGlow)">
+            <path d="M50,200 L100,200 L120,120 L140,280 L160,140 L180,260 L200,160 L220,240 L240,180 L260,220 L280,190 L300,210 L320,195 L340,205 L360,198 L380,202" 
+                  stroke="url(#sdGrad1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M380,202 L400,200 L420,180 L440,220 L460,170 L480,230 L500,150 L520,250 L540,130 L560,270 L580,110 L600,290 L620,150 L640,250 L660,180 L680,220 L700,190 L720,210 L750,200" 
+                  stroke="url(#sdGrad1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          
+          <!-- Frequency Bars (unten) -->
+          <g opacity="0.6" filter="url(#sdGlow)">
+            <rect x="100" y="320" width="12" height="50" fill="#06FFF0" rx="2">
+              <animate attributeName="height" values="50;70;50" dur="1.2s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="320;300;320" dur="1.2s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="140" y="310" width="12" height="60" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="60;85;60" dur="1s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="310;285;310" dur="1s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="180" y="305" width="12" height="65" fill="#06FFF0" rx="2">
+              <animate attributeName="height" values="65;90;65" dur="1.4s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="305;280;305" dur="1.4s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="220" y="315" width="12" height="55" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="55;75;55" dur="1.1s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="315;295;315" dur="1.1s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="260" y="300" width="12" height="70" fill="#06FFF0" rx="2">
+              <animate attributeName="height" values="70;95;70" dur="1.3s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="300;275;300" dur="1.3s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="300" y="310" width="12" height="60" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="60;80;60" dur="1.5s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="310;290;310" dur="1.5s" repeatCount="indefinite"/>
+            </rect>
+            
+            <!-- Right side bars -->
+            <rect x="500" y="315" width="12" height="55" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="55;78;55" dur="1.2s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="315;292;315" dur="1.2s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="540" y="305" width="12" height="65" fill="#06FFF0" rx="2">
+              <animate attributeName="height" values="65;88;65" dur="1.4s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="305;282;305" dur="1.4s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="580" y="310" width="12" height="60" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="60;82;60" dur="1.1s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="310;288;310" dur="1.1s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="620" y="300" width="12" height="70" fill="#06FFF0" rx="2">
+              <animate attributeName="height" values="70;93;70" dur="1.3s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="300;277;300" dur="1.3s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="660" y="312" width="12" height="58" fill="#8B5CF6" rx="2">
+              <animate attributeName="height" values="58;80;58" dur="1.5s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="312;290;312" dur="1.5s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+          
+          <!-- Synth Knobs (oben) -->
+          <g transform="translate(150, 80)">
+            <circle cx="0" cy="0" r="30" fill="none" stroke="#06FFF0" stroke-width="2.5" filter="url(#sdGlow)"/>
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#06FFF0" stroke-width="3" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="4s" repeatCount="indefinite"/>
+            </line>
+            <text x="0" y="50" font-size="12" fill="#06FFF0" text-anchor="middle" font-family="sans-serif">FILTER</text>
+          </g>
+          
+          <g transform="translate(400, 80)">
+            <circle cx="0" cy="0" r="30" fill="none" stroke="#8B5CF6" stroke-width="2.5" filter="url(#sdGlow)"/>
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="-270 0 0" dur="3s" repeatCount="indefinite"/>
+            </line>
+            <text x="0" y="50" font-size="12" fill="#8B5CF6" text-anchor="middle" font-family="sans-serif">REVERB</text>
+          </g>
+          
+          <g transform="translate(650, 80)">
+            <circle cx="0" cy="0" r="30" fill="none" stroke="#06FFF0" stroke-width="2.5" filter="url(#sdGlow)"/>
+            <line x1="0" y1="0" x2="0" y2="-20" stroke="#06FFF0" stroke-width="3" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="180 0 0" dur="5s" repeatCount="indefinite"/>
+            </line>
+            <text x="0" y="50" font-size="12" fill="#06FFF0" text-anchor="middle" font-family="sans-serif">CHORUS</text>
+          </g>
+          
+          <!-- Particles -->
+          <circle cx="80" cy="100" r="3" fill="#8B5CF6" opacity="0.6" filter="url(#sdGlowStrong)">
+            <animate attributeName="cy" values="100;50;100" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="720" cy="150" r="3" fill="#06FFF0" opacity="0.6" filter="url(#sdGlowStrong)">
+            <animate attributeName="cy" values="150;100;150" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </figure>
+      <article class="prose" style="margin-top:1.25rem">
+        <p>Atmosphärische Pads, Arps und Texturen definieren den „Neon“‑Sound. Hier ist ein schneller Praxis‑Guide, der zu den auf der Startseite gezeigten Tracks passt.</p>
+        
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Werkzeuge</h2>
+        <ul>
+          <li>Synth‑Engine: <em>Subtractive + Wavetable</em> (z. B. saw‑based Pad + glasiger Wavetable‑Layer)</li>
+          <li>Modulation: <em>Chorus/Ensemble</em> + dezentes <em>Tape Wow/Flutter</em></li>
+          <li>Raum: <em>Long‑Tail Reverb</em> als Grundbett + punktuelle <em>Gated Reverb</em> Akzente</li>
+        </ul>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Arrangement</h2>
+        <p>Layer in drei Bändern (Low‑Pad, Mid‑Motion, High‑Air) sorgen für Breite ohne Matsch. Nutze Sidechain (dezent) zur Kick, um Luft zu schaffen.</p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Hörbeispiele (von der Startseite)</h2>
+        <ul>
+          <li>🌆 <strong>Aus dem Schatten</strong> – dunkler Synthwave, betontes Mid‑Motion Pad</li>
+          <li>🏖️ <strong>Life am Strand</strong> – breites Stereo‑Pad, leichte Tape‑Modulation</li>
+        </ul>
+        <audio controls preload="metadata" style="margin: .5rem 0; width: 100%">
+          <source src="../assets/media/track3.mp3" type="audio/mpeg" />
+          Dein Browser unterstützt das Audio‑Element nicht.
+        </audio>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">FX‑Kette (Startpunkt)</h2>
+        <ol>
+          <li>EQ (Low‑Cut bei ~120 Hz am Air‑Layer, ~40–60 Hz am Low‑Pad)</li>
+          <li>Chorus/Ensemble (Rate < 0.5 Hz, Depth moderat)</li>
+          <li>Hall (Plate/Room für Motion, Hall/Algorithmic lang für Air)</li>
+          <li>Tape/Degrade (dezent – Bewegung statt Lo‑Fi)</li>
+          <li>Sidechain zur Kick (2–3 dB, kurze Release)</li>
+        </ol>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Mixing‑Tipps</h2>
+        <ul>
+          <li>Breite über Mid/Side dosieren, Low‑Pad eher Mono</li>
+          <li>Konflikte mit Leads per Notch‑EQ (2–3 schmale Bänder)</li>
+          <li>Automation: Reverb‑Send im Refrain +1–2 dB</li>
+        </ul>
+
+        <p>Mehr Beispiele und Downloads findest du in der <a href="../index.html#music">Music‑Sektion</a>. Viel Spaß beim Sounddesign! ✨</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid rgba(6,255,240,0.2);">
+    <div class="container" style="text-align: center;">
+      <p class="txt-dim" style="margin-bottom: 1rem;">
+        <a href="index.html" class="nav-link" style="color: #06FFF0; text-decoration: none; margin: 0 0.75rem;">← Alle Beiträge</a>
+        <span style="color: #8B5CF6;">|</span>
+        <a href="../index.html" class="nav-link" style="color: #8B5CF6; text-decoration: none; margin: 0 0.75rem;">Startseite</a>
+      </p>
+      <small class="txt-dim" style="opacity: 0.6;">&copy; 2025 Code & Beats · Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- Chatbot (gleich wie Startseite) -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🎵</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen bei Code & Beats. Ich bin dein Guide durch Musik, PowerShell und Gaming. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+      <button class="quick-reply" data-message="Über Michael">👤 About</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/reveal.js" defer></script>
+  <script src="../assets/js/enhancements.js" defer></script>
+  <script src="../assets/js/ultimate-enhancements.js" defer></script>
+  <script src="../assets/chatbot/mcgv-chatbot-script.js" defer></script>
+</body>
+</html>

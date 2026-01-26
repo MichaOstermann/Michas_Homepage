@@ -1,0 +1,16 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720' viewBox='0 0 1280 720'>
+  <defs>
+    <linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0' stop-color='#060b12'/>
+      <stop offset='1' stop-color='#0e1523'/>
+    </linearGradient>
+  </defs>
+  <rect width='1280' height='720' fill='url(#g)'/>
+  <rect x='40' y='36' width='1200' height='648' rx='16' fill='none' stroke='rgba(255,255,255,.12)' stroke-width='3'/>
+  <rect x='64' y='64' width='1152' height='110' rx='12' fill='rgba(0,234,255,.18)' stroke='rgba(0,234,255,.4)'/>
+  <rect x='64' y='192' width='560' height='360' rx='14' fill='rgba(255,255,255,.06)' stroke='rgba(255,255,255,.14)'/>
+  <rect x='640' y='192' width='240' height='168' rx='14' fill='rgba(255,20,147,.16)' stroke='rgba(255,20,147,.32)'/>
+  <rect x='640' y='376' width='240' height='168' rx='14' fill='rgba(139,92,246,.16)' stroke='rgba(139,92,246,.32)'/>
+  <rect x='892' y='192' width='324' height='352' rx='14' fill='rgba(255,107,0,.12)' stroke='rgba(255,107,0,.28)'/>
+  <rect x='924' y='588' width='292' height='36' rx='18' fill='rgba(255,107,0,.9)'/>
+</svg>

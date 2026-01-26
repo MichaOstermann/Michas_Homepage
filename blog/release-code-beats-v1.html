@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Release: Code & Beats v1 – Blog</title>
+  <meta name="description" content="Release-Notizen zu Code & Beats v1: Ziele, Designprinzipien und was dich erwartet." />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/hero-title.css" />
+  <link rel="stylesheet" href="../assets/css/brand.css" />
+  <link rel="stylesheet" href="../assets/css/about-contact.css" />
+  <link rel="stylesheet" href="../assets/css/footer-nav.css" />
+  <link rel="stylesheet" href="../assets/css/section-titles.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <h1 class="section__title" style="background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(6,255,240,0.3); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.75rem;">Release: Code & Beats v1</h1>
+      <p class="txt-dim" style="margin: .5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          1. November 2025
+        </span>
+        <span style="color: #8B5CF6;">•</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" aria-hidden="true">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Lesezeit: 5 min
+        </span>
+      </p>
+      <figure style="background: linear-gradient(135deg, rgba(6,255,240,0.05) 0%, rgba(139,92,246,0.05) 100%); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden;">
+        <svg viewBox="0 0 800 400" style="max-width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Release v1 Illustration">
+          <defs>
+            <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#06FFF0;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#06FFF0;stop-opacity:0.4" />
+            </linearGradient>
+            <linearGradient id="gradViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.4" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Hintergrund Grid -->
+          <g opacity="0.15" stroke="#06FFF0" stroke-width="0.5" fill="none">
+            <line x1="0" y1="100" x2="800" y2="100"/>
+            <line x1="0" y1="200" x2="800" y2="200"/>
+            <line x1="0" y1="300" x2="800" y2="300"/>
+            <line x1="200" y1="0" x2="200" y2="400"/>
+            <line x1="400" y1="0" x2="400" y2="400"/>
+            <line x1="600" y1="0" x2="600" y2="400"/>
+          </g>
+          
+          <!-- Großes "v1" Label (Cyan) -->
+          <text x="100" y="250" font-size="180" font-weight="900" fill="url(#gradCyan)" filter="url(#glow)" font-family="Arial, sans-serif">v1</text>
+          
+          <!-- "Release" Schriftzug (Violett) -->
+          <text x="350" y="180" font-size="72" font-weight="700" fill="url(#gradViolet)" filter="url(#glow)" font-family="Arial, sans-serif">RELEASE</text>
+          
+          <!-- Feature Icons -->
+          <g transform="translate(420, 220)">
+            <!-- Musik Note -->
+            <circle cx="0" cy="0" r="28" fill="none" stroke="#06FFF0" stroke-width="2.5" filter="url(#glow)"/>
+            <path d="M-8,-10 L-8,10 M-8,-10 L8,-8 L8,8 M-10,10 A2,2 0 1,0 -6,10 A2,2 0 1,0 -10,10 M6,8 A2,2 0 1,0 10,8 A2,2 0 1,0 6,8" fill="none" stroke="#06FFF0" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          
+          <g transform="translate(520, 220)">
+            <!-- Code Brackets -->
+            <circle cx="0" cy="0" r="28" fill="none" stroke="#8B5CF6" stroke-width="2.5" filter="url(#glow)"/>
+            <path d="M-12,-8 L-18,0 L-12,8 M12,-8 L18,0 L12,8" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          
+          <g transform="translate(620, 220)">
+            <!-- Chat Bubble -->
+            <circle cx="0" cy="0" r="28" fill="none" stroke="#06FFF0" stroke-width="2.5" filter="url(#glow)"/>
+            <rect x="-12" y="-8" width="24" height="14" rx="3" fill="none" stroke="#06FFF0" stroke-width="2"/>
+            <path d="M-4,6 L0,10 L4,6" fill="none" stroke="#06FFF0" stroke-width="2" stroke-linejoin="round"/>
+          </g>
+          
+          <!-- Dekorative Linien -->
+          <line x1="50" y1="320" x2="750" y2="320" stroke="#8B5CF6" stroke-width="2" opacity="0.3" stroke-dasharray="10,5"/>
+          <circle cx="750" cy="320" r="4" fill="#8B5CF6" opacity="0.6"/>
+        </svg>
+      </figure>
+      <article class="prose" style="margin-top:1.25rem">
+        <p>Willkommen zum ersten Release von <strong>Code & Beats</strong>! Diese Version vereint alles, was wir bereits eingebunden haben – vom Neon‑Alien im Hero über Musik‑Downloads und PowerShell‑Skripte bis zum integrierten Chat‑Bot. Die Seite ist vollständig <strong>statisch</strong> und kann 1:1 per <strong>FTP</strong> hochgeladen werden.</p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Highlights in v1</h2>
+        <ul>
+          <li>Dark‑Neon‑Glassmorphism Design mit sauberer Typografie</li>
+          <li>Hero mit <em>Neon Wireframe Alien</em> und Canvas‑Partikeln</li>
+          <li>Bereiche für <a href="../index.html#music">Musik</a>, <a href="../index.html#powershell">PowerShell</a>, <a href="../index.html#gaming">Gaming</a>, <a href="../index.html#blog">Blog</a> und <a href="../index.html#about">About/Kontakt</a></li>
+          <li>Neuer <strong>Chat‑Bot</strong> unten rechts – sofort einsatzbereit</li>
+          <li>Kein Server nötig: rein statisch, schnell, sicher und unkompliziert</li>
+        </ul>
+
+        <h2 id="musik">Musik – jetzt hörbar und downloadbar</h2>
+        <p>In der Sektion <a href="../index.html#music">Music</a> findest du drei direkt abspielbare Tracks. Jeder Track hat einen Download‑Button:</p>
+        <ul>
+          <li>🏖️ <strong>Life am Strand</strong> – Ballermann Hit über Micha den Barkeeper (<a href="../assets/media/track1.mp3" download>MP3 Download</a>)</li>
+          <li>🎉 <strong>20 Jahre RDMC Oldenburg</strong> – Party‑Jubiläumstrack (<a href="../assets/media/track2.mp3" download>MP3 Download</a>)</li>
+          <li>🌆 <strong>Aus dem Schatten</strong> – Dunkler Synthwave mit treibendem Beat (<a href="../assets/media/track3.mp3" download>MP3 Download</a>)</li>
+        </ul>
+
+        <h2 id="powershell">PowerShell – verifizierte Skripte</h2>
+        <p>Unter <a href="../index.html#powershell">PowerShell</a> sind drei Skripte verlinkt. Die Badges markieren sie als <em>verifiziert</em>:</p>
+        <ul>
+          <li>📧 <strong>MailStore Analyse</strong> – Beispielauswertung (<a href="../assets/media/MailStore_Analyse.ps1" download>.ps1 Download</a>)</li>
+          <li>🔄 <strong>WSUS Scan</strong> – Abfrage per Invoke‑WebRequest (<a href="../assets/media/WSUS_Scan.ps1" download>.ps1 Download</a>)</li>
+          <li>👤 <strong>AD User Creation Tool v4.0</strong> – Beispiel zur Benutzeranlage (<a href="../assets/media/ADUserCreationTool_v4.0.ps1" download>.ps1 Download</a>)</li>
+        </ul>
+
+        <h2 id="gaming">Gaming – Guides, Reviews, Clips</h2>
+        <p>In <a href="../index.html#gaming">Gaming</a> findest du eine Masonry‑Grid‑Übersicht mit:</p>
+        <ul>
+          <li>⚔️ <strong>Boss Guide: Neon Titan</strong> – Strategie & Loadout</li>
+          <li>🏎️ <strong>Review: Cyber Drift</strong> – Arcade‑Racer mit Synthwave‑Flair</li>
+          <li>🎬 <strong>Clip: Perfect Run</strong> – YouTube‑Embed</li>
+        </ul>
+
+        <h2 id="kontakt">Kontakt & Rechtliches</h2>
+        <ul>
+          <li>📮 <strong>E‑Mail:</strong> <a href="mailto:support@mcgv.de">support@mcgv.de</a></li>
+          <li>📩 Kontaktformular auf der Startseite unter <a href="../index.html#about">About/Kontakt</a></li>
+        </ul>
+
+        <h2 id="chatbot">Chat‑Bot</h2>
+        <p>Der neue Chat‑Bot unterstützt dich mit Schnellantworten zu Musik, Skripten, Gaming und Blog. Er ist so eingebunden, dass dein restliches Design <strong>nicht</strong> verändert wird (CSS sauber gekapselt, eigene Keyframes).</p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Technik & Upload</h2>
+        <ul>
+          <li>Reines HTML/CSS/JS – keine Server‑Abhängigkeiten</li>
+          <li>Alle Assets liegen unter <code>assets/</code>, Blog‑Seiten unter <code>blog/</code></li>
+          <li>Einfach die Ordnerstruktur per FTP ins Webroot hochladen – fertig</li>
+        </ul>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Projektfortschritt (Stand 06.11.2025)</h2>
+        <ul>
+          <li>Basis aufgebaut: statisches HTML/CSS/JS, per FTP sofort lauffähig.</li>
+          <li>Hero mit Neon‑Alien und Canvas‑Visualisierung stabil eingebunden.</li>
+          <li>Music‑Sektion mit 3 Tracks inkl. Player und Downloads.</li>
+          <li>PowerShell‑Sektion mit Tabs, Prism‑Highlighting und verifizierten Downloads.</li>
+          <li>Gaming‑Grid inklusive YouTube‑Embed.</li>
+          <li>Professioneller Chat‑Bot integriert, CSS strikt gekapselt – keine Layout‑Nebenwirkungen.</li>
+          <li>Kontakt: Formular mit Validierung, E‑Mail korrigiert zu <a href="mailto:support@mcgv.de">support@mcgv.de</a>.</li>
+          <li>„Altes Design“ wiederhergestellt und Styling‑Konflikte bereinigt.</li>
+          <li>Blog: 3 Detailseiten erstellt und von der Startseite verlinkt.</li>
+        </ul>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">Nächste Schritte</h3>
+        <ul>
+          <li>Echten Mail‑Versand aktivieren (Formspree/EmailJS) – client‑only, ohne Server.</li>
+          <li>Canonical/OG‑URL auf deine Domain setzen (z. B. https://mcgv.de).</li>
+          <li>Optional: „Weiterlesen“-Buttons in Blog‑Cards und Vor/Zurück‑Navigation.</li>
+        </ul>
+
+        <p>Feedback oder Wünsche? Schreib mir eine Nachricht oder nutze den Chat unten rechts. Viel Spaß mit v1! 🚀</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid rgba(6,255,240,0.2);">
+    <div class="container" style="text-align: center;">
+      <p class="txt-dim" style="margin-bottom: 1rem;">
+        <a href="index.html" class="nav-link" style="color: #06FFF0; text-decoration: none; margin: 0 0.75rem;">← Alle Beiträge</a>
+        <span style="color: #8B5CF6;">|</span>
+        <a href="../index.html" class="nav-link" style="color: #8B5CF6; text-decoration: none; margin: 0 0.75rem;">Startseite</a>
+      </p>
+      <small class="txt-dim" style="opacity: 0.6;">&copy; 2025 Code & Beats · Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- MCGV Chatbot START (gleich wie auf Startseite) -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🎵</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen bei Code & Beats. Ich bin dein Guide durch Musik, PowerShell und Gaming. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+      <button class="quick-reply" data-message="Über Michael">👤 About</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- MCGV Chatbot ENDE -->
+
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/alien.js" defer></script>
+  <script src="../assets/js/heroViz.js" defer></script>
+  <script src="../assets/js/reveal.js" defer></script>
+  <script src="../assets/js/enhancements.js" defer></script>
+  <script src="../assets/js/ultimate-enhancements.js" defer></script>
+  <script src="../assets/chatbot/mcgv-chatbot-script.js" defer></script>
+</body>
+</html>

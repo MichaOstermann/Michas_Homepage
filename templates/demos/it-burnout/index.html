@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💀 IT-Admin Survival Mode - Unterbesetzt. Überlastet. Unfinanziert.</title>
+    <meta name="description" content="Der tägliche Wahnsinn eines IT-Admins: Zu viele Tickets, zu wenig Budget, zu wenig Personal. Aber hey, der Server läuft noch!">
+    <meta name="author" content="Michael Ostermann">
+    <meta name="copyright" content="© 2025 Michael Ostermann. Alle Rechte vorbehalten.">
+    
+    <!-- Copyright Protection Meta -->
+    <meta name="template-author" content="Michael Ostermann">
+    <meta name="template-copyright" content="2025">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Copyright Protection Marker -->
+    <!-- ©2025 Michael Ostermann - Template ID: IT-BURNOUT-2025 -->
+    
+    <!-- Matrix Rain Background -->
+    <canvas id="matrixCanvas" class="matrix-bg"></canvas>
+    
+    <!-- Error Popups Container -->
+    <div id="errorPopups"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-title">admin@production:~$</span>
+                <div class="terminal-controls">
+                    <span class="control-btn close"></span>
+                    <span class="control-btn minimize"></span>
+                    <span class="control-btn maximize"></span>
+                </div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="prompt">root@server:~#</span>
+                    <span class="command"> uptime</span>
+                </div>
+                <div class="terminal-line output">
+                    <span>14:37:01 up 247 days, 13:42, 1 user, load average: 47.23, 52.18, 49.91</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">root@server:~#</span>
+                    <span class="command"> budget-request --hardware --staff</span>
+                </div>
+                <div class="terminal-line output error">
+                    <span>ERROR: Request denied. Try again next fiscal year. (LOL)</span>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">root@server:~#</span>
+                    <span class="command typing-cursor"></span>
+                </div>
+            </div>
+        </div>
+        
+        <h1 class="glitch-title" data-text="IT-ADMIN SURVIVAL MODE">IT-ADMIN SURVIVAL MODE</h1>
+        <p class="hero-subtitle">Unterbesetzt • Überlastet • Unfinanziert • Unverzichtbar</p>
+        
+        <div class="hero-stats">
+            <div class="stat-box critical">
+                <div class="stat-label">Open Tickets</div>
+                <div class="stat-value" id="ticketCount">247</div>
+                <div class="stat-trend">↑ +18 today</div>
+            </div>
+            <div class="stat-box warning">
+                <div class="stat-label">Caffeine Level</div>
+                <div class="stat-value" id="caffeineLevel">94%</div>
+                <div class="stat-trend">↓ critically low</div>
+            </div>
+            <div class="stat-box critical">
+                <div class="stat-label">Burnout Meter</div>
+                <div class="stat-value" id="burnoutMeter">87%</div>
+                <div class="stat-trend">↑ increasing</div>
+            </div>
+            <div class="stat-box warning">
+                <div class="stat-label">Budget Left</div>
+                <div class="stat-value" id="budgetLeft">€0</div>
+                <div class="stat-trend">✗ denied</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Realität Section -->
+    <section class="reality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">⚠️ Die tägliche Realität</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Willkommen in der IT-Hölle – wo Wunder jeden Tag erwartet werden!</p>
+            </div>
+            
+            <div class="reality-grid">
+                <div class="reality-card">
+                    <div class="reality-icon">🔥</div>
+                    <h3>"Es brennt!"</h3>
+                    <p>
+                        "Der Server ist down!" – Ja, weil wir seit 3 Jahren um neue Hardware bitten,
+                        aber hey, Budget gespart ist Bonus verdient, oder?
+                    </p>
+                    <div class="reality-footer">Status: <span class="badge-critical">CRITICAL</span></div>
+                </div>
+                
+                <div class="reality-card">
+                    <div class="reality-icon">👥</div>
+                    <h3>Unterbesetzung Level 9000</h3>
+                    <p>
+                        1 Admin für 500 User, 50 Server und 1.000 Geräte. Aber klar, wir schaffen das locker!
+                        Schlaf ist eh überbewertet.
+                    </p>
+                    <div class="reality-footer">Team Size: <span class="badge-warning">TOO SMALL</span></div>
+                </div>
+                
+                <div class="reality-card">
+                    <div class="reality-icon">💰</div>
+                    <h3>"Budget? Welches Budget?"</h3>
+                    <p>
+                        Request: Neue Firewall (€5.000) <br>
+                        Response: "Können wir die alte nicht reparieren?" <br>
+                        Old Firewall: Von 2009. Mit Windows XP. Keine Updates seit 8 Jahren.
+                    </p>
+                    <div class="reality-footer">Budget Status: <span class="badge-critical">DENIED</span></div>
+                </div>
+                
+                <div class="reality-card">
+                    <div class="reality-icon">☕</div>
+                    <h3>Kaffee ist Leben</h3>
+                    <p>
+                        Tasse 1: Aufwachen <br>
+                        Tasse 2-5: Funktionieren <br>
+                        Tasse 6-10: Überleben <br>
+                        Tasse 11+: Existieren
+                    </p>
+                    <div class="reality-footer">Today's Count: <span class="badge-warning" id="coffeeCount">14</span></div>
+                </div>
+                
+                <div class="reality-card">
+                    <div class="reality-icon">📞</div>
+                    <h3>"It works on my machine"</h3>
+                    <p>
+                        User: "Mein PC geht nicht!" <br>
+                        Me: "Ist er eingesteckt?" <br>
+                        User: "Oh... Moment..." <br>
+                        Ticket closed. 37 minutes wasted.
+                    </p>
+                    <div class="reality-footer">Resolution Time: <span class="badge-success">2 SEC</span></div>
+                </div>
+                
+                <div class="reality-card">
+                    <div class="reality-icon">🕐</div>
+                    <h3>Überstunden? Normal!</h3>
+                    <p>
+                        Arbeitszeit: 40h/Woche <br>
+                        Realität: 65h/Woche <br>
+                        Bezahlt: 40h/Woche <br>
+                        Boss: "Danke für dein Engagement!"
+                    </p>
+                    <div class="reality-footer">This Week: <span class="badge-critical">+25h</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ticket System -->
+    <section class="tickets-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎫 Ticket-Wahnsinn</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Queue Size: <span class="critical-text">247 open tickets</span> (growing...)</p>
+            </div>
+            
+            <div class="tickets-board">
+                <div class="ticket-item priority-critical">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14287</span>
+                        <span class="ticket-priority">🔴 CRITICAL</span>
+                        <span class="ticket-time">3 min ago</span>
+                    </div>
+                    <div class="ticket-title">SERVER DOWN!!! PRODUCTION OFFLINE!!!</div>
+                    <div class="ticket-user">CEO's Assistant</div>
+                    <div class="ticket-desc">"Everything is broken! Fix NOW!!!" (Translation: Her email isn't loading)</div>
+                </div>
+                
+                <div class="ticket-item priority-high">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14286</span>
+                        <span class="ticket-priority">🟠 HIGH</span>
+                        <span class="ticket-time">15 min ago</span>
+                    </div>
+                    <div class="ticket-title">URGENT: Need new laptop ASAP</div>
+                    <div class="ticket-user">Marketing Manager</div>
+                    <div class="ticket-desc">"My 2-year-old MacBook is 'too slow'. I need the new M4 Max." (Budget: €0)</div>
+                </div>
+                
+                <div class="ticket-item priority-medium">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14285</span>
+                        <span class="ticket-priority">🟡 MEDIUM</span>
+                        <span class="ticket-time">1 hour ago</span>
+                    </div>
+                    <div class="ticket-title">Printer not working</div>
+                    <div class="ticket-user">Karen from Accounting</div>
+                    <div class="ticket-desc">"It says 'PC Load Letter'. What does that even mean?" (No paper. Again.)</div>
+                </div>
+                
+                <div class="ticket-item priority-low">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14284</span>
+                        <span class="ticket-priority">🟢 LOW</span>
+                        <span class="ticket-time">3 hours ago</span>
+                    </div>
+                    <div class="ticket-title">Request: RGB Keyboard</div>
+                    <div class="ticket-user">Intern</div>
+                    <div class="ticket-desc">"For productivity reasons, I need a gaming keyboard with RGB." (Nice try, kid)</div>
+                </div>
+                
+                <div class="ticket-item priority-critical">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14283</span>
+                        <span class="ticket-priority">🔴 CRITICAL</span>
+                        <span class="ticket-time">5 hours ago</span>
+                    </div>
+                    <div class="ticket-title">BACKUP FAILED - ALL DATA LOST!!!</div>
+                    <div class="ticket-user">Database Admin</div>
+                    <div class="ticket-desc">"Backup script failed. No backups for 6 months." (Who needs sleep anyway?)</div>
+                </div>
+                
+                <div class="ticket-item priority-high">
+                    <div class="ticket-header">
+                        <span class="ticket-id">#14282</span>
+                        <span class="ticket-priority">🟠 HIGH</span>
+                        <span class="ticket-time">1 day ago</span>
+                    </div>
+                    <div class="ticket-title">Internet is slow</div>
+                    <div class="ticket-user">Sales Team</div>
+                    <div class="ticket-desc">"We need more bandwidth!" (Currently watching 4K YouTube on 10 devices)</div>
+                </div>
+            </div>
+            
+            <div class="ticket-disclaimer">
+                <p>⚠️ <strong>Note:</strong> All tickets will be resolved in the order of "who yells the loudest" rather than actual priority.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Server Status Dashboard -->
+    <section class="server-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🖥️ Server Status Dashboard</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Last Updated: <span id="serverTime">Just now</span> • Auto-refresh: <span class="critical-text">DISABLED</span> (too depressing)</p>
+            </div>
+            
+            <div class="server-grid">
+                <div class="server-card status-critical">
+                    <div class="server-status-led"></div>
+                    <h3>MAIL-SRV-01</h3>
+                    <div class="server-details">
+                        <div class="detail-row">
+                            <span>Status:</span>
+                            <span class="badge-critical">DOWN</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Uptime:</span>
+                            <span>0 days (LOL)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Last Service:</span>
+                            <span>2019</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Budget for Replacement:</span>
+                            <span class="critical-text">DENIED</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="server-card status-warning">
+                    <div class="server-status-led"></div>
+                    <h3>WEB-SRV-02</h3>
+                    <div class="server-details">
+                        <div class="detail-row">
+                            <span>Status:</span>
+                            <span class="badge-warning">DEGRADED</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>CPU:</span>
+                            <span>98% (constant)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>RAM:</span>
+                            <span>16GB (needs 64GB)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Upgrade Request:</span>
+                            <span class="critical-text">DENIED</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="server-card status-critical">
+                    <div class="server-status-led"></div>
+                    <h3>DB-SRV-03</h3>
+                    <div class="server-details">
+                        <div class="detail-row">
+                            <span>Status:</span>
+                            <span class="badge-critical">CRITICAL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Disk Space:</span>
+                            <span>99% full</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Backup Status:</span>
+                            <span class="critical-text">FAILED</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Storage Upgrade:</span>
+                            <span class="critical-text">DENIED</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="server-card status-success">
+                    <div class="server-status-led"></div>
+                    <h3>PRINT-SRV-04</h3>
+                    <div class="server-details">
+                        <div class="detail-row">
+                            <span>Status:</span>
+                            <span class="badge-success">ONLINE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Uptime:</span>
+                            <span>247 days</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Note:</span>
+                            <span>Still running Windows Server 2008</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Update Request:</span>
+                            <span class="critical-text">DENIED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Budget Requests -->
+    <section class="budget-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">💸 Budget Request History</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Success Rate: <span class="critical-text">0.4%</span> (that one time they bought a mouse)</p>
+            </div>
+            
+            <div class="budget-timeline">
+                <div class="budget-request denied">
+                    <div class="request-date">2025-01-15</div>
+                    <div class="request-content">
+                        <h4>New Firewall Hardware</h4>
+                        <div class="request-amount">€5,000</div>
+                        <div class="request-reason">Current firewall from 2009, no security updates, actively exploited vulnerabilities</div>
+                        <div class="request-status">
+                            <span class="badge-critical">❌ DENIED</span>
+                            <span class="denial-reason">"The old one still works, right?"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="budget-request denied">
+                    <div class="request-date">2024-12-03</div>
+                    <div class="request-content">
+                        <h4>Additional IT Staff Member</h4>
+                        <div class="request-amount">€55,000/year</div>
+                        <div class="request-reason">Current ratio: 1 admin for 500 users. Industry standard: 1 per 75 users.</div>
+                        <div class="request-status">
+                            <span class="badge-critical">❌ DENIED</span>
+                            <span class="denial-reason">"Just work smarter, not harder! 😊"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="budget-request denied">
+                    <div class="request-date">2024-11-20</div>
+                    <div class="request-content">
+                        <h4>Backup Solution Upgrade</h4>
+                        <div class="request-amount">€3,500</div>
+                        <div class="request-reason">Current backup failing 60% of the time. Company data at risk.</div>
+                        <div class="request-status">
+                            <span class="badge-critical">❌ DENIED</span>
+                            <span class="denial-reason">"We haven't lost data yet, so it's fine."</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="budget-request denied">
+                    <div class="request-date">2024-10-08</div>
+                    <div class="request-content">
+                        <h4>Server RAM Upgrade (16GB → 64GB)</h4>
+                        <div class="request-amount">€800</div>
+                        <div class="request-reason">Server constantly at 98% RAM, causing slowdowns and crashes.</div>
+                        <div class="request-status">
+                            <span class="badge-critical">❌ DENIED</span>
+                            <span class="denial-reason">"Have you tried closing some programs?"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="budget-request approved">
+                    <div class="request-date">2024-09-14</div>
+                    <div class="request-content">
+                        <h4>Wireless Mouse (one of 3 requested)</h4>
+                        <div class="request-amount">€12</div>
+                        <div class="request-reason">Admin's mouse cable broke. Can't work without mouse.</div>
+                        <div class="request-status">
+                            <span class="badge-success">✅ APPROVED</span>
+                            <span class="approval-note">"Only the cheapest one available."</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="budget-request denied">
+                    <div class="request-date">2024-08-22</div>
+                    <div class="request-content">
+                        <h4>Enterprise Antivirus Licenses</h4>
+                        <div class="request-amount">€2,800/year</div>
+                        <div class="request-reason">Current free version doesn't cover business use. Legal liability risk.</div>
+                        <div class="request-status">
+                            <span class="badge-critical">❌ DENIED</span>
+                            <span class="denial-reason">"Free version has been fine for years."</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Survival Tips -->
+    <section class="tips-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">💡 IT-Admin Survival Tips</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">How to stay (barely) sane in an insane job</p>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-number">01</div>
+                    <h3>Document Everything</h3>
+                    <p>When (not if) things blow up and management asks "Why didn't we prevent this?", you'll have proof that you warned them 47 times and all budget requests were denied.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">02</div>
+                    <h3>Automate or Die</h3>
+                    <p>You can't manually manage 500 users. Write scripts. Learn PowerShell, Python, Bash. Your sanity depends on it.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">03</div>
+                    <h3>Set Boundaries</h3>
+                    <p>"Not my circus, not my monkeys." Learn to say no. You're not responsible for fixing users' personal laptops, home WiFi, and their smart toaster.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">04</div>
+                    <h3>Coffee is Life</h3>
+                    <p>Invest in a good coffee machine. Your productivity is directly correlated to your caffeine intake. This is scientifically proven*. (*by IT admins)</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">05</div>
+                    <h3>CYA Protocol</h3>
+                    <p>Cover Your Ass. Email confirmations for everything. "As per my previous email..." becomes your best friend.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">06</div>
+                    <h3>Find Your Tribe</h3>
+                    <p>Join IT forums, Reddit's /r/sysadmin, Discord servers. Vent to people who understand. You're not alone in this hell.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- The Dream -->
+    <section class="dream-section">
+        <div class="container">
+            <div class="dream-content">
+                <h2>💭 The Dream</h2>
+                <div class="dream-list">
+                    <div class="dream-item">✅ Approved budget requests</div>
+                    <div class="dream-item">✅ Adequate staffing levels</div>
+                    <div class="dream-item">✅ Users who read error messages</div>
+                    <div class="dream-item">✅ Management that understands IT</div>
+                    <div class="dream-item">✅ No more "quick questions" at 4:59 PM</div>
+                    <div class="dream-item">✅ Vacation without emergency calls</div>
+                    <div class="dream-item">✅ Up-to-date hardware</div>
+                    <div class="dream-item">✅ Documented systems (by previous admins)</div>
+                </div>
+                <p class="dream-reality">Reality: <span class="critical-text">NONE OF THE ABOVE</span></p>
+                <p class="dream-motto">"It's not much, but it's honest work."</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-ascii">
+                    <pre>
+ _____ _____      _____  ____  __  __ _____ _   _ 
+|_   _|_   _|    |  __ \|  _ \|  \/  |_   _| \ | |
+  | |   | |______| |__) | |_) | \  / | | | |  \| |
+  | |   | |______|  _  /|  _ <| |\/| | | | | . ` |
+ _| |_  | |      | | \ \| |_) | |  | |_| |_| |\  |
+|_____| |_|      |_|  \_\____/|_|  |_|_____|_| \_|
+                    </pre>
+                </div>
+                <p class="footer-quote">"Have you tried turning it off and on again?"</p>
+                <p class="footer-dedication">Dedicated to all IT admins fighting the good fight with duct tape, cable ties, and coffee.</p>
+                <div class="copyright-badge">
+                    © 2025 Michael Ostermann | IT-Admin Survival Template
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- CMS Login Button (Hidden) -->
+    <div id="cms-login-trigger" style="display:none;"></div>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="demo-protection.js"></script>
+    <script src="copyright-protection.js"></script>
+    <script src="inline-cms.js"></script>
+    <link rel="stylesheet" href="inline-cms.css">
+    
+    <!-- Copyright Protection Marker END -->
+    <!-- ©2025 Michael Ostermann -->
+</body>
+</html>
+
+
+

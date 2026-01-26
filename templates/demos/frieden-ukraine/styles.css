@@ -1,0 +1,679 @@
+/* ═══════════════════════════════════════════════════════════════
+   FRIEDEN FÜR DIE UKRAINE - STYLESHEET
+   © 2025 Michael Ostermann
+   Theme: Ukrainische Farben (Blau/Gelb), Frieden, Hoffnung
+   ═══════════════════════════════════════════════════════════════ */
+
+/* CSS Copyright Protection Marker */
+/* ©2025-MICHAEL-OSTERMANN-FRIEDEN-UKRAINE */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ukraine-blue: #0057B7;
+    --ukraine-yellow: #FFD700;
+    --peace-white: #FFFFFF;
+    --hope-light: #E8F4F8;
+    --text-dark: #2C3E50;
+    --text-gray: #6C757D;
+    --bg-light: #F8F9FA;
+    --bg-dark: #1A1E2A;
+    --border-color: rgba(0, 87, 183, 0.2);
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Peace Canvas Background */
+#peaceCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--ukraine-blue) 0%, var(--hope-light) 100%);
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80') center/cover;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
+
+.peace-dove {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    color: var(--peace-white);
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--peace-white);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.hero-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--ukraine-yellow);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-quote span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--peace-white);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Section Styling */
+section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--ukraine-blue);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ukraine-blue), var(--ukraine-yellow));
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Message Section */
+.message-section {
+    background: var(--peace-white);
+}
+
+.message-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.message-text .lead {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ukraine-blue);
+    margin-bottom: 1.5rem;
+}
+
+.message-text p {
+    margin-bottom: 1.5rem;
+}
+
+.message-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Peace Grid */
+.why-peace-section {
+    background: var(--hope-light);
+}
+
+.peace-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.peace-card {
+    background: var(--peace-white);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.peace-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 87, 183, 0.2);
+    border-color: var(--ukraine-blue);
+}
+
+.peace-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.peace-card h3 {
+    font-size: 1.5rem;
+    color: var(--ukraine-blue);
+    margin-bottom: 1rem;
+}
+
+.peace-card p {
+    color: var(--text-gray);
+    line-height: 1.8;
+}
+
+/* Humanitarian Section */
+.humanitarian-section {
+    background: var(--peace-white);
+}
+
+.humanitarian-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.humanitarian-stat {
+    background: linear-gradient(135deg, var(--ukraine-blue), var(--ukraine-yellow));
+    color: var(--peace-white);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.stat-description {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.help-message {
+    background: var(--hope-light);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 2px solid var(--ukraine-blue);
+}
+
+.help-message h3 {
+    font-size: 2rem;
+    color: var(--ukraine-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.help-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.help-option {
+    background: var(--peace-white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--ukraine-yellow);
+}
+
+.help-option strong {
+    display: block;
+    color: var(--ukraine-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.help-option p {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Timeline */
+.timeline-section {
+    background: var(--bg-light);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--ukraine-blue), var(--ukraine-yellow));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ukraine-blue);
+    border: 4px solid var(--peace-white);
+    box-shadow: 0 0 0 4px var(--ukraine-yellow);
+    z-index: 1;
+}
+
+.timeline-item.future::before {
+    background: var(--ukraine-yellow);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.2); }
+}
+
+.timeline-date {
+    flex: 0 0 150px;
+    text-align: right;
+    font-weight: 700;
+    color: var(--ukraine-blue);
+    font-size: 1.1rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    text-align: left;
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--peace-white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--ukraine-blue);
+}
+
+.timeline-content h3 {
+    color: var(--ukraine-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Voices Section */
+.voices-section {
+    background: var(--hope-light);
+}
+
+.quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.quote-card {
+    background: var(--peace-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--ukraine-yellow);
+    transition: transform 0.3s;
+}
+
+.quote-card:hover {
+    transform: translateY(-5px);
+}
+
+.quote-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.quote-author {
+    font-weight: 700;
+    color: var(--ukraine-blue);
+    text-align: right;
+}
+
+/* Hope Section */
+.hope-section {
+    background: linear-gradient(135deg, var(--ukraine-blue), var(--ukraine-yellow));
+    color: var(--peace-white);
+    text-align: center;
+}
+
+.hope-content h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hope-text {
+    font-size: 1.3rem;
+    line-height: 2;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+}
+
+.hope-text.strong {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.hope-symbols {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.symbol {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--peace-white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    color: var(--ukraine-blue);
+    margin-bottom: 1rem;
+}
+
+.cta-content > p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-tertiary {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--ukraine-blue), var(--ukraine-yellow));
+    color: var(--peace-white);
+    box-shadow: 0 5px 20px rgba(0, 87, 183, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 87, 183, 0.4);
+}
+
+.btn-secondary {
+    background: var(--peace-white);
+    color: var(--ukraine-blue);
+    border: 2px solid var(--ukraine-blue);
+}
+
+.btn-secondary:hover {
+    background: var(--ukraine-blue);
+    color: var(--peace-white);
+}
+
+.btn-tertiary {
+    background: var(--ukraine-yellow);
+    color: var(--text-dark);
+}
+
+.btn-tertiary:hover {
+    background: var(--ukraine-blue);
+    color: var(--peace-white);
+}
+
+.cta-note {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-dark);
+    color: var(--peace-white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-message h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-message p {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.footer-links h4 {
+    margin-bottom: 1rem;
+    color: var(--ukraine-yellow);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--peace-white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--ukraine-yellow);
+}
+
+.copyright-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .message-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .peace-grid,
+    .humanitarian-grid,
+    .help-options,
+    .quotes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 60px;
+    }
+    
+    .timeline-item::before {
+        left: 20px;
+    }
+    
+    .timeline-date {
+        text-align: left !important;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        width: 100%;
+    }
+}
+
+/* CSS Copyright Protection Marker END */
+/* ©2025-MICHAEL-OSTERMANN */
+
+
+

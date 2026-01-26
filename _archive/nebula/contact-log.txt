@@ -1,0 +1,1 @@
+[2025-11-09T12:42:26+01:00] ip=91.97.32.42 hp_trigger=0 hp_val=- admin_attempt=1 admin_sent=1 auto_sent=0 name=Michael email=michael@mowhs.de msg_len=5 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0

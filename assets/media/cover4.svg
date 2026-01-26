@@ -1,0 +1,100 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f1a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06FFF0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bgGrad4)"/>
+  
+  <!-- Radiating Lines (Energy) -->
+  <g opacity="0.3" stroke="url(#heroGrad)" stroke-width="2" fill="none">
+    <line x1="200" y1="200" x2="100" y2="50"/>
+    <line x1="200" y1="200" x2="300" y2="50"/>
+    <line x1="200" y1="200" x2="50" y2="150"/>
+    <line x1="200" y1="200" x2="350" y2="150"/>
+    <line x1="200" y1="200" x2="80" y2="250"/>
+    <line x1="200" y1="200" x2="320" y2="250"/>
+    <line x1="200" y1="200" x2="100" y2="350"/>
+    <line x1="200" y1="200" x2="300" y2="350"/>
+  </g>
+  
+  <!-- Central Circle (Shield/Badge) -->
+  <circle cx="200" cy="200" r="110" fill="none" stroke="url(#heroGrad)" stroke-width="4" filter="url(#glow4)"/>
+  <circle cx="200" cy="200" r="95" fill="none" stroke="url(#accentGrad)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Star (Hero Symbol) -->
+  <g filter="url(#strongGlow)">
+    <path d="M200,120 L215,165 L265,165 L225,195 L240,240 L200,210 L160,240 L175,195 L135,165 L185,165 Z" 
+          fill="url(#heroGrad)" stroke="#FFD700" stroke-width="2"/>
+  </g>
+  
+  <!-- Lightning Bolts (Power) -->
+  <g filter="url(#glow4)">
+    <path d="M150,160 L140,180 L155,180 L145,210" stroke="#06FFF0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M250,160 L260,180 L245,180 L255,210" stroke="#06FFF0" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Rock Fist (Determination) -->
+  <g transform="translate(200, 270)" filter="url(#glow4)">
+    <ellipse cx="0" cy="0" rx="35" ry="28" fill="url(#heroGrad)" stroke="#FF6B6B" stroke-width="2"/>
+    <!-- Fingers -->
+    <rect x="-20" y="-15" width="10" height="18" rx="3" fill="#FF6B6B" stroke="#FFD700" stroke-width="1"/>
+    <rect x="-8" y="-18" width="10" height="20" rx="3" fill="#FF6B6B" stroke="#FFD700" stroke-width="1"/>
+    <rect x="4" y="-16" width="10" height="19" rx="3" fill="#FF6B6B" stroke="#FFD700" stroke-width="1"/>
+    <rect x="16" y="-12" width="9" height="16" rx="3" fill="#FF6B6B" stroke="#FFD700" stroke-width="1"/>
+    <!-- Thumb -->
+    <ellipse cx="-25" cy="5" rx="7" ry="10" fill="#FF6B6B" stroke="#FFD700" stroke-width="1" transform="rotate(-30 -25 5)"/>
+  </g>
+  
+  <!-- Text "NO HEROES" (Subtle) -->
+  <g font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="none" stroke="url(#accentGrad)" stroke-width="1" opacity="0.4">
+    <text x="200" y="80" text-anchor="middle">NO</text>
+    <text x="200" y="340" text-anchor="middle">HEROES</text>
+  </g>
+  
+  <!-- Decorative X (Crossed Out Hero) -->
+  <g opacity="0.3" stroke="#FF6B6B" stroke-width="6" filter="url(#glow4)">
+    <line x1="130" y1="130" x2="270" y2="270"/>
+    <line x1="270" y1="130" x2="130" y2="270"/>
+  </g>
+  
+  <!-- Outer Ring Particles -->
+  <g fill="#06FFF0" opacity="0.8">
+    <circle cx="120" cy="100" r="3" filter="url(#glow4)"/>
+    <circle cx="280" cy="100" r="3" filter="url(#glow4)"/>
+    <circle cx="320" cy="200" r="3" filter="url(#glow4)"/>
+    <circle cx="280" cy="300" r="3" filter="url(#glow4)"/>
+    <circle cx="120" cy="300" r="3" filter="url(#glow4)"/>
+    <circle cx="80" cy="200" r="3" filter="url(#glow4)"/>
+  </g>
+  
+  <!-- Bottom Banner -->
+  <path d="M100,340 L300,340 L290,360 L110,360 Z" fill="url(#heroGrad)" opacity="0.7" filter="url(#glow4)"/>
+  <text x="200" y="355" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#0f0f1a" text-anchor="middle">KEIN LIED</text>
+</svg>

@@ -1,0 +1,188 @@
+/* ============================================
+   SECTION TITLES - NEON STYLE
+   ============================================ */
+
+/* Base Section Title Enhancement */
+.section__title {
+  position: relative;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+.section__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--title-color, #06FFF0), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--title-color, #06FFF0);
+}
+
+/* Music Section - Cyan */
+#music-title {
+  --title-color: #06FFF0;
+  color: #06FFF0 !important;
+  text-shadow: 
+    0 0 20px rgba(6, 255, 240, 0.5),
+    0 0 40px rgba(6, 255, 240, 0.3),
+    0 0 60px rgba(6, 255, 240, 0.2) !important;
+  animation: title-glow-cyan 3s ease-in-out infinite;
+}
+
+/* PowerShell Section - Violet */
+#ps-title {
+  --title-color: #8B5CF6;
+  color: #8B5CF6 !important;
+  text-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3),
+    0 0 60px rgba(139, 92, 246, 0.2) !important;
+  animation: title-glow-violet 3s ease-in-out infinite;
+}
+
+/* Gaming Section - Pink */
+#gaming-title {
+  --title-color: #FF06F0;
+  color: #FF06F0 !important;
+  text-shadow: 
+    0 0 20px rgba(255, 6, 240, 0.5),
+    0 0 40px rgba(255, 6, 240, 0.3),
+    0 0 60px rgba(255, 6, 240, 0.2) !important;
+  animation: title-glow-pink 3s ease-in-out infinite;
+}
+
+/* Blog Section - Cyan */
+#blog-title {
+  --title-color: #06FFF0;
+  color: #06FFF0 !important;
+  text-shadow: 
+    0 0 20px rgba(6, 255, 240, 0.5),
+    0 0 40px rgba(6, 255, 240, 0.3),
+    0 0 60px rgba(6, 255, 240, 0.2) !important;
+  animation: title-glow-cyan 3s ease-in-out infinite 0.5s;
+}
+
+/* About Section - Violet */
+#about-title {
+  --title-color: #8B5CF6;
+  color: #8B5CF6 !important;
+  text-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3),
+    0 0 60px rgba(139, 92, 246, 0.2) !important;
+  animation: title-glow-violet 3s ease-in-out infinite 1s;
+}
+
+/* Kontakt Section - Already styled in about-contact.css */
+.contact-section .section__title {
+  --title-color: #FF06F0;
+  color: #FF06F0 !important;
+  text-shadow: 
+    0 0 20px rgba(255, 6, 240, 0.5),
+    0 0 40px rgba(255, 6, 240, 0.3),
+    0 0 60px rgba(255, 6, 240, 0.2) !important;
+  animation: title-glow-pink 3s ease-in-out infinite 1.5s;
+}
+
+/* Glow Animations */
+@keyframes title-glow-cyan {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(6, 255, 240, 0.5),
+      0 0 40px rgba(6, 255, 240, 0.3),
+      0 0 60px rgba(6, 255, 240, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(6, 255, 240, 0.7),
+      0 0 60px rgba(6, 255, 240, 0.5),
+      0 0 90px rgba(6, 255, 240, 0.3);
+  }
+}
+
+@keyframes title-glow-violet {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.5),
+      0 0 40px rgba(139, 92, 246, 0.3),
+      0 0 60px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.7),
+      0 0 60px rgba(139, 92, 246, 0.5),
+      0 0 90px rgba(139, 92, 246, 0.3);
+  }
+}
+
+@keyframes title-glow-pink {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(255, 6, 240, 0.5),
+      0 0 40px rgba(255, 6, 240, 0.3),
+      0 0 60px rgba(255, 6, 240, 0.2);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(255, 6, 240, 0.7),
+      0 0 60px rgba(255, 6, 240, 0.5),
+      0 0 90px rgba(255, 6, 240, 0.3);
+  }
+}
+
+/* Hover Enhancement */
+.section__title:hover {
+  transform: translateX(5px);
+  transition: transform 0.3s ease;
+}
+
+.section__title:hover::after {
+  width: 120px;
+  transition: width 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section__title {
+    font-size: 2rem !important;
+  }
+
+  .section__title::after {
+    width: 60px;
+  }
+
+  .section__title:hover::after {
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section__title {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .section__title {
+    animation: none !important;
+    text-shadow: 
+      0 0 20px var(--title-color),
+      0 0 40px var(--title-color) !important;
+  }
+
+  .section__title:hover {
+    transform: none;
+  }
+
+  .section__title::after {
+    transition: none;
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "posts": [
+    {
+      "slug": "projekt-update-fortschritte",
+      "href": "blog/projekt-update-fortschritte.html",
+      "title": "Projekt‑Update: Schutz, Cyberpunk, Suche, Steuerleiste",
+      "tag": "News",
+      "emoji": "\uD83D\uDE80",
+      "readMin": 7,
+      "date": "2025-11-17",
+      "featured": true,
+      "excerpt": "Einheitlicher Demo‑Schutz, fettes Cyberpunk‑Template, STRG+K‑Suche und globale Steuerleiste – alles live."
+    },
+    {
+      "slug": "blog-system-debugging",
+      "href": "blog/blog-system-debugging.html",
+      "title": "Blog-System Debugging - Von kaputt zu perfekt",
+      "tag": "Dev",
+      "emoji": "\uD83D\uDEE0\uFE0F",
+      "readMin": 8,
+      "date": "2025-11-12",
+      "featured": true,
+      "excerpt": "Wie wir systematisch JavaScript-Fehler, Pfad-Probleme und fehlende Animationen im Blog-System behoben haben."
+    },
+    {
+      "slug": "musik-relaunch",
+      "href": "blog/musik-relaunch.html",
+      "title": "Musik-Sektion neu aufgebaut - Beta wird Live",
+      "tag": "Musik",
+      "emoji": "\uD83C\uDFB5",
+      "readMin": 7,
+      "date": "2025-11-10",
+      "featured": false,
+      "excerpt": "Upload-System, automatische Cover, Kommentar-Panel und SEO - der Musikbereich laeuft jetzt stabil live."
+    },
+    {
+      "slug": "gaming-sektion-erweitert",
+      "href": "blog/gaming-sektion-erweitert.html",
+      "title": "Gaming-Sektion massiv erweitert",
+      "tag": "News",
+      "emoji": "\uD83C\uDFAE",
+      "readMin": 8,
+      "date": "2025-11-08",
+      "featured": true,
+      "excerpt": "Vier neue Spielprofile mit Videos, Builds und Statistiken - Diablo IV, Enshrouded, Soulmask und ARK."
+    },
+    {
+      "slug": "alien-style-hero",
+      "href": "blog/alien-style-hero.html",
+      "title": "Alien Bio-Tech Hero-Sektion",
+      "tag": "Dev",
+      "emoji": "\uD83D\uDC7D",
+      "readMin": 6,
+      "date": "2025-11-06",
+      "featured": false,
+      "excerpt": "Neon-Partikel, organische Animationen und futuristische Typografie fuer die Startseiten-Hero-Section."
+    },
+    {
+      "slug": "release-code-beats-v1",
+      "href": "blog/release-code-beats-v1.html",
+      "title": "Release: Code & Beats v1",
+      "tag": "News",
+      "emoji": "\uD83D\uDE80",
+      "readMin": 5,
+      "date": "2025-11-01",
+      "featured": false,
+      "excerpt": "Das erste stabile Release: neues Design-System, modulare Abschnitte und optimierte Performance."
+    },
+    {
+      "slug": "powershell-scripts-die-zeit-sparen",
+      "href": "blog/powershell-scripts-die-zeit-sparen.html",
+      "title": "PowerShell - Scripts, die Zeit sparen",
+      "tag": "Dev",
+      "emoji": "\u26A1",
+      "readMin": 7,
+      "date": "2025-10-24",
+      "featured": false,
+      "excerpt": "Struktur, Signierung und Distribution: Wie du produktive PowerShell-Skripte sauber vorbereitest."
+    },
+    {
+      "slug": "sounddesign-neon-atmos",
+      "href": "blog/sounddesign-neon-atmos.html",
+      "title": "Sounddesign - Neon Atmos",
+      "tag": "Musik",
+      "emoji": "\uD83C\uDFB9",
+      "readMin": 4,
+      "date": "2025-10-12",
+      "featured": false,
+      "excerpt": "Pads, Arps und Texturen fuer moderne Tracks - mit Layering-Strategien und Motion-FX."
+    },
+    {
+      "slug": "chatbot-integration-live",
+      "href": "blog/chatbot-integration-live.html",
+      "title": "Chatbot-Integration: Live & Funktional",
+      "tag": "Dev",
+      "emoji": "\uD83E\uDD16",
+      "readMin": 6,
+      "date": "2025-09-25",
+      "featured": true,
+      "excerpt": "Selbstgehosteter Bot mit Quick Replies, Keyword-Erkennung und Glassmorphism-UI - komplett ohne Backend."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "songwriting-tool",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "openai": "^4.30.0",
+    "node-fetch": "^3.3.2"
+  }
+}

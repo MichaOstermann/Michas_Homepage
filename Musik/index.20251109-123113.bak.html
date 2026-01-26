@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alle Songs von Michael Ostermann – Elektronische Musik von Synthwave bis Ambient." />
+  <title>Musik – Code & Beats</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/media/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/rating-styles.css" />
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  
+  <style>
+    /* Animated Background */
+    body {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(6,255,240,0.08) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(139,92,246,0.08) 0%, transparent 30%);
+      animation: breathe 8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    
+    /* Floating Particles */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: #06FFF0;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06FFF0;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 15s linear infinite;
+    }
+    
+    .particle:nth-child(2n) {
+      background: #8B5CF6;
+      box-shadow: 0 0 10px #8B5CF6;
+      animation-duration: 20s;
+      animation-delay: -5s;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .main {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Hero Section */
+    .music-hero {
+      text-align: center;
+      padding: 4rem 0;
+      position: relative;
+    }
+    
+    .music-hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 50%, #06FFF0 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 40px rgba(6,255,240,0.5);
+    }
+    
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+    
+    .music-hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    
+    /* Waveform Visualization */
+    .waveform-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 4px;
+      height: 80px;
+      margin: 2rem auto;
+      max-width: 400px;
+    }
+    
+    .wave-bar {
+      flex: 1;
+      background: linear-gradient(180deg, #06FFF0 0%, #8B5CF6 100%);
+      border-radius: 4px;
+      animation: wave 1s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(6,255,240,0.5);
+    }
+    
+    .wave-bar:nth-child(1) { animation-delay: 0s; }
+    .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+    .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+    .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+    .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+    .wave-bar:nth-child(6) { animation-delay: 0.3s; }
+    .wave-bar:nth-child(7) { animation-delay: 0.2s; }
+    .wave-bar:nth-child(8) { animation-delay: 0.1s; }
+    
+    @keyframes wave {
+      0%, 100% { height: 20px; }
+      50% { height: 60px; }
+    }
+    
+    /* Enhanced Filter Chips */
+    .filters {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    
+    .chip {
+      padding: 0.75rem 1.5rem;
+      background: rgba(11,15,22,0.6);
+      border: 2px solid rgba(6,255,240,0.2);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chip::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(6,255,240,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+    
+    .chip:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .chip:hover {
+      border-color: #06FFF0;
+      box-shadow: 0 0 20px rgba(6,255,240,0.4);
+      transform: translateY(-2px);
+    }
+    
+    .chip[aria-pressed="true"] {
+      background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 100%);
+      border-color: transparent;
+      color: #000;
+      font-weight: 900;
+      box-shadow: 0 0 30px rgba(6,255,240,0.6);
+    }
+    
+    /* Enhanced Music Cards */
+    .music-card {
+      background: linear-gradient(135deg, rgba(11,15,22,0.8) 0%, rgba(20,20,30,0.8) 100%);
+      border: 2px solid rgba(6,255,240,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+    
+    .music-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(6,255,240,0.1) 0%, rgba(139,92,246,0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .music-card:hover::before {
+      opacity: 1;
+    }
+    
+    .music-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #06FFF0;
+      box-shadow: 
+        0 20px 60px rgba(6,255,240,0.3),
+        0 0 40px rgba(139,92,246,0.2);
+    }
+    
+    .music-card:hover .card__media {
+      transform: scale(1.1) rotate(3deg);
+    }
+    
+    .card__media {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card__media::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 3rem;
+      color: #fff;
+      background: rgba(6,255,240,0.9);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(6,255,240,0.8);
+    }
+    
+    .music-card:hover .card__media::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    
+    /* Badge Enhancements */
+    .badge--new {
+      background: linear-gradient(135deg, #FF006E 0%, #FF8C00 100%);
+      animation: pulse 2s ease-in-out infinite;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255,0,110,0.6);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Album Section Enhancement */
+    .album-card-enhanced {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .album-card-enhanced::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,215,0,0.1),
+        transparent
+      );
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+    }
+    
+    .album-card-enhanced:hover::before {
+      left: 100%;
+    }
+    
+    .album-card-enhanced:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 30px 80px rgba(255,215,0,0.4);
+    }
+    
+    /* Grid Enhancement */
+    .grid--cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Navigation Enhancement */
+    .nav-section {
+      background: linear-gradient(135deg, rgba(11,15,22,0.8) 0%, rgba(20,20,30,0.8) 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 4rem;
+      border: 2px solid rgba(6,255,240,0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn--neon {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn--neon::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .btn--neon:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn--neon:hover {
+      box-shadow: 0 0 40px rgba(6,255,240,0.8);
+      transform: translateY(-2px);
+    }
+    
+    /* Audio Player Styles */
+    .card__player,
+    .music-player {
+      width: 100%;
+      margin: 1rem 0;
+      display: block;
+      border-radius: 8px;
+      background: rgba(11,15,22,0.8);
+      border: 1px solid rgba(6,255,240,0.3);
+      padding: 0.5rem;
+      outline: none;
+    }
+    
+    .card__player::-webkit-media-controls-panel {
+      background: rgba(11,15,22,0.9);
+    }
+    
+    .card__player::-webkit-media-controls-play-button,
+    .card__player::-webkit-media-controls-current-time-display,
+    .card__player::-webkit-media-controls-time-remaining-display {
+      color: #06FFF0;
+      filter: brightness(1.2);
+    }
+    
+    .card__player::-webkit-media-controls-timeline {
+      background: rgba(6,255,240,0.2);
+      border-radius: 4px;
+    }
+    
+    .card__player::-webkit-media-controls-timeline::-webkit-slider-thumb {
+      background: #06FFF0;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06FFF0;
+    }
+    
+    /* Section Title Enhancement */
+    .section__title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 1rem;
+    }
+    
+    .section__title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #06FFF0 0%, #8B5CF6 100%);
+      box-shadow: 0 0 10px rgba(6,255,240,0.6);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="particle" style="left: 25%; animation-delay: 2s;"></div>
+  <div class="particle" style="left: 40%; animation-delay: 4s;"></div>
+  <div class="particle" style="left: 60%; animation-delay: 1s;"></div>
+  <div class="particle" style="left: 75%; animation-delay: 3s;"></div>
+  <div class="particle" style="left: 90%; animation-delay: 5s;"></div>
+  <header class="header" role="banner">
+    <nav class="nav container" role="navigation" aria-label="Hauptnavigation">
+      <a class="nav__logo" href="../index.html" aria-label="Zurück zur Startseite">Code & Beats</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Navigation öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a class="nav__link" href="../index.html#music">Musik</a></li>
+        <li><a class="nav__link" href="../index.html#powershell">PowerShell</a></li>
+        <li><a class="nav__link" href="../index.html#gaming">Gaming</a></li>
+        <li><a class="nav__link" href="../index.html#blog">Blog</a></li>
+        <li><a class="nav__link" href="../index.html#about">About</a></li>
+        <li><a class="nav__link" href="../index.html#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="section section--music music-section" style="padding-top: 8rem;" aria-labelledby="music-title">
+      <div class="container">
+        <div style="margin-bottom: 2rem;">
+          <a href="../index.html" class="btn btn--glass" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>←</span> Zurück zur Startseite
+          </a>
+        </div>
+        
+        <!-- Hero Section -->
+        <div class="music-hero">
+          <h1 id="music-title">Alle Songs</h1>
+          
+          <p class="txt-dim" style="max-width: 850px; margin: 0 auto 2rem; line-height: 1.9; font-size: 1.15rem;">
+            Entdecke meine komplette Musik-Kollektion – jeder Track 100% selbst produziert! 🎵
+          </p>
+          
+          <p class="txt-dim" style="max-width: 750px; margin: 0 auto 1.5rem; line-height: 1.8; font-size: 1.05rem;">
+            Meine musikalische Reise verbindet klassische Produktionstechniken mit modernster KI-Technologie. 
+            Von den ersten Melodie-Skizzen bis zum finalen Master – jeder Song entsteht in meinem Studio, 
+            unterstützt durch intelligente Tools, die meine kreative Vision zum Leben erwecken.
+          </p>
+          
+          <p class="txt-dim" style="max-width: 750px; margin: 0 auto 1.5rem; line-height: 1.8; font-size: 1.05rem;">
+            🤖 <strong style="color: #06FFF0;">KI als kreativer Partner:</strong> Ich nutze KI-gestützte Vocal-Synthese für charakteristische Stimmen, 
+            AI-Mastering für den perfekten Sound und generative Tools für experimentelle Soundscapes. 
+            Die Technologie erweitert meine Möglichkeiten – von realistischen Gesangsstimmen über orchestrale Arrangements 
+            bis hin zu futuristischen Synthwave-Texturen, die ohne KI kaum realisierbar wären.
+          </p>
+          
+          <p class="txt-dim" style="max-width: 750px; margin: 0 auto 1.5rem; line-height: 1.8; font-size: 1.05rem;">
+            🎹 <strong style="color: #8B5CF6;">Volle kreative Kontrolle:</strong> Jede Melodie, jeder Beat, jede Akkordfolge stammt aus meiner Feder. 
+            KI ist mein Werkzeug – wie ein fortschrittliches Synthesizer-Plugin oder ein virtueller Session-Musiker. 
+            Ich komponiere, arrangiere und produziere jeden Aspekt selbst, während KI mir hilft, Ideen schneller umzusetzen 
+            und Klänge zu erschaffen, die früher ein ganzes Studio-Orchester erfordert hätten.
+          </p>
+          
+          <p class="txt-dim" style="max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.8; font-size: 1.05rem;">
+            Von energiegeladenen <strong style="color: #DAA520;">Ballermann-Hits</strong> 🏖️ über cinematische <strong style="color: #06FFF0;">Synthwave-Atmosphären</strong> 🌆 
+            bis zu experimentellen <strong style="color: #9370DB;">Ambient-Soundscapes</strong> 🌌 – hier findest du Musik, die Genres verbindet 
+            und die Grenzen zwischen Mensch und Maschine verschwimmen lässt. Willkommen in der Zukunft der Musikproduktion! ✨
+          </p>
+          
+          <!-- Animated Waveform -->
+          <div class="waveform-container">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+        </div>
+        
+        <!-- Enhanced Filters -->
+        <div class="section__head" style="margin-bottom: 3rem;">
+          <div class="filters">
+            <button class="chip" data-filter="all" aria-pressed="true">🎵 Alle</button>
+            <button class="chip" data-filter="party">🎉 Party</button>
+            <button class="chip" data-filter="synth">🌃 Synth</button>
+            <button class="chip" data-filter="lofi">☕ Lofi</button>
+            <button class="chip" data-filter="ambient">🌊 Ambient</button>
+          </div>
+        </div>
+
+        <div class="grid grid--cards music-grid">
+          <!-- Dynamisches Rendering füllt die Cards per scripts/music.js -->
+        </div>
+
+        <!-- Albums Section -->
+        <div style="margin-top: 5rem; padding-top: 3rem;">
+          <h2 class="section__title" style="font-size: 2.5rem; margin-bottom: 2rem; text-align: center;">🔥 Alben</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
+            <!-- Alpha Album Card -->
+            <article class="card album-card-enhanced" style="padding: 0; overflow: hidden; background: rgba(11,15,22,0.6); backdrop-filter: blur(10px); border: 2px solid rgba(255,215,0,0.3); cursor: pointer;" onclick="window.location.href='albums/alpha.html'">
+              <img src="../assets/media/album-alpha.svg" alt="Alpha - LONE WOLF Album Cover" style="width: 100%; aspect-ratio: 1; object-fit: cover;" />
+              <div style="padding: 1.5rem;">
+                <div style="margin-bottom: 0.5rem;">
+                  <span class="badge" style="background: linear-gradient(135deg, #06FFF0, #8B5CF6);">Album</span>
+                  <span class="badge badge--new" aria-label="Neu">Neu</span>
+                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #06FFF0;">Alpha - LONE WOLF</h3>
+                <p class="txt-dim" style="font-size: 0.9rem; margin-bottom: 1rem;">
+                  Dunkles Gangster Rapp-Album über Stärke und Wiedergeburt. 4 kraftvolle Tracks.
+                </p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                  <span class="chip" style="font-size: 0.75rem; padding: 0.25rem 0.75rem;">4 Tracks</span>
+                  <span class="chip" style="font-size: 0.75rem; padding: 0.25rem 0.75rem;">Gangster Rapp</span>
+                  <span class="chip" style="font-size: 0.75rem; padding: 0.25rem 0.75rem;">2025</span>
+                </div>
+                <a href="albums/alpha.html" class="btn btn--neon" style="width: 100%; text-align: center;">Album öffnen</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-section">
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="../index.html" class="btn btn--neon">🏠 Startseite</a>
+            <a href="../index.html#powershell" class="btn btn--glass">💻 PowerShell</a>
+            <a href="../index.html#gaming" class="btn btn--glass">🎮 Gaming</a>
+            <a href="../blog/index.html" class="btn btn--glass">📝 Blog</a>
+            <a href="../index.html#contact" class="btn btn--glass">✉️ Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small class="txt-dim">(C) 2025 by Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Rating System Scripts -->
+  <script src="../assets/js/firebase-config.js"></script>
+  <script src="../assets/js/rating-system.js"></script>
+  <!-- Enhanced Navigation -->
+  <script src="../assets/js/nav-enhanced.js" defer></script>
+  <!-- Music dynamic renderer -->
+  <script src="../assets/js/render-tracks.js" defer></script>
+  <!-- Simple client-side filtering for music chips -->
+  <script>
+    (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        const chips = document.querySelectorAll('.filters .chip');
+        if (!chips.length) return;
+        function applyFilter(filter) {
+          const cardsNow = document.querySelectorAll('.music-grid .music-card');
+          cardsNow.forEach(card => {
+            const category = card.getAttribute('data-category') || '';
+            const show = (filter === 'all') || (category === filter);
+            card.style.display = show ? '' : 'none';
+          });
+        }
+        chips.forEach(chip => {
+          chip.addEventListener('click', function() {
+            const current = this.getAttribute('data-filter');
+            chips.forEach(c => c.setAttribute('aria-pressed', c === this ? 'true' : 'false'));
+            applyFilter(current);
+          });
+        });
+        // Initialize default filter (aria-pressed="true")
+        const active = Array.from(chips).find(c => c.getAttribute('aria-pressed') === 'true');
+        applyFilter(active ? active.getAttribute('data-filter') : 'all');
+        // Re-apply filter after dynamic render
+        window.addEventListener('tracks:rendered', () => {
+          const current = Array.from(chips).find(c => c.getAttribute('aria-pressed') === 'true');
+          applyFilter(current ? current.getAttribute('data-filter') : 'all');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+/**
+ * Professional Star Rating System for Code & Beats
+ * Features: 5-Star Rating, Firebase Backend, Vote Tracking, Real-time Updates
+ */
+
+class SongRatingSystem {
+  constructor() {
+    this.db = window.firebaseDB;
+    this.userVotes = this.loadUserVotes();
+    this.init();
+  }
+
+  // Erneut Widgets initialisieren (für dynamisch gerenderte Inhalte)
+  reinitialize() {
+    this.init();
+  }
+
+  // Initialisiere alle Rating-Widgets
+  init() {
+    document.querySelectorAll('.rating-widget').forEach(widget => {
+      const songId = widget.dataset.songId;
+      this.setupWidget(widget, songId);
+      this.loadRating(widget, songId);
+    });
+  }
+
+  // Setup eines einzelnen Rating-Widgets
+  setupWidget(widget, songId) {
+    const stars = widget.querySelectorAll('.rating-star');
+    const hasVoted = this.userVotes[songId] !== undefined;
+
+    stars.forEach((star, index) => {
+      const starValue = index + 1;
+
+      // Hover-Effekt (nur wenn noch nicht gevotet)
+      if (!hasVoted) {
+        star.addEventListener('mouseenter', () => {
+          this.highlightStars(stars, starValue);
+        });
+
+        star.addEventListener('mouseleave', () => {
+          const currentRating = this.userVotes[songId] || 0;
+          this.highlightStars(stars, currentRating);
+        });
+
+        // Click-Handler
+        star.addEventListener('click', () => {
+          this.submitRating(songId, starValue, widget);
+        });
+      }
+    });
+
+    // Zeige bereits abgegebene Bewertung
+    if (hasVoted) {
+      this.highlightStars(stars, this.userVotes[songId]);
+      widget.classList.add('rated');
+    }
+  }
+
+  // Sterne highlighten
+  highlightStars(stars, count) {
+    stars.forEach((star, index) => {
+      if (index < count) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+    });
+  }
+
+  // Bewertung laden und anzeigen
+  async loadRating(widget, songId) {
+    if (!this.db) {
+      console.warn('Firebase nicht initialisiert');
+      return;
+    }
+
+    try {
+      const ratingRef = firebase.database().ref(`ratings/${songId}`);
+      
+      // Einmalig laden
+      const snapshot = await ratingRef.once('value');
+      const data = snapshot.val() || { total: 0, count: 0 };
+      this.updateDisplay(widget, data);
+
+      // Echtzeit-Updates
+      ratingRef.on('value', (snapshot) => {
+        const data = snapshot.val() || { total: 0, count: 0 };
+        this.updateDisplay(widget, data);
+      });
+    } catch (error) {
+      console.error('Fehler beim Laden der Bewertung:', error);
+    }
+  }
+
+  // Bewertungs-Display aktualisieren
+  updateDisplay(widget, data) {
+    const { total, count } = data;
+    const average = count > 0 ? (total / count).toFixed(1) : 0;
+    
+    const avgElement = widget.querySelector('.rating-average');
+    const countElement = widget.querySelector('.rating-count');
+    
+    if (avgElement) {
+      avgElement.textContent = average;
+      
+      // Füge Animation hinzu
+      avgElement.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        avgElement.style.transform = 'scale(1)';
+      }, 200);
+    }
+    
+    if (countElement) {
+      countElement.textContent = `(${count} ${count === 1 ? 'Bewertung' : 'Bewertungen'})`;
+    }
+
+    // Ranking-Badge hinzufügen
+    this.updateRankingBadge(widget, average, count);
+  }
+
+  // Ranking-Badge aktualisieren
+  updateRankingBadge(widget, average, count) {
+    // Entferne altes Badge
+    const oldBadge = widget.querySelector('.rating-badge');
+    if (oldBadge) oldBadge.remove();
+
+    // Zeige Badge nur wenn genug Bewertungen
+    if (count >= 5) {
+      let badgeText = '';
+      let badgeClass = '';
+
+      if (average >= 4.5) {
+        badgeText = '🔥 Top Hit';
+        badgeClass = 'badge-top';
+      } else if (average >= 4.0) {
+        badgeText = '⭐ Beliebt';
+        badgeClass = 'badge-popular';
+      }
+
+      if (badgeText) {
+        const badge = document.createElement('span');
+        badge.className = `rating-badge ${badgeClass}`;
+        badge.textContent = badgeText;
+        widget.querySelector('.rating-info').prepend(badge);
+      }
+    }
+  }
+
+  // Bewertung absenden
+  async submitRating(songId, rating, widget) {
+    if (!this.db) {
+      alert('⚠️ Bewertungssystem nicht verfügbar. Bitte später versuchen.');
+      return;
+    }
+
+    // Prüfe ob bereits gevotet
+    if (this.userVotes[songId] !== undefined) {
+      return;
+    }
+
+    try {
+      const ratingRef = firebase.database().ref(`ratings/${songId}`);
+      
+      // Transaktion für atomare Updates
+      await ratingRef.transaction((current) => {
+        if (current === null) {
+          return { total: rating, count: 1 };
+        }
+        return {
+          total: current.total + rating,
+          count: current.count + 1
+        };
+      });
+
+      // Speichere User-Vote
+      this.userVotes[songId] = rating;
+      this.saveUserVotes();
+
+      // UI-Update
+      widget.classList.add('rated');
+      const stars = widget.querySelectorAll('.rating-star');
+      this.highlightStars(stars, rating);
+
+      // Erfolgsmeldung
+      this.showSuccessMessage(widget);
+
+      console.log(`✅ Bewertung gespeichert: Song ${songId} = ${rating} Sterne`);
+    } catch (error) {
+      console.error('Fehler beim Speichern der Bewertung:', error);
+      alert('❌ Bewertung konnte nicht gespeichert werden. Bitte versuche es später erneut.');
+    }
+  }
+
+  // Erfolgsmeldung anzeigen
+  showSuccessMessage(widget) {
+    const message = document.createElement('div');
+    message.className = 'rating-success';
+    message.textContent = '✓ Danke für deine Bewertung!';
+    widget.appendChild(message);
+
+    setTimeout(() => {
+      message.remove();
+    }, 3000);
+  }
+
+  // User-Votes aus LocalStorage laden
+  loadUserVotes() {
+    try {
+      const stored = localStorage.getItem('codebeats_votes');
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  // User-Votes in LocalStorage speichern
+  saveUserVotes() {
+    try {
+      localStorage.setItem('codebeats_votes', JSON.stringify(this.userVotes));
+    } catch (error) {
+      console.error('LocalStorage Fehler:', error);
+    }
+  }
+}
+
+// Initialisiere Rating-System wenn DOM geladen
+document.addEventListener('DOMContentLoaded', () => {
+  // Warte kurz, bis Firebase geladen ist
+  setTimeout(() => {
+    if (window.firebaseDB) {
+      window.ratingSystem = new SongRatingSystem();
+      console.log('✅ Rating-System initialisiert');
+    } else {
+      console.warn('⚠️ Firebase nicht verfügbar - Rating-System deaktiviert');
+    }
+  }, 500);
+});
+
+// Exponiere Init-Funktion für dynamische Re-Renders
+window.initRatingSystem = function() {
+  try {
+    if (window.ratingSystem) {
+      window.ratingSystem.reinitialize();
+    } else if (window.firebaseDB) {
+      window.ratingSystem = new SongRatingSystem();
+    }
+  } catch (e) {
+    console.warn('initRatingSystem() Fehler:', e);
+  }
+};
+
+// Re-Init wenn Tracks dynamisch gerendert wurden
+window.addEventListener('tracks:rendered', () => {
+  if (typeof window.initRatingSystem === 'function') {
+    window.initRatingSystem();
+  }
+});

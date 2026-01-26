@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatbot-Integration: Live & Funktional – Blog</title>
+  <meta name="description" content="Wie der MCGV Chat-Bot integriert wurde – vollständig selbstgehostet, sofort einsatzbereit." />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/hero-title.css" />
+  <link rel="stylesheet" href="../assets/css/brand.css" />
+  <link rel="stylesheet" href="../assets/css/about-contact.css" />
+  <link rel="stylesheet" href="../assets/css/footer-nav.css" />
+  <link rel="stylesheet" href="../assets/css/section-titles.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <h1 class="section__title" style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(139,92,246,0.3); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.75rem;">Chatbot-Integration: Live & Funktional</h1>
+      <p class="txt-dim" style="margin: .5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          25. September 2025
+        </span>
+        <span style="color: #8B5CF6;">•</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" aria-hidden="true">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Lesezeit: 6 min
+        </span>
+      </p>
+      <figure style="background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(6,255,240,0.08) 100%); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden;">
+        <svg viewBox="0 0 800 400" style="max-width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chatbot Integration Illustration">
+          <defs>
+            <linearGradient id="botGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#06FFF0;stop-opacity:0.8" />
+            </linearGradient>
+            <filter id="botGlow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="botGlowStrong">
+              <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Chat Window -->
+          <rect x="200" y="60" width="400" height="300" rx="16" fill="rgba(11,15,22,0.95)" stroke="url(#botGrad)" stroke-width="3" filter="url(#botGlow)"/>
+          
+          <!-- Header -->
+          <rect x="200" y="60" width="400" height="50" rx="16" fill="rgba(139,92,246,0.2)"/>
+          <circle cx="230" cy="85" r="15" fill="url(#botGrad)" filter="url(#botGlowStrong)"/>
+          <text x="235" y="92" font-size="18" text-anchor="middle" fill="#FFF">🎵</text>
+          <text x="260" y="92" font-size="16" fill="#FFF" font-family="sans-serif" font-weight="600">Code & Beats Assistant</text>
+          <circle cx="570" cy="85" r="4" fill="#28C840"/>
+          <text x="545" y="92" font-size="11" fill="#28C840" font-family="sans-serif">Online</text>
+          
+          <!-- Chat Messages -->
+          <g font-family="sans-serif" font-size="13">
+            <!-- Bot Message 1 -->
+            <rect x="220" y="130" width="280" height="45" rx="8" fill="rgba(139,92,246,0.25)" stroke="#8B5CF6" stroke-width="1.5"/>
+            <text x="235" y="150" fill="#FFF">Hey! 👋 Willkommen bei Code & Beats.</text>
+            <text x="235" y="165" fill="rgba(255,255,255,0.8)" font-size="12">Was interessiert dich?</text>
+            
+            <!-- User Message -->
+            <rect x="380" y="190" width="200" height="30" rx="8" fill="rgba(6,255,240,0.25)" stroke="#06FFF0" stroke-width="1.5"/>
+            <text x="395" y="210" fill="#FFF">Musik</text>
+            
+            <!-- Bot Message 2 -->
+            <rect x="220" y="235" width="320" height="60" rx="8" fill="rgba(139,92,246,0.25)" stroke="#8B5CF6" stroke-width="1.5"/>
+            <text x="235" y="255" fill="#FFF">🎵 Entdecke drei Tracks:</text>
+            <text x="235" y="272" fill="rgba(255,255,255,0.8)" font-size="12">• Life am Strand (Ballermann)</text>
+            <text x="235" y="287" fill="rgba(255,255,255,0.8)" font-size="12">• Aus dem Schatten (Synthwave)</text>
+          </g>
+          
+          <!-- Input Area -->
+          <rect x="220" y="310" width="340" height="35" rx="8" fill="rgba(11,15,22,0.8)" stroke="rgba(6,255,240,0.4)" stroke-width="1.5"/>
+          <text x="235" y="333" font-size="13" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Deine Frage...</text>
+          
+          <!-- Send Button -->
+          <circle cx="570" cy="327" r="14" fill="url(#botGrad)" filter="url(#botGlow)"/>
+          <path d="M565,327 L575,327 L570,322 M570,322 L570,332" stroke="#FFF" stroke-width="2" fill="none" stroke-linecap="round"/>
+          
+          <!-- Floating Chat Icon (Toggle) -->
+          <g transform="translate(680, 280)">
+            <circle cx="0" cy="0" r="35" fill="url(#botGrad)" filter="url(#botGlowStrong)">
+              <animate attributeName="r" values="35;38;35" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="0" cy="0" r="42" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.4">
+              <animate attributeName="r" values="42;50;42" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M-10,-8 L-10,8 C-10,12 -6,16 0,16 L0,16 C6,16 10,12 10,8 L10,-8 C10,-12 6,-16 0,-16 L0,-16 C-6,-16 -10,-12 -10,-8 Z" fill="#FFF"/>
+            <path d="M0,16 L-4,22 L0,20 L4,22 Z" fill="#FFF"/>
+            <circle cx="-4" cy="-4" r="2" fill="#8B5CF6"/>
+            <circle cx="4" cy="-4" r="2" fill="#8B5CF6"/>
+            <path d="M-5,2 Q0,5 5,2" stroke="#8B5CF6" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </g>
+          
+          <!-- Connection Lines -->
+          <path d="M600,200 Q640,220 665,260" stroke="#06FFF0" stroke-width="2" stroke-dasharray="5,3" fill="none" opacity="0.5"/>
+          <path d="M600,280 Q630,285 655,285" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,3" fill="none" opacity="0.5"/>
+          
+          <!-- Feature Labels -->
+          <g font-family="sans-serif" font-size="12" fill="#06FFF0">
+            <text x="80" y="120">✓ Selbstgehostet</text>
+            <text x="80" y="145">✓ Keine externen APIs</text>
+            <text x="80" y="170">✓ Sofort einsatzbereit</text>
+            <text x="80" y="195" fill="#8B5CF6">✓ Wissensdatenbank</text>
+            <text x="80" y="220" fill="#8B5CF6">✓ Quick Replies</text>
+            <text x="80" y="245" fill="#8B5CF6">✓ Custom Styling</text>
+          </g>
+          
+          <!-- Code Brackets (Decoration) -->
+          <text x="50" y="320" font-size="48" fill="rgba(6,255,240,0.15)" font-family="monospace">&lt;/&gt;</text>
+          <text x="720" y="100" font-size="48" fill="rgba(139,92,246,0.15)" font-family="monospace">{}</text>
+        </svg>
+      </figure>
+      <article class="prose" style="margin-top:2rem; line-height: 1.9; font-size: 1.08rem;">
+        <p style="margin-bottom: 2rem; line-height: 1.9;">
+          Der <strong>Code & Beats Assistant</strong> ist jetzt live! Unten rechts auf jeder Seite findest du das Chat-Symbol. 
+          Ein Klick – und du kannst direkt Fragen zu Musik, PowerShell-Skripten oder Gaming stellen. Das Besondere: Der Bot läuft 
+          <em>vollständig selbstgehostet</em>, ohne externe Accounts oder API-Keys.
+        </p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">🎯 Ziele der Integration</h2>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2.5rem 0; display: grid; gap: 1rem;">
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+            <strong>Sofort funktional:</strong> Nach dem FTP-Upload direkt einsatzbereit – keine Konfiguration nötig
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+            <strong>Keine Abhängigkeiten:</strong> Kein Chatbase, kein Tawk.to, keine Drittanbieter-IDs
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #8B5CF6;">✓</span>
+            <strong>Design-konsistent:</strong> Neon-Glassmorphism-Stil, perfekt ins Template integriert
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #8B5CF6;">✓</span>
+            <strong>Leichtgewichtig:</strong> Nur HTML/CSS/JS – keine Build-Tools, keine Node-Abhängigkeiten
+          </li>
+        </ul>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">🛠️ Technische Umsetzung</h2>
+        <p style="margin-bottom: 1.5rem; line-height: 1.9;">
+          Der Chatbot besteht aus drei Dateien, die im <code>assets/chatbot/</code>-Ordner liegen:
+        </p>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">1. HTML-Markup (in index.html)</h3>
+        <p style="margin-bottom: 1.25rem; line-height: 1.9;">Ein schwebender Toggle-Button (unten rechts) und ein ausklappbares Chat-Fenster:</p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: grid; gap: 0.85rem;">
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <code>#chatbot-toggle</code> – der runde Button mit Chat-Icon
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <code>#chatbot-container</code> – das Hauptfenster mit Header, Nachrichten-Bereich und Eingabefeld
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            Quick-Reply-Buttons für häufige Fragen (Musik, Scripts, Gaming, About)
+          </li>
+        </ul>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">2. Scoped CSS (mcgv-chatbot-styles.css)</h3>
+        <p style="margin-bottom: 1.25rem; line-height: 1.9;">
+          Alle Styles sind auf <code>.chatbot-container</code> und <code>.chatbot-toggle</code> beschränkt, 
+          damit sie nicht mit dem Rest der Seite kollidieren:
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: grid; gap: 0.85rem;">
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Präfixe:</strong> Animationen heißen <code>cb-pulse</code>, <code>cb-slideIn</code>, <code>cb-typing</code> – keine Konflikte
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Keine globalen Resets:</strong> Kein <code>* { margin: 0 }</code> – das Original-Design bleibt intakt
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Neon-Farben:</strong> Cyan (#06FFF0) und Violett (#8B5CF6) wie im Rest der Seite
+          </li>
+        </ul>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">3. JavaScript-Logik (mcgv-chatbot-script.js)</h3>
+        <p style="margin-bottom: 1.25rem; line-height: 1.9;">
+          Handling für Toggle, Nachrichten senden, Quick Replies und eine simple Wissensdatenbank:
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; display: grid; gap: 0.85rem;">
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Toggle-Funktion:</strong> Öffnet/schließt den Chat mit Slide-In-Animation
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Nachricht senden:</strong> Append User-Message, zeigt Typing-Indikator, dann Bot-Antwort
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Wissens-Matching:</strong> Keyword-basiert (z.B. "musik" → Link zur Music-Section, Track-Liste)
+          </li>
+          <li style="padding-left: 1.5rem; position: relative; line-height: 1.8;">
+            <span style="position: absolute; left: 0; color: #06FFF0;">▸</span>
+            <strong>Fallback:</strong> Unbekannte Fragen führen zu einer freundlichen "Mehr dazu unter…"-Antwort
+          </li>
+        </ul>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">📦 Integration in die Seite</h2>
+        <p style="margin-bottom: 1.5rem; line-height: 1.9;">
+          In der <code>index.html</code> wurden drei Einträge hinzugefügt:
+        </p>
+        <ol>
+          <li><strong>CSS-Link</strong> im <code>&lt;head&gt;</code>:
+            <br/><code>&lt;link rel="stylesheet" href="assets/chatbot/mcgv-chatbot-styles.css" /&gt;</code>
+          </li>
+          <li><strong>HTML-Markup</strong> kurz vor <code>&lt;/body&gt;</code> (Toggle + Container)</li>
+          <li><strong>Script-Tag</strong> nach den anderen JS-Dateien:
+            <br/><code>&lt;script src="assets/chatbot/mcgv-chatbot-script.js" defer&gt;&lt;/script&gt;</code>
+          </li>
+        </ol>
+        <p>Die Blog-Detailseiten (<code>blog/*.html</code>) bekommen denselben Bot – so bleibt die User Experience konsistent.</p>
+
+        <h2>✨ Features im Detail</h2>
+        <ul>
+          <li><strong>Willkommensnachricht:</strong> Beim Öffnen erscheint automatisch eine Begrüßung mit Quick-Reply-Buttons</li>
+          <li><strong>Quick Replies:</strong> Vier vorgefertigte Themen (🎵 Musik, ⚡ Scripts, 🎮 Gaming, 👤 About)</li>
+          <li><strong>Intelligente Antworten:</strong> Der Bot erkennt Keywords und liefert passende Links + Infos:
+            <ul>
+              <li>"Musik" → Direkt-Links zu den drei Tracks mit Download-Buttons</li>
+              <li>"PowerShell" / "Scripts" → Übersicht der verifizierten Skripte</li>
+              <li>"Gaming" → Guides, Reviews, Clips</li>
+              <li>"Kontakt" → E-Mail und Formular-Link</li>
+            </ul>
+          </li>
+          <li><strong>Typing-Indikator:</strong> Drei pulsierende Punkte zeigen, dass der Bot "nachdenkt"</li>
+          <li><strong>Scroll-Verhalten:</strong> Neue Nachrichten werden automatisch sichtbar gescrollt</li>
+        </ul>
+
+        <h2>🎨 Design-Prinzipien</h2>
+        <ul>
+          <li><strong>Glassmorphism:</strong> Halbtransparente Hintergründe mit Backdrop-Blur</li>
+          <li><strong>Neon-Glow:</strong> Subtile Box-Shadows in Cyan/Violett für den typischen Neon-Look</li>
+          <li><strong>Smooth Animations:</strong> Slide-In beim Öffnen, Fade-In für Nachrichten, Pulse-Effekt am Toggle</li>
+          <li><strong>Responsive:</strong> Auf Mobile kleiner (90% Viewport-Breite), auf Desktop fixe Breite (380px)</li>
+        </ul>
+
+        <h2>🚀 Deployment</h2>
+        <p>Der komplette Chatbot besteht aus statischen Dateien – kein Backend, kein Node-Server. Einfach per FTP hochladen:</p>
+        <ol>
+          <li><code>index.html</code> (mit eingebettetem Bot-Markup)</li>
+          <li><code>assets/chatbot/mcgv-chatbot-styles.css</code></li>
+          <li><code>assets/chatbot/mcgv-chatbot-script.js</code></li>
+          <li>Alle Blog-Seiten in <code>blog/</code> (haben denselben Bot)</li>
+        </ol>
+        <p>Nach dem Upload ist der Bot <strong>sofort live</strong> – ohne Registrierung, ohne API-Keys, ohne Wartezeit.</p>
+
+        <h2>🔮 Nächste Schritte</h2>
+        <ul>
+          <li><strong>Erweiterte Wissensdatenbank:</strong> Mehr Keywords und längere Antworten</li>
+          <li><strong>Chat-Verlauf:</strong> LocalStorage nutzen, um Konversationen zu speichern</li>
+          <li><strong>Emoji-Reactions:</strong> User können Bot-Antworten bewerten (👍/👎)</li>
+          <li><strong>Voice-Input:</strong> Web Speech API für Spracheingabe</li>
+          <li><strong>Multi-Language:</strong> Automatische Erkennung und DE/EN Toggle</li>
+        </ul>
+
+        <h2>📞 Probier es aus!</h2>
+        <p>Klick einfach auf das Chat-Symbol unten rechts und starte eine Konversation. Der Bot antwortet in Echtzeit, ohne dass deine Daten irgendwohin gesendet werden. Alles läuft lokal im Browser – schnell, sicher und privat.</p>
+
+        <p style="margin-top: 2rem; padding: 1rem; background: rgba(139,92,246,0.1); border-left: 4px solid #8B5CF6; border-radius: 8px;">
+          <strong>💡 Tipp:</strong> Nutze die Quick-Reply-Buttons für schnelle Navigation oder tippe eigene Fragen wie "Zeig mir die Skripte" oder "Was gibt es bei Gaming?"
+        </p>
+
+        <p style="text-align: center; margin-top: 2.5rem;">
+          <a href="../index.html#music" class="btn btn--neon" style="display: inline-block; text-decoration: none;">Zurück zur Startseite</a>
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid rgba(6,255,240,0.2);">
+    <div class="container" style="text-align: center;">
+      <p class="txt-dim" style="margin-bottom: 1rem;">
+        <a href="index.html" class="nav-link" style="color: #06FFF0; text-decoration: none; margin: 0 0.75rem;">← Alle Beiträge</a>
+        <span style="color: #8B5CF6;">|</span>
+        <a href="../index.html" class="nav-link" style="color: #8B5CF6; text-decoration: none; margin: 0 0.75rem;">Startseite</a>
+      </p>
+      <small class="txt-dim" style="opacity: 0.6;">&copy; 2025 Code & Beats · Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- Chatbot -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🎵</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen bei Code & Beats. Ich bin dein Guide durch Musik, PowerShell und Gaming. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+      <button class="quick-reply" data-message="Über Michael">👤 About</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="../assets/chatbot/mcgv-chatbot-script.js" defer></script>
+</body>
+</html>

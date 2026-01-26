@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="synesthesiaTitle">
+  <title id="synesthesiaTitle">Synesthesia Sound App Visual</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101439"/>
+      <stop offset="1" stop-color="#1b2254"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5c5cff"/>
+      <stop offset="0.5" stop-color="#8f60ff"/>
+      <stop offset="1" stop-color="#2de3d1"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="28" fill="url(#bg)"/>
+  <rect x="90" y="70" width="220" height="220" rx="24" fill="#141935" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <circle cx="200" cy="160" r="80" fill="none" stroke="url(#wave)" stroke-width="12"/>
+  <circle cx="200" cy="160" r="36" fill="#2de3d1" opacity="0.65"/>
+  <path d="M140 240c24-32 48-32 72 0s48 32 72 0" fill="none" stroke="url(#wave)" stroke-width="10" stroke-linecap="round"/>
+  <rect x="360" y="70" width="190" height="220" rx="22" fill="#141935" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <rect x="380" y="100" width="150" height="24" rx="12" fill="#2de3d1" opacity="0.85"/>
+  <rect x="380" y="140" width="120" height="12" rx="6" fill="#5c5cff" opacity="0.6"/>
+  <rect x="380" y="168" width="130" height="12" rx="6" fill="#2de3d1" opacity="0.45"/>
+  <rect x="380" y="196" width="140" height="12" rx="6" fill="#8a7bff" opacity="0.45"/>
+  <rect x="380" y="224" width="90" height="12" rx="6" fill="#2de3d1" opacity="0.45"/>
+  <path d="M380 260c32-22 48-22 80 0s48 22 80 0" fill="none" stroke="url(#wave)" stroke-width="8" stroke-linecap="round"/>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

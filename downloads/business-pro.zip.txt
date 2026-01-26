@@ -1,0 +1,6 @@
+[Hier kommt die ZIP-Datei für das Template "Business Pro Landing" hin.]
+
+Bitte ersetze diese Platzhalter-Datei durch die echte ZIP-Datei, sobald du sie erstellt hast.
+
+Pfad für Download-Link:
+http://localhost/downloads/business-pro.zip

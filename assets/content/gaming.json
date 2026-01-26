@@ -1,0 +1,75 @@
+{
+  "games": [
+    {
+      "slug": "diablo-iv",
+      "href": "gaming/diablo.html",
+      "title": "Diablo IV",
+      "genre": "Action-RPG",
+      "emoji": "⚔️",
+      "date": "2025-11-10",
+      "featured": true,
+      "excerpt": "Sanktuario droht, vom Hass verzehrt zu werden. Entdecke die von Kritikern gelobte Reihe, die das Action-RPG-Genre definiert hat.",
+      "thumbnail": "https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltf9ef4fee9c77a1b5/66df937c97d7ebef3679492b/d4-npe_story-launch-trailer_agnostic_960.webp",
+      "videoId": "ARLdeuUjFy0",
+      "playtime": "150+ Stunden",
+      "platform": "PC, PS5, Xbox",
+      "status": "JETZT VERFÜGBAR",
+      "rating": 95,
+      "tags": ["Action", "RPG", "Multiplayer", "Loot"]
+    },
+    {
+      "slug": "enshrouded",
+      "href": "gaming/enshrouded.html",
+      "title": "Enshrouded",
+      "genre": "Survival-RPG",
+      "emoji": "🏰",
+      "date": "2025-11-08",
+      "featured": true,
+      "excerpt": "Erkunde eine nebelverhangene Welt voller Geheimnisse. Baue, kämpfe und überlebe in diesem atmosphärischen Survival-RPG.",
+      "thumbnail": "https://cdn.akamai.steamstatic.com/steam/apps/1203620/header.jpg",
+      "videoId": "j8hf0f4CJYE",
+      "playtime": "80+ Stunden",
+      "platform": "PC (Early Access)",
+      "status": "EARLY ACCESS",
+      "rating": 88,
+      "tags": ["Survival", "RPG", "Building", "Co-op"]
+    },
+    {
+      "slug": "soulmask",
+      "href": "gaming/soulmask.html",
+      "title": "Soulmask",
+      "genre": "Survival",
+      "emoji": "🎭",
+      "date": "2025-11-06",
+      "featured": true,
+      "excerpt": "Mystisches Tribal-Survival-Abenteuer mit Masken-Mechanik. Erschaffe deinen Stamm und erobere die Wildnis.",
+      "thumbnail": "https://cdn.akamai.steamstatic.com/steam/apps/2646460/header.jpg",
+      "videoId": "placeholder",
+      "playtime": "45+ Stunden",
+      "platform": "PC",
+      "status": "NEU",
+      "rating": 82,
+      "tags": ["Survival", "Tribal", "Crafting", "Multiplayer"]
+    },
+    {
+      "slug": "ark-survival-ascended",
+      "href": "gaming/ark.html",
+      "title": "ARK: Survival Ascended",
+      "genre": "Survival",
+      "emoji": "🦕",
+      "date": "2025-11-04",
+      "featured": false,
+      "excerpt": "Die ultimative Dinosaurier-Survival-Experience in Unreal Engine 5. Zähme Dinos, baue Basen und dominiere die Insel.",
+      "thumbnail": "https://cdn.akamai.steamstatic.com/steam/apps/2399830/header.jpg",
+      "videoId": "placeholder",
+      "playtime": "200+ Stunden",
+      "platform": "PC, PS5, Xbox",
+      "status": "VERFÜGBAR",
+      "rating": 85,
+      "tags": ["Survival", "Dinosaurs", "Building", "PvP"]
+    }
+  ]
+}
+
+
+

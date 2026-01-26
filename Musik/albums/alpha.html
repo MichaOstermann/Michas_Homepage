@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alpha - LONE WOLF Album von Michael Ostermann. Dunkle, kraftvolle Tracks über Einsamkeit und Stärke." />
+  <title>Alpha - LONE WOLF – Code & Beats</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/media/favicon.svg" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0f14 50%, #0a0a0a 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Urban Background Pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 40px, rgba(255,255,255,0.02) 41px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 40px, rgba(255,255,255,0.02) 41px);
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    /* Graffiti Elements */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      right: -100px;
+      width: 400px;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(255,215,0,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(255,69,0,0.08) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+    }
+    
+    .main {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Aggressive Title Styling */
+    #album-title {
+      text-shadow: 
+        0 0 20px rgba(255,215,0,0.6),
+        0 0 40px rgba(255,69,0,0.4),
+        0 4px 8px rgba(0,0,0,0.8);
+      letter-spacing: 0.05em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    
+    /* Track Cards with Street Vibes */
+    .track-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(10,10,10,0.95) 100%) !important;
+      border: 2px solid rgba(255,215,0,0.3) !important;
+      box-shadow: 
+        0 8px 32px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,215,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .track-card:hover {
+      border-color: rgba(255,215,0,0.6) !important;
+      transform: translateY(-4px);
+      box-shadow: 
+        0 12px 48px rgba(255,215,0,0.3),
+        inset 0 1px 0 rgba(255,215,0,0.2);
+    }
+    
+    /* Track Number Styling */
+    .track-number {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(255,215,0,0.5);
+      font-weight: 900;
+      position: relative;
+    }
+    
+    .track-number::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+      z-index: -1;
+    }
+    
+    /* Track Title with Glitch Effect */
+    .track-title {
+      position: relative;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    
+    /* Barcode Pattern */
+    .barcode-pattern {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,215,0,0.1) 0px,
+        rgba(255,215,0,0.1) 2px,
+        transparent 2px,
+        transparent 5px,
+        rgba(255,215,0,0.15) 5px,
+        rgba(255,215,0,0.15) 8px,
+        transparent 8px,
+        transparent 12px
+      );
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    /* Gold Accents for Badges */
+    .badge-gold {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%) !important;
+      color: #000 !important;
+      font-weight: 900;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(255,215,0,0.4);
+    }
+    
+    /* Vinyl Record Decoration */
+    .vinyl-decoration {
+      position: fixed;
+      top: 10%;
+      left: -150px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at center, transparent 45%, rgba(20,20,20,0.8) 46%, rgba(20,20,20,0.8) 48%, transparent 49%),
+        radial-gradient(circle at center, rgba(10,10,10,0.9) 0%, rgba(30,30,30,0.8) 100%);
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+      animation: rotateVinyl 20s linear infinite;
+    }
+    
+    @keyframes rotateVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Aggressive Stats Cards */
+    .stats-card {
+      background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,69,0,0.08) 100%) !important;
+      border: 2px solid rgba(255,215,0,0.3) !important;
+      box-shadow: 0 4px 16px rgba(255,215,0,0.2);
+    }
+    
+    .stats-card .stat-value {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <div class="barcode-pattern"></div>
+  <div class="vinyl-decoration"></div>
+  <header class="header" role="banner">
+    <nav class="nav container" role="navigation" aria-label="Hauptnavigation">
+      <a class="nav__logo" href="../../index.html" aria-label="Zurück zur Startseite">Code & Beats</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Navigation öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a class="nav__link" href="../../index.html#music">Musik</a></li>
+        <li><a class="nav__link" href="../../index.html#powershell">PowerShell</a></li>
+        <li><a class="nav__link" href="../../index.html#gaming">Gaming</a></li>
+        <li><a class="nav__link" href="../../index.html#blog">Blog</a></li>
+        <li><a class="nav__link" href="../../index.html#about">About</a></li>
+        <li><a class="nav__link" href="../../index.html#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="section" style="padding-top: 8rem;" aria-labelledby="album-title">
+      <div class="container">
+        <div style="margin-bottom: 2rem;">
+          <a href="../index.html" class="btn btn--glass" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>←</span> Zurück zur Musik
+          </a>
+        </div>
+
+        <!-- Album Header -->
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; margin-bottom: 4rem; align-items: start;" class="album-header">
+          <!-- Album Cover -->
+          <div style="position: relative;">
+            <img src="../../assets/media/album-alpha.svg" alt="Alpha - LONE WOLF Album Cover" style="width: 100%; border-radius: 8px; box-shadow: 0 8px 32px rgba(6,255,240,0.3);" />
+          </div>
+
+          <!-- Album Info -->
+          <div>
+            <div style="margin-bottom: 1rem;">
+              <span class="badge badge-gold">🔥 ALBUM 🔥</span>
+            </div>
+            <h1 id="album-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+              ALPHA - LONE WOLF
+            </h1>
+            <p class="txt-dim" style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+              <strong style="color: #FFD700;">Artist:</strong> Michael Ostermann
+            </p>
+            <p class="txt-dim" style="font-size: 1rem; line-height: 1.8; margin-bottom: 2rem;">
+              Ein düsteres, kraftvolles Album über den einsamen Wolf – über Stärke in der Einsamkeit, das Überwinden von Asche und das innere Feuer, das niemals erlischt. Vier Tracks, die durch harte Gangster Rapp-Beats führen und von Wiedergeburt erzählen.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <div class="card stats-card" style="padding: 1rem 1.5rem;">
+                <div class="txt-dim" style="font-size: 0.85rem; color: #FFD700;">Tracks</div>
+                <div class="stat-value" style="font-size: 1.5rem; font-weight: 900;">4</div>
+              </div>
+              <div class="card stats-card" style="padding: 1rem 1.5rem;">
+                <div class="txt-dim" style="font-size: 0.85rem; color: #FFD700;">Genre</div>
+                <div class="stat-value" style="font-size: 1.5rem; font-weight: 900;">Gangster Rapp</div>
+              </div>
+              <div class="card stats-card" style="padding: 1rem 1.5rem;">
+                <div class="txt-dim" style="font-size: 0.85rem; color: #FFD700;">Jahr</div>
+                <div class="stat-value" style="font-size: 1.5rem; font-weight: 900;">2025</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tracklist -->
+        <div style="margin-bottom: 4rem;">
+          <h2 class="section__title" style="font-size: 2rem; margin-bottom: 2rem;">Tracklist</h2>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Track 1 -->
+            <article class="card track-card" style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                <div class="track-number" style="font-size: 2rem; font-weight: 900; min-width: 3rem;">01</div>
+                <div style="flex: 1;">
+                  <h3 class="track-title" style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #FFD700;">LONE WOLF IV – REBORN</h3>
+                  <p class="txt-dim">Die Wiedergeburt aus der Asche. Ein kraftvoller Neuanfang.</p>
+                </div>
+              </div>
+              <audio class="card__player music-player" controls preload="metadata" style="width: 100%;">
+                <source src="../../assets/media/albums/alpha/lone-wolf-iv-reborn.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div style="margin-top: 1rem;">
+                <a class="btn btn--glass btn-download" href="../../assets/media/albums/alpha/lone-wolf-iv-reborn.mp3" download="LONE WOLF IV – REBORN.mp3">Download</a>
+              </div>
+            </article>
+
+            <!-- Track 2 -->
+            <article class="card track-card" style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                <div class="track-number" style="font-size: 2rem; font-weight: 900; min-width: 3rem;">02</div>
+                <div style="flex: 1;">
+                  <h3 class="track-title" style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #FF8C00;">ALPHA</h3>
+                  <p class="txt-dim">Der Titel-Track. Dominanz, Führung und ungebrochener Wille.</p>
+                </div>
+              </div>
+              <audio class="card__player music-player" controls preload="metadata" style="width: 100%;">
+                <source src="../../assets/media/albums/alpha/alpha.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div style="margin-top: 1rem;">
+                <a class="btn btn--glass btn-download" href="../../assets/media/albums/alpha/alpha.mp3" download="ALPHA.mp3">Download</a>
+              </div>
+            </article>
+
+            <!-- Track 3 -->
+            <article class="card track-card" style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                <div class="track-number" style="font-size: 2rem; font-weight: 900; min-width: 3rem;">03</div>
+                <div style="flex: 1;">
+                  <h3 class="track-title" style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #FFD700;">LONE WOLF II – ASCHE & STAHL</h3>
+                  <p class="txt-dim">Aus Ruinen geschmiedet. Hart, kalt und unzerstörbar.</p>
+                </div>
+              </div>
+              <audio class="card__player music-player" controls preload="metadata" style="width: 100%;">
+                <source src="../../assets/media/albums/alpha/lone-wolf-ii-asche-stahl.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div style="margin-top: 1rem;">
+                <a class="btn btn--glass btn-download" href="../../assets/media/albums/alpha/lone-wolf-ii-asche-stahl.mp3" download="LONE WOLF II – ASCHE & STAHL.mp3">Download</a>
+              </div>
+            </article>
+
+            <!-- Track 4 -->
+            <article class="card track-card" style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
+                <div class="track-number" style="font-size: 2rem; font-weight: 900; min-width: 3rem;">04</div>
+                <div style="flex: 1;">
+                  <h3 class="track-title" style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #FF8C00;">LONE WOLF III – FEUER BLEIBT</h3>
+                  <p class="txt-dim">Das innere Feuer erlischt nie. Ewige Flamme der Entschlossenheit.</p>
+                </div>
+              </div>
+              <audio class="card__player music-player" controls preload="metadata" style="width: 100%;">
+                <source src="../../assets/media/albums/alpha/lone-wolf-iii-feuer-bleibt.mp3" type="audio/mpeg" />
+                Dein Browser unterstützt das Audio-Element nicht.
+              </audio>
+              <div style="margin-top: 1rem;">
+                <a class="btn btn--glass btn-download" href="../../assets/media/albums/alpha/lone-wolf-iii-feuer-bleibt.mp3" download="LONE WOLF III – FEUER BLEIBT.mp3">Download</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(6,255,240,0.2); display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <a href="../index.html" class="btn btn--neon">Alle Songs</a>
+          <a href="../../index.html" class="btn btn--glass">Startseite</a>
+          <a href="../../index.html#powershell" class="btn btn--glass">PowerShell</a>
+          <a href="../../index.html#gaming" class="btn btn--glass">Gaming</a>
+          <a href="../../blog/index.html" class="btn btn--glass">Blog</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small class="txt-dim">(C) 2025 by Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="../../assets/js/nav-enhanced.js" defer></script>
+
+  <style>
+    @media (max-width: 768px) {
+      .album-header {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</body>
+</html>

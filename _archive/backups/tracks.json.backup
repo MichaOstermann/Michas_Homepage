@@ -1,0 +1,267 @@
+{
+    "tracks": [
+        {
+            "id": "life-am-strand",
+            "title": "Life am Strand",
+            "category": "party",
+            "description": "Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.",
+            "cover": "cover1.svg",
+            "audio": "track1.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "20-jahre-rdmc-oldenburg",
+            "title": "20 Jahre RDMC Oldenburg",
+            "category": "gemischt",
+            "description": "Fetziger Rock Song",
+            "cover": "covers\/20-jahre-rdmc-oldenburg.svg",
+            "audio": "track2.mp3",
+            "folder": "assets\/media",
+            "isNew": true,
+            "coverGenerated": true
+        },
+        {
+            "id": "aus-dem-schatten",
+            "title": "Aus dem Schatten",
+            "category": "rapp",
+            "description": "Dunkler Synthwave mit treibendem Beat und melancholischer Hook.",
+            "cover": "cover3.svg",
+            "audio": "track3.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "kein-lied-fuer-helden",
+            "title": "Kein Lied für Helden",
+            "category": "rapp",
+            "description": "Kraftvoller Rocksong mit Message. Authentisch und direkt.",
+            "cover": "cover4.svg",
+            "audio": "Kein Lied für Helden.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "keiner-hat-noch-geld",
+            "title": "Keiner hat noch Geld",
+            "category": "party",
+            "description": "Gesellschaftskritischer Party-Track mit Humor und Groove.",
+            "cover": "cover5.svg",
+            "audio": "Keiner hat noch Geld.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "love-2025",
+            "title": "Love 2025",
+            "category": "love",
+            "description": "Moderne Liebesballade mit elektronischen Elementen. Zukunft trifft Emotion.",
+            "cover": "cover6.svg",
+            "audio": "Love 2025.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "mein-kleiner-koenig",
+            "title": "Mein kleiner König",
+            "category": "gemischt",
+            "description": "Emotionale Ballade für die Kleinen. Warm, persönlich und von Herzen.",
+            "cover": "cover7.svg",
+            "audio": "Mein kleiner König.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "die-nacht-zaehlt-mit-uns",
+            "title": "Die Nacht zählt mit uns",
+            "category": "gemischt",
+            "description": "Nächtlicher Synthwave-Track. Atmosphärisch, mystisch und hypnotisch.",
+            "cover": "cover8.svg",
+            "audio": "Die Nacht zählt mit uns....mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "20-years-rdmc-oldenburg-englisch-efdb54",
+            "title": "20 Years RDMC Oldenburg Englisch",
+            "category": "gemischt",
+            "description": "Jubiläums Song zum 20. Anni Red Devils Oldenburg",
+            "cover": "covers\/20-years-rdmc-oldenburg-englisch-efdb54.svg",
+            "coverGenerated": true,
+            "audio": "20_Jahre_RDMC_Oldenburg_Englisch.mp3",
+            "folder": "Musik_beta\/audio\/gemischt",
+            "isNew": true
+        },
+        {
+            "id": "jam-und-krabbe-db308a",
+            "title": "Jam und Krabbe",
+            "category": "love",
+            "description": "Für Freunde von Freunden :-)",
+            "cover": "covers\/jam-und-krabbe-db308a.svg",
+            "coverGenerated": true,
+            "audio": "Jam_und_Krabbe_1.mp3",
+            "folder": "Musik_beta\/audio\/love",
+            "isNew": true
+        },
+        {
+            "id": "aus-dem-nichts",
+            "title": "Aus dem Nichts",
+            "category": "rapp",
+            "description": "Kraftvoller Track mit Message",
+            "cover": "covers\/aus-dem-nichts.svg",
+            "audio": "Aus_dem_Nichts.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "concrete-jungle-tales",
+            "title": "Concrete Jungle Tales",
+            "category": "rapp",
+            "description": "Urbaner Sound mit Straßen-Vibes",
+            "cover": "covers\/concrete-jungle-tales.svg",
+            "audio": "Concrete Jungle Tales.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "darkman-1972",
+            "title": "Darkman 1972",
+            "category": "rapp",
+            "description": "Düsterer Retro-Track",
+            "cover": "covers\/darkman-1972.svg",
+            "audio": "Darkman_1972.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "einsamer-wolf",
+            "title": "Einsamer Wolf",
+            "category": "rapp",
+            "description": "Melancholischer Solo-Track",
+            "cover": "covers\/einsamer-wolf.svg",
+            "audio": "Einsamer Wolf.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "fckw",
+            "title": "FCKW",
+            "category": "party",
+            "description": "Energiegeladener Party-Hit",
+            "cover": "covers\/fckw.svg",
+            "audio": "FCKW.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "ich-liebe-dich-carolin",
+            "title": "Ich liebe dich Carolin",
+            "category": "love",
+            "description": "Romantische Liebeserklärung",
+            "cover": "covers\/ich-liebe-dich-carolin.svg",
+            "audio": "Ich liebe dich Carolin.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "im-a-devil",
+            "title": "I'm a Devil",
+            "category": "rapp",
+            "description": "Harter Track mit Attitude",
+            "cover": "covers\/im-a-devil.svg",
+            "audio": "Im_a_Devil.mp3",
+            "folder": "Musik\/audio\/rapp",
+            "isNew": true
+        },
+        {
+            "id": "mama-liebe-joshua",
+            "title": "Mama liebe Joshua",
+            "category": "love",
+            "description": "Herzliche Familienballade",
+            "cover": "covers\/mama-liebe-joshua.svg",
+            "audio": "Mama liebe Joshua.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "micha-2025",
+            "title": "Micha 2025",
+            "category": "gemischt",
+            "description": "Persönlicher Track für 2025",
+            "cover": "covers\/micha-2025.svg",
+            "audio": "Micha 2025.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "micha-final-10-anni",
+            "title": "Micha Final 10 Anni",
+            "category": "gemischt",
+            "description": "Jubiläums-Track",
+            "cover": "covers\/micha-final-10-anni.svg",
+            "audio": "Micha_Final_10_Anni.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "my-life-englisch",
+            "title": "My Life Englisch",
+            "category": "gemischt",
+            "description": "Englische Version",
+            "cover": "covers\/my-life-englisch.svg",
+            "audio": "My Life Englisch.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "sonnenschein-joshi",
+            "title": "Sonnenschein Joshi",
+            "category": "love",
+            "description": "Fröhlicher Track für Joshua",
+            "cover": "covers\/sonnenschein-joshi.svg",
+            "audio": "Sonnenschein Joshi.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "strassen",
+            "title": "Straßen",
+            "category": "rapp",
+            "description": "Urbaner Straßen-Track",
+            "cover": "covers\/strassen.svg",
+            "audio": "Strassen.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "unser-erstes-jahr-mit-joshua",
+            "title": "Unser erstes Jahr mit Joshua",
+            "category": "love",
+            "description": "Emotionale Familiengeschichte",
+            "cover": "covers\/unser-erstes-jahr-mit-joshua.svg",
+            "audio": "Unser_erstes_Jahr_mit_Joshua.mp3",
+            "folder": "Musik\/audio\/love",
+            "isNew": true
+        },
+        {
+            "id": "von-den-highways-nach-visbek",
+            "title": "Von den Highways nach Visbek",
+            "category": "gemischt",
+            "description": "Roadtrip-Track",
+            "cover": "covers\/von-den-highways-nach-visbek.svg",
+            "audio": "Von den Highways nach Visbek.mp3",
+            "folder": "Musik",
+            "isNew": true
+        },
+        {
+            "id": "wir-und-joshua",
+            "title": "Wir und Joshua",
+            "category": "love",
+            "description": "Familienballade voller Liebe",
+            "cover": "covers\/wir-und-joshua.svg",
+            "audio": "Wir und Joshua.mp3",
+            "folder": "Musik",
+            "isNew": true
+        }
+    ]
+}

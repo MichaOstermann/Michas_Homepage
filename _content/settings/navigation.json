@@ -1,0 +1,29 @@
+{
+  "menuItems": [
+    {
+      "label": "Musik",
+      "link": "#music",
+      "active": true
+    },
+    {
+      "label": "PowerShell",
+      "link": "#powershell",
+      "active": true
+    },
+    {
+      "label": "Gaming",
+      "link": "#gaming",
+      "active": true
+    },
+    {
+      "label": "Blog",
+      "link": "blog/index.html",
+      "active": true
+    },
+    {
+      "label": "Kontakt",
+      "link": "#contact",
+      "active": true
+    }
+  ]
+}

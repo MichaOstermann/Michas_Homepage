@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PowerShell: Scripts, die Zeit sparen – Blog</title>
+  <meta name="description" content="Tipps zu Struktur, Signierung und Distribution von PowerShell-Skripten." />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+
+  <!-- Prism.js für Code-Highlighting (leichtes Theme + Autoloader) -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.min.css"/>
+  <script defer src="https://unpkg.com/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script defer src="https://unpkg.com/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" data-autoloader-path="https://unpkg.com/prismjs@1.29.0/components/"></script>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/hero-title.css" />
+  <link rel="stylesheet" href="../assets/css/brand.css" />
+  <link rel="stylesheet" href="../assets/css/about-contact.css" />
+  <link rel="stylesheet" href="../assets/css/footer-nav.css" />
+  <link rel="stylesheet" href="../assets/css/section-titles.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <h1 class="section__title" style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(139,92,246,0.3); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.75rem;">PowerShell: Scripts, die Zeit sparen</h1>
+      <p class="txt-dim" style="margin: .5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          24. Oktober 2025
+        </span>
+        <span style="color: #8B5CF6;">•</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" aria-hidden="true">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Lesezeit: 7 min
+        </span>
+      </p>
+      <figure style="background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(6,255,240,0.08) 100%); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden;">
+        <svg viewBox="0 0 800 400" style="max-width:100%; height:auto; display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PowerShell Scripts Illustration">
+          <defs>
+            <linearGradient id="psGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#06FFF0;stop-opacity:0.6" />
+            </linearGradient>
+            <filter id="psGlow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Terminal Window -->
+          <rect x="100" y="80" width="600" height="280" rx="12" fill="rgba(11,15,22,0.9)" stroke="url(#psGrad)" stroke-width="3" filter="url(#psGlow)"/>
+          
+          <!-- Window Controls -->
+          <circle cx="125" cy="105" r="6" fill="#FF5F57"/>
+          <circle cx="150" cy="105" r="6" fill="#FEBC2E"/>
+          <circle cx="175" cy="105" r="6" fill="#28C840"/>
+          
+          <!-- Title Bar -->
+          <text x="400" y="112" font-size="14" fill="#8B5CF6" text-anchor="middle" font-family="monospace">PowerShell 7.x</text>
+          
+          <!-- Code Lines -->
+          <g font-family="'Courier New', monospace" font-size="16">
+            <text x="130" y="155" fill="#06FFF0">PS C:\&gt;</text>
+            <text x="220" y="155" fill="#FFFFFF">Get-ChildItem</text>
+            <text x="400" y="155" fill="#8B5CF6">-Recurse</text>
+            
+            <text x="130" y="185" fill="#06FFF0">PS C:\&gt;</text>
+            <text x="220" y="185" fill="#FFFFFF">Sort-Object</text>
+            <text x="380" y="185" fill="#FFFFFF">Length</text>
+            <text x="480" y="185" fill="#8B5CF6">-Descending</text>
+            
+            <text x="130" y="215" fill="#06FFF0">PS C:\&gt;</text>
+            <text x="220" y="215" fill="#FFFFFF">Select-Object</text>
+            <text x="400" y="215" fill="#8B5CF6">-First</text>
+            <text x="490" y="215" fill="#FFA500">10</text>
+            
+            <!-- Output simulation -->
+            <text x="130" y="255" fill="#28C840" font-size="14">✓ Success: 3 scripts verified</text>
+            <text x="130" y="280" fill="#28C840" font-size="14">└─ Execution time: 0.42s</text>
+            
+            <!-- Cursor blink -->
+            <rect x="130" y="305" width="12" height="20" fill="#06FFF0" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0;0.8" dur="1s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+          
+          <!-- Floating PS Icons -->
+          <g opacity="0.4">
+            <text x="50" y="150" font-size="48" fill="#8B5CF6" font-family="monospace">{}</text>
+            <text x="720" y="200" font-size="48" fill="#06FFF0" font-family="monospace">$_</text>
+            <text x="680" y="340" font-size="36" fill="#8B5CF6" font-family="monospace">|</text>
+          </g>
+        </svg>
+      </figure>
+      <article class="prose" style="margin-top:2rem; line-height: 1.9; font-size: 1.08rem;">
+        <p style="margin-bottom: 2rem; line-height: 1.9;">
+          Struktur, Signierung und Distribution sind die drei Säulen produktiver PowerShell‑Skripte. 
+          Hier sind kompakte, praxiserprobte Muster – mit direkt nutzbaren Beispielen von der Startseite.
+        </p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Struktur</h2>
+        <ul>
+          <li>Modularisieren: Hilfsfunktionen in <code>.psm1</code>, klar dokumentierte Public Cmdlets</li>
+          <li>Parameter‑Sets, <code>[ValidateNotNullOrEmpty]</code> und aussagekräftige Fehler</li>
+          <li>Konfiguration auslagern (z. B. JSON/YAML) – Code bleibt sauber</li>
+          <li>Standardisiertes Logging (Transcript + Write‑Log)</li>
+        </ul>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">Beispiel: Top‑Dateien in MailStore finden</h3>
+<pre class="card__code"><code class="language-powershell"># MailStore Analyse – Top 10 Dateien nach Größe
+Get-ChildItem -Recurse "C:\MailStore" |
+  Sort-Object Length -Descending |
+  Select-Object FullName, Length -First 10</code></pre>
+        <p>Direkt herunterladen: <a href="../assets/media/MailStore_Analyse.ps1" download>MailStore_Analyse.ps1</a></p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Signierung</h2>
+        <p>Signierte Skripte vereinfachen Execution Policies (<em>AllSigned</em>) und erhöhen Vertrauen. Ein schnelles Muster:</p>
+<pre class="card__code"><code class="language-powershell"># Selbstsigniertes Zertifikat (für Dev/Test)
+$cert = New-SelfSignedCertificate -DnsName "CN=CodeAndBeats-Dev" -Type CodeSigningCert
+Set-AuthenticodeSignature -FilePath .\MeinScript.ps1 -Certificate $cert | Format-List</code></pre>
+        <p>In CI/CD vor dem Release signieren und Artefakte versionieren.</p>
+
+        <h2 style="font-size: 1.9rem; margin: 2.5rem 0 1.5rem; color: #06FFF0; font-weight: 700;">Distribution</h2>
+        <ul>
+          <li>Internes NuGet/Repository oder gesicherter Fileshare</li>
+          <li>Versionierung per Manifest und Changelog</li>
+          <li><code>-WhatIf</code> und <code>-Confirm</code> als Default anbieten</li>
+        </ul>
+
+        <h3 style="font-size: 1.4rem; margin: 2rem 0 1.25rem; color: #8B5CF6; font-weight: 600;">Weitere Beispiele von der Startseite</h3>
+        <ul>
+          <li>WSUS Scan: <a href="../assets/media/WSUS_Scan.ps1" download>WSUS_Scan.ps1</a></li>
+          <li>AD User Creation Tool v4.0: <a href="../assets/media/ADUserCreationTool_v4.0.ps1" download>ADUserCreationTool_v4.0.ps1</a></li>
+        </ul>
+
+        <p>Tipp: Die Tabs in der <a href="../index.html#powershell">PowerShell‑Sektion</a> (System/Admin/Netzwerk) helfen beim schnellen Filtern – mit Syntax‑Highlighting via Prism.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid rgba(6,255,240,0.2);">
+    <div class="container" style="text-align: center;">
+      <p class="txt-dim" style="margin-bottom: 1rem;">
+        <a href="index.html" class="nav-link" style="color: #06FFF0; text-decoration: none; margin: 0 0.75rem;">← Alle Beiträge</a>
+        <span style="color: #8B5CF6;">|</span>
+        <a href="../index.html" class="nav-link" style="color: #8B5CF6; text-decoration: none; margin: 0 0.75rem;">Startseite</a>
+      </p>
+      <small class="txt-dim" style="opacity: 0.6;">&copy; 2025 Code & Beats · Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- Chatbot (gleich wie Startseite) -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🎵</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen bei Code & Beats. Ich bin dein Guide durch Musik, PowerShell und Gaming. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+      <button class="quick-reply" data-message="Über Michael">👤 About</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/reveal.js" defer></script>
+  <script src="../assets/js/enhancements.js" defer></script>
+  <script src="../assets/js/ultimate-enhancements.js" defer></script>
+  <script src="../assets/chatbot/mcgv-chatbot-script.js" defer></script>
+</body>
+</html>

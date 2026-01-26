@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackwood Asylum - Die verlassene Psychiatrie | Immersive Horror Experience</title>
+    <meta name="description" content="Betreten Sie die verlassene Blackwood Psychiatrie. 23 Patienten starben hier unter mysteriösen Umständen. Die Wahrheit liegt in den verfallenen Hallen. Ab 18 Jahren.">
+    <meta name="author" content="Michael Ostermann">
+    <meta name="copyright" content="© 2025 Michael Ostermann. Alle Rechte vorbehalten.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Copyright Protection Meta -->
+    <meta name="template-author" content="Michael Ostermann">
+    <meta name="template-copyright" content="2025">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="wow-effects.css">
+</head>
+<body>
+    <!-- Copyright Protection Marker -->
+    <!-- ©2025 Michael Ostermann - Template ID: HORROR-HAUS-2025 -->
+    
+    <!-- Fog Overlay -->
+    <div class="fog-overlay"></div>
+    
+    <!-- Lightning Flash -->
+    <div class="lightning-flash"></div>
+    
+    <!-- Floating Ghosts -->
+    <div class="ghosts-container" id="ghostsContainer"></div>
+    
+    <!-- Bats Flying -->
+    <canvas id="batsCanvas"></canvas>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=1920&q=80') center/cover; background-attachment: fixed;">
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <!-- Game Start Screen -->
+            <div id="gameStart" class="game-screen active">
+                <div class="glitch-title hero-title-enhanced">BLACKWOOD ASYLUM</div>
+                <p class="game-subtitle">Interactive Horror Experience</p>
+                
+                <div class="game-intro">
+                    <p>Sie sind Ermittler Sarah Mitchell. Es ist der 3. November 2025 – genau 73 Jahre nach der Tragödie.</p>
+                    <p>Die Polizeiakten wurden wiedereröffnet. Sie müssen die Wahrheit finden.</p>
+                    <p><strong>Aber seien Sie gewarnt:</strong> Jede Entscheidung hat Konsequenzen.</p>
+                </div>
+                
+                <div class="game-stats-display">
+                    <div class="stat-box">
+                        <span class="stat-icon">⏱</span>
+                        <span class="stat-value" id="gameTimer">00:00</span>
+                        <span class="stat-label">ZEIT</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-icon">◆</span>
+                        <span class="stat-value" id="cluesFound">0/7</span>
+                        <span class="stat-label">BEWEISE</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-icon">▣</span>
+                        <span class="stat-value" id="roomsUnlocked">0/7</span>
+                        <span class="stat-label">RÄUME</span>
+                    </div>
+                </div>
+                
+                <button class="btn-start-game start-game-btn-enhanced" onclick="startGame()">
+                    UNTERSUCHUNG STARTEN
+                </button>
+                
+                <div class="game-warning">
+                    WARNUNG: Dieses Erlebnis enthält verstörende Inhalte, Jump-Scares und psychologischen Horror
+                </div>
+            </div>
+            
+            <!-- Inventory System -->
+            <div id="inventory" class="inventory-bar">
+                <div class="inventory-title">BEWEISMITTEL</div>
+                <div class="inventory-items" id="inventoryItems">
+                    <div class="inventory-slot empty">?</div>
+                    <div class="inventory-slot empty">?</div>
+                    <div class="inventory-slot empty">?</div>
+                    <div class="inventory-slot empty">?</div>
+                    <div class="inventory-slot empty">?</div>
+                </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div id="progressBar" class="progress-tracker">
+                <div class="progress-fill" style="width: 0%"></div>
+                <span class="progress-text">0% AUFGEKLÄRT</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section class="story-section" id="story" style="background: linear-gradient(rgba(0,0,0,0.9), rgba(10,0,5,0.95)), url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=1920&q=80') center/cover; background-attachment: fixed; filter: grayscale(30%) brightness(0.6);">
+        <div class="container">
+            <h2 class="section-title">DIE WAHRE GESCHICHTE</h2>
+            <div class="story-divider"></div>
+            
+            <div class="story-content">
+                <div class="story-intro">
+                    <p class="story-date">3. November 1952 – Blackwood Psychiatric Hospital, Brandenburg</p>
+                    <p class="story-text-large">
+                        In den nebelverhangenen Wäldern südlich von Berlin stand die Blackwood Psychiatrie – 
+                        eine Anstalt für "unheilbare" Patienten. Unter der Leitung von Dr. Heinrich Blackwood 
+                        wurden hier experimentelle Behandlungsmethoden angewandt, die heute als Folter gelten würden.
+                    </p>
+                </div>
+                
+                <div class="story-grid">
+                    <div class="story-block">
+                        <img src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?w=800&q=80" alt="Altes Krankenhaus Treppenhaus" class="story-image">
+                        <h3>Die Experimente</h3>
+                        <p>
+                            Dr. Blackwood glaubte, dass "geistiger Wahnsinn durch körperlichen Schmerz geheilt werden kann." 
+                            Seine Methoden umfassten extreme Elektroschocktherapie ohne Betäubung, Insulin-Koma-Behandlungen 
+                            und chirurgische Lobotomien. Patienten wurden in Isolationszellen mit sensorischer Deprivation 
+                            gehalten – manchmal tagelang in vollständiger Dunkelheit.
+                        </p>
+                        <blockquote class="story-quote">
+                            "Die Schreie hörten nie auf. Tag und Nacht. Manchmal frage ich mich, ob sie überhaupt 
+                            noch Menschen waren, als sie starben."
+                            <cite>— Krankenschwester M. Weber, einzige Überlebende</cite>
+                        </blockquote>
+                    </div>
+                    
+                    <div class="story-block">
+                        <img src="https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=800&q=80" alt="Verlassenes Krankenhauszimmer" class="story-image">
+                        <h3>Die letzte Nacht</h3>
+                        <p>
+                            In der Nacht vom 2. auf den 3. November 1952 geschah etwas, das bis heute ungeklärt bleibt. 
+                            Augenzeugenberichte sprechen von "unmenschlichen Schreien," die aus dem Operationssaal kamen. 
+                            Als am Morgen Polizei eintraf, fanden sie 23 tote Patienten und das gesamte medizinische 
+                            Personal verschwunden. Dr. Blackwood wurde nie gefunden.
+                        </p>
+                        <p>
+                            Die Leichen zeigten Anzeichen extremer Angst – aufgerissene Augen, verkrampfte Hände. 
+                            Einige hatten sich selbst verletzt, als würden sie vor etwas fliehen. An den Wänden fanden 
+                            die Ermittler Kratzspuren und eine immer wiederkehrende Botschaft: "ER KOMMT ZURÜCK."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="story-evidence">
+                    <h3>Dokumentierte Beweise</h3>
+                    <div class="evidence-grid">
+                        <div class="evidence-item">
+                            <span class="evidence-icon">📄</span>
+                            <div>
+                                <strong>Polizeibericht #1952-B47</strong>
+                                <p>23 Leichen, keine Erklärung. Fall offiziell ungelöst.</p>
+                            </div>
+                        </div>
+                        <div class="evidence-item">
+                            <span class="evidence-icon">🎙️</span>
+                            <div>
+                                <strong>Zeugenaussage M. Weber</strong>
+                                <p>"Ich hörte seine Stimme... Dr. Blackwood. Aber das war unmöglich. Er war tot."</p>
+                            </div>
+                        </div>
+                        <div class="evidence-item">
+                            <span class="evidence-icon">📸</span>
+                            <div>
+                                <strong>Tatortfotos (Klassifiziert)</strong>
+                                <p>Aufnahmen zeigen unerklärliche Schatten und Silhouetten.</p>
+                            </div>
+                        </div>
+                        <div class="evidence-item">
+                            <span class="evidence-icon">🔬</span>
+                            <div>
+                                <strong>Forensischer Bericht</strong>
+                                <p>Todesursache bei allen 23 Opfern: "Unbestimmt. Möglicherweise Herzversagen durch Schock."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-warning">
+                    <h3>Warum wir die Türen öffneten</h3>
+                    <p>
+                        2018 erwarb eine private Investorengruppe das verlassene Gebäude. Statt es abzureißen, 
+                        entschieden sie sich, die Geschichte zu bewahren – als Warnung, als Erinnerung, als immersive 
+                        Horror-Erfahrung. <strong>Blackwood Asylum ist kein normales Spukhaus.</strong> Es ist ein Denkmal 
+                        für die Opfer medizinischer Grausamkeit und ein Einblick in die dunkelsten Kapitel der Psychiatrie-Geschichte.
+                    </p>
+                    <p class="story-disclaimer">
+                        <em>Alle Namen, Daten und Ereignisse basieren auf historischen Aufzeichnungen. Die Darstellung 
+                        wurde zu Unterhaltungszwecken inszeniert, respektiert aber die Würde der echten Opfer.</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tickets Section -->
+    <section class="tickets-section" id="tickets">
+        <div class="container">
+            <h2 class="section-title">🎫 TICKETS & PREISE</h2>
+            <p class="section-subtitle">Sichere dir dein Horror-Erlebnis - Limitierte Plätze pro Zeitslot</p>
+            
+            <div class="tickets-grid">
+                <!-- Standard Ticket -->
+                <div class="ticket-card">
+                    <div class="ticket-badge">BELIEBT</div>
+                    <div class="ticket-icon">👻</div>
+                    <h3 class="ticket-title">Standard-Ticket</h3>
+                    <p class="ticket-description">Klassisches Horror-Erlebnis durch alle Räume</p>
+                    <div class="ticket-features">
+                        <div class="feature">✓ Zugang zu allen 3 Stockwerken</div>
+                        <div class="feature">✓ Live-Actors & Schreck-Momente</div>
+                        <div class="feature">✓ Ca. 45 Min. Durchlaufzeit</div>
+                        <div class="feature">✓ Fotopoint am Ende</div>
+                    </div>
+                    <div class="ticket-price">
+                        <span class="price-amount">24,90 €</span>
+                        <span class="price-label">pro Person</span>
+                    </div>
+                    <button class="btn-book" onclick="alert('Buchungssystem wird geladen...')">Jetzt buchen</button>
+                </div>
+                
+                <!-- VIP Ticket -->
+                <div class="ticket-card ticket-vip">
+                    <div class="ticket-badge ticket-badge-vip">VIP</div>
+                    <div class="ticket-icon">👑</div>
+                    <h3 class="ticket-title">VIP Midnight Experience</h3>
+                    <p class="ticket-description">Exklusives Grusel-Erlebnis nach 23 Uhr</p>
+                    <div class="ticket-features">
+                        <div class="feature">✓ <strong>Alles aus Standard +</strong></div>
+                        <div class="feature">✓ Privat-Tour ohne Warteschlange</div>
+                        <div class="feature">✓ Exklusiver Mitternachts-Raum</div>
+                        <div class="feature">✓ Willkommens-Drink (alkoholfrei)</div>
+                        <div class="feature">✓ Professionelle Fotos inklusive</div>
+                    </div>
+                    <div class="ticket-price">
+                        <span class="price-amount">44,90 €</span>
+                        <span class="price-label">pro Person</span>
+                    </div>
+                    <button class="btn-book btn-book-vip" onclick="alert('VIP-Buchung wird geladen...')">VIP buchen</button>
+                </div>
+                
+                <!-- Group Ticket -->
+                <div class="ticket-card">
+                    <div class="ticket-badge">GRUPPEN</div>
+                    <div class="ticket-icon">👥</div>
+                    <h3 class="ticket-title">Gruppen-Ticket</h3>
+                    <p class="ticket-description">Perfekt für Geburtstage & Events (6-12 Personen)</p>
+                    <div class="ticket-features">
+                        <div class="feature">✓ Private Gruppe (geschlossene Führung)</div>
+                        <div class="feature">✓ Flexibler Startzeit-Wunsch</div>
+                        <div class="feature">✓ Gruppen-Fotoshooting</div>
+                        <div class="feature">✓ 10% Rabatt ab 6 Personen</div>
+                    </div>
+                    <div class="ticket-price">
+                        <span class="price-amount">19,90 €</span>
+                        <span class="price-label">pro Person (min. 6)</span>
+                    </div>
+                    <button class="btn-book" onclick="alert('Gruppenanfrage wird geladen...')">Gruppe anfragen</button>
+                </div>
+            </div>
+            
+            <!-- Booking Info -->
+            <div class="booking-info">
+                <p>💳 Zahlung: Bar, EC-Karte, Kreditkarte | 📧 Tickets per E-Mail | ↩️ Kostenlose Stornierung bis 24h vorher</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Warning Section -->
+    <section class="warning-section parallax-section" data-speed="0.5">
+        <div class="container">
+            <h2 class="section-title shake-on-hover">⚠️ WICHTIGE HINWEISE ⚠️</h2>
+            <div class="warning-box">
+                <p class="warning-text">
+                    <strong>FSK 16:</strong> Mindestens 16 Jahre alt (Ausweis erforderlich)<br>
+                    <strong>Gesundheit:</strong> Nicht geeignet bei Herzproblemen, Epilepsie oder Schwangerschaft<br>
+                    <strong>Intensität:</strong> Extreme Lichteffekte, laute Geräusche, Live-Kontakt möglich<br>
+                    <strong>Dauer:</strong> 45-60 Minuten • <strong>Notausgang:</strong> Jederzeit möglich
+                </p>
+                <div class="skull-divider">💀</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Attractions Section -->
+    <section class="attractions-section" id="attractions">
+        <div class="container">
+            <h2 class="section-title">🎭 UNSERE HORROR-ATTRAKTIONEN</h2>
+            <p class="section-subtitle">Drei einzigartige Erlebnisse - ein unvergesslicher Abend</p>
+            
+            <div class="attractions-showcase">
+                <!-- Attraction 1 -->
+                <div class="attraction-card">
+                    <div class="attraction-image">🏚️</div>
+                    <div class="attraction-content">
+                        <span class="attraction-tag">HAUPTATTRAKTION</span>
+                        <h3>The Haunted Mansion Tour</h3>
+                        <p class="attraction-desc">
+                            Durchquere das verfluchte Herrenhaus von 1887. Begegne Lady Morgana, Lord Blackwood 
+                            und 11 weiteren rastlosen Seelen. Live-Actors, Hollywood-Effekte und echte Schrecksekunden 
+                            warten auf dich über 3 Stockwerke voller Terror.
+                        </p>
+                        <div class="attraction-stats">
+                            <span>⏱️ 45 Min.</span>
+                            <span>👥 Max. 12 Personen/Gruppe</span>
+                            <span>⚠️ Hohe Intensität</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Attraction 2 -->
+                <div class="attraction-card">
+                    <div class="attraction-image">🔐</div>
+                    <div class="attraction-content">
+                        <span class="attraction-tag attraction-tag-new">NEU 2025</span>
+                        <h3>Escape the Basement</h3>
+                        <p class="attraction-desc">
+                            Eingeschlossen im verfluchten Keller! Löse Rätsel, finde versteckte Hinweise und entkomme 
+                            bevor es zu spät ist. Der Geist des Butlers jagt dich durch die dunklen Katakomben. 
+                            Nur 30% schaffen es rechtzeitig raus...
+                        </p>
+                        <div class="attraction-stats">
+                            <span>⏱️ 60 Min.</span>
+                            <span>👥 2-6 Personen</span>
+                            <span>🧩 Rätselschwierigkeit: Hoch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Attraction 3 -->
+                <div class="attraction-card">
+                    <div class="attraction-image">🌙</div>
+                    <div class="attraction-content">
+                        <span class="attraction-tag attraction-tag-premium">PREMIUM</span>
+                        <h3>Midnight Ritual Experience</h3>
+                        <p class="attraction-desc">
+                            Nur für Mutige: Die exklusive Mitternachts-Tour startet um 23:00 Uhr. Nimm teil an einem 
+                            okkulten Ritual im Keller-Gewölbe. Schauspielerischer Horror auf neuem Level mit 
+                            interaktiven Elementen. <strong>Nur mit VIP-Ticket zugänglich!</strong>
+                        </p>
+                        <div class="attraction-stats">
+                            <span>⏱️ 30 Min.</span>
+                            <span>👥 Max. 8 Personen</span>
+                            <span>🔞 Nur ab 18 Jahren</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rooms Section -->
+    <section class="rooms-section" id="rooms">
+        <div class="container">
+            <h2 class="section-title">DIE 7 RÄUME - INTERAKTIVE ERMITTLUNG</h2>
+            <p class="section-subtitle">Jeder Raum enthält Hinweise. Lösen Sie die Rätsel, um weiterzukommen.</p>
+            
+            <div class="rooms-grid-new">
+                <!-- Room 1: Reception -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room1" data-room="reception">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">✕</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Starten Sie die Untersuchung</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1600353068440-6361ef3a86e8?w=800&q=80') center/cover; filter: brightness(0.6) contrast(1.2);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">BEWEIS 1</div>
+                        <h3>01. Empfangsbereich</h3>
+                        <p class="room-year">Die Uhr steht still: 03:47 Uhr</p>
+                        <p class="room-desc">
+                            Der Empfang. Staubige Akten liegen verstreut. Eine alte Schreibmaschine. 
+                            Die Uhr an der Wand zeigt 03:47 Uhr – seit 73 Jahren steht sie still.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>BEWEISSTÜCK GEFUNDEN:</h4>
+                            <div class="clue-box">
+                                <p>Ein Brief liegt auf dem Schreibtisch, datiert auf den 2. November 1952:</p>
+                                <blockquote style="font-style: italic; color: rgba(255,255,255,0.7);">
+                                    "Liebe Helena, ich habe Angst. Dr. Blackwood hat die Tür zu Raum ▓▓▓ 
+                                    verschlossen. Die Kombination ist: Der Monat meiner Einlieferung + Das Jahr 
+                                    minus 1900. Bitte komm mich holen. - Anna"
+                                </blockquote>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>CODE:</strong> Finden Sie die 4-stellige Kombination</p>
+                                <p class="hint-text">HINWEIS: Anna Weber wurde im März 1952 eingeliefert</p>
+                                <input type="text" class="code-input" id="room1Code" maxlength="4" placeholder="____">
+                                <button class="btn-solve" onclick="solveRoom1()">CODE PRÜFEN</button>
+                                <p class="puzzle-feedback" id="room1Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 1/7</span>
+                            <span class="detail">Schwierigkeit: Leicht</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 2: Observation Ward -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room2" data-room="observation">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">✕</span>
+                        <p>GESPERRT</p>
+                        <p class="unlock-hint">Vorheriges Beweisstück benötigt</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80') center/cover; filter: grayscale(20%) brightness(0.5);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">BEWEIS 2</div>
+                        <h3>02. Beobachtungsstation</h3>
+                        <p class="room-year">12 Betten | 8 Tote | Alle zwischen 03:00-04:00 Uhr</p>
+                        <p class="room-desc">
+                            Die Beobachtungsstation. 12 Metallbetten mit Lederriemen. An Bett 7 finden Sie 
+                            ein Tagebuch unter der Matratze – es gehörte Friedrich Müller.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 TAGEBUCH-EINTRAG (1. November 1952):</h4>
+                            <div class="clue-box">
+                                <blockquote style="font-style: italic; color: rgba(255,255,255,0.7);">
+                                    "Heute Nacht habe ich Dr. Blackwood beobachtet. Er ging um <strong>03:47 Uhr</strong> 
+                                    in den Keller. Dort sind <strong>6 Zellen</strong>. In jeder saß ein Patient. 
+                                    Er nahm <strong>den ersten von jedem Raum</strong>. Das macht insgesamt... 
+                                    Ich kann nicht mehr klar denken. Die Elektroschocks haben mein Gedächtnis zerstört."
+                                </blockquote>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>FRAGE:</strong> Wie viele Patienten nahm Dr. Blackwood mit?</p>
+                                <p class="hint-text">HINWEIS: "Den ersten von jedem Raum"</p>
+                                <input type="number" class="code-input" id="room2Code" placeholder="?">
+                                <button class="btn-solve" onclick="solveRoom2()">ANTWORT PRÜFEN</button>
+                                <p class="puzzle-feedback" id="room2Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 2/7</span>
+                            <span class="detail">Schwierigkeit: Leicht</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 3: Isolation Cells -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room3" data-room="isolation">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">🔒</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Lösen Sie Rätsel 2</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1604869515882-4d10fa4b0492?w=800&q=80') center/cover; filter: contrast(1.4) brightness(0.5);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">BEWEIS 3</div>
+                        <h3>03. Isolationszellen</h3>
+                        <p class="room-year">6 Zellen | Vollständige Dunkelheit | Sensorische Deprivation</p>
+                        <p class="room-desc">
+                            Die Isolationszellen. An der Wand von Zelle 4 sind Kratzspuren – jemand hat 
+                            verzweifelt eine Nachricht hinterlassen.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 WANDINSCHRIFT (mit Fingernägeln gekratzt):</h4>
+                            <div class="clue-box">
+                                <pre style="font-family: monospace; color: #8B0000; font-size: 1.5rem; line-height: 1.8;">
+B L A C K W O O D
+I S T 
+N I C H T
+M E N S C H L I C H
+
+ER KOMMT UM:
+_ _ : _ _
+                                </pre>
+                                <p style="margin-top: 20px; color: rgba(255,255,255,0.7);">
+                                    Daneben: Eine zerkratzte Uhr. Der Minutenzeiger fehlt. Der Stundenzeiger 
+                                    zeigt auf <strong>3</strong>. Neben der Uhr: <strong>47 Kratzer</strong> 
+                                    an der Wand.
+                                </p>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>ZEITANGABE:</strong> Wann kommt Dr. Blackwood? (Format: HHMM)</p>
+                                <p class="hint-text">HINWEIS: Stundenzeiger + Kratzer = Zeit</p>
+                                <input type="text" class="code-input" id="room3Code" maxlength="4" placeholder="____">
+                                <button class="btn-solve" onclick="solveRoom3()">ZEIT PRÜFEN</button>
+                                <p class="puzzle-feedback" id="room3Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 3/7</span>
+                            <span class="detail">Schwierigkeit: Mittel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 4: Electroshock Therapy -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room4" data-room="electroshock">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">🔒</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Lösen Sie Rätsel 3</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80') center/cover; filter: grayscale(40%) brightness(0.4) contrast(1.3);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">RÄTSEL 4</div>
+                        <h3>04. Elektroschock-Raum</h3>
+                        <p class="room-year">460 Volt | Keine Betäubung | 87 Behandlungen (Anna Weber)</p>
+                        <p class="room-desc">
+                            Der Elektroschock-Raum. Das Gerät ist noch funktionstüchtig. Auf dem Tisch 
+                            liegt ein Behandlungsprotokoll.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 BEHANDLUNGSPROTOKOLL (Anna Weber):</h4>
+                            <div class="clue-box">
+                                <table style="width: 100%; color: rgba(255,255,255,0.8); font-size: 0.95rem;">
+                                    <tr style="border-bottom: 1px solid rgba(139,0,0,0.5);">
+                                        <th style="padding: 10px; text-align: left;">Datum</th>
+                                        <th style="padding: 10px; text-align: left;">Behandlung Nr.</th>
+                                        <th style="padding: 10px; text-align: left;">Volt</th>
+                                    </tr>
+                                    <tr><td style="padding: 8px;">15.05.1952</td><td style="padding: 8px;">01-12</td><td style="padding: 8px;">320V</td></tr>
+                                    <tr><td style="padding: 8px;">22.05.1952</td><td style="padding: 8px;">13-25</td><td style="padding: 8px;">380V</td></tr>
+                                    <tr><td style="padding: 8px;">29.05.1952</td><td style="padding: 8px;">26-40</td><td style="padding: 8px;">420V</td></tr>
+                                    <tr><td style="padding: 8px;">05.06.1952</td><td style="padding: 8px;">41-58</td><td style="padding: 8px;">460V</td></tr>
+                                    <tr><td style="padding: 8px;">12.06.1952</td><td style="padding: 8px;">59-??</td><td style="padding: 8px;">460V</td></tr>
+                                </table>
+                                <p style="margin-top: 20px; color: #8B0000; font-weight: bold;">
+                                    FINAL: 02.11.1952 - Behandlung #87 (letzte vor Todesnacht)
+                                </p>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>ANZAHL:</strong> Wie viele Behandlungen erhielt Anna im Juni?</p>
+                                <p class="hint-text">HINWEIS: 59-87, davon 2 Termine im Juni</p>
+                                <input type="number" class="code-input" id="room4Code" placeholder="?">
+                                <button class="btn-solve" onclick="solveRoom4()">BERECHNEN</button>
+                                <p class="puzzle-feedback" id="room4Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 4/7</span>
+                            <span class="detail">Schwierigkeit: Mittel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 5: Operating Theatre -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room5" data-room="operating">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">🔒</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Lösen Sie Rätsel 4</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80') center/cover; filter: brightness(0.4) contrast(1.5);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">BEWEIS 5</div>
+                        <h3>05. Operationssaal</h3>
+                        <p class="room-year">47 Lobotomien | 62% Überlebensrate | Eispickel-Methode</p>
+                        <p class="room-desc">
+                            Der Operationssaal. Auf dem OP-Tisch liegt ein verschlüsseltes Dokument – 
+                            Dr. Blackwoods persönliche Notizen.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 VERSCHLÜSSELTE NOTIZ:</h4>
+                            <div class="clue-box">
+                                <pre style="font-family: monospace; color: #8B0000; font-size: 1.3rem; line-height: 1.6;">
+ERG EVGZAABG FVAQ
+HAVGRE QRE YRPURAUN
+                                </pre>
+                                <p style="margin-top: 20px; color: rgba(255,255,255,0.7);">
+                                    Daneben ein Hinweis: <strong>"ROT-13 Caesar Cipher"</strong>
+                                </p>
+                                <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+                                    (ROT-13: Jeder Buchstabe wird um 13 Stellen im Alphabet verschoben)<br>
+                                    A→N, B→O, C→P ... N→A, O→B, P→C
+                                </p>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>ORT:</strong> Wo sind die Patienten? (Ein Wort, Deutsch)</p>
+                                <p class="hint-text">HINWEIS: Entschlüsseln Sie "YRPURAUN"</p>
+                                <input type="text" class="code-input" id="room5Code" placeholder="________" style="text-transform: uppercase;">
+                                <button class="btn-solve" onclick="solveRoom5()">ENTSCHLÜSSELN</button>
+                                <p class="puzzle-feedback" id="room5Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 5/7</span>
+                            <span class="detail">Schwierigkeit: Schwer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 6: Hydrotherapy -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room6" data-room="hydrotherapy">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">🔒</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Lösen Sie Rätsel 5</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1582719366489-1e67f0d96e02?w=800&q=80') center/cover; filter: grayscale(30%) brightness(0.45);"></div>
+                    <div class="room-content">
+                        <div class="room-badge">RÄTSEL 6</div>
+                        <h3>06. Hydrotherapie-Bad</h3>
+                        <p class="room-year">Eiswasser 0-4°C | Margarethe Koch: 142 Tage | Amputationen</p>
+                        <p class="room-desc">
+                            Das Hydrotherapie-Bad. Das Wasser tropft noch. An der Wand: Blutige Fingerabdrücke 
+                            bilden ein Muster.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 FINGERABDRUCK-MUSTER:</h4>
+                            <div class="clue-box">
+                                <pre style="font-family: monospace; color: #8B0000; font-size: 1.8rem; text-align: center; line-height: 2;">
+👆 👆 👆    👆 👆    👆 👆 👆    👆 👆 👆
+                                </pre>
+                                <p style="margin-top: 25px; color: rgba(255,255,255,0.7);">
+                                    Daneben in Blut geschmiert: <strong>"MORSE"</strong>
+                                </p>
+                                <p style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+                                    Morse-Code: 3 Finger = Strich (—), 2 Finger = Punkt (·)<br>
+                                    Leerzeichen trennt Buchstaben
+                                </p>
+                                <p style="margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.4);">
+                                    Morse-Tabelle: S = · · · | O = — — — | H = · · · · | E = ·
+                                </p>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>MORSE-CODE:</strong> Welches Wort ist verschlüsselt?</p>
+                                <p class="hint-text">HINWEIS: 3 Finger = —, 2 Finger = ·</p>
+                                <input type="text" class="code-input" id="room6Code" maxlength="3" placeholder="___" style="text-transform: uppercase;">
+                                <button class="btn-solve" onclick="solveRoom6()">DEKODIEREN</button>
+                                <p class="puzzle-feedback" id="room6Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 6/7</span>
+                            <span class="detail">Schwierigkeit: Schwer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 7: Morgue -->
+                <div class="room-card-new room-card-enhanced room-locked" id="room7" data-room="morgue">
+                    <div class="room-lock-overlay">
+                        <span class="lock-icon">🔒</span>
+                        <p>RAUM GESPERRT</p>
+                        <p class="unlock-hint">Lösen Sie Rätsel 6</p>
+                    </div>
+                    <div class="room-image" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80') center/cover; filter: grayscale(60%) brightness(0.3) contrast(1.6);"></div>
+                    <div class="room-content">
+                        <div class="room-badge" style="background: #FF0000;">FINALE</div>
+                        <h3>07. Die Leichenhalle</h3>
+                        <p class="room-year">8°C | 23 Leichen | "ER IST NOCH HIER"</p>
+                        <p class="room-desc">
+                            Die Leichenhalle. Eisige Kälte. 23 Kühlschränke. An der Wand in Blut: 
+                            "ER IST NOCH HIER". Darunter: Ein letztes Rätsel.
+                        </p>
+                        
+                        <div class="room-puzzle">
+                            <h4>🔍 FINALE BOTSCHAFT:</h4>
+                            <div class="clue-box">
+                                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.9); margin-bottom: 25px;">
+                                    Alle bisherigen Hinweise zusammengefasst:
+                                </p>
+                                <ul style="list-style: none; padding: 0; font-size: 1.05rem; line-height: 2;">
+                                    <li>🔍 Raum 1: Code war <strong>0352</strong></li>
+                                    <li>🔍 Raum 2: Dr. Blackwood nahm <strong>6</strong> Patienten</li>
+                                    <li>🔍 Raum 3: Er kam um <strong>0347</strong> Uhr</li>
+                                    <li>🔍 Raum 4: Anna erhielt <strong>29</strong> Behandlungen im Juni</li>
+                                    <li>🔍 Raum 5: Die Patienten sind unter der <strong>LEICHENHALLE</strong></li>
+                                    <li>🔍 Raum 6: Morse-Code ergab <strong>SOS</strong></li>
+                                </ul>
+                                
+                                <div style="margin-top: 40px; padding: 30px; background: rgba(139,0,0,0.3); border: 3px solid #8B0000;">
+                                    <p style="font-size: 1.5rem; color: #FF0000; text-align: center; margin-bottom: 20px;">
+                                        <strong>FINALE FRAGE:</strong>
+                                    </p>
+                                    <p style="font-size: 1.2rem; text-align: center; line-height: 1.8;">
+                                        Wer hat den ersten Buchstaben jedes Hinweis-Wortes markiert?<br>
+                                        <span style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                                            (0352 → <strong>C</strong>ode, 6 → Sechs → <strong>S</strong>, 0347 → <strong>Z</strong>eit, 
+                                            29 → Neunundzwanzig → <strong>N</strong>, LEICHENHALLE → <strong>L</strong>, SOS → <strong>S</strong>)
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="puzzle-interactive">
+                                <p><strong>FINALE BEWEISFÜHRUNG:</strong> Die 6 Buchstaben ergeben ein Wort...</p>
+                                <p class="hint-text">HINWEIS: C-S-Z-N-L-S = ?</p>
+                                <input type="text" class="code-input" id="room7Code" maxlength="6" placeholder="______" style="text-transform: uppercase;">
+                                <button class="btn-solve" onclick="solveRoom7()">WAHRHEIT ENTHÜLLEN</button>
+                                <p class="puzzle-feedback" id="room7Feedback"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="room-details">
+                            <span class="detail">🔍 Hinweis 7/7</span>
+                            <span class="detail">Schwierigkeit: EXTREM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Victims Section -->
+    <section class="victims-section" style="background: linear-gradient(rgba(0,0,0,0.95), rgba(10,0,5,0.95)), url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=1920&q=80') center/cover; background-attachment: fixed; filter: grayscale(50%) brightness(0.5);">
+        <div class="container">
+            <h2 class="section-title">DIE OPFER VON BLACKWOOD</h2>
+            <p class="section-subtitle">Aus Patientenakten rekonstruiert – ihre Geschichten werden nie vergessen</p>
+            
+            <div class="victims-grid">
+                <!-- Victim 1 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Anna Weber</h3>
+                        <p class="victim-dates">1923 – 1952 (29 Jahre)</p>
+                        <p class="victim-diagnosis">Diagnose: "Hysterie" nach Geburtstrauma</p>
+                        <p class="victim-story">
+                            Eingewiesen von ihrem Ehemann, nachdem sie postnatale Depressionen entwickelte. 
+                            Erhielt 87 Elektroschock-Behandlungen in 6 Monaten. Starb am 3. November 1952 
+                            in Isolationszelle 4. Ihr Baby überlebte sie um nur 3 Tage.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Victim 2 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Friedrich Müller</h3>
+                        <p class="victim-dates">1910 – 1952 (42 Jahre)</p>
+                        <p class="victim-diagnosis">Diagnose: "Kriegsneurose" (PTSD)</p>
+                        <p class="victim-story">
+                            Kriegsveteran aus dem Zweiten Weltkrieg. Litt unter Flashbacks und Schlaflosigkeit. 
+                            Nach 3 Lobotomien konnte er nicht mehr sprechen. Am 2. November versuchte er zu 
+                            fliehen. Sein Körper wurde im Operationssaal gefunden – die Autopsie ergab "Herzversagen."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Victim 3 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Margarethe Koch</h3>
+                        <p class="victim-dates">1935 – 1952 (17 Jahre)</p>
+                        <p class="victim-diagnosis">Diagnose: "Moralische Schwäche" (Homosexualität)</p>
+                        <p class="victim-story">
+                            Von ihrer eigenen Mutter eingewiesen, um sie "zu heilen." Verbrachte 142 Tage in der 
+                            Eiswasser-Therapie. Ihre Hände mussten amputiert werden (Erfrierungen 4. Grades). 
+                            Starb zwei Wochen später an Sepsis. Ihre letzte Eintragung: "Ich will nur nach Hause."
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Victim 4 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Thomas Schulz</h3>
+                        <p class="victim-dates">1928 – 1952 (24 Jahre)</p>
+                        <p class="victim-diagnosis">Diagnose: "Schizophrenie" (Tatsächlich: Bipolare Störung)</p>
+                        <p class="victim-story">
+                            Künstler und Musiker. Wurde nach manischer Episode eingewiesen. Dr. Blackwood nutzte 
+                            ihn für Insulin-Koma-Experimente. Nach 19 Komas erlitt er irreversible Hirnschäden. 
+                            Seine Zeichnungen an den Zellenwänden sind heute noch sichtbar – wirre Linien und das 
+                            Wort "HILFE" 400 Mal wiederholt.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Victim 5 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Dr. Helena Richter</h3>
+                        <p class="victim-dates">1915 – 1952 (37 Jahre)</p>
+                        <p class="victim-diagnosis">Personal – Krankenschwester</p>
+                        <p class="victim-story">
+                            Die einzige Krankenschwester, die Dr. Blackwoods Methoden öffentlich kritisierte. 
+                            Am 2. November 1952 versuchte sie, die Behörden zu informieren. Sie wurde von Dr. Blackwood 
+                            "sediert" und nie wieder gesehen. Ihr Körper wurde in der Leichenhalle gefunden – 
+                            als 24. Opfer. Todesursache unbekannt.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Victim 6 -->
+                <div class="victim-card">
+                    <div class="victim-photo" style="background: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80') center/cover;"></div>
+                    <div class="victim-info">
+                        <h3>Johann Weber</h3>
+                        <p class="victim-dates">1930 – 1952 (22 Jahre)</p>
+                        <p class="victim-diagnosis">Diagnose: "Debilität" (Tatsächlich: Dyslexie)</p>
+                        <p class="victim-story">
+                            Bauernssohn mit Lernschwierigkeiten. Wurde von örtlicher Behörde eingewiesen wegen 
+                            "geistiger Minderwertigkeit." Erhielt tägliche Elektroschocks "zur Stimulation." 
+                            Nach 8 Monaten konnte er nicht mehr gehen oder sprechen. Seine Mutter besuchte ihn 
+                            zwei Tage vor seinem Tod – er erkannte sie nicht.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="victims-memorial">
+                <p>
+                    <strong>Für alle 23 Opfer:</strong> Anna • Friedrich • Margarethe • Thomas • Helena • Johann • 
+                    Klara • Wilhelm • Elisabeth • Hans • Maria • Gustav • Gertrud • Otto • Hedwig • Karl • 
+                    Frieda • Ernst • Else • Walter • Käthe • Heinrich • Ida
+                </p>
+                <p class="memorial-text">
+                    "Vergeben, aber nicht vergessen. Ihre Geschichten leben weiter als Warnung vor den Gräueltaten, 
+                    die im Namen der Medizin begangen wurden."
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <h2 class="section-title">⭐ BEWERTUNGEN</h2>
+            <p class="section-subtitle">Was unsere mutigen Besucher sagen</p>
+            
+            <div class="review-stats">
+                <div class="rating-overview">
+                    <span class="rating-number">4.8</span>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>Basierend auf 2.847 Bewertungen</p>
+                </div>
+            </div>
+            
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👨</span>
+                            <div>
+                                <strong class="reviewer-name">Markus K.</strong>
+                                <span class="review-date">vor 2 Tagen</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Absolut der Hammer! Ich bin normalerweise nicht so leicht zu erschrecken, aber hier... 
+                        WOW! Die Live-Actors sind so professionell und die Effekte Hollywood-reif. Besonders 
+                        der Keller hat es in sich. Klare Empfehlung!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👩</span>
+                            <div>
+                                <strong class="reviewer-name">Sarah M.</strong>
+                                <span class="review-date">vor 5 Tagen</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Wir waren mit einer Gruppe von 8 Personen da und hatten die beste Zeit! Das VIP-Ticket 
+                        lohnt sich auf jeden Fall - keine Warteschlange und der Mitternachts-Raum ist ein Erlebnis 
+                        für sich. Werden definitiv wiederkommen!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👨</span>
+                            <div>
+                                <strong class="reviewer-name">Thomas B.</strong>
+                                <span class="review-date">vor 1 Woche</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Sehr gutes Horror-Erlebnis! Einziger Minuspunkt: An einem Samstag war es ziemlich voll 
+                        und man musste etwas warten. Aber die Show selbst war top - gruselig, spannend und gut 
+                        inszeniert. 4/5 Sternen!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+                
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👩</span>
+                            <div>
+                                <strong class="reviewer-name">Lisa W.</strong>
+                                <span class="review-date">vor 2 Wochen</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Ich habe den Escape Room gemacht - absolut genial! Die Rätsel sind anspruchsvoll aber 
+                        fair, und die Atmosphäre ist wirklich gruselig. Wir haben es in 47 Minuten geschafft. 
+                        Personal war super nett und professionell!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+                
+                <!-- Review 5 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👨</span>
+                            <div>
+                                <strong class="reviewer-name">Kevin R.</strong>
+                                <span class="review-date">vor 3 Wochen</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Geburtstag hier gefeiert mit 10 Leuten - absolut perfekt! Der Gruppen-Rabatt ist fair, 
+                        die private Führung war der Hammer. Haben danach noch ewig drüber geredet. Bestes 
+                        Horror-House in Deutschland!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+                
+                <!-- Review 6 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <span class="reviewer-avatar">👩</span>
+                            <div>
+                                <strong class="reviewer-name">Anna P.</strong>
+                                <span class="review-date">vor 1 Monat</span>
+                            </div>
+                        </div>
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="review-text">
+                        "Die Details sind unglaublich! Man merkt, dass hier viel Liebe und Budget reingeflossen ist. 
+                        Von den Kostümen über die Lichteffekte bis zum Sound - alles perfekt abgestimmt. 
+                        Fühlt sich an wie ein Hollywood-Film zum Durchlaufen!"
+                    </p>
+                    <span class="review-badge">Verifizierter Besucher</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">❓ HÄUFIGE FRAGEN</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Ab welchem Alter darf ich teilnehmen?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Unsere Standard-Tour ist ab 16 Jahren (FSK 16) freigegeben. Die Midnight Ritual Experience 
+                        ist ab 18 Jahren. Ausweispflicht beim Einlass! Kinder unter 16 Jahren haben leider keinen 
+                        Zutritt, auch nicht in Begleitung von Erwachsenen.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Wie lange dauert das Erlebnis?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die Haunted Mansion Tour dauert ca. 45-60 Minuten, der Escape Room 60 Minuten und die 
+                        Midnight Ritual Experience 30 Minuten. Bitte plane zusätzlich 15 Minuten für Einlass und 
+                        Einweisung ein.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Kann ich mein Ticket stornieren?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ja! Kostenlose Stornierung oder Umbuchung bis 24 Stunden vor deinem gebuchten Termin. 
+                        Danach ist leider keine Erstattung mehr möglich. Umbuchungen per E-Mail an info@haunted-mansion.de</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Ist es wirklich so gruselig?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>JA! Wir setzen auf professionelle Live-Actors, Hollywood-Effekte, laute Geräusche, 
+                        Stroboskop-Licht und plötzliche Erschreckmomente. Nicht geeignet bei Herzproblemen, Epilepsie 
+                        oder Schwangerschaft. Notausgänge sind jederzeit erreichbar.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Gibt es Parkplätze vor Ort?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ja, kostenlose Parkplätze direkt am Haunted Mansion (ca. 50 Stellplätze). Alternativ 
+                        erreichst du uns mit der U3 (Haltestelle "Gruselstraße", 2 Min. Fußweg) oder Bus 45 
+                        (Haltestelle "Horror District").</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Kann ich fotografieren/filmen?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Während der Tour ist Fotografieren/Filmen nicht erlaubt (Smartphones müssen weggepackt sein). 
+                        Am Ende gibt es einen professionellen Fotopoint - diese Bilder kannst du direkt kaufen oder 
+                        sind beim VIP-Ticket inklusive.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact & Location Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📍 BESUCHE UNS</h2>
+            
+            <div class="contact-grid">
+                <!-- Location Info -->
+                <div class="contact-info">
+                    <h3>🏚️ Haunted Mansion Berlin</h3>
+                    
+                    <div class="info-block">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>Gruselstraße 13<br>10115 Berlin-Mitte</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-block">
+                        <span class="info-icon">🕐</span>
+                        <div>
+                            <strong>Öffnungszeiten</strong>
+                            <p>
+                                <strong>Freitag:</strong> 18:00 - 01:00 Uhr<br>
+                                <strong>Samstag:</strong> 17:00 - 02:00 Uhr<br>
+                                <strong>Sonntag:</strong> 18:00 - 00:00 Uhr<br>
+                                <em style="color: rgba(255,255,255,0.6);">Mo-Do geschlossen (Gruppen auf Anfrage)</em>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-block">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Kontakt</strong>
+                            <p>
+                                Tel: <a href="tel:+493012345678">+49 30 123 456 78</a><br>
+                                E-Mail: <a href="mailto:info@haunted-mansion.de">info@haunted-mansion.de</a><br>
+                                WhatsApp: <a href="https://wa.me/493012345678">+49 30 123 456 78</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-block">
+                        <span class="info-icon">🚇</span>
+                        <div>
+                            <strong>Anfahrt</strong>
+                            <p>
+                                <strong>U-Bahn:</strong> U3 bis "Gruselstraße" (2 Min. Fußweg)<br>
+                                <strong>Bus:</strong> Linie 45 bis "Horror District"<br>
+                                <strong>Auto:</strong> Kostenlose Parkplätze vor Ort
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-btn">📘 Facebook</a>
+                        <a href="#" class="social-btn">📷 Instagram</a>
+                        <a href="#" class="social-btn">🎵 TikTok</a>
+                    </div>
+                </div>
+                
+                <!-- Map -->
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <div class="map-icon">🗺️</div>
+                        <p><strong>Google Maps</strong></p>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                            Gruselstraße 13, 10115 Berlin
+                        </p>
+                        <button class="btn-map" onclick="alert('Öffne Google Maps...')">
+                            🗺️ In Maps öffnen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>👻 HAUNTED MANSION</h3>
+                    <p>Deutschlands gruseligstes Horror-Erlebnis</p>
+                    <p class="footer-warning">⚠️ Du wurdest gewarnt ⚠️</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <a href="#hero">Home</a>
+                    <a href="#tickets">Tickets</a>
+                    <a href="#attractions">Attraktionen</a>
+                    <a href="#reviews">Bewertungen</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+                
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                    <a href="#">Widerrufsrecht</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p>📞 +49 30 123 456 78</p>
+                    <p>📧 info@haunted-mansion.de</p>
+                    <p>📍 Gruselstraße 13, Berlin</p>
+                </div>
+            </div>
+            
+            <div class="copyright-badge">
+                © 2025 Michael Ostermann | Haunted Mansion Template | Made with 🩸 in Berlin
+            </div>
+        </div>
+    </footer>
+    
+    <!-- CMS Login Button (Hidden) -->
+    <div id="cms-login-trigger" style="display:none;"></div>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="demo-protection.js"></script>
+    <script src="copyright-protection.js"></script>
+    <script src="inline-cms.js"></script>
+    <link rel="stylesheet" href="inline-cms.css">
+    
+    <!-- Copyright Protection Marker END -->
+    <!-- ©2025 Michael Ostermann -->
+</body>
+</html>
+
+
+

@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog-System Debugging - Von kaputt zu perfekt – Code & Beats Blog</title>
+  <meta name="description" content="Wie wir systematisch JavaScript-Fehler, Pfad-Probleme und fehlende Animationen im Blog-System behoben haben" />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/hero-title.css" />
+  <link rel="stylesheet" href="../assets/css/brand.css" />
+  <link rel="stylesheet" href="../assets/css/about-contact.css" />
+  <link rel="stylesheet" href="../assets/css/footer-nav.css" />
+  <link rel="stylesheet" href="../assets/css/section-titles.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      <!-- Back Button -->
+      <div style="margin-bottom: 2rem;">
+        <a href="index.html" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.3s;">
+          ← Zurück zum Blog
+        </a>
+      </div>
+
+      <!-- Header -->
+      <header style="margin-bottom: 3rem;">
+        <h1 class="section__title" style="background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(139,92,246,0.3); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.75rem;">
+          Blog-System Debugging - Von kaputt zu perfekt
+        </h1>
+        <p class="txt-dim" style="margin: .5rem 0 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06FFF0" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            12. November 2025
+          </span>
+          <span style="color: #8B5CF6;">•</span>
+          <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" aria-hidden="true">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            Lesezeit: 8 min
+          </span>
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+          <span class="chip" style="background: rgba(139,92,246,0.15); color: #8B5CF6; border: 1px solid rgba(139,92,246,0.3); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.85rem;">Dev</span>
+          <span class="chip" style="background: rgba(6,255,240,0.1); color: #06FFF0; border: 1px solid rgba(6,255,240,0.25); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.85rem;">Debugging</span>
+          <span class="chip" style="background: rgba(255,193,7,0.1); color: #FFC107; border: 1px solid rgba(255,193,7,0.25); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.85rem;">JavaScript</span>
+        </div>
+        <p class="txt-dim" style="font-size: 1.15rem; line-height: 1.9; margin-top: 1.5rem; max-width: 750px;">
+          Eine detaillierte Analyse, wie wir mehrere kritische Fehler im Blog-System systematisch identifiziert und behoben haben
+        </p>
+      </header>
+
+      <!-- Featured Visual -->
+      <div style="background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(6,255,240,0.2) 100%); padding: 3rem 2rem; text-align: center; border-radius: 12px; margin-bottom: 3rem; position: relative; overflow: hidden;">
+        <div style="font-size: clamp(4rem, 10vw, 6rem); margin-bottom: 0.5rem;">🛠️</div>
+        <div style="font-size: clamp(1.5rem, 3vw, 2rem); color: #8B5CF6; font-weight: 600;">Debug • Fix • Deploy</div>
+      </div>
+
+      <!-- Content -->
+      <div style="line-height: 1.9; font-size: 1.08rem;">
+        
+        <!-- Einleitung -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 1.5rem; color: #8B5CF6; font-weight: 700;">Die Ausgangslage</h2>
+          <p class="txt-dim" style="margin-bottom: 1.5rem; line-height: 1.9;">
+            Das Blog-System war implementiert, die JSON-Datenquelle vorhanden, und die HTML-Struktur stand. Doch beim 
+            Testen stellte sich heraus: Die Blog-Karten wurden nicht korrekt angezeigt, Links funktionierten nicht, 
+            und Animationen blieben aus. Zeit für systematisches Debugging.
+          </p>
+        </section>
+
+        <!-- Problem 1 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 1: Syntaxfehler in blog-cards.js</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Die Datei <code>blog-cards.js</code> hatte einen kritischen Strukturfehler:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Doppelte schließende Klammern am Ende der Datei
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Funktion <code>bindBlogCards</code> wurde aufgerufen, aber nicht definiert
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Event-Listener wurden mehrfach registriert
+              </li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Wir haben die Datei vollständig umstrukturiert:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Korrekte IIFE-Struktur (Immediately Invoked Function Expression)
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                <code>bindBlogCards</code> Funktion sauber definiert und exportiert
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Schutz vor doppelter Bindung durch <code>data-card-bound</code> Attribut
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Event-Listener für <code>blog:rendered</code> Custom-Event
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem 2 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 2: Fehlende Reveal-Animationen</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Die Scroll-Reveal-Animationen funktionierten nur beim initialen Laden, nicht aber für 
+              dynamisch generierte Blog-Karten:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                IntersectionObserver wurde nur einmal beim Laden initialisiert
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Keine Re-Initialisierung nach dynamischem Content-Rendering
+              </li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Wir haben <code>reveal.js</code> modular umgebaut:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                <code>initReveal()</code> Funktion für wiederverwendbare Initialisierung
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Event-Listener für <code>blog:rendered</code> Custom-Event
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Globale Funktion für manuellen Aufruf bei Bedarf
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem 3 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 3: Link-Konflikt in Blog-Karten</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Die Blog-Karten hatten sowohl einen inneren <code>&lt;a&gt;</code>-Link im Titel als auch ein 
+              <code>data-href</code> Attribut auf der gesamten Karte. Dies führte zu:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Click-Handler verhinderten Navigation auf dem inneren Link
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Verwirrende UX durch zwei Klick-Ziele
+              </li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Vereinfachung der Karten-Struktur:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Inneren <code>&lt;a&gt;</code>-Link entfernt
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Nur noch die gesamte Karte ist klickbar
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Klare, eindeutige Navigation ohne Konflikte
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem 4 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 4: Fehlende Blog-Seite</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Der neueste Blog-Post "Musik-Sektion neu aufgebaut" war in der <code>blog.json</code> definiert, 
+              aber die entsprechende HTML-Seite <code>musik-relaunch.html</code> fehlte komplett.
+            </p>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Vollständige Blog-Seite von Grund auf erstellt:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Kompletter HTML-Artikel mit Struktur und Styling
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Detaillierte Beschreibung der Upload-System Features
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Navigation, Footer und Chatbot-Integration
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem 5 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 5: Veraltete Blog-Seiten</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Die bestehenden Blog-Seiten hatten mehrere Probleme:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Kein "Zurück zum Blog" Button
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Falsches Datum ("Veröffentlicht: Heute")
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Inkonsistente Footer-Struktur
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5757;">✗</span>
+                Fehlende Scripts für Animationen
+              </li>
+            </ul>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Systematische Aktualisierung aller 6 bestehenden Blog-Seiten:
+            </p>
+            <ul style="list-style: none; padding-left: 0; margin: 1.5rem 0;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                "Zurück zum Blog" Button oben auf jeder Seite eingefügt
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Korrekte Datumsangaben aus der JSON übernommen
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Vereinheitlichter Footer mit Navigation implementiert
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #06FFF0;">✓</span>
+                Max-width: 900px Container für bessere Lesbarkeit
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Problem 6 -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #06FFF0; font-weight: 700;">Problem 6: Pfad-Problem bei Navigation</h2>
+
+          <div style="background: rgba(255, 87, 87, 0.05); border-left: 4px solid #FF5757; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #FF5757; font-weight: 600;">🐛 Der Fehler</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Der kritischste Fehler: Links funktionierten nur von der Startseite, nicht aber vom Blog-Index:
+            </p>
+            <div style="background: rgba(11,15,22,0.5); padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: monospace; font-size: 0.9rem;">
+              <div style="color: #FF5757;">❌ Von /blog/index.html:</div>
+              <div style="color: #999; margin-left: 1rem;">href="blog/musik-relaunch.html"</div>
+              <div style="color: #999; margin-left: 1rem;">→ /blog/blog/musik-relaunch.html</div>
+              <div style="color: #FF5757; margin-top: 0.5rem;">Cannot GET /blog/blog/musik-relaunch.html</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(6, 255, 240, 0.05); border-left: 4px solid #06FFF0; padding: 1.75rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #06FFF0; font-weight: 600;">✓ Die Lösung</h3>
+            <p class="txt-dim" style="margin-bottom: 1.25rem; line-height: 1.9;">
+              Intelligente Pfad-Korrektur im <code>blog-renderer.js</code>:
+            </p>
+            <div style="background: rgba(11,15,22,0.5); padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: monospace; font-size: 0.9rem;">
+              <div style="color: #8B5CF6;">// Erkenne aktuelles Verzeichnis</div>
+              <div style="color: #06FFF0;">var isInBlogDirectory = </div>
+              <div style="color: #FFF; margin-left: 1rem;">window.location.pathname.indexOf("/blog/") !== -1;</div>
+              <div style="color: #8B5CF6; margin-top: 0.5rem;">// Korrigiere href automatisch</div>
+              <div style="color: #06FFF0;">if (isInBlogDirectory && href.indexOf("blog/") === 0) {</div>
+              <div style="color: #FFF; margin-left: 1rem;">href = href.substring(5);</div>
+              <div style="color: #06FFF0;">}</div>
+            </div>
+            <p class="txt-dim" style="margin-top: 1rem; line-height: 1.9;">
+              Resultat: Links funktionieren jetzt kontextabhängig korrekt:
+            </p>
+            <div style="background: rgba(11,15,22,0.5); padding: 1rem; border-radius: 6px; margin: 1rem 0; font-family: monospace; font-size: 0.9rem;">
+              <div style="color: #00FF88;">✓ Von /index.html:</div>
+              <div style="color: #999; margin-left: 1rem;">href="blog/musik-relaunch.html"</div>
+              <div style="color: #999; margin-left: 1rem;">→ /blog/musik-relaunch.html ✓</div>
+              <div style="color: #00FF88; margin-top: 0.75rem;">✓ Von /blog/index.html:</div>
+              <div style="color: #999; margin-left: 1rem;">href="musik-relaunch.html" (automatisch korrigiert)</div>
+              <div style="color: #999; margin-left: 1rem;">→ /blog/musik-relaunch.html ✓</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Lessons Learned -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #8B5CF6; font-weight: 700;">💡 Lessons Learned</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div style="background: rgba(139,92,246,0.05); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(139,92,246,0.15);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔍</div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #8B5CF6;">Systematisches Debugging</h3>
+              <p class="txt-dim" style="font-size: 0.95rem; line-height: 1.7;">
+                Von oben nach unten: Erst die Datenquelle, dann die Logik, dann die UI
+              </p>
+            </div>
+
+            <div style="background: rgba(6,255,240,0.05); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(6,255,240,0.15);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">📦</div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #06FFF0;">Modularer Code</h3>
+              <p class="txt-dim" style="font-size: 0.95rem; line-height: 1.7;">
+                Funktionen wiederverwendbar machen und über Custom Events kommunizieren
+              </p>
+            </div>
+
+            <div style="background: rgba(255,193,7,0.05); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255,193,7,0.15);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">🛣️</div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #FFC107;">Pfad-Bewusstsein</h3>
+              <p class="txt-dim" style="font-size: 0.95rem; line-height: 1.7;">
+                Relative Pfade müssen kontextabhängig angepasst werden
+              </p>
+            </div>
+
+            <div style="background: rgba(0,255,136,0.05); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(0,255,136,0.15);">
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔄</div>
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: #00FF88;">Event-Driven</h3>
+              <p class="txt-dim" style="font-size: 0.95rem; line-height: 1.7;">
+                Custom Events ermöglichen lose Kopplung zwischen Modulen
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Fazit -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 1.5rem; color: #06FFF0; font-weight: 700;">🎯 Fazit</h2>
+          <p class="txt-dim" style="margin-bottom: 1.5rem; line-height: 1.9;">
+            Was zunächst wie mehrere isolierte Probleme aussah, entpuppte sich als eine Kette zusammenhängender 
+            Fehler. Durch systematisches Debugging – vom JavaScript-Syntax über Event-Handling bis zur Pfad-Auflösung – 
+            konnten wir das Blog-System von einem nicht funktionsfähigen Zustand in eine solide, production-ready 
+            Implementierung überführen.
+          </p>
+          <p class="txt-dim" style="margin-bottom: 1.5rem; line-height: 1.9;">
+            Die wichtigste Erkenntnis: Guter Code ist nicht nur funktional, sondern auch wartbar, modular und 
+            kontextbewusst. Jedes behobene Problem hat das System robuster gemacht.
+          </p>
+        </section>
+
+        <!-- Tech Stack -->
+        <section style="margin-bottom: 3.5rem;">
+          <h2 style="font-size: 1.9rem; margin-bottom: 2rem; color: #8B5CF6; font-weight: 700;">🛠️ Verwendete Technologien</h2>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <span style="background: rgba(241,224,90,0.1); color: #F1E05A; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(241,224,90,0.2);">JavaScript ES6+</span>
+            <span style="background: rgba(227,79,38,0.1); color: #E34F26; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(227,79,38,0.2);">HTML5</span>
+            <span style="background: rgba(86,61,124,0.1); color: #563D7C; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(86,61,124,0.2);">CSS3</span>
+            <span style="background: rgba(139,92,246,0.1); color: #8B5CF6; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(139,92,246,0.2);">IntersectionObserver API</span>
+            <span style="background: rgba(6,255,240,0.1); color: #06FFF0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(6,255,240,0.2);">Custom Events</span>
+            <span style="background: rgba(255,193,7,0.1); color: #FFC107; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,193,7,0.2);">JSON</span>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="margin-top: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(6,255,240,0.15) 100%); border-radius: 12px; text-align: center;">
+          <h2 style="font-size: 1.7rem; margin-bottom: 1.25rem; color: #FFF;">📚 Mehr über Code & Beats</h2>
+          <p class="txt-dim" style="margin-bottom: 2rem; font-size: 1.1rem;">
+            Entdecke weitere technische Artikel und Updates
+          </p>
+          <a href="index.html" style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, #8B5CF6 0%, #06FFF0 100%); color: white; text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; box-shadow: 0 8px 25px rgba(139,92,246,0.3);">
+            Alle Blog-Beiträge ansehen →
+          </a>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top: 5rem; padding: 2.5rem 0; border-top: 1px solid rgba(6,255,240,0.2);">
+    <div class="container" style="text-align: center;">
+      <p class="txt-dim" style="margin-bottom: 1rem;">
+        <a href="index.html" class="nav-link" style="color: #06FFF0; text-decoration: none; margin: 0 0.75rem;">← Alle Beiträge</a>
+        <span style="color: #8B5CF6;">|</span>
+        <a href="../index.html" class="nav-link" style="color: #8B5CF6; text-decoration: none; margin: 0 0.75rem;">Startseite</a>
+      </p>
+      <small class="txt-dim" style="opacity: 0.6;">&copy; 2025 Code & Beats · Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <!-- Chatbot Toggle -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/reveal.js" defer></script>
+  <script src="../assets/chatbot/mcgv-chatbot-script.js" defer></script>
+</body>
+</html>
+

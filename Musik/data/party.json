@@ -1,0 +1,80 @@
+{
+    "tracks": [
+        {
+            "id": "life-am-strand",
+            "title": "Life am Strand",
+            "category": "party",
+            "description": "Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.",
+            "cover": "cover1.svg",
+            "audio": "track1.mp3",
+            "folder": "assets\/media",
+            "isNew": true
+        },
+        {
+            "id": "bis-zum-morgengrauen-6790e7",
+            "title": "Bis zum Morgengrauen",
+            "category": "party",
+            "description": "Ballermann kann kommen",
+            "cover": "covers\/bis-zum-morgengrauen-6790e7.svg",
+            "coverGenerated": true,
+            "audio": "Bis_zum_Morgengrauen.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        },
+        {
+            "id": "chaos-micha-e16c28",
+            "title": "Chaos Micha",
+            "category": "party",
+            "description": "Micha auf dem Ballermann",
+            "cover": "covers\/chaos-micha-e16c28.svg",
+            "coverGenerated": true,
+            "audio": "Micha_macht_Chaos.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        },
+        {
+            "id": "leila-war-gestern-a075d6",
+            "title": "Leila war gestern :-)",
+            "category": "party",
+            "description": "Leila war gestern......",
+            "cover": "covers\/leila-war-gestern-a075d6.svg",
+            "coverGenerated": true,
+            "audio": "Leila_war_gestern__Jetzt_kommt_LO_LA_.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        },
+        {
+            "id": "micha-grillt-29e90c",
+            "title": "Micha grillt",
+            "category": "party",
+            "description": "Party bei Micha :-)",
+            "cover": "covers\/micha-grillt-29e90c.svg",
+            "coverGenerated": true,
+            "audio": "Die_geilste_Party_der_Welt.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        },
+        {
+            "id": "tur-auf-fur-eine-private-feier-3b8c46",
+            "title": "Tür auf für eine private Feier",
+            "category": "party",
+            "description": "Auch zu Hause kann man abrocken",
+            "cover": "covers\/tur-auf-fur-eine-private-feier-3b8c46.svg",
+            "coverGenerated": true,
+            "audio": "Tür_auf__Licht_an__Küche_voll.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        },
+        {
+            "id": "herr-der-vulven-7e9152",
+            "title": "Herr der Vulven",
+            "category": "party",
+            "description": "Lustiger Ballermann Hit....",
+            "cover": "covers\/herr-der-vulven-7e9152.svg",
+            "coverGenerated": true,
+            "audio": "Herr_der_Vulven.mp3",
+            "folder": "Musik\/audio\/party",
+            "isNew": true
+        }
+    ]
+}

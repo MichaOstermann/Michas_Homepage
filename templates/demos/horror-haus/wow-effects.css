@@ -1,0 +1,596 @@
+/* ═══════════════════════════════════════════════════════════
+   MEGA WOW-EFFEKTE - Horror Maximum
+   Partikel, Blitze, Glitch, Screen-Shake, 3D-Transforms
+   ═══════════════════════════════════════════════════════════ */
+
+/* GLITCH ANIMATION */
+@keyframes glitchAnimation {
+    0%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+    20% { transform: translate(-5px, 2px); filter: hue-rotate(90deg); }
+    40% { transform: translate(-2px, -5px); filter: hue-rotate(180deg); }
+    60% { transform: translate(5px, 2px); filter: hue-rotate(270deg); }
+    80% { transform: translate(2px, -5px); filter: hue-rotate(360deg); }
+}
+
+/* BLUT-TROPFEN ANIMATION */
+@keyframes bloodDrip {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0.8; }
+}
+
+/* BLITZ-EFFEKT */
+@keyframes lightning {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.9; box-shadow: 0 0 150px rgba(255, 255, 255, 0.9); }
+}
+
+/* NEBEL-BEWEGUNG */
+@keyframes fogMove {
+    0% { transform: translateX(-50%) translateY(0) scale(1); }
+    50% { transform: translateX(-50%) translateY(-30px) scale(1.1); }
+    100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+/* FLOAT-EFFEKT */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(3deg); }
+    50% { transform: translateY(-30px) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(-3deg); }
+}
+
+/* 3D PULSE */
+@keyframes pulse3D {
+    0%, 100% { transform: scale(1) rotateY(0deg); box-shadow: 0 0 30px rgba(139, 0, 0, 0.5); }
+    50% { transform: scale(1.05) rotateY(5deg); box-shadow: 0 0 60px rgba(139, 0, 0, 0.8); }
+}
+
+/* SCREEN SHAKE */
+@keyframes screenShake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-10px, -10px) rotate(-2deg); }
+    20% { transform: translate(10px, 10px) rotate(2deg); }
+    30% { transform: translate(-10px, 10px) rotate(-2deg); }
+    40% { transform: translate(10px, -10px) rotate(2deg); }
+    50% { transform: translate(-10px, -10px) rotate(-2deg); }
+    60% { transform: translate(10px, 10px) rotate(2deg); }
+    70% { transform: translate(-10px, 10px) rotate(-2deg); }
+    80% { transform: translate(10px, -10px) rotate(2deg); }
+    90% { transform: translate(-10px, -10px) rotate(-2deg); }
+}
+
+/* CORRECT ANSWER PULSE */
+@keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); box-shadow: 0 0 50px rgba(0, 255, 0, 1); }
+    50% { transform: scale(1.15); box-shadow: 0 0 80px rgba(0, 255, 0, 1); }
+    75% { transform: scale(1.1); box-shadow: 0 0 50px rgba(0, 255, 0, 1); }
+}
+
+/* ROOM UNLOCK ANIMATION */
+@keyframes roomUnlock {
+    0% { opacity: 0.3; transform: scale(0.8) rotateY(-90deg); }
+    50% { transform: scale(1.1) rotateY(0deg); }
+    100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PARTIKEL-SYSTEM
+   ═══════════════════════════════════════════════════════════ */
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.5) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BLUT-TROPFEN
+   ═══════════════════════════════════════════════════════════ */
+
+.blood-drip {
+    position: absolute;
+    width: 3px;
+    height: 30px;
+    background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.9), rgba(80, 0, 0, 1));
+    animation: bloodDrip 3s infinite linear;
+    pointer-events: none;
+    z-index: 2;
+    filter: blur(1px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEBEL-EFFEKT
+   ═══════════════════════════════════════════════════════════ */
+
+.fog {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250%;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(120, 120, 120, 0.4) 0%, transparent 70%);
+    animation: fogMove 25s infinite alternate ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(40px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BLITZ-EFFEKT
+   ═══════════════════════════════════════════════════════════ */
+
+.lightning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    mix-blend-mode: screen;
+}
+
+.lightning.active {
+    animation: lightning 0.15s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCREEN SHAKE
+   ═══════════════════════════════════════════════════════════ */
+
+body.screen-shake {
+    animation: screenShake 0.6s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENHANCED HERO TITLE
+   ═══════════════════════════════════════════════════════════ */
+
+.hero-title-enhanced {
+    animation: pulse3D 4s infinite ease-in-out !important;
+    transform-style: preserve-3d;
+    text-shadow: 
+        0 0 20px rgba(139, 0, 0, 0.8),
+        0 0 40px rgba(139, 0, 0, 0.6),
+        4px 4px 8px rgba(0, 0, 0, 0.9),
+        0 0 100px rgba(255, 0, 0, 0.5) !important;
+}
+
+.hero-title-enhanced:hover {
+    animation: glitchAnimation 0.3s infinite, pulse3D 4s infinite ease-in-out !important;
+    text-shadow: 
+        0 0 30px rgba(139, 0, 0, 1),
+        0 0 60px rgba(139, 0, 0, 0.8),
+        -5px 0 15px rgba(0, 255, 0, 0.6),
+        5px 0 15px rgba(255, 0, 0, 0.6) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENHANCED ROOM CARDS
+   ═══════════════════════════════════════════════════════════ */
+
+.room-card-enhanced {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+}
+
+.room-card-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.4), transparent);
+    transition: left 0.6s;
+    z-index: 1;
+}
+
+.room-card-enhanced:hover::before {
+    left: 100%;
+}
+
+.room-card-enhanced:hover {
+    transform: translateY(-15px) rotateY(3deg) scale(1.03) !important;
+    box-shadow: 
+        0 20px 50px rgba(139, 0, 0, 0.6),
+        0 0 80px rgba(139, 0, 0, 0.4),
+        inset 0 0 40px rgba(139, 0, 0, 0.2) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENHANCED PUZZLE INPUT
+   ═══════════════════════════════════════════════════════════ */
+
+.puzzle-input-enhanced {
+    position: relative;
+    transition: all 0.4s;
+}
+
+.puzzle-input-enhanced.correct {
+    border-color: #00ff00 !important;
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.9) !important;
+    animation: correctPulse 1.5s !important;
+    color: #00ff00 !important;
+}
+
+.puzzle-input-enhanced.wrong {
+    border-color: #ff0000 !important;
+    animation: glitchAnimation 0.4s, screenShake 0.6s !important;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.9) !important;
+    color: #ff0000 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENHANCED INVENTORY SLOTS
+   ═══════════════════════════════════════════════════════════ */
+
+.inventory-slot-enhanced {
+    position: relative;
+    cursor: pointer;
+}
+
+.inventory-slot-enhanced::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, transparent, rgba(139, 0, 0, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.inventory-slot-enhanced:hover::after {
+    opacity: 1;
+    animation: float 2s infinite;
+}
+
+.inventory-slot-enhanced.filled {
+    box-shadow: 
+        0 0 30px rgba(139, 0, 0, 0.6),
+        inset 0 0 20px rgba(139, 0, 0, 0.4) !important;
+    animation: pulse3D 4s infinite !important;
+}
+
+.inventory-slot-enhanced.filled:hover {
+    transform: scale(1.25) rotateZ(8deg) !important;
+    box-shadow: 0 0 50px rgba(139, 0, 0, 1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HORROR CURSOR
+   ═══════════════════════════════════════════════════════════ */
+
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="20" font-size="20">🔪</text></svg>'), auto;
+}
+
+a, button, .clickable {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="20" font-size="20">💀</text></svg>'), pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCREAMER OVERLAY
+   ═══════════════════════════════════════════════════════════ */
+
+.screamer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=1920&q=80') center/cover;
+    z-index: 999999;
+    opacity: 0;
+    pointer-events: none;
+    filter: brightness(1.5) contrast(1.8);
+}
+
+.screamer-overlay.active {
+    animation: screamerPop 0.3s;
+}
+
+@keyframes screamerPop {
+    0% { opacity: 0; transform: scale(0.5); }
+    10% { opacity: 1; transform: scale(1.5); }
+    90% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GEISTER-ERSCHEINUNGEN
+   ═══════════════════════════════════════════════════════════ */
+
+.ghost-apparition {
+    position: fixed;
+    font-size: 8rem;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
+    animation: ghostAppear 3s ease-out;
+}
+
+@keyframes ghostAppear {
+    0% { opacity: 0; transform: translateY(100px) scale(0.5); }
+    10% { opacity: 0.9; transform: translateY(0) scale(1); }
+    90% { opacity: 0.9; transform: translateY(-50px) scale(1.2); }
+    100% { opacity: 0; transform: translateY(-200px) scale(0.8); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROTE AUGEN IM DUNKEL
+   ═══════════════════════════════════════════════════════════ */
+
+.evil-eyes {
+    position: fixed;
+    width: 80px;
+    height: 30px;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.evil-eyes::before,
+.evil-eyes::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ff0000 30%, #8B0000 60%, transparent 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px #ff0000, inset 0 0 10px #ff0000;
+    animation: eyeBlink 4s infinite;
+}
+
+.evil-eyes::before {
+    left: 0;
+}
+
+.evil-eyes::after {
+    right: 0;
+}
+
+.evil-eyes.active {
+    animation: eyesFadeInOut 6s;
+}
+
+@keyframes eyeBlink {
+    0%, 100% { height: 20px; }
+    48%, 52% { height: 2px; }
+}
+
+@keyframes eyesFadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCHATTEN-BEWEGUNGEN
+   ═══════════════════════════════════════════════════════════ */
+
+.shadow-figure {
+    position: fixed;
+    width: 150px;
+    height: 400px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9), transparent);
+    opacity: 0;
+    z-index: 4;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.shadow-figure.active {
+    animation: shadowWalk 4s ease-in-out;
+}
+
+@keyframes shadowWalk {
+    0% { opacity: 0; left: -200px; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { opacity: 0; left: calc(100% + 200px); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLACKERLICHT-EFFEKT
+   ═══════════════════════════════════════════════════════════ */
+
+.flicker-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.flicker-overlay.active {
+    animation: lightFlicker 2s;
+}
+
+@keyframes lightFlicker {
+    0%, 100% { opacity: 0; }
+    5% { opacity: 0.8; }
+    10% { opacity: 0; }
+    15% { opacity: 0.9; }
+    20% { opacity: 0; }
+    25% { opacity: 0.7; }
+    30% { opacity: 0; }
+    35% { opacity: 0.85; }
+    40%, 60% { opacity: 0; }
+    65% { opacity: 0.75; }
+    70%, 100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VERSTECKTE HORROR-NACHRICHTEN
+   ═══════════════════════════════════════════════════════════ */
+
+.hidden-message {
+    position: fixed;
+    font-size: 3rem;
+    color: rgba(139, 0, 0, 0.2);
+    font-family: 'Courier New', monospace;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transform: rotate(-10deg);
+}
+
+.hidden-message.visible {
+    animation: messageFade 3s;
+}
+
+@keyframes messageFade {
+    0% { opacity: 0; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BLUT-SPRITZER
+   ═══════════════════════════════════════════════════════════ */
+
+.blood-splatter {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.8), transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.blood-splatter::before,
+.blood-splatter::after {
+    content: '';
+    position: absolute;
+    background: rgba(139, 0, 0, 0.6);
+    border-radius: 50%;
+}
+
+.blood-splatter::before {
+    width: 80px;
+    height: 80px;
+    top: -30px;
+    left: 50px;
+}
+
+.blood-splatter::after {
+    width: 60px;
+    height: 60px;
+    bottom: -20px;
+    right: 40px;
+}
+
+.blood-splatter.active {
+    animation: splatterAppear 1.5s;
+}
+
+@keyframes splatterAppear {
+    0% { opacity: 0; transform: scale(0); }
+    10% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HANDABDRUCK AN WAND
+   ═══════════════════════════════════════════════════════════ */
+
+.bloody-handprint {
+    position: fixed;
+    font-size: 6rem;
+    opacity: 0;
+    color: rgba(139, 0, 0, 0.6);
+    z-index: 2;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+.bloody-handprint.visible {
+    animation: handprintAppear 5s;
+}
+
+@keyframes handprintAppear {
+    0% { opacity: 0; transform: scale(0.8); }
+    20% { opacity: 0.8; transform: scale(1); }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HORROR-VIGNETTE (Dunklere Ränder)
+   ═══════════════════════════════════════════════════════════ */
+
+.horror-vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   START BUTTON ENHANCEMENT
+   ═══════════════════════════════════════════════════════════ */
+
+.start-game-btn-enhanced {
+    animation: pulse3D 2s infinite !important;
+    box-shadow: 0 0 60px rgba(139, 0, 0, 0.9) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-game-btn-enhanced::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: float 3s infinite;
+}
+
+.start-game-btn-enhanced:hover {
+    transform: scale(1.1) rotateY(5deg) !important;
+    box-shadow: 0 0 100px rgba(139, 0, 0, 1) !important;
+    animation: glitchAnimation 0.2s, pulse3D 2s infinite !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROOM UNLOCK EFFECT
+   ═══════════════════════════════════════════════════════════ */
+
+.room-unlocking {
+    animation: roomUnlock 1s ease-out !important;
+}

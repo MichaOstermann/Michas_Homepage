@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Icon Musik</title>
+  <defs>
+    <linearGradient id="gradMusic" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2de3d1"/>
+      <stop offset="1" stop-color="#5c5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="20" fill="rgba(18,22,52,0.95)"/>
+  <path d="M56 20v28.5a13 13 0 0 0-8-2.5c-7.18 0-13 4.7-13 11s5.82 11 13 11 13-4.7 13-11V34h18V20z" fill="url(#gradMusic)"/>
+  <circle cx="72" cy="24" r="6" fill="#fff" opacity="0.7"/>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

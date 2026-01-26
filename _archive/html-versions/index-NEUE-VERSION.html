@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CODE & BEATS - AI-Powered Future Portal</title>
+  
+  <!-- Original CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/enhancements.css" />
+  <link rel="stylesheet" href="assets/chatbot/mcgv-chatbot-styles.css" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --neon-cyan: #06FFF0;
+      --neon-violet: #8B5CF6;
+      --neon-pink: #FF1493;
+      --neon-green: #00FF88;
+      --dark-bg: #0a0e1a;
+      --darker-bg: #050810;
+    }
+
+    body {
+      background: var(--darker-bg);
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ===== MATRIX RAIN BACKGROUND ===== */
+    #matrixBg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      opacity: 0.08;
+    }
+
+    /* ===== CYBER GRID BACKGROUND ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(6,255,240,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,255,240,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ===== MEGA HERO ===== */
+    .mega-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 10;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .mega-hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255,20,147,0.15) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+    }
+
+    .mega-title {
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 50%, var(--neon-pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 80px rgba(6,255,240,0.5);
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      animation: titleGlow 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 20px var(--neon-cyan)) 
+                drop-shadow(0 0 40px var(--neon-violet));
+      }
+      50% { 
+        filter: drop-shadow(0 0 40px var(--neon-cyan)) 
+                drop-shadow(0 0 60px var(--neon-violet))
+                drop-shadow(0 0 80px var(--neon-pink));
+      }
+    }
+
+    .mega-subtitle {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .mega-subtitle span {
+      color: var(--neon-green);
+      font-weight: 700;
+    }
+
+    /* ===== FLOATING BADGES ===== */
+    .floating-badges {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .floating-badge {
+      background: rgba(11,15,22,0.8);
+      backdrop-filter: blur(20px);
+      border: 2px solid;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-badge::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .floating-badge:nth-child(1) {
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      animation-delay: 0s;
+    }
+
+    .floating-badge:nth-child(2) {
+      border-color: var(--neon-violet);
+      color: var(--neon-violet);
+      animation-delay: 0.5s;
+    }
+
+    .floating-badge:nth-child(3) {
+      border-color: var(--neon-pink);
+      color: var(--neon-pink);
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* ===== MEGA BUTTONS ===== */
+    .mega-cta {
+      display: inline-block;
+      padding: 1.75rem 4rem;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-decoration: none;
+      border-radius: 50px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .mega-cta-primary {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet), var(--neon-pink));
+      background-size: 200% 200%;
+      animation: gradientFlow 3s ease infinite;
+      color: #fff;
+      box-shadow: 0 15px 60px rgba(255,20,147,0.6);
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .mega-cta-primary:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 80px rgba(255,20,147,0.8);
+    }
+
+    .mega-cta-secondary {
+      background: rgba(11,15,22,0.8);
+      border: 3px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 
+        0 0 20px rgba(6,255,240,0.5),
+        inset 0 0 20px rgba(6,255,240,0.1);
+    }
+
+    .mega-cta-secondary:hover {
+      background: rgba(6,255,240,0.1);
+      box-shadow: 
+        0 0 40px rgba(6,255,240,0.8),
+        inset 0 0 30px rgba(6,255,240,0.2);
+      transform: translateY(-5px);
+    }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      animation: bounce 2s infinite;
+      z-index: 100;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    .scroll-indicator svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--neon-cyan);
+      filter: drop-shadow(0 0 10px var(--neon-cyan));
+    }
+
+    /* ===== SECTIONS ===== */
+    .mega-section {
+      position: relative;
+      padding: 8rem 2rem;
+      z-index: 10;
+    }
+
+    .section-title-mega {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(6,255,240,0.3);
+    }
+
+    /* ===== POWER GRID ===== */
+    .power-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .power-card {
+      background: rgba(11,15,22,0.7);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(6,255,240,0.3);
+      border-radius: 24px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .power-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(6,255,240,0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+    }
+
+    .power-card:hover::before {
+      animation: holoScan 2s linear infinite;
+    }
+
+    .power-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: rgba(6,255,240,0.8);
+      box-shadow: 
+        0 30px 80px rgba(6,255,240,0.4),
+        0 0 0 1px rgba(6,255,240,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .power-icon {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 30px currentColor);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .power-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--neon-cyan);
+    }
+
+    .power-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+
+    .power-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .power-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .power-stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--neon-pink);
+    }
+
+    .power-stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== CYBER BUTTONS ===== */
+    .cyber-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .cyber-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .cyber-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .cyber-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(6,255,240,0.6);
+    }
+
+    /* ===== GLITCH TEXT ===== */
+    .glitch-text {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+
+    .glitch-text::before {
+      color: var(--neon-cyan);
+      animation: glitch-1 0.3s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    }
+
+    .glitch-text::after {
+      color: var(--neon-pink);
+      animation: glitch-2 0.3s infinite reverse;
+      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    }
+
+    @keyframes glitch-1 {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitch-2 {
+      0% { transform: translate(0); }
+      20% { transform: translate(3px, -3px); }
+      40% { transform: translate(3px, 3px); }
+      60% { transform: translate(-3px, -3px); }
+      80% { transform: translate(-3px, 3px); }
+      100% { transform: translate(0); }
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mega-title {
+        font-size: 3.5rem;
+      }
+
+      .power-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mega-cta {
+        padding: 1.25rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Matrix Rain Background -->
+  <canvas id="matrixBg"></canvas>
+
+  <!-- Navigation -->
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,15,22,0.95); backdrop-filter: blur(20px); border-bottom: 2px solid rgba(6,255,240,0.2); padding: 1.5rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="#" style="font-size: 1.5rem; font-weight: 900; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none;">
+        CODE & BEATS
+      </a>
+      <div style="display: flex; gap: 2rem; align-items: center;">
+        <a href="#scripts" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-weight: 600;">⚡ Scripts</a>
+        <a href="#blog" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-weight: 600;">📝 Blog</a>
+        <a href="#music" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-weight: 600;">🎵 Music</a>
+        <a href="#gaming" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; font-weight: 600;">🎮 Gaming</a>
+        <a href="ai-code-generator.html" style="color: var(--neon-pink); text-decoration: none; transition: all 0.3s; font-weight: 700; padding: 0.5rem 1.5rem; background: rgba(255,20,147,0.2); border: 1px solid var(--neon-pink); border-radius: 20px;">🤖 AI Gen</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MEGA HERO -->
+  <section class="mega-hero">
+    <div>
+      <!-- AI Badge -->
+      <div style="margin-bottom: 2rem;">
+        <span style="display: inline-block; background: rgba(255,20,147,0.2); border: 2px solid var(--neon-pink); padding: 0.75rem 2rem; border-radius: 50px; font-weight: 700; color: var(--neon-pink); box-shadow: 0 0 30px rgba(255,20,147,0.5); animation: float 3s ease-in-out infinite;">
+          🤖 AI-POWERED FUTURE PORTAL
+        </span>
+      </div>
+
+      <!-- MEGA Title mit Glitch -->
+      <h1 class="mega-title glitch-text" data-text="CODE & BEATS">
+        CODE & BEATS
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mega-subtitle">
+        Where <span>AI</span> meets <span>Code</span>, <span>Music</span> & <span>Gaming</span>
+      </p>
+
+      <!-- Floating Stats Badges -->
+      <div class="floating-badges">
+        <div class="floating-badge">⚡ 6 Power-Scripts</div>
+        <div class="floating-badge">📝 8 Blog-Posts</div>
+        <div class="floating-badge">🎮 4 Games</div>
+        <div class="floating-badge">🤖 AI-Generator</div>
+      </div>
+
+      <!-- MEGA CTAs -->
+      <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+        <a href="ai-code-generator.html" class="mega-cta mega-cta-primary">
+          🤖 AI GENERATOR STARTEN
+        </a>
+        <a href="#scripts" class="mega-cta mega-cta-secondary">
+          ⚡ POWER-SCRIPTS
+        </a>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <span style="color: var(--neon-cyan); font-size: 0.9rem; font-weight: 600;">SCROLL</span>
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- POWER SCRIPTS SECTION -->
+  <section id="scripts" class="mega-section" style="background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--darker-bg) 100%);">
+    <div class="container">
+      <h2 class="section-title-mega">⚡ POWER SCRIPTS</h2>
+      
+      <div class="power-grid">
+        
+        <!-- Gaming PC Cleaner -->
+        <div class="power-card" onclick="window.location.href='scripts/gaming-pc-turbo-cleaner.html'">
+          <div class="power-icon" style="color: var(--neon-cyan);">🎮</div>
+          <h3 class="power-title">Gaming PC Turbo Cleaner</h3>
+          <p class="power-desc">
+            Bereinigt Temp-Dateien, Browser-Cache, Gaming-Plattformen (Steam, Epic, Battle.net) und optimiert RAM.
+          </p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">500+</div>
+              <div class="power-stat-label">MB Bereinigt</div>
+            </div>
+            <div class="power-stat">
+              <div class="power-stat-number">&lt;30</div>
+              <div class="power-stat-label">Sekunden</div>
+            </div>
+          </div>
+          <a href="assets/media/Gaming-PC-Turbo-Cleaner.ps1" download class="cyber-btn" onclick="event.stopPropagation();">
+            DOWNLOAD
+          </a>
+        </div>
+
+        <!-- Outlook Spam Killer -->
+        <div class="power-card" onclick="window.location.href='scripts/outlook-spam-killer.html'">
+          <div class="power-icon" style="color: var(--neon-violet);">📧</div>
+          <h3 class="power-title" style="color: var(--neon-violet);">Outlook Spam Killer</h3>
+          <p class="power-desc">
+            Automatische Werbe-Mail Vernichtung mit 20+ Keywords. Durchsucht alle Ordner mit Sicherheitsabfrage.
+          </p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">20+</div>
+              <div class="power-stat-label">Keywords</div>
+            </div>
+            <div class="power-stat">
+              <div class="power-stat-number">3</div>
+              <div class="power-stat-label">Ordner</div>
+            </div>
+          </div>
+          <a href="assets/media/Outlook-Spam-Killer.ps1" download class="cyber-btn" onclick="event.stopPropagation();">
+            DOWNLOAD
+          </a>
+        </div>
+
+        <!-- Security Scanner -->
+        <div class="power-card" onclick="window.location.href='scripts/security-deep-scanner.html'">
+          <div class="power-icon" style="color: var(--neon-pink);">🛡️</div>
+          <h3 class="power-title" style="color: var(--neon-pink);">Security Deep Scanner</h3>
+          <p class="power-desc">
+            Professional Threat Detection mit Defender-Integration, Prozess-Analyse und 4-stufigem Threat-Level System.
+          </p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">5</div>
+              <div class="power-stat-label">Scan-Module</div>
+            </div>
+            <div class="power-stat">
+              <div class="power-stat-number">4</div>
+              <div class="power-stat-label">Threat-Levels</div>
+            </div>
+          </div>
+          <a href="assets/media/Security-Deep-Scanner.ps1" download class="cyber-btn" onclick="event.stopPropagation();">
+            DOWNLOAD
+          </a>
+        </div>
+
+      </div>
+
+      <!-- CTA to all scripts -->
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="scripts/index.html" class="mega-cta mega-cta-secondary">
+          ALLE 6 SCRIPTS ANSEHEN
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG SECTION -->
+  <section id="blog" class="mega-section">
+    <div class="container">
+      <h2 class="section-title-mega">📝 BLOG & UPDATES</h2>
+      
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+        <p style="font-size: 1.3rem; color: rgba(255,255,255,0.8); line-height: 1.8;">
+          Die neuesten <span style="color: var(--neon-violet); font-weight: 700;">3 Highlights</span> – 
+          <span style="color: var(--neon-cyan);">Es gibt noch viel mehr zu entdecken!</span>
+        </p>
+      </div>
+
+      <div class="power-grid" data-blog-highlight>
+        <!-- Wird dynamisch geladen -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: rgba(255,255,255,0.5);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+          <p>Lade Blog-Posts...</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href="blog/index.html" class="mega-cta mega-cta-secondary">
+          ALLE BLOG-POSTS LESEN
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC SECTION -->
+  <section id="music" class="mega-section" style="background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--darker-bg) 100%);">
+    <div class="container">
+      <h2 class="section-title-mega">🎵 MUSIC</h2>
+      
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 4rem;">
+        <p style="font-size: 1.3rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 1.5rem;">
+          100% selbst produziert mit <span style="color: var(--neon-pink); font-weight: 700;">AI-Power</span>! 🎹
+        </p>
+        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7;">
+          Von Party-Hits über Synthwave bis Love-Balladen – KI-gestützte Vocals, Auto-Mastering und generative Synthesizer.
+        </p>
+      </div>
+
+      <div class="power-grid">
+        <div class="power-card" onclick="window.location.href='Musik/index.html'">
+          <div class="power-icon" style="color: var(--neon-pink);">🎵</div>
+          <h3 class="power-title" style="color: var(--neon-pink);">Komplette Kollektion</h3>
+          <p class="power-desc">
+            Alle Songs, Kategorien, Ratings und mehr im vollständigen Musik-CMS.
+          </p>
+          <div style="margin-top: 2rem;">
+            <a href="Musik/index.html" class="cyber-btn" onclick="event.stopPropagation();">
+              ZUR MUSIK-SEKTION
+            </a>
+          </div>
+        </div>
+
+        <div class="power-card">
+          <div class="power-icon" style="color: var(--neon-cyan);">🏖️</div>
+          <h3 class="power-title">Life am Strand</h3>
+          <p class="power-desc">
+            Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song!
+          </p>
+          <audio controls preload="metadata" style="width: 100%; margin: 1.5rem 0;">
+            <source src="assets/media/track1.mp3" type="audio/mpeg" />
+          </audio>
+          <a href="assets/media/track1.mp3" download class="cyber-btn">
+            DOWNLOAD
+          </a>
+        </div>
+
+        <div class="power-card">
+          <div class="power-icon" style="color: var(--neon-violet);">🌆</div>
+          <h3 class="power-title" style="color: var(--neon-violet);">Aus dem Schatten</h3>
+          <p class="power-desc">
+            Dunkler Synthwave mit treibendem Beat und melancholischer Hook.
+          </p>
+          <audio controls preload="metadata" style="width: 100%; margin: 1.5rem 0;">
+            <source src="assets/media/track3.mp3" type="audio/mpeg" />
+          </audio>
+          <a href="assets/media/track3.mp3" download class="cyber-btn">
+            DOWNLOAD
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMING SECTION -->
+  <section id="gaming" class="mega-section">
+    <div class="container">
+      <h2 class="section-title-mega">🎮 GAMING</h2>
+      
+      <div class="power-grid">
+        <div class="power-card" onclick="window.location.href='gaming/diablo.html'">
+          <div class="power-icon" style="color: var(--neon-pink);">⚔️</div>
+          <h3 class="power-title" style="color: var(--neon-pink);">Diablo IV</h3>
+          <p class="power-desc">Sanktuario droht, vom Hass verzehrt zu werden. Action-RPG Meisterwerk!</p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">150+</div>
+              <div class="power-stat-label">Stunden</div>
+            </div>
+          </div>
+          <a href="gaming/diablo.html" class="cyber-btn" onclick="event.stopPropagation();">MEHR ERFAHREN</a>
+        </div>
+
+        <div class="power-card" onclick="window.location.href='gaming/enshrouded.html'">
+          <div class="power-icon" style="color: var(--neon-cyan);">🏰</div>
+          <h3 class="power-title">Enshrouded</h3>
+          <p class="power-desc">Nebelverhangene Welt voller Geheimnisse. Survival-RPG der Extraklasse!</p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">80+</div>
+              <div class="power-stat-label">Stunden</div>
+            </div>
+          </div>
+          <a href="gaming/enshrouded.html" class="cyber-btn" onclick="event.stopPropagation();">MEHR ERFAHREN</a>
+        </div>
+
+        <div class="power-card" onclick="window.location.href='gaming/soulmask.html'">
+          <div class="power-icon" style="color: var(--neon-violet);">🎭</div>
+          <h3 class="power-title" style="color: var(--neon-violet);">Soulmask</h3>
+          <p class="power-desc">Mystisches Tribal-Survival mit Masken-Mechanik. Erschaffe deinen Stamm!</p>
+          <div class="power-stats">
+            <div class="power-stat">
+              <div class="power-stat-number">45+</div>
+              <div class="power-stat-label">Stunden</div>
+            </div>
+          </div>
+          <a href="gaming/soulmask.html" class="cyber-btn" onclick="event.stopPropagation();">MEHR ERFAHREN</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="mega-section" style="background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 50%, var(--darker-bg) 100%);">
+    <div class="container">
+      <h2 class="section-title-mega">👤 ÜBER MICH</h2>
+      
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.4rem; line-height: 1.9; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+          Moin! Ich bin <span style="color: var(--neon-cyan); font-weight: 700;">Michael</span> – 
+          Developer, Music Producer & Gamer.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0;">
+          <div style="background: rgba(6,255,240,0.05); border: 2px solid var(--neon-cyan); border-radius: 20px; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">💻</div>
+            <h3 style="font-size: 1.5rem; color: var(--neon-cyan); margin-bottom: 0.75rem;">Developer</h3>
+            <p style="color: rgba(255,255,255,0.7);">PowerShell, JavaScript, Web-Development</p>
+          </div>
+          
+          <div style="background: rgba(139,92,246,0.05); border: 2px solid var(--neon-violet); border-radius: 20px; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎵</div>
+            <h3 style="font-size: 1.5rem; color: var(--neon-violet); margin-bottom: 0.75rem;">Music Producer</h3>
+            <p style="color: rgba(255,255,255,0.7);">AI-powered Production, Synthwave, EDM</p>
+          </div>
+          
+          <div style="background: rgba(255,20,147,0.05); border: 2px solid var(--neon-pink); border-radius: 20px; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
+            <h3 style="font-size: 1.5rem; color: var(--neon-pink); margin-bottom: 0.75rem;">Gamer</h3>
+            <p style="color: rgba(255,255,255,0.7);">ARK, Diablo, Enshrouded, Soulmask</p>
+          </div>
+        </div>
+        
+        <p style="font-size: 1.2rem; line-height: 1.9; color: rgba(255,255,255,0.7); margin-top: 3rem;">
+          Code & Beats ist mein digitales Zuhause – wo Technologie auf Kreativität trifft! 🚀
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="mega-section">
+    <div class="container">
+      <h2 class="section-title-mega">📧 KONTAKT</h2>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="power-card" style="cursor: default;">
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">💬</div>
+            <p style="font-size: 1.3rem; color: rgba(255,255,255,0.8);">
+              Fragen? Feedback? Lass uns reden!
+            </p>
+          </div>
+
+          <form id="contactForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <input id="name" type="text" placeholder="Name" required style="padding: 1rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(6,255,240,0.3); border-radius: 12px; color: #fff; font-size: 1.05rem; transition: all 0.3s;">
+            
+            <input id="email" type="email" placeholder="E-Mail" required style="padding: 1rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(6,255,240,0.3); border-radius: 12px; color: #fff; font-size: 1.05rem; transition: all 0.3s;">
+            
+            <textarea id="msg" placeholder="Nachricht" rows="6" required style="padding: 1rem 1.5rem; background: rgba(11,15,22,0.8); border: 2px solid rgba(6,255,240,0.3); border-radius: 12px; color: #fff; font-size: 1.05rem; resize: vertical; font-family: inherit; transition: all 0.3s;"></textarea>
+
+            <button type="submit" class="mega-cta mega-cta-primary" style="width: 100%;">
+              NACHRICHT SENDEN 🚀
+            </button>
+            
+            <p id="formHint" style="text-align: center; color: var(--neon-green); font-weight: 600;"></p>
+          </form>
+
+          <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(6,255,240,0.2);">
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">Oder direkt:</p>
+            <a href="mailto:support@mcgv.de" style="color: var(--neon-cyan); text-decoration: none; font-size: 1.2rem; font-weight: 600;">
+              📧 support@mcgv.de
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position: relative; padding: 4rem 2rem 2rem; z-index: 10; border-top: 2px solid rgba(6,255,240,0.2);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+        
+        <div>
+          <h3 style="font-size: 2rem; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; font-weight: 900;">
+            CODE & BEATS
+          </h3>
+          <p style="color: rgba(255,255,255,0.6); line-height: 1.7;">
+            AI-Powered Future Portal für Code, Music & Gaming
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: var(--neon-cyan); margin-bottom: 1rem; font-size: 1.2rem;">Quick Links</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="scripts/index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">⚡ PowerShell Scripts</a>
+            <a href="blog/index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">📝 Blog</a>
+            <a href="Musik/index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">🎵 Musik</a>
+            <a href="ai-code-generator.html" style="color: var(--neon-pink); text-decoration: none; transition: all 0.3s; font-weight: 600;">🤖 AI Generator</a>
+            <a href="dashboard.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">📊 Dashboard</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: var(--neon-violet); margin-bottom: 1rem; font-size: 1.2rem;">Rechtliches</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="impressum.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Impressum</a>
+            <a href="datenschutz.html" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(6,255,240,0.1);">
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.95rem;">
+          &copy; 2025 Code & Beats · Michael Ostermann · Crafted with 🤖 AI & 💜 Love
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Matrix Rain Script -->
+  <script>
+    const canvas = document.getElementById('matrixBg');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const chars = '01アイウエオカキクケコ10@#$%&*';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1).map(() => Math.random() * -100);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(10, 14, 26, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const color = ['#06FFF0', '#8B5CF6', '#FF1493', '#00FF88'][Math.floor(i / (columns / 4)) % 4];
+        
+        ctx.fillStyle = color;
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 50);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+  <!-- Chatbot -->
+  <div id="chatbot-toggle" class="chatbot-toggle" aria-label="Chat öffnen" role="button" tabindex="0">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H6L4 18V4H20V16Z" fill="white"/>
+      <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z" fill="white"/>
+    </svg>
+  </div>
+  <div id="chatbot-container" class="chatbot-container hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <div class="chatbot-header-content">
+        <div class="chatbot-avatar">🎵</div>
+        <div class="chatbot-title">
+          <h3>Code & Beats AI Assistant</h3>
+          <span class="status-indicator">Online</span>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Chat schließen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="message bot-message">
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <p>Hey! 👋 Willkommen im AI-Powered Future Portal! Ich bin dein intelligenter Guide. Was interessiert dich?</p>
+        </div>
+      </div>
+    </div>
+    <div id="quick-replies" class="quick-replies">
+      <button class="quick-reply" data-message="PowerShell Scripts">⚡ Scripts</button>
+      <button class="quick-reply" data-message="Blog">📝 Blog</button>
+      <button class="quick-reply" data-message="Musik">🎵 Musik</button>
+      <button class="quick-reply" data-message="Gaming">🎮 Gaming</button>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Deine Frage..." autocomplete="off" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Senden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Load Blog Posts dynamically -->
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/blog-renderer.js"></script>
+  <script src="assets/js/blog-cards.js"></script>
+  <script src="assets/js/reveal.js"></script>
+  <script src="assets/chatbot/mcgv-chatbot-script.js"></script>
+  <script src="assets/js/ai-assistant.js"></script>
+
+  <style>
+    /* Input Focus Effects */
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--neon-cyan) !important;
+      box-shadow: 0 0 20px rgba(6,255,240,0.3) !important;
+    }
+
+    /* Audio Player Styling */
+    audio {
+      filter: saturate(0) brightness(1.2);
+      transition: all 0.3s;
+    }
+
+    audio:hover {
+      filter: saturate(1) brightness(1);
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Blog Cards in Power Grid */
+    .power-grid .blog-card {
+      background: rgba(11,15,22,0.7);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(139,92,246,0.3);
+      border-radius: 24px;
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+
+    .power-grid .blog-card:hover {
+      transform: translateY(-15px);
+      border-color: rgba(139,92,246,0.8);
+      box-shadow: 0 30px 80px rgba(139,92,246,0.4);
+    }
+
+    .power-grid .blog-card .card__media {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,255,240,0.2));
+    }
+
+    .power-grid .blog-card .card__body {
+      padding: 2rem;
+    }
+
+    .power-grid .blog-card .card__title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 1rem;
+    }
+
+    .power-grid .blog-card .card__text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .power-grid .blog-card .meta {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .power-grid .blog-card .badge {
+      background: rgba(139,92,246,0.2);
+      border: 1px solid rgba(139,92,246,0.4);
+      color: var(--neon-violet);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+  </style>
+
+</body>
+</html>
+

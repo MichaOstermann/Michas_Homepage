@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diablo IV – Meine Abenteuer in Sanktuario</title>
+  <meta name="description" content="Meine persönliche Diablo IV Seite mit Builds, Guides und Erfahrungen aus Sanktuario." />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  
+  <style>
+    :root {
+      --diablo-red: #C80000;
+      --diablo-dark-red: #8B0000;
+      --diablo-blood: #FF4444;
+      --diablo-gold: #D4AF37;
+    }
+    
+    body {
+      background: #0A0A0A;
+      color: #E0E0E0;
+    }
+    
+    /* Hero Section - Diablo Style */
+    .diablo-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(10, 0, 0, 0.9) 0%, rgba(20, 0, 0, 0.7) 100%),
+                  url('https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltf9ef4fee9c77a1b5/66df937c97d7ebef3679492b/d4-npe_story-launch-trailer_agnostic_960.webp') center/cover;
+      overflow: hidden;
+    }
+    
+    .diablo-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="1" /><feColorMatrix values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.1 0"/></filter><rect width="100" height="100" filter="url(%23n)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .diablo-hero__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+    
+    .diablo-logo {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--diablo-blood);
+      text-shadow: 
+        0 0 20px rgba(200, 0, 0, 0.8),
+        0 0 40px rgba(200, 0, 0, 0.6),
+        0 0 60px rgba(200, 0, 0, 0.4),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+    }
+    
+    .diablo-subtitle {
+      font-size: 1.5rem;
+      color: var(--diablo-gold);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Class Icons */
+    .class-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .class-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(200, 0, 0, 0.2);
+      border: 3px solid var(--diablo-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .class-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(200, 0, 0, 0.8);
+      border-color: var(--diablo-blood);
+    }
+    
+    .class-icon::after {
+      content: attr(data-class);
+      position: absolute;
+      bottom: -25px;
+      font-size: 0.75rem;
+      color: var(--diablo-gold);
+      white-space: nowrap;
+    }
+    
+    /* Content Sections */
+    .diablo-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(200, 0, 0, 0.2);
+    }
+    
+    .diablo-section__title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--diablo-blood);
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 20px rgba(200, 0, 0, 0.6);
+    }
+    
+    .diablo-card {
+      background: linear-gradient(135deg, rgba(20, 0, 0, 0.6) 0%, rgba(40, 0, 0, 0.3) 100%);
+      border: 2px solid rgba(200, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .diablo-card:hover {
+      border-color: var(--diablo-blood);
+      box-shadow: 0 10px 40px rgba(200, 0, 0, 0.3);
+      transform: translateY(-4px);
+    }
+    
+    .diablo-card__title {
+      font-size: 1.8rem;
+      color: var(--diablo-gold);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .diablo-card__text {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .diablo-badge {
+      display: inline-block;
+      background: rgba(200, 0, 0, 0.3);
+      color: var(--diablo-blood);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(200, 0, 0, 0.5);
+      margin-right: 0.5rem;
+    }
+    
+    /* Grid Layout */
+    .diablo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(200, 0, 0, 0.3);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--diablo-red);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      background: var(--diablo-red);
+      box-shadow: 0 0 20px rgba(200, 0, 0, 0.6);
+    }
+    
+    @media (max-width: 768px) {
+      .diablo-logo { font-size: 2.5rem; }
+      .diablo-subtitle { font-size: 1.2rem; }
+      .class-icons { gap: 1rem; }
+      .class-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+      .diablo-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation" style="background: rgba(10, 0, 0, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite" style="color: var(--diablo-gold); text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten" style="display: none; background: none; border: none; cursor: pointer;">
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--diablo-gold); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--diablo-gold); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--diablo-gold); margin: 5px 0; transition: 0.3s;"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../templates/index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming" style="color: var(--diablo-blood); text-decoration: none; font-weight: bold; transition: color 0.3s;">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <a href="../index.html#gaming" class="back-btn" style="display: inline-block; margin: 1rem 2rem; color: var(--diablo-gold); text-decoration: none; font-weight: bold;">← Zurück zu Gaming</a>
+  
+  <script>
+    // Mobile Menu Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
+  
+  <!-- Hero Section -->
+  <section class="diablo-hero">
+    <div class="diablo-hero__content">
+      <div class="diablo-logo">DIABLO IV</div>
+      <div class="diablo-subtitle">Meine Abenteuer in Sanktuario</div>
+      <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto 2rem;">
+        Willkommen in der Hölle. Hier teile ich meine Erfahrungen, Builds und Strategien aus den dunklen Landen von Sanktuario.
+      </p>
+      
+      <!-- Class Icons -->
+      <div class="class-icons">
+        <div class="class-icon" data-class="Barbar">⚔️</div>
+        <div class="class-icon" data-class="Druide">🐺</div>
+        <div class="class-icon" data-class="Totenbeschwörer">💀</div>
+        <div class="class-icon" data-class="Jäger">🗡️</div>
+        <div class="class-icon" data-class="Zauberer">🔮</div>
+        <div class="class-icon" data-class="Geistgeborener">🦅</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Diablo IV -->
+  <section class="diablo-section">
+    <div class="container">
+      <h2 class="diablo-section__title">Was ist Diablo IV?</h2>
+      <div class="diablo-card">
+        <p class="diablo-card__text">
+          Diablo IV ist das neueste Kapitel der legendären Action-RPG-Reihe von Blizzard Entertainment. 
+          In diesem düsteren Fantasy-Epos bahnt ihr euch euren Weg durch die verderbten Lande von Sanktuario, 
+          die von Dämonen, Untoten und den Mächten der Hölle bedroht werden.
+        </p>
+        <p class="diablo-card__text">
+          Mit einer riesigen offenen Welt, tiefgehender Charakterentwicklung und endlosem Loot bietet 
+          Diablo IV hunderte Stunden packenden Spielspaß – solo oder im Koop mit Freunden.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <span class="diablo-badge">ACTION-RPG</span>
+          <span class="diablo-badge">OPEN WORLD</span>
+          <span class="diablo-badge">MULTIPLAYER</span>
+          <span class="diablo-badge">ENDGAME</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- My Builds Section -->
+  <section id="builds" class="diablo-section" style="background: linear-gradient(180deg, rgba(10, 0, 0, 0.3) 0%, rgba(10, 10, 10, 0) 100%);">
+    <div class="container">
+      <h2 class="diablo-section__title">Meine Builds & Strategien</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Hier findest du meine persönlichen Charakter-Builds, die ich in Sanktuario perfektioniert habe.
+      </p>
+      
+      <div class="diablo-grid">
+        <!-- Build 1 -->
+        <div class="diablo-card">
+          <div class="diablo-card__title">🔥 Feuer-Zauberer Build</div>
+          <p class="diablo-card__text">
+            <strong>Fokus:</strong> Maximaler AoE-Schaden mit Meteor und Feuerball<br>
+            <strong>Stufe:</strong> 85 | <strong>Tier:</strong> S-Tier<br>
+            <strong>Ideal für:</strong> Höllenhorden, Speed-Farming
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="diablo-badge">META</span>
+            <span class="diablo-badge">AoE</span>
+          </div>
+        </div>
+        
+        <!-- Build 2 -->
+        <div class="diablo-card">
+          <div class="diablo-card__title">💀 Blut-Totenbeschwörer</div>
+          <p class="diablo-card__text">
+            <strong>Fokus:</strong> Tanky Minion-Army mit Blutmagie<br>
+            <strong>Stufe:</strong> 92 | <strong>Tier:</strong> A-Tier<br>
+            <strong>Ideal für:</strong> Solo-Bossruns, Hardcore
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="diablo-badge">MINIONS</span>
+            <span class="diablo-badge">TANK</span>
+          </div>
+        </div>
+        
+        <!-- Build 3 -->
+        <div class="diablo-card">
+          <div class="diablo-card__title">⚡ Blitz-Druide</div>
+          <p class="diablo-card__text">
+            <strong>Fokus:</strong> Schnelle Werwolf-Form mit Elementarschaden<br>
+            <strong>Stufe:</strong> 78 | <strong>Tier:</strong> A-Tier<br>
+            <strong>Ideal für:</strong> PvP, Speedruns
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="diablo-badge">SPEED</span>
+            <span class="diablo-badge">PvP</span>
+          </div>
+        </div>
+        
+        <!-- Placeholder for more builds -->
+        <div class="diablo-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px; opacity: 0.5;">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
+            <div style="color: var(--diablo-gold); font-weight: 600;">Weitere Builds folgen...</div>
+            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">Aktuell in Arbeit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Season Progress Section -->
+  <section class="diablo-section" style="background: linear-gradient(180deg, rgba(20, 0, 0, 0.2) 0%, rgba(10, 10, 10, 0) 100%);">
+    <div class="container">
+      <h2 class="diablo-section__title">🏆 Season 10 Progress</h2>
+      <div class="diablo-card" style="background: linear-gradient(135deg, rgba(40, 0, 0, 0.8) 0%, rgba(20, 0, 0, 0.5) 100%);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+          <div>
+            <div style="font-size: 2.5rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">Level 232</div>
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Season Main</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Dilar (Necromancer)</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">Level 297</div>
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Eternal Main</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Dial (Necromancer)</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">14</div>
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Charaktere Total</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">6x Necro · 4x Spirit · 3x Barb · 2x Druid</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">💀</div>
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Lieblingsklasse</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Totenbeschwörer seit Launch</div>
+          </div>
+        </div>
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(200, 0, 0, 0.3);">
+          <h3 style="color: var(--diablo-gold); font-size: 1.2rem; margin-bottom: 1rem; text-align: center;">🧟 Meine Necromancer Army</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; text-align: center;">
+            <a href="diablo/dilar.html" style="text-decoration: none; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(200, 0, 0, 0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--diablo-blood)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(200, 0, 0, 0.2)'; this.style.transform='translateY(0)'">
+              <div style="color: var(--diablo-blood); font-weight: 700;">Dilar</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Level 232 · Season</div>
+            </a>
+            <a href="diablo/dial.html" style="text-decoration: none; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(200, 0, 0, 0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--diablo-blood)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(200, 0, 0, 0.2)'; this.style.transform='translateY(0)'">
+              <div style="color: var(--diablo-blood); font-weight: 700;">Dial</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Level 297 · Eternal</div>
+            </a>
+            <a href="diablo/goor.html" style="text-decoration: none; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(200, 0, 0, 0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--diablo-blood)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(200, 0, 0, 0.2)'; this.style.transform='translateY(0)'">
+              <div style="color: var(--diablo-blood); font-weight: 700;">Goor</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Level 297 · Eternal</div>
+            </a>
+            <a href="diablo/liliths.html" style="text-decoration: none; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(200, 0, 0, 0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--diablo-blood)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(200, 0, 0, 0.2)'; this.style.transform='translateY(0)'">
+              <div style="color: var(--diablo-blood); font-weight: 700;">Liliths</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Level 297 · Eternal</div>
+            </a>
+            <a href="diablo/micharius.html" style="text-decoration: none; background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(200, 0, 0, 0.2); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--diablo-blood)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(200, 0, 0, 0.2)'; this.style.transform='translateY(0)'">
+              <div style="color: var(--diablo-blood); font-weight: 700;">Micharius</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Level 297 · Eternal</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legendary Items Showcase -->
+  <section class="diablo-section">
+    <div class="container">
+      <h2 class="diablo-section__title">⚜️ Legendäre Items & Drops</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Meine besten Funde und wertvollsten Items aus Sanktuario
+      </p>
+      
+      <div class="diablo-grid">
+        <div class="diablo-card">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 3rem;">🗡️</div>
+            <div>
+              <div class="diablo-card__title" style="margin: 0; font-size: 1.5rem;">Harlequin Crest</div>
+              <div style="color: #FFA500; font-weight: 600; font-size: 0.9rem;">Unique (Ultra Rare)</div>
+            </div>
+          </div>
+          <p class="diablo-card__text">
+            Der legendäre <strong>Shako</strong>! Nach 320+ Stunden endlich gefunden. 
+            Perfekt für meinen Necro-Build mit +4 zu allen Skills und massivem Leben-Boost.
+          </p>
+          <span class="diablo-badge">ULTRA RARE</span>
+          <span class="diablo-badge">BiS</span>
+        </div>
+
+        <div class="diablo-card">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 3rem;">💍</div>
+            <div>
+              <div class="diablo-card__title" style="margin: 0; font-size: 1.5rem;">Ring der Sternenlosen Himmel</div>
+              <div style="color: #FFA500; font-weight: 600; font-size: 0.9rem;">Unique</div>
+            </div>
+          </div>
+          <p class="diablo-card__text">
+            Perfekter Roll mit 5x Greater Affix! Core-Skill-Kosten -50% macht meinen 
+            Blood Lance Build absolut overpowered im Endgame.
+          </p>
+          <span class="diablo-badge">PERFECT ROLL</span>
+          <span class="diablo-badge">5x GA</span>
+        </div>
+
+        <div class="diablo-card">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <div style="font-size: 3rem;">🛡️</div>
+            <div>
+              <div class="diablo-card__title" style="margin: 0; font-size: 1.5rem;">Fists of Fate</div>
+              <div style="color: #FFA500; font-weight: 600; font-size: 0.9rem;">Unique</div>
+            </div>
+          </div>
+          <p class="diablo-card__text">
+            Mit Lucky Hit Chance und explosivem Schaden perfekt für meine 
+            AoE-Builds. Drop aus Tier 90 Nightmare Dungeon.
+          </p>
+          <span class="diablo-badge">HIGH ROLL</span>
+          <span class="diablo-badge">AoE</span>
+        </div>
+
+        <div class="diablo-card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(40, 0, 0, 0.3) 100%); border-color: var(--diablo-gold);">
+          <div style="text-align: center; padding: 1rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎲</div>
+            <div style="color: var(--diablo-gold); font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem;">Die Jagd geht weiter...</div>
+            <p style="color: rgba(255,255,255,0.7); margin: 0;">Noch auf der Suche nach: Melted Heart of Selig, Tyrael's Might</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Boss Strategies -->
+  <section class="diablo-section" style="background: linear-gradient(180deg, rgba(20, 0, 0, 0.2) 0%, rgba(10, 10, 10, 0) 100%);">
+    <div class="container">
+      <h2 class="diablo-section__title">👹 Boss-Strategien & Guides</h2>
+      
+      <div class="diablo-grid">
+        <div class="diablo-card">
+          <div class="diablo-card__title">🔥 Lilith (Echo der Hass)</div>
+          <p class="diablo-card__text">
+            <strong>Schwierigkeit:</strong> ⭐⭐⭐⭐⭐<br>
+            <strong>Beste Strategie:</strong> Halte Distanz in Phase 2, dodge die Blood Waves nach außen. 
+            Cooldowns für Phase 3 aufsparen. Minion-Builds dominieren hier!
+          </p>
+          <div style="background: rgba(200, 0, 0, 0.2); padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 3px solid var(--diablo-blood);">
+            <strong style="color: var(--diablo-gold);">💡 Pro-Tipp:</strong> 
+            <span style="color: rgba(255,255,255,0.85);"> Elixir of Resistance nutzen + Mind die Blood Pools am Boden</span>
+          </div>
+        </div>
+
+        <div class="diablo-card">
+          <div class="diablo-card__title">💀 Duriel (König der Schmerzen)</div>
+          <p class="diablo-card__text">
+            <strong>Schwierigkeit:</strong> ⭐⭐⭐⭐<br>
+            <strong>Beste Strategie:</strong> DPS-Check! Burst-Damage ist key. 
+            Dodge die Charge-Attacks und bleib in Bewegung. Tank-Builds glänzen hier.
+          </p>
+          <div style="background: rgba(200, 0, 0, 0.2); padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 3px solid var(--diablo-blood);">
+            <strong style="color: var(--diablo-gold);">💡 Pro-Tipp:</strong> 
+            <span style="color: rgba(255,255,255,0.85);"> Mucus-Patches nicht berühren = Instant Death in Tier 100+</span>
+          </div>
+        </div>
+
+        <div class="diablo-card">
+          <div class="diablo-card__title">⚡ Andariel (Die Jungfrau der Qual)</div>
+          <p class="diablo-card__text">
+            <strong>Schwierigkeit:</strong> ⭐⭐⭐<br>
+            <strong>Beste Strategie:</strong> Poison-Resistance ist Pflicht! 
+            Adds schnell clearen, dann Boss fokussieren. Gute Farm für Uniques.
+          </p>
+          <div style="background: rgba(200, 0, 0, 0.2); padding: 1rem; border-radius: 6px; margin-top: 1rem; border-left: 3px solid var(--diablo-blood);">
+            <strong style="color: var(--diablo-gold);">💡 Pro-Tipp:</strong> 
+            <span style="color: rgba(255,255,255,0.85);"> Bester Boss zum farmen - hohe Drop-Rate für Legendaries</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips & Tricks -->
+  <section class="diablo-section">
+    <div class="container">
+      <h2 class="diablo-section__title">💎 Pro-Tips & Tricks</h2>
+      
+      <div style="display: grid; gap: 1.5rem;">
+        <div class="diablo-card">
+          <div class="diablo-card__title">⚡ Schneller Leveln (1-100)</div>
+          <ul style="color: rgba(255,255,255,0.85); line-height: 2; margin-left: 1.5rem;">
+            <li><strong>Level 1-50:</strong> Kampagne durchspielen + Side Quests</li>
+            <li><strong>Level 50-70:</strong> Nightmare Dungeons (Tier 20-40) + Helltide Events</li>
+            <li><strong>Level 70-100:</strong> Speed-Farm Nightmare Sigils + Group-Play für Bonus-XP</li>
+            <li><strong>Pro-Tipp:</strong> Immer Elixire aktiv haben (+5% XP) und in Gruppen spielen (+10% XP)</li>
+          </ul>
+        </div>
+
+        <div class="diablo-card">
+          <div class="diablo-card__title">💰 Optimal Gold farmen</div>
+          <ul style="color: rgba(255,255,255,0.85); line-height: 2; margin-left: 1.5rem;">
+            <li>Helltide Chest-Runs (150+ Cinders pro Run)</li>
+            <li>Speed-Clear Nightmare Dungeons (Tier 60-80)</li>
+            <li>Whispering Tree Bounties (schnelle Gold-Belohnungen)</li>
+            <li>NICHT aufheben: Rares unter Item-Power 700 (Zeit-Verschwendung)</li>
+          </ul>
+        </div>
+
+        <div class="diablo-card">
+          <div class="diablo-card__title">🎯 Perfektes Item-Farming</div>
+          <ul style="color: rgba(255,255,255,0.85); line-height: 2; margin-left: 1.5rem;">
+            <li><strong>Uniques:</strong> Duriel, Andariel, Beast in Ice (hohe Drop-Rate)</li>
+            <li><strong>Legendaries:</strong> Nightmare Dungeons Tier 80+ oder Helltide Chests</li>
+            <li><strong>Uber Uniques:</strong> Duriel Uber-Version (braucht Summoning Materials)</li>
+            <li><strong>Mythics:</strong> Nur ab Tier 95+ Nightmare Dungeons oder Endgame-Bosse</li>
+          </ul>
+        </div>
+
+        <div class="diablo-card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(40, 0, 0, 0.3) 100%);">
+          <div class="diablo-card__title">🔥 Meta-Builds Season 7 (Top 3)</div>
+          <ol style="color: rgba(255,255,255,0.85); line-height: 2.2; margin-left: 1.5rem;">
+            <li><strong style="color: var(--diablo-gold);">Spiritborn - Centipede Build:</strong> Overpowered DPS, dominiert alle Tier-Listen</li>
+            <li><strong style="color: var(--diablo-gold);">Necromancer - Blood Surge:</strong> Tanky + hoher Schaden, perfekt für Solo-Play</li>
+            <li><strong style="color: var(--diablo-gold);">Barbarian - HotA Build:</strong> Crazy Single-Target, Boss-Melter</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Stats Section -->
+  <section class="diablo-section">
+    <div class="container">
+      <h2 class="diablo-section__title">📊 Meine Statistiken</h2>
+      <div class="diablo-grid">
+        <div class="diablo-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">14</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Charaktere Total</div>
+          <div style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 0.5rem;">2 Season · 12 Eternal</div>
+        </div>
+        <div class="diablo-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">6x 💀</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Necromancer Main</div>
+          <div style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 0.5rem;">Die Armee der Toten</div>
+        </div>
+        <div class="diablo-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">297</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Max Level (Eternal)</div>
+          <div style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 0.5rem;">10x Max-Level Chars</div>
+        </div>
+        <div class="diablo-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--diablo-blood); font-weight: 900; margin-bottom: 0.5rem;">232</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Season 10 Level</div>
+          <div style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 0.5rem;">Dilar & MrBlood</div>
+        </div>
+      </div>
+      
+      <!-- Charaktere Übersicht -->
+      <div style="margin-top: 3rem;">
+        <h3 style="color: var(--diablo-gold); font-size: 1.5rem; margin-bottom: 2rem; text-align: center;">🎮 Alle Charaktere im Überblick</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <!-- Necromancers -->
+          <div class="diablo-card" style="border-color: var(--diablo-blood);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+              <div style="font-size: 2rem;">💀</div>
+              <div>
+                <div style="color: var(--diablo-blood); font-weight: 700; font-size: 1.1rem;">Totenbeschwörer</div>
+                <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">6 Charaktere</div>
+              </div>
+            </div>
+            <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6;">
+              <strong>Season:</strong> Dilar (232)<br>
+              <strong>Eternal:</strong> Dial, Goor, Liliths, Micharius (alle 297)
+            </div>
+          </div>
+          
+          <!-- Spiritborn -->
+          <div class="diablo-card" style="border-color: rgba(138, 43, 226, 0.5);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+              <div style="font-size: 2rem;">🦅</div>
+              <div>
+                <div style="color: #BA55D3; font-weight: 700; font-size: 1.1rem;">Geistgeborener</div>
+                <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">4 Charaktere</div>
+              </div>
+            </div>
+            <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6;">
+              <strong>Season:</strong> MrBlood (232)<br>
+              <strong>Eternal:</strong> Carolin, Deathwish, Caro (alle 297)
+            </div>
+          </div>
+          
+          <!-- Barbarian -->
+          <div class="diablo-card" style="border-color: rgba(200, 0, 0, 0.5);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+              <div style="font-size: 2rem;">⚔️</div>
+              <div>
+                <div style="color: #FF6666; font-weight: 700; font-size: 1.1rem;">Barbar</div>
+                <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">3 Charaktere</div>
+              </div>
+            </div>
+            <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6;">
+              <strong>Eternal:</strong> Minarius, Kedara, Fosil (alle 297)
+            </div>
+          </div>
+          
+          <!-- Druid -->
+          <div class="diablo-card" style="border-color: rgba(0, 150, 0, 0.5);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+              <div style="font-size: 2rem;">🐺</div>
+              <div>
+                <div style="color: #32CD32; font-weight: 700; font-size: 1.1rem;">Druide</div>
+                <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">2 Charaktere</div>
+              </div>
+            </div>
+            <div style="color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6;">
+              <strong>Eternal:</strong> Druido, Dor (beide 297)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Video & Screenshots -->
+  <section class="diablo-section" style="background: linear-gradient(180deg, rgba(20, 0, 0, 0.2) 0%, rgba(10, 10, 10, 0) 100%);">
+    <div class="container">
+      <h2 class="diablo-section__title">🎬 Videos & Highlights</h2>
+      
+      <!-- Video Embed -->
+      <div style="margin-bottom: 3rem;">
+        <div class="diablo-card" style="padding: 0; overflow: hidden;">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+            <iframe 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+              src="https://www.youtube.com/embed/ARLdeuUjFy0" 
+              title="Diablo IV Gameplay" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div style="padding: 1.5rem; background: rgba(10, 0, 0, 0.8);">
+            <div style="color: var(--diablo-gold); font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem;">
+              Diablo IV - Season of the Malignant Trailer
+            </div>
+            <p style="color: rgba(255,255,255,0.7); margin: 0;">
+              Offizieller Trailer zur aktuellen Season. Die besten Features und was dich erwartet!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot Gallery -->
+      <h3 style="color: var(--diablo-gold); font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; text-align: center;">
+        📸 Epische Momente aus Sanktuario
+      </h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <!-- Screenshot 1 -->
+        <div class="diablo-card" style="padding: 0; overflow: hidden; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltf9ef4fee9c77a1b5/66df937c97d7ebef3679492b/d4-npe_story-launch-trailer_agnostic_960.webp" 
+               alt="Diablo IV Screenshot" 
+               style="width: 100%; height: 200px; object-fit: cover;" />
+          <div style="padding: 1rem; background: rgba(10, 0, 0, 0.9);">
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Lilith Final Boss Fight</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Epic Showdown in Tier 95</div>
+          </div>
+        </div>
+
+        <!-- Screenshot 2 -->
+        <div class="diablo-card" style="padding: 0; overflow: hidden; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt2b3a3a9e8f3d4d4d/64c8f8f8f8f8f8f8f8f8f8f8/d4-season-2-hero.jpg" 
+               alt="Legendary Drop" 
+               style="width: 100%; height: 200px; object-fit: cover; filter: brightness(0.8);" />
+          <div style="padding: 1rem; background: rgba(10, 0, 0, 0.9);">
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Shako Drop! 🎉</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Nach 320 Stunden finally!</div>
+          </div>
+        </div>
+
+        <!-- Screenshot 3 -->
+        <div class="diablo-card" style="padding: 0; overflow: hidden; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt3c3c3c3c3c3c3c3c/season-3-diablo.jpg" 
+               alt="Build Showcase" 
+               style="width: 100%; height: 200px; object-fit: cover; filter: brightness(0.8);" />
+          <div style="padding: 1rem; background: rgba(10, 0, 0, 0.9);">
+            <div style="color: var(--diablo-gold); font-weight: 600; font-size: 0.95rem;">Blood Necro Build</div>
+            <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Dominiert Tier 100+ Nightmare</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon Gallery -->
+      <div class="diablo-card" style="margin-top: 2rem; border-style: dashed; text-align: center; padding: 3rem;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+        <div style="color: var(--diablo-gold); font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem;">
+          Mehr Screenshots kommen bald!
+        </div>
+        <p style="color: rgba(255,255,255,0.6); margin: 0;">
+          Aktuell sammle ich die besten Momente aus meinen Gaming-Sessions
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="diablo-section" style="border-bottom: none;">
+    <div class="container">
+      <h2 class="diablo-section__title">🔥 Gemeinsam durch die Hölle</h2>
+      <div class="diablo-card" style="text-align: center; background: linear-gradient(135deg, rgba(40, 0, 0, 0.8) 0%, rgba(20, 0, 0, 0.5) 100%);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">⚔️ 👥 🎮</div>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: rgba(255,255,255,0.9);">
+          Du spielst auch Diablo IV? Lass uns zusammen durch Sanktuario ziehen!
+        </p>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Ob Nightmare Dungeons, Helltide-Events oder Boss-Runs – gemeinsam macht's mehr Spaß! 
+          Füge mich auf Battle.net hinzu oder komm auf unseren Discord-Server.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="../#contact" class="btn" style="background: var(--diablo-red); color: white; padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 15px rgba(200, 0, 0, 0.4);">
+            📧 Battle.net ID anfragen
+          </a>
+          <a href="../#contact" class="btn" style="background: rgba(200, 0, 0, 0.2); color: white; padding: 1rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; border: 2px solid var(--diablo-red); transition: all 0.3s;">
+            💬 Kontakt aufnehmen
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+        <div style="text-align: center; padding: 1.5rem; background: rgba(20, 0, 0, 0.3); border-radius: 8px; border: 1px solid rgba(200, 0, 0, 0.2);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💀</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Main: Dilar (Season)</div>
+          <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Necromancer Level 232</div>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; background: rgba(20, 0, 0, 0.3); border-radius: 8px; border: 1px solid rgba(200, 0, 0, 0.2);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏰</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Meist online</div>
+          <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Abends 19:00 - 23:00</div>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; background: rgba(20, 0, 0, 0.3); border-radius: 8px; border: 1px solid rgba(200, 0, 0, 0.2);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Server: EU</div>
+          <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Softcore & Hardcore</div>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; background: rgba(20, 0, 0, 0.3); border-radius: 8px; border: 1px solid rgba(200, 0, 0, 0.2);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎙️</div>
+          <div style="color: var(--diablo-gold); font-weight: 600;">Voice-Chat</div>
+          <div style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.3rem;">Discord bevorzugt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer site-footer" role="contentinfo" style="background: rgba(10, 0, 0, 0.95); border-top: 2px solid var(--diablo-red); padding: 3rem 2rem 2rem;">
+    <div class="container footer__top" style="max-width: 1200px; margin: 0 auto;">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">PowerShell</a>
+        <a class="nav__link nav-link" href="../templates/index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Templates</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: var(--diablo-blood); text-decoration: none; transition: all 0.3s;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(200, 0, 0, 0.3);">
+      <small style="color: rgba(255, 255, 255, 0.6); display: block; margin-bottom: 1rem;">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Datenschutz</a></small>
+      <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">
+        <p>Diablo® IV ist eine eingetragene Marke von Blizzard Entertainment, Inc.</p>
+        <p style="margin-top: 0.5rem;">Diese Seite ist ein Fan-Projekt und nicht offiziell mit Blizzard verbunden.</p>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>

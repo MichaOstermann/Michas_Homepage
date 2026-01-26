@@ -1,0 +1,415 @@
+/* Werder Bremen - Inline CMS Styles */
+
+/* ===== CMS LOGIN TRIGGER BUTTON ===== */
+.cms-login-trigger {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--werder-gruen) 0%, var(--werder-hell) 100%);
+    color: var(--werder-weiss);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 9998;
+    box-shadow: 0 10px 40px rgba(29, 154, 80, 0.5);
+    transition: all 0.3s ease;
+}
+
+.cms-login-trigger:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(29, 154, 80, 0.7);
+}
+
+/* ===== CMS EDIT BUTTONS ===== */
+.cms-edit-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--werder-gruen) 0%, var(--werder-hell) 100%);
+    color: var(--werder-weiss);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(29, 154, 80, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cms-edit-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(29, 154, 80, 0.6);
+}
+
+/* ===== CMS STATUS BAR ===== */
+#cms-status-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(29, 154, 80, 0.95) 0%, rgba(10, 77, 42, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
+    z-index: 9999;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.cms-status-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--werder-weiss);
+    font-weight: 600;
+}
+
+.cms-logout-btn {
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: var(--werder-weiss);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cms-logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* ===== CMS MODAL ===== */
+.cms-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+    padding: 2rem;
+}
+
+.cms-modal-content {
+    background: linear-gradient(135deg, rgba(11, 15, 22, 0.95) 0%, rgba(10, 77, 42, 0.95) 100%);
+    border: 2px solid rgba(29, 154, 80, 0.5);
+    border-radius: 20px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cms-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 2px solid rgba(29, 154, 80, 0.3);
+}
+
+.cms-modal-header h2 {
+    color: var(--werder-gruen);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.cms-close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--werder-weiss);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.cms-close-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.cms-modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.cms-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-top: 2px solid rgba(29, 154, 80, 0.3);
+}
+
+/* ===== CMS BUTTONS ===== */
+.cms-btn-cancel,
+.cms-btn-save,
+.cms-btn-add,
+.cms-btn-upload {
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.cms-btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--werder-weiss);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cms-btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.cms-btn-save {
+    background: linear-gradient(135deg, var(--werder-gruen) 0%, var(--werder-hell) 100%);
+    color: var(--werder-weiss);
+    box-shadow: 0 5px 20px rgba(29, 154, 80, 0.4);
+}
+
+.cms-btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(29, 154, 80, 0.6);
+}
+
+.cms-btn-add,
+.cms-btn-upload {
+    background: rgba(29, 154, 80, 0.2);
+    color: var(--werder-gruen);
+    border-color: var(--werder-gruen);
+    margin-bottom: 1.5rem;
+}
+
+.cms-btn-add:hover,
+.cms-btn-upload:hover {
+    background: rgba(29, 154, 80, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== EDITOR FORMS ===== */
+.cms-editor-form,
+.cms-editor-grid,
+.cms-editor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cms-editor-form label {
+    color: var(--werder-gruen);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cms-editor-form input,
+.cms-editor-form textarea,
+.cms-editor-list input,
+.cms-editor-list textarea {
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(29, 154, 80, 0.3);
+    border-radius: 10px;
+    color: var(--werder-weiss);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.cms-editor-form input:focus,
+.cms-editor-form textarea:focus,
+.cms-editor-list input:focus,
+.cms-editor-list textarea:focus {
+    outline: none;
+    border-color: var(--werder-gruen);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== LIST ITEMS ===== */
+.cms-stat-item,
+.cms-member-item,
+.cms-event-item,
+.cms-video-item,
+.cms-story-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(29, 154, 80, 0.05);
+    border: 2px solid rgba(29, 154, 80, 0.2);
+    border-radius: 12px;
+}
+
+.cms-stat-item input,
+.cms-member-item input,
+.cms-event-item input,
+.cms-video-item input,
+.cms-story-item input {
+    flex: 1;
+}
+
+.cms-stat-item button,
+.cms-member-item button,
+.cms-event-item button,
+.cms-video-item button,
+.cms-story-item button {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 8px;
+    color: var(--werder-weiss);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cms-stat-item button:hover,
+.cms-member-item button:hover,
+.cms-event-item button:hover,
+.cms-video-item button:hover,
+.cms-story-item button:hover {
+    background: rgba(255, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+/* ===== GALLERY EDITOR ===== */
+.cms-upload-area {
+    padding: 2rem;
+    background: rgba(29, 154, 80, 0.1);
+    border: 3px dashed rgba(29, 154, 80, 0.3);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.cms-upload-area input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+.cms-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.cms-gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cms-gallery-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===== LOGIN FORM ===== */
+.cms-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cms-form-group label {
+    color: var(--werder-gruen);
+    font-weight: 700;
+}
+
+.cms-form-group input {
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(29, 154, 80, 0.3);
+    border-radius: 10px;
+    color: var(--werder-weiss);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.cms-form-group input:focus {
+    outline: none;
+    border-color: var(--werder-gruen);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(29, 154, 80, 0.3);
+}
+
+.cms-login-error {
+    padding: 1rem;
+    background: rgba(255, 68, 68, 0.1);
+    border: 2px solid rgba(255, 68, 68, 0.3);
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .cms-edit-btn {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    #cms-status-bar {
+        padding: 0.6rem 1rem;
+    }
+    
+    .cms-modal {
+        padding: 1rem;
+    }
+    
+    .cms-modal-header,
+    .cms-modal-body,
+    .cms-modal-footer {
+        padding: 1.5rem;
+    }
+    
+    .cms-stat-item,
+    .cms-member-item,
+    .cms-event-item,
+    .cms-video-item,
+    .cms-story-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .cms-gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+

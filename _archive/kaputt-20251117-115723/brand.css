@@ -1,0 +1,98 @@
+/* ============================================
+   BRAND / LOGO - Navbar Styling
+   ============================================ */
+
+.brand.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0;
+}
+
+.brand-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 50%, #FF06F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: brand-gradient 4s ease infinite;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.brand.navbar-brand:hover .brand-text {
+  animation: brand-gradient 1.5s ease infinite;
+  transform: translateY(-1px);
+}
+
+.brand-amp {
+  color: #8B5CF6;
+  font-weight: 700;
+  margin: 0 0.15em;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.brand.navbar-brand:hover .brand-amp {
+  transform: rotate(5deg) scale(1.1);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+}
+
+.brand-dots {
+  color: rgba(6, 255, 240, 0.6);
+  font-weight: 300;
+  margin-left: -0.1em;
+  display: inline-block;
+  animation: dots-fade 2s ease-in-out infinite;
+}
+
+/* Animationen */
+@keyframes brand-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes dots-fade {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brand-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .brand-text,
+  .brand-amp,
+  .brand-dots {
+    animation: none !important;
+  }
+  
+  .brand.navbar-brand:hover .brand-text,
+  .brand.navbar-brand:hover .brand-amp {
+    transform: none !important;
+  }
+}

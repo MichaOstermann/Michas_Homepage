@@ -1,0 +1,80 @@
+/* ©2025 MICHAEL OSTERMANN - FAMILIE & BABY */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --baby-pink: #FFB6C1; --baby-blue: #89CFF0; --baby-yellow: #FFFACD; --warm-white: #FFF9F0; --soft-gray: #F5F5F5; --text-dark: #4A4A4A; --accent: #FF69B4; }
+body { font-family: 'Segoe UI', 'Comic Sans MS', Arial, sans-serif; background: var(--warm-white); color: var(--text-dark); line-height: 1.7; }
+#heartsCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.hero { min-height: 100vh; background: linear-gradient(135deg, var(--baby-pink), var(--baby-blue), var(--baby-yellow)); display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+.baby-icon { font-size: 6rem; margin-bottom: 1rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.hero-subtitle { font-size: 1.5rem; margin-bottom: 3rem; font-weight: 300; }
+.baby-info { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.info-item { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 1rem 2rem; border-radius: 20px; border: 2px solid rgba(255,255,255,0.3); }
+.info-item strong { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.editable { font-size: 1.2rem; font-weight: 700; }
+section { padding: 5rem 0; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--baby-pink), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-subtitle { text-align: center; font-size: 1.2rem; color: #999; margin-bottom: 3rem; }
+.story-section { background: white; }
+.story-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+.story-text { font-size: 1.1rem; line-height: 1.9; }
+.lead { font-size: 1.3rem; font-weight: 600; color: var(--accent); margin-bottom: 1.5rem; }
+.story-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+.milestones-section { background: var(--soft-gray); }
+.milestones-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.milestone-card { background: white; padding: 2rem; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.milestone-card:hover { transform: translateY(-10px); }
+.milestone-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.milestone-card h3 { color: var(--accent); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.milestone-date { color: var(--baby-blue); font-weight: 700; margin-bottom: 0.5rem; }
+.gallery-section { background: white; }
+.photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.gallery-item { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.3s; }
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 2rem 1rem 1rem; font-weight: 600; }
+.tips-section { background: var(--soft-gray); }
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.tip-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--baby-pink); }
+.tip-icon { font-size: 3rem; margin-bottom: 1rem; text-align: center; }
+.tip-card h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
+.tip-card ul { list-style: none; }
+.tip-card li { padding: 0.7rem 0; border-bottom: 1px solid #f0f0f0; }
+.tip-card li:last-child { border-bottom: none; }
+.tip-card li::before { content: '💝'; margin-right: 0.5rem; }
+.essentials-section { background: white; }
+.essentials-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.category { background: var(--soft-gray); padding: 2rem; border-radius: 20px; }
+.category h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
+.category ul { list-style: none; }
+.category li { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.category li::before { content: '✓'; color: var(--baby-blue); font-weight: 700; margin-right: 0.5rem; }
+.changes-section { background: linear-gradient(135deg, var(--baby-pink), var(--baby-blue)); padding: 5rem 0; }
+.changes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+.change-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.change-card h3 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
+.change-card.positive h3 { color: var(--accent); }
+.change-card.realistic h3 { color: var(--baby-blue); }
+.change-card ul { list-style: none; }
+.change-card li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; font-size: 1.05rem; }
+.quote-box { background: white; padding: 3rem; border-radius: 20px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.quote { font-size: 1.5rem; font-style: italic; color: var(--accent); margin-bottom: 1rem; line-height: 1.8; }
+.quote-author { font-weight: 700; color: #666; }
+.messages-section { background: var(--soft-gray); }
+.messages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+.message-card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid var(--baby-pink); }
+.message-card p { font-style: italic; margin-bottom: 1rem; line-height: 1.8; }
+.message-card strong { color: var(--accent); }
+.cta-section { background: white; text-align: center; }
+.cta-content h2 { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+.cta-content p { font-size: 1.2rem; color: #666; margin-bottom: 1rem; }
+.btn-primary { display: inline-block; background: linear-gradient(135deg, var(--baby-pink), var(--accent)); color: white; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin-top: 1rem; transition: all 0.3s; box-shadow: 0 10px 30px rgba(255,105,180,0.3); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,105,180,0.5); }
+.footer { background: linear-gradient(135deg, var(--baby-pink), var(--baby-blue)); color: white; padding: 3rem 0; text-align: center; }
+.footer-quote { font-size: 1.2rem; font-style: italic; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+.copyright { opacity: 0.8; }
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .story-content { grid-template-columns: 1fr; } .milestones-grid, .tips-grid, .photo-gallery, .essentials-categories, .changes-grid, .messages-grid { grid-template-columns: 1fr; } }
+
+
+

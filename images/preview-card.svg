@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title">
+  <title id="title">CodeBeats Studio – Vorschau</title>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1026"/>
+      <stop offset="1" stop-color="#191f44"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2de3d1"/>
+      <stop offset="1" stop-color="#5c5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#grad)"/>
+  <g transform="translate(120 120)">
+    <rect width="960" height="390" rx="28" fill="rgba(15,20,48,0.9)"/>
+    <text x="72" y="120" font-family="Segoe UI, sans-serif" font-size="68" font-weight="700" fill="#e8ecf8">CodeBeats Studio</text>
+    <text x="72" y="190" font-family="Segoe UI, sans-serif" font-size="28" fill="#b3bedf">Musikproduktion • Softwareentwicklung • Künstliche Intelligenz</text>
+    <text x="72" y="250" font-family="Segoe UI, sans-serif" font-size="22" fill="#7c86a6">
+      Wir komponieren Zukunftserlebnisse mit Klang, Code und Responsible AI.
+    </text>
+    <rect x="72" y="300" width="260" height="56" rx="18" fill="url(#pulse)"/>
+    <text x="110" y="338" font-family="Segoe UI, sans-serif" font-size="24" font-weight="600" fill="#0b1026">Portfolio entdecken</text>
+  </g>
+  <g transform="translate(740 240)">
+    <circle cx="150" cy="80" r="80" fill="rgba(92,92,255,0.35)"/>
+    <circle cx="190" cy="80" r="48" fill="#2de3d1" opacity="0.7"/>
+    <path d="M40 150c50-50 90-50 140 0s90 50 140 0" fill="none" stroke="url(#pulse)" stroke-width="16" stroke-linecap="round"/>
+  </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

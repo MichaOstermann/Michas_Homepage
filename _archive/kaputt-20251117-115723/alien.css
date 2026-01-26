@@ -1,0 +1,245 @@
+/* Neon Wireframe Alien – layout + animations */
+:root {
+  --alien-cyan: #06FFF0;
+  --alien-violet: #8B5CF6;
+}
+
+/* Hero grid helpers (non-invasive) */
+.hero.hero-section { position: relative; }
+
+/* keep grid for text column; alien itself will be absolutely positioned */
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px,3vw,48px); position: relative; }
+.hero__content { position: relative; z-index: 2; }
+
+/* Alien wrapper: sticky and layered between bg and text */
+.alien-wrap { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 500px; width: auto; z-index: 1; }
+.alien-wireframe { height: 100%; width: auto; pointer-events: auto; }
+.alien-svg { height: 100%; width: auto; display: block; overflow: visible; }
+
+/* SVG styling (v2 specs) */
+.alien-svg .wf-main { fill: none; stroke: var(--alien-cyan); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; filter: url(#neon-main) drop-shadow(0 0 6px rgba(6,255,240,.5)); stroke-dasharray: 900; stroke-dashoffset: 900; animation: alien-draw 2.5s ease-out forwards; }
+.alien-svg .wf-detail { fill: none; stroke: var(--alien-cyan); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; filter: url(#neon-main) drop-shadow(0 0 6px rgba(6,255,240,.35)); stroke-dasharray: 800; stroke-dashoffset: 800; animation: alien-draw 2.5s ease-out forwards; }
+.alien-svg .wf-accent { fill: none; stroke: var(--alien-violet); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; filter: url(#neon-accent) drop-shadow(0 0 10px rgba(139,92,246,.85)); stroke-dasharray: 850; stroke-dashoffset: 850; animation: alien-draw 2.5s ease-out forwards, alien-pulse 3s ease-in-out 2.5s infinite; }
+.alien-svg .wf-eye { fill: var(--alien-violet); filter: url(#neon-accent) drop-shadow(0 0 10px rgba(139,92,246,.9)); opacity: .95; transform: translate(0,0); transition: transform 80ms linear; }
+
+/* No global idle; only accents pulse */
+
+/* Hover: intensify glow */
+.alien-wireframe:hover .wf-line,
+.alien-wireframe.is-hover .wf-line { stroke-width: 2.6; filter: url(#neon) drop-shadow(0 0 10px rgba(6,255,240,0.75)); }
+.alien-wireframe:hover .wf-detail,
+.alien-wireframe.is-hover .wf-detail { stroke-width: 2; filter: url(#neon) drop-shadow(0 0 14px rgba(139,92,246,0.8)); }
+
+/* Fade-out state when next section enters */
+#alienWireframe.alien-fadeout { opacity: 0; transform: scale(0.98); transition: opacity 420ms ease, transform 420ms ease; }
+
+/* Animations */
+@keyframes alien-draw { to { stroke-dashoffset: 0; } }
+@keyframes alien-pulse { 0% { opacity: .7; } 50% { opacity: 1; } 100% { opacity: .7; } }
+
+/* Stagger: Schädel -> Kiefer -> Wirbelsäule -> Details */
+.g-skull .wf-main, .g-skull .wf-detail, .g-skull .wf-accent { animation-delay: 0s; }
+.g-jaw   .wf-main, .g-jaw   .wf-detail, .g-jaw   .wf-accent { animation-delay: .3s; }
+.g-spine .wf-main, .g-spine .wf-detail, .g-spine .wf-accent { animation-delay: .6s; }
+.g-details .wf-main,.g-details .wf-detail,.g-details .wf-accent { animation-delay: .9s; }
+
+/* Mobile layout: center above text, as background effect */
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .alien-wrap { position: absolute; top: 14vh; left: 50%; transform: translateX(-50%); height: 280px; opacity: 0.15; pointer-events: none; }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .alien-svg .wf-main,
+  .alien-svg .wf-detail,
+  .alien-svg .wf-accent { animation: none !important; stroke-dashoffset: 0; }
+}
+
+/* Hero Alien - Improved Version 2.0 (override additions) */
+.alien-wrap {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 500px;
+  width: auto;
+  z-index: 1; /* Hinter Text, über Background */
+  pointer-events: none;
+}
+
+/* Neue Detail-Gruppen (falls KI sie erstellt) */
+.wf-teeth {
+  stroke: #8B5CF6;
+  fill: #8B5CF6;
+  /* Use stronger accent glow available in SVG defs */
+  filter: url(#neon-accent-strong) drop-shadow(0 0 10px rgba(139, 92, 246, 0.8));
+}
+
+.wf-bolts {
+  fill: #8B5CF6;
+  opacity: 0.9;
+}
+
+.wf-hydraulic,
+.wf-hydraulics path {
+  stroke: #06FFF0;
+  stroke-width: 1;
+  opacity: 0.5;
+  stroke-dasharray: 3, 2;
+  fill: none;
+  animation: dash-flow 2.2s linear infinite;
+}
+
+.wf-panels {
+  stroke: #06FFF0;
+  stroke-width: 0.8;
+  opacity: 0.6;
+}
+
+.wf-rivets {
+  stroke: #06FFF0;
+  stroke-width: 0.8;
+  opacity: 0.7;
+}
+
+.alien-svg {
+  height: 100%;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(6, 255, 240, 0.3));
+}
+
+/* Animation: Draw-In */
+@keyframes alien-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Animation: Glow Pulse */
+@keyframes alien-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Hydraulics flow */
+@keyframes dash-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -20; }
+}
+
+/* Stroke-Gruppen */
+.wf-skull { 
+  animation: alien-draw 2.5s ease-out forwards;
+  animation-delay: 0s;
+}
+
+.wf-jaw { 
+  animation: alien-draw 2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.wf-spine { 
+  animation: alien-draw 2s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.wf-detail { 
+  animation: alien-draw 1.5s ease-out forwards,
+             alien-pulse 3s ease-in-out 2.5s infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .alien-wrap {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    height: 280px;
+    opacity: 0.15;
+    z-index: 0; /* Komplett im Hintergrund */
+  }
+}
+
+/* Reduced motion: stop hydraulics animation */
+@media (prefers-reduced-motion: reduce) {
+  .wf-hydraulics path { animation: none !important; }
+}
+
+/* MINI-ALIENS – Globale Styles */
+
+.mini-alien {
+  position: absolute;
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Music-Alien (rechts neben Titel) */
+.mini-alien--music {
+  right: -140px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 140px;
+}
+
+@media (max-width: 768px) {
+  .mini-alien--music {
+    display: none; /* Mobile ausblenden */
+  }
+}
+
+/* Ensure mini alien positions relative to section head */
+.section__head {
+  position: relative;
+}
+
+/* Sizing helpers for SVG inside mini alien */
+.mini-alien--music svg {
+  width: 120px;
+  height: 140px;
+  display: block;
+}
+
+/* Headphones gentle bobbing */
+@keyframes music-bob {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2deg); }
+}
+.music-headphones {
+  animation: music-bob 1.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+}
+
+/* Sound waves pulsing */
+@keyframes sound-pulse {
+  0%   { opacity: 0.3; transform: scale(1); }
+  50%  { opacity: 0.8; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+.wf-sound-waves g > path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.wf-sound-waves g > path:nth-child(1) {
+  animation: sound-pulse 1.2s infinite;
+  animation-delay: 0s;
+}
+.wf-sound-waves g > path:nth-child(2) {
+  animation: sound-pulse 1.2s infinite;
+  animation-delay: 0.2s;
+}
+.wf-sound-waves g > path:nth-child(3) {
+  animation: sound-pulse 1.2s infinite;
+  animation-delay: 0.4s;
+}
+
+/* Reduced motion: disable mini animations gracefully */
+@media (prefers-reduced-motion: reduce) {
+  .music-headphones,
+  .wf-sound-waves g > path {
+    animation: none !important;
+  }
+}

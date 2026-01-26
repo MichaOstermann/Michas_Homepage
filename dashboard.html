@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard – Code & Beats</title>
+  <meta name="description" content="Dein persönliches Dashboard mit Stats, Downloads und mehr" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/alien.css" />
+  <link rel="stylesheet" href="assets/css/enhancements.css" />
+  <link rel="stylesheet" href="assets/css/brand.css" />
+  <link rel="stylesheet" href="assets/css/nav-modern.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="index.html#hero" class="brand navbar-brand" aria-label="Startseite">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+        <span class="nav__bar" aria-hidden="true"></span>
+      </button>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#hero">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="templates/index.html">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="blog/index.html">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#about">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html#contact">Kontakt</a></li>
+      </ul>
+      <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+      <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+    </nav>
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+  
+  <script src="assets/js/app.js" defer></script>
+
+  <main style="padding-top: 8rem;">
+    <div class="container" style="max-width: 1200px;">
+      
+      <header style="text-align: center; margin-bottom: 4rem;">
+        <h1 class="section__title" style="background: linear-gradient(135deg, #06FFF0 0%, #8B5CF6 50%, #FF1493 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: clamp(2.5rem, 5vw, 4rem);">
+          📊 Dein Dashboard
+        </h1>
+        <p class="txt-dim" style="font-size: 1.1rem; margin-top: 1rem;">
+          Alle deine Aktivitäten auf einen Blick
+        </p>
+      </header>
+
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+        
+        <div style="background: linear-gradient(135deg, rgba(6,255,240,0.1) 0%, rgba(6,255,240,0.05) 100%); padding: 2rem; border-radius: 16px; border: 2px solid rgba(6,255,240,0.3); text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+          <div id="totalScripts" style="font-size: 3rem; font-weight: 900; color: #06FFF0; margin-bottom: 0.5rem;">6</div>
+          <div style="color: rgba(255,255,255,0.7);">PowerShell Scripts</div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(139,92,246,0.05) 100%); padding: 2rem; border-radius: 16px; border: 2px solid rgba(139,92,246,0.3); text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+          <div id="totalBlogs" style="font-size: 3rem; font-weight: 900; color: #8B5CF6; margin-bottom: 0.5rem;">8</div>
+          <div style="color: rgba(255,255,255,0.7);">Blog Posts</div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(255,20,147,0.1) 0%, rgba(255,20,147,0.05) 100%); padding: 2rem; border-radius: 16px; border: 2px solid rgba(255,20,147,0.3); text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🎵</div>
+          <div id="totalTracks" style="font-size: 3rem; font-weight: 900; color: #FF1493; margin-bottom: 0.5rem;">--</div>
+          <div style="color: rgba(255,255,255,0.7);">Music Tracks</div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%); padding: 2rem; border-radius: 16px; border: 2px solid rgba(0,255,136,0.3); text-align: center;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">⬇️</div>
+          <div id="totalDownloads" style="font-size: 3rem; font-weight: 900; color: #00FF88; margin-bottom: 0.5rem;">0</div>
+          <div style="color: rgba(255,255,255,0.7);">Total Downloads</div>
+        </div>
+
+      </div>
+
+      <!-- Recent Activity -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: #06FFF0;">🕐 Letzte Aktivität</h2>
+        <div id="recentActivity" style="background: rgba(11,15,22,0.8); border: 1px solid rgba(6,255,240,0.3); border-radius: 16px; padding: 2rem;">
+          <p class="txt-dim" style="text-align: center;">Lade Aktivitäten...</p>
+        </div>
+      </section>
+
+      <!-- Top Downloads -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: #8B5CF6;">🔥 Top Downloads</h2>
+        <div id="topDownloads" style="display: grid; gap: 1rem;">
+          <!-- Will be populated by JS -->
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section>
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: #FF1493;">🚀 Quick Actions</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          <a href="blog/index.html" class="btn" style="background: linear-gradient(135deg, rgba(6,255,240,0.2) 0%, rgba(6,255,240,0.1) 100%); border: 1px solid rgba(6,255,240,0.4); padding: 1.5rem; text-align: center; text-decoration: none;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
+            <div style="font-weight: 600;">Alle Blog Posts</div>
+          </a>
+          <a href="scripts/index.html" class="btn" style="background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(139,92,246,0.1) 100%); border: 1px solid rgba(139,92,246,0.4); padding: 1.5rem; text-align: center; text-decoration: none;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-weight: 600;">Alle Scripts</div>
+          </a>
+          <a href="index.html#music" class="btn" style="background: linear-gradient(135deg, rgba(255,20,147,0.2) 0%, rgba(255,20,147,0.1) 100%); border: 1px solid rgba(255,20,147,0.4); padding: 1.5rem; text-align: center; text-decoration: none;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎵</div>
+            <div style="font-weight: 600;">Musik</div>
+          </a>
+          <a href="index.html#gaming" class="btn" style="background: linear-gradient(135deg, rgba(0,255,136,0.2) 0%, rgba(0,255,136,0.1) 100%); border: 1px solid rgba(0,255,136,0.4); padding: 1.5rem; text-align: center; text-decoration: none;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎮</div>
+            <div style="font-weight: 600;">Gaming</div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer site-footer" role="contentinfo">
+    <div class="container footer__top">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <a class="nav__link nav-link" href="index.html#hero" style="color: rgba(255,255,255,0.7); text-decoration: none;">Home</a>
+        <a class="nav__link nav-link" href="index.html#music" style="color: rgba(255,255,255,0.7); text-decoration: none;">Music</a>
+        <a class="nav__link nav-link" href="index.html#powershell" style="color: rgba(255,255,255,0.7); text-decoration: none;">PowerShell</a>
+        <a class="nav__link nav-link" href="index.html#gaming" style="color: rgba(255,255,255,0.7); text-decoration: none;">Gaming</a>
+        <a class="nav__link nav-link" href="blog/index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Blog</a>
+        <a class="nav__link nav-link" href="index.html#about" style="color: rgba(255,255,255,0.7); text-decoration: none;">About</a>
+        <a class="nav__link nav-link" href="index.html#contact" style="color: rgba(255,255,255,0.7); text-decoration: none;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(6,255,240,0.2);">
+      <small style="color: rgba(255,255,255,0.6);">(C) 2025 by Michael Ostermann · <a href="impressum.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Impressum</a> · <a href="datenschutz.html" class="nav-link" style="color: rgba(255,255,255,0.7); text-decoration: none;">Datenschutz</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // Load stats
+    function loadStats() {
+      // Total Downloads
+      const downloads = JSON.parse(localStorage.getItem('codebeats_downloads') || '{}');
+      const totalDownloads = Object.values(downloads).reduce((a, b) => a + b, 0);
+      document.getElementById('totalDownloads').textContent = totalDownloads;
+
+      // Top Downloads
+      const topDownloads = Object.entries(downloads)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+
+      const topContainer = document.getElementById('topDownloads');
+      if (topDownloads.length === 0) {
+        topContainer.innerHTML = '<p class="txt-dim" style="text-align: center; padding: 2rem;">Noch keine Downloads</p>';
+      } else {
+        topContainer.innerHTML = topDownloads.map(([key, count], i) => {
+          const name = key.split('_').slice(1).join(' ');
+          const colors = ['#06FFF0', '#8B5CF6', '#FF1493', '#00FF88', '#FFC107'];
+          return `
+            <div style="background: rgba(11,15,22,0.8); border: 1px solid rgba(6,255,240,0.2); border-radius: 12px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="font-size: 2rem; color: ${colors[i]};">#${i + 1}</div>
+                <div>
+                  <div style="font-weight: 600; color: #FFF;">${name}</div>
+                  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">${key.includes('script') ? 'PowerShell Script' : 'Music Track'}</div>
+                </div>
+              </div>
+              <div style="font-size: 1.5rem; font-weight: 700; color: ${colors[i]};">${count}</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Recent Activity
+      const activity = [
+        { action: 'Blog Post erstellt', item: 'Blog-System Debugging', time: 'Vor 2 Stunden', icon: '📝', color: '#06FFF0' },
+        { action: 'Script veröffentlicht', item: 'Gaming PC Turbo Cleaner', time: 'Vor 3 Stunden', icon: '⚡', color: '#8B5CF6' },
+        { action: 'Script veröffentlicht', item: 'Outlook Spam Killer', time: 'Vor 3 Stunden', icon: '⚡', color: '#8B5CF6' },
+        { action: 'Script veröffentlicht', item: 'Security Deep Scanner', time: 'Vor 3 Stunden', icon: '⚡', color: '#8B5CF6' }
+      ];
+
+      document.getElementById('recentActivity').innerHTML = activity.map(act => `
+        <div style="display: flex; align-items: center; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid rgba(6,255,240,0.1);">
+          <div style="font-size: 2rem;">${act.icon}</div>
+          <div style="flex: 1;">
+            <div style="font-weight: 600; color: #FFF;">${act.item}</div>
+            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">${act.action}</div>
+          </div>
+          <div style="font-size: 0.85rem; color: ${act.color};">${act.time}</div>
+        </div>
+      `).join('');
+    }
+
+    loadStats();
+  </script>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
+
+

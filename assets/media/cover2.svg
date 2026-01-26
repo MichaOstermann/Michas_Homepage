@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-labelledby="title desc">
+  <title id="title">Neon Cover – Durchfahrt verboten</title>
+  <desc id="desc">Quadratisches Neon-Cover im Stil eines „Durchfahrt verboten“-Verkehrszeichens mit Glow in Cyan/Violett, passend zum Dark-Neon-Theme.</desc>
+  <defs>
+    <!-- Hintergrund -->
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0B0F16" />
+      <stop offset="60%" stop-color="#0A0E15" />
+      <stop offset="100%" stop-color="#04070C" />
+    </radialGradient>
+    <!-- Neon-Akzent (Cyan → Violett) für Rahmen/Details -->
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06FFF0" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+    <!-- Rot für das Schild -->
+    <linearGradient id="signRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF355E"/>
+      <stop offset="100%" stop-color="#E50914"/>
+    </linearGradient>
+    <!-- Glows -->
+    <filter id="glowSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="b2"/>
+      <feMerge>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Hintergrund -->
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+
+  <!-- Subtiles Neon-Gitter im Hintergrund -->
+  <g stroke="url(#accent)" stroke-opacity="0.06" stroke-width="2">
+    <path d="M0 680 L800 120" />
+    <path d="M0 720 L800 160" />
+    <path d="M0 760 L800 200" />
+    <path d="M120 800 L680 0" />
+    <path d="M160 800 L720 0" />
+  </g>
+
+  <!-- Cyan/Violett Akzent-Ring hinter dem Schild für Theme-Kohärenz -->
+  <circle cx="400" cy="400" r="290" fill="none" stroke="url(#accent)" stroke-width="10" opacity="0.9" filter="url(#glowStrong)"/>
+
+  <!-- Verkehrsschild: Durchfahrt verboten -->
+  <g transform="translate(0,0)">
+    <!-- Roter Kreis mit starkem Glow -->
+    <circle cx="400" cy="400" r="220" fill="url(#signRed)" filter="url(#glowStrong)" />
+    <!-- Dezente dunkle Innenkante für Tiefe -->
+    <circle cx="400" cy="400" r="220" fill="none" stroke="#2A0B0F" stroke-opacity="0.35" stroke-width="16" />
+    <!-- Weißer Querbalken mit sanftem Glow -->
+    <rect x="220" y="360" width="360" height="80" rx="14" fill="#FFFFFF" filter="url(#glowSoft)" />
+    <!-- Dünner Cyan/Violett-Edge um den Balken (neon flair) -->
+    <rect x="220" y="360" width="360" height="80" rx="14" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.6" />
+    <!-- Schriftzug VERBOTEN im Balken -->
+    <g font-family="'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif" text-anchor="middle" filter="url(#glowSoft)">
+      <text x="400" y="412" font-size="64" font-weight="800" fill="#0B0F16" fill-opacity="0.95" stroke="url(#accent)" stroke-width="1.5" paint-order="stroke">
+        VERBOTEN
+      </text>
+    </g>
+  </g>
+
+  <!-- Deko-Linien / Partikel für mehr Neon-Atmosphäre -->
+  <g stroke="url(#accent)" stroke-width="6" opacity="0.5" filter="url(#glowSoft)">
+    <line x1="160" y1="600" x2="340" y2="520" />
+    <line x1="460" y1="240" x2="620" y2="180" />
+  </g>
+  <g fill="#06FFF0" opacity="0.45">
+    <circle cx="120" cy="140" r="3"/>
+    <circle cx="680" cy="160" r="2.5"/>
+    <circle cx="700" cy="690" r="3"/>
+    <circle cx="140" cy="660" r="2.5"/>
+  </g>
+
+  <!-- Beschreibung und Artist unten -->
+  <g font-family="'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif" text-anchor="middle" fill="#AAB1C5" opacity="0.9">
+    <text x="400" y="700" font-size="20">Ballermann Hit über Micha den Barkeeper. Fetziger Mallorca Song mit Hitparaden Style.</text>
+    <text x="400" y="732" font-size="20">Artist: <tspan fill="#06FFF0">Michael Ostermann</tspan></text>
+  </g>
+</svg>

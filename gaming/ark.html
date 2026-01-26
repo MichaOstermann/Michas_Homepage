@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARK: Survival Evolved - Meine Reise | CodeBeats</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ark-green: #228B22;
+      --ark-forest: #006400;
+      --ark-lime: #32CD32;
+      --ark-jungle: #013220;
+      --bg-dark: #0a0a0f;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--ark-jungle) 100%);
+      color: white;
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(0, 100, 0, 0.3) 0%, rgba(10, 10, 15, 0.95) 100%);
+      border-bottom: 2px solid var(--ark-green);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(34,139,34,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero__logo {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, var(--ark-lime) 0%, var(--ark-green) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(34, 139, 34, 0.5);
+    }
+
+    .hero__subtitle {
+      font-size: 1.5rem;
+      color: var(--ark-lime);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
+    .hero__icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .hero__icon {
+      font-size: 3rem;
+      opacity: 0.8;
+      transition: all 0.3s;
+      filter: drop-shadow(0 0 10px rgba(34, 139, 34, 0.6));
+    }
+
+    .hero__icon:hover {
+      transform: scale(1.2) translateY(-5px);
+      opacity: 1;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 4rem;
+      background: rgba(0, 50, 0, 0.2);
+      border-radius: 12px;
+      padding: 3rem;
+      border: 1px solid rgba(34, 139, 34, 0.3);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .section__title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--ark-lime);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 3px solid var(--ark-green);
+      padding-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .section__subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    /* Game Description */
+    .game-description {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    .game-tags {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .game-tag {
+      background: rgba(34, 139, 34, 0.2);
+      color: var(--ark-lime);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      border: 1px solid rgba(34, 139, 34, 0.5);
+      font-size: 0.9rem;
+    }
+
+    /* Build Cards */
+    .builds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .build-card {
+      background: linear-gradient(135deg, rgba(0, 100, 0, 0.15) 0%, rgba(0, 50, 0, 0.25) 100%);
+      border: 2px solid rgba(34, 139, 34, 0.4);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .build-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(34, 139, 34, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .build-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--ark-lime);
+      box-shadow: 0 15px 40px rgba(34, 139, 34, 0.4);
+    }
+
+    .build-card:hover::before {
+      opacity: 1;
+    }
+
+    .build-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .build-card__title {
+      font-size: 1.8rem;
+      color: var(--ark-lime);
+      font-weight: 700;
+    }
+
+    .build-card__tier {
+      background: linear-gradient(135deg, var(--ark-green) 0%, var(--ark-forest) 100%);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+    }
+
+    .build-card__description {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .build-card__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .build-stat {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 139, 34, 0.3);
+    }
+
+    .build-stat__label {
+      font-size: 0.85rem;
+      color: var(--ark-lime);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .build-stat__value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Dino Cards */
+    .dinos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .dino-card {
+      background: linear-gradient(135deg, rgba(0, 100, 0, 0.15) 0%, rgba(0, 50, 0, 0.25) 100%);
+      border: 2px solid rgba(34, 139, 34, 0.4);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .dino-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--ark-lime);
+      box-shadow: 0 15px 40px rgba(34, 139, 34, 0.4);
+    }
+
+    .dino-card__icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 15px rgba(34, 139, 34, 0.6));
+    }
+
+    .dino-card__name {
+      font-size: 1.5rem;
+      color: var(--ark-lime);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .dino-card__level {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .dino-card__purpose {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, rgba(34, 139, 34, 0.2) 0%, rgba(0, 100, 0, 0.3) 100%);
+      border: 2px solid var(--ark-green);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(34, 139, 34, 0.4);
+      border-color: var(--ark-lime);
+    }
+
+    .stat-box__value {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--ark-lime);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(34, 139, 34, 0.6);
+    }
+
+    .stat-box__label {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Community Links */
+    .community-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .community-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, var(--ark-green) 0%, var(--ark-forest) 100%);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+    }
+
+    .community-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
+      border-color: var(--ark-lime);
+    }
+
+    .community-link__icon {
+      font-size: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero__logo {
+        font-size: 2.5rem;
+      }
+
+      .hero__subtitle {
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 2rem 1.5rem;
+      }
+
+      .section__title {
+        font-size: 2rem;
+      }
+
+      .builds-grid,
+      .dinos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(34, 139, 34, 0.9);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      z-index: 1000;
+      border: 2px solid var(--ark-lime);
+      backdrop-filter: blur(10px);
+    }
+
+    .back-btn:hover {
+      background: var(--ark-green);
+      transform: translateX(-5px);
+      box-shadow: 0 8px 25px rgba(34, 139, 34, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation" style="background: rgba(0, 50, 0, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite" style="color: var(--ark-lime); text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten" style="display: none; background: none; border: none; cursor: pointer;">
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--ark-lime); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--ark-lime); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--ark-lime); margin: 5px 0; transition: 0.3s;"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../templates/index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming" style="color: var(--ark-lime); text-decoration: none; font-weight: bold; transition: color 0.3s;">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <a href="../index.html#gaming" class="back-btn" style="display: inline-block; margin: 1rem 2rem; color: var(--ark-lime); text-decoration: none; font-weight: bold;">← Zurück zu Gaming</a>
+  
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero__content">
+      <div class="hero__logo">ARK: SURVIVAL EVOLVED</div>
+      <div class="hero__subtitle">Dinosaurier Survival Sandbox</div>
+      <div class="hero__icons">
+        <div class="hero__icon" title="T-Rex">🦖</div>
+        <div class="hero__icon" title="Raptor">🦅</div>
+        <div class="hero__icon" title="Pteranodon">🦇</div>
+        <div class="hero__icon" title="Brontosaurus">🦕</div>
+        <div class="hero__icon" title="Tribe">👥</div>
+        <div class="hero__icon" title="Base">🏰</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Game Description -->
+    <section class="section">
+      <h2 class="section__title">Was ist ARK?</h2>
+      <div class="game-description">
+        Als nackter, frierender und hungriger Mensch strandest du an den Ufern einer mysteriösen Insel namens ARK. Du musst jagen, Ressourcen sammeln, Items craften, Pflanzen anbauen, Technologien erforschen und Unterkünfte bauen, um den Elementen zu trotzen. Nutze deine List und Ressourcen, um die gewaltigen Dinosaurier und andere Urzeitkreaturen zu töten oder zu zähmen, und schließe dich mit oder jage hunderte andere Spieler, um zu überleben, zu dominieren... und zu entkommen!
+      </div>
+      <div class="game-tags">
+        <span class="game-tag">OPEN WORLD</span>
+        <span class="game-tag">SURVIVAL</span>
+        <span class="game-tag">CRAFTING</span>
+        <span class="game-tag">MULTIPLAYER</span>
+        <span class="game-tag">BASE BUILDING</span>
+        <span class="game-tag">DINOSAURS</span>
+        <span class="game-tag">TAMING</span>
+        <span class="game-tag">BREEDING</span>
+      </div>
+    </section>
+
+    <!-- Builds Section -->
+    <section class="section">
+      <h2 class="section__title">Meine Favoriten Builds</h2>
+      <p class="section__subtitle">Spezialisierte Charaktere für verschiedene Situationen</p>
+      
+      <div class="builds-grid">
+        <!-- Build 1 -->
+        <div class="build-card">
+          <div class="build-card__header">
+            <h3 class="build-card__title">Tamer Spezialist</h3>
+            <span class="build-card__tier">S-TIER</span>
+          </div>
+          <p class="build-card__description">
+            Maximale Effizienz beim Zähmen von Dinosauriern. Fokus auf Beweglichkeit, Ausdauer und schnelle Betäubungsmittel-Produktion. Perfekt für seltene Kreaturen wie Giganotosaurus und Quetzal.
+          </p>
+          <div class="build-card__stats">
+            <div class="build-stat">
+              <div class="build-stat__label">Hauptstat</div>
+              <div class="build-stat__value">Bewegung</div>
+            </div>
+            <div class="build-stat">
+              <div class="build-stat__label">Gezähmt</div>
+              <div class="build-stat__value">180+</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Build 2 -->
+        <div class="build-card">
+          <div class="build-card__header">
+            <h3 class="build-card__title">Base Builder</h3>
+            <span class="build-card__tier">A-TIER</span>
+          </div>
+          <p class="build-card__description">
+            Fokus auf Gewichtskapazität und Ausdauer für massives Ressourcensammeln. Ideal für große Bauprojekte, Farmen und fortgeschrittene Strukturen mit automatischen Systemen.
+          </p>
+          <div class="build-card__stats">
+            <div class="build-stat">
+              <div class="build-stat__label">Hauptstat</div>
+              <div class="build-stat__value">Gewicht</div>
+            </div>
+            <div class="build-stat">
+              <div class="build-stat__label">Basen</div>
+              <div class="build-stat__value">12</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Build 3 -->
+        <div class="build-card">
+          <div class="build-card__header">
+            <h3 class="build-card__title">PvP Warrior</h3>
+            <span class="build-card__tier">S-TIER</span>
+          </div>
+          <p class="build-card__description">
+            Optimiert für PvP-Kämpfe mit hoher Gesundheit, Ausdauer und Schaden. Spezialisiert auf Reiter-Kämpfe mit Raptoren, Rex und Wyverns. Perfekt für Raids und Verteidigung.
+          </p>
+          <div class="build-card__stats">
+            <div class="build-stat">
+              <div class="build-stat__label">Hauptstat</div>
+              <div class="build-stat__value">HP/Schaden</div>
+            </div>
+            <div class="build-stat">
+              <div class="build-stat__label">K/D Ratio</div>
+              <div class="build-stat__value">3.8</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dinos Section -->
+    <section class="section" id="dinos">
+      <h2 class="section__title">Meine Top Dinos</h2>
+      <p class="section__subtitle">Die stärksten Kreaturen in meiner Sammlung</p>
+      
+      <div class="dinos-grid">
+        <div class="dino-card">
+          <div class="dino-card__icon">🦖</div>
+          <h3 class="dino-card__name">Rex "Brutus"</h3>
+          <p class="dino-card__level">Level 380 • Gezüchtet</p>
+          <p class="dino-card__purpose">Boss-Kämpfe und schwere Raids. 50.000+ HP, 2.500% Schaden. Mutiert für Ausdauer und Geschwindigkeit.</p>
+        </div>
+
+        <div class="dino-card">
+          <div class="dino-card__icon">🦅</div>
+          <h3 class="dino-card__name">Argentavis "Sky"</h3>
+          <p class="dino-card__level">Level 320 • Gezüchtet</p>
+          <p class="dino-card__purpose">Haupt-Transportflyer für Ressourcen. 3.000 Gewichtskapazität. Perfekt für Metal-Runs und lange Strecken.</p>
+        </div>
+
+        <div class="dino-card">
+          <div class="dino-card__icon">🐉</div>
+          <h3 class="dino-card__name">Wyvern "Inferno"</h3>
+          <p class="dino-card__level">Level 290 • Feuer</p>
+          <p class="dino-card__purpose">PvP-Dominanz. Feuer-Atem mit enormer Reichweite. Unschlagbar in Luftkämpfen und Basis-Verteidigung.</p>
+        </div>
+
+        <div class="dino-card">
+          <div class="dino-card__icon">🦕</div>
+          <h3 class="dino-card__name">Brontosaurus "Tank"</h3>
+          <p class="dino-card__level">Level 250 • Gezüchtet</p>
+          <p class="dino-card__purpose">Berry-Farm und Basis-Verteidigung. Plattform-Sattel mit Geschütztürmen. Mobiler Stützpunkt.</p>
+        </div>
+
+        <div class="dino-card">
+          <div class="dino-card__icon">🦎</div>
+          <h3 class="dino-card__name">Raptor Pack</h3>
+          <p class="dino-card__level">6x Level 280+ • Alpha</p>
+          <p class="dino-card__purpose">Schnelle Raids und Jagd. Pack-Bonus für 50% mehr Schaden. Perfekt für Hit-and-Run Taktiken.</p>
+        </div>
+
+        <div class="dino-card">
+          <div class="dino-card__icon">🐢</div>
+          <h3 class="dino-card__name">Ankylosaurus "Miner"</h3>
+          <p class="dino-card__level">Level 340 • Gezüchtet</p>
+          <p class="dino-card__purpose">Metal und Flint Farming. Reduziert Gewicht von Erzen um 85%. Essentiell für fortgeschrittenes Crafting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+      <h2 class="section__title">Meine ARK Statistiken</h2>
+      <p class="section__subtitle">Über 1.200 Stunden Überlebenskampf</p>
+      
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box__value">1.200+</div>
+          <div class="stat-box__label">Spielstunden</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__value">180+</div>
+          <div class="stat-box__label">Gezähmte Dinos</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__value">12</div>
+          <div class="stat-box__label">Basen Gebaut</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__value">45+</div>
+          <div class="stat-box__label">Bosse Besiegt</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__value">Level 105</div>
+          <div class="stat-box__label">Max Character</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__value">8 Maps</div>
+          <div class="stat-box__label">Erkundet</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="section">
+      <h2 class="section__title">Community & Links</h2>
+      <p class="section__subtitle">Verbinde dich mit der ARK Community</p>
+      
+      <div class="community-links">
+        <a href="https://store.steampowered.com/app/346110/ARK_Survival_Evolved/" class="community-link" target="_blank">
+          <span class="community-link__icon">🎮</span>
+          <span>Steam Seite</span>
+        </a>
+        <a href="https://discord.gg/playark" class="community-link" target="_blank">
+          <span class="community-link__icon">💬</span>
+          <span>Offizieller Discord</span>
+        </a>
+        <a href="https://www.reddit.com/r/playark/" class="community-link" target="_blank">
+          <span class="community-link__icon">📱</span>
+          <span>ARK Subreddit</span>
+        </a>
+        <a href="https://ark.wiki.gg/" class="community-link" target="_blank">
+          <span class="community-link__icon">📚</span>
+          <span>ARK Wiki</span>
+        </a>
+      </div>
+    </section>
+  </div>
+  
+  <footer class="footer site-footer" role="contentinfo" style="background: rgba(0, 50, 0, 0.95); border-top: 2px solid var(--ark-green); padding: 3rem 2rem 2rem; margin-top: 4rem;">
+    <div class="container footer__top" style="max-width: 1200px; margin: 0 auto;">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: var(--ark-lime); text-decoration: none; transition: all 0.3s;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(34, 139, 34, 0.3);">
+      <small style="color: rgba(255, 255, 255, 0.6);">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Datenschutz</a></small>
+    </div>
+  </footer>
+</body>
+</html>

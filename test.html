@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Test - mcgv.de</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #0B0F16;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .status {
+            background: rgba(0,255,135,0.1);
+            border: 2px solid #00FF87;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            max-width: 600px;
+        }
+        h1 { color: #06FFF0; margin-bottom: 1rem; }
+        .success { color: #00FF87; }
+        .info { color: #06FFF0; margin-top: 1rem; }
+        a { color: #06FFF0; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>✅ Server funktioniert!</h1>
+    <div class="status">
+        <p class="success">✓ Wenn du das siehst, antwortet der Server korrekt.</p>
+        <p class="info">Zeit: <span id="time"></span></p>
+        <p class="info">User-Agent: <span id="ua"></span></p>
+    </div>
+    <p><a href="index.html">→ Zur Hauptseite</a></p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
+        Falls die Hauptseite nicht lädt, liegt das Problem in index.html oder externen Ressourcen.
+    </p>
+    <script>
+        document.getElementById('time').textContent = new Date().toLocaleString('de-DE');
+        document.getElementById('ua').textContent = navigator.userAgent.substring(0, 50) + '...';
+    </script>
+</body>
+</html>
+

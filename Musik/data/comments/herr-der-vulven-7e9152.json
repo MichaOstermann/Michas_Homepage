@@ -1,0 +1,23 @@
+{
+    "pending": [],
+    "approved": [
+        {
+            "id": "1ad7e13f989666e2",
+            "name": "Caro",
+            "message": "Du Ferkel......",
+            "createdAt": "2025-12-10T19:21:29+00:00",
+            "ipHash": "76989b05923aa0cf440e2e98",
+            "status": "approved",
+            "approvedAt": "2025-12-10T19:22:04+00:00"
+        },
+        {
+            "id": "cf7c77d6776c41db",
+            "name": "Peter",
+            "message": "Das ist ja Geil!!!!",
+            "createdAt": "2025-12-23T17:15:46+00:00",
+            "ipHash": "8467070ab04556b38727536e",
+            "status": "approved",
+            "approvedAt": "2025-12-23T17:17:31+00:00"
+        }
+    ]
+}

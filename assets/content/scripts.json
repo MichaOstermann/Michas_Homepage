@@ -1,0 +1,52 @@
+{
+  "scripts": [
+    {
+      "slug": "mailstore-analyse",
+      "href": "scripts/mailstore-analyse.html",
+      "title": "MailStore Analyse",
+      "category": "System",
+      "emoji": "📧",
+      "difficulty": "Anfänger",
+      "date": "2025-11-10",
+      "featured": true,
+      "excerpt": "Analysiere MailStore-Dateien und finde die größten Speicherfresser. Sortiert nach Größe mit detaillierter Ausgabe.",
+      "downloadFile": "assets/media/MailStore_Analyse.ps1",
+      "version": "1.0",
+      "powershellVersion": "5.1+",
+      "tags": ["MailStore", "Analyse", "Storage"],
+      "verified": true
+    },
+    {
+      "slug": "wsus-scan",
+      "href": "scripts/wsus-scan.html",
+      "title": "WSUS Scan",
+      "category": "Netzwerk",
+      "emoji": "🔄",
+      "difficulty": "Fortgeschritten",
+      "date": "2025-11-08",
+      "featured": true,
+      "excerpt": "Scanne WSUS-Server per Invoke-WebRequest. Prüfe Verbindung, hole Status-Informationen und analysiere Updates.",
+      "downloadFile": "assets/media/WSUS_Scan.ps1",
+      "version": "2.1",
+      "powershellVersion": "5.1+",
+      "tags": ["WSUS", "Updates", "Monitoring"],
+      "verified": true
+    },
+    {
+      "slug": "ad-user-creation-tool",
+      "href": "scripts/ad-user-creation-tool.html",
+      "title": "AD User Creation Tool",
+      "category": "Admin",
+      "emoji": "👤",
+      "difficulty": "Fortgeschritten",
+      "date": "2025-11-05",
+      "featured": true,
+      "excerpt": "Automatisierte Active Directory Benutzeranlage mit Validation, Error-Handling und Logging. Production-ready.",
+      "downloadFile": "assets/media/ADUserCreationTool_v4.0.ps1",
+      "version": "4.0",
+      "powershellVersion": "5.1+",
+      "tags": ["Active Directory", "User Management", "Automation"],
+      "verified": true
+    }
+  ]
+}

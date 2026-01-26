@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive" />
+  <title>Night City Neon – Cyberpunk Demo</title>
+  <meta name="description" content="Fetziges Cyberpunk-Template mit Neon-Glows, Glitch-Text, Parallax und Panels. 100% eigenständig designt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20251117c" />
+</head>
+<body>
+  <header class="nc-header">
+    <div class="nc-container">
+      <div class="nc-brand" aria-label="Night City Neon">NIGHT<span>CITY</span></div>
+      <nav class="nc-nav" aria-label="Hauptnavigation">
+        <a href="#features">Features</a>
+        <a href="#news">News</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+      <button class="nc-accent" aria-label="Akzentfarben wechseln" title="Akzentfarben wechseln">🎨</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="nc-hero" aria-labelledby="hero-title">
+      <video class="nc-hero-video" autoplay muted playsinline loop preload="metadata" poster="preview.svg">
+        <source src="assets/hero.webm" type="video/webm" />
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <canvas class="nc-particles" width="1280" height="600" aria-hidden="true"></canvas>
+      <div class="nc-hero-grid">
+        <div class="nc-hero-copy">
+          <h1 id="hero-title" class="glitch" data-text="Night City Neon">Night City Neon</h1>
+          <p>Ein eigenständiges Cyberpunk-Theme – Neon, Noise, Parallax und Glitch. Schnell, responsive, ohne externe Frameworks.</p>
+          <div class="nc-cta-row">
+            <a class="nc-btn primary" href="#features">Features ansehen</a>
+            <a class="nc-btn ghost" href="/templates/">Zurück zur Übersicht</a>
+          </div>
+        </div>
+        <div class="nc-hero-visual" aria-hidden="true">
+          <div class="panel neon"></div>
+          <div class="panel scan"></div>
+          <div class="panel grid"></div>
+          <svg class="nc-skyline" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#061018"/>
+                <stop offset="1" stop-color="#0b1220"/>
+              </linearGradient>
+              <linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#00eaff"/>
+                <stop offset="1" stop-color="#ff1493"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="220" fill="url(#sky)"/>
+            <g fill="#0f1726" stroke="rgba(255,255,255,.06)">
+              <rect x="0" y="140" width="60" height="80"/>
+              <rect x="70" y="110" width="80" height="110"/>
+              <rect x="160" y="130" width="40" height="90"/>
+              <rect x="210" y="95" width="70" height="125"/>
+              <rect x="290" y="120" width="46" height="100"/>
+              <rect x="350" y="100" width="120" height="120"/>
+              <rect x="480" y="125" width="60" height="95"/>
+              <rect x="550" y="140" width="36" height="80"/>
+              <rect x="600" y="115" width="90" height="105"/>
+              <rect x="700" y="135" width="60" height="85"/>
+            </g>
+            <rect x="0" y="205" width="800" height="4" fill="url(#neon)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="nc-hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="nc-section">
+      <div class="nc-container">
+        <h2 class="nc-title">Features</h2>
+        <div class="feat-grid">
+          <article class="feat">
+            <div class="feat-ico">⚡</div>
+            <h3>Neon & Glitch</h3>
+            <p>Glühende Akzente, subtiler Scanline-Noise und Glitch-Text für echten Cyberpunk-Vibe.</p>
+          </article>
+          <article class="feat">
+            <div class="feat-ico">🎛️</div>
+            <h3>Panels & Cards</h3>
+            <p>Holographische Cards, Kachel-Galerie und flexible Panel-Layouts ohne Framework.</p>
+          </article>
+          <article class="feat">
+            <div class="feat-ico">📱</div>
+            <h3>Responsive</h3>
+            <p>Skaliert sauber von Mobile bis 4K. Leichtgewichtiges CSS, kein Overhead.</p>
+          </article>
+          <article class="feat">
+            <div class="feat-ico">🚀</div>
+            <h3>Performance</h3>
+            <p>Ohne große Libs – CSS-Effekte, ein wenig JS. Schnell zu laden, schnell zu deployen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- News/Ticker -->
+    <section id="news" class="nc-section alt">
+      <div class="nc-container">
+        <h2 class="nc-title">Night City Wire</h2>
+        <div class="nc-marquee" aria-hidden="true">
+          <div class="nc-marquee-track">
+            <span>⚡ Neon Update v1.1 – Parallax Boost</span>
+            <span>🛰️ Panels+ – neue Hologramm-Rahmen</span>
+            <span>🧪 Glitch FX – intensiver, aber CPU‑freundlich</span>
+            <span>🎛️ Accent Switch – Cyan↔Gold Themes</span>
+          </div>
+        </div>
+        <div class="ticker" role="list" aria-label="Kurzmeldungen">
+          <div class="tick" role="listitem">Update: Neue Hologramm-Panels mit Tiefen-Glow</div>
+          <div class="tick" role="listitem">Patch: Parallax-Performance optimiert</div>
+          <div class="tick" role="listitem">Release: Light/Dark Accent Switch</div>
+        </div>
+        <div class="card-row">
+          <article class="card">
+            <h3>1.0 Launch</h3>
+            <p>Stabile Basis. Sauberes Grid, Animation Utilities und klarer Stil-Guide.</p>
+          </article>
+          <article class="card">
+            <h3>UI Kit</h3>
+            <p>Buttons, Chips, Badges, Progress – alles in Neon-Optik mit Fokus-Staaten.</p>
+          </article>
+          <article class="card">
+            <h3>Docs</h3>
+            <p>Kleine README mit Einbindungshinweisen und Erweiterungstipps inklusive.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modules / Holo Cards -->
+    <section class="nc-section" id="modules">
+      <div class="nc-container">
+        <h2 class="nc-title">Holo Modules</h2>
+        <div class="feat-grid">
+          <article class="feat holo">
+            <div class="feat-ico">🔮</div>
+            <h3>Holo-Frame</h3>
+            <p>Holographischer Rand mit animiertem Gradient-Border und subtilen Chromatic-Glows.</p>
+          </article>
+          <article class="feat holo">
+            <div class="feat-ico">🧭</div>
+            <h3>Parallax Layer</h3>
+            <p>Mehrschichtige Panels bewegen sich sanft mit der Maus für Tiefe.</p>
+          </article>
+          <article class="feat holo">
+            <div class="feat-ico">🛰️</div>
+            <h3>Scanlines</h3>
+            <p>Bildschirm-Look mit Scanline-Maske und leichten Noise-Animationen.</p>
+          </article>
+          <article class="feat holo">
+            <div class="feat-ico">🎨</div>
+            <h3>Accent Switch</h3>
+            <p>Wechsle live zwischen Cyan/Pink und Gold/Teal – ganz ohne Reload.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Panels -->
+    <section id="gallery" class="nc-section">
+      <div class="nc-container">
+        <h2 class="nc-title">Holo Gallery</h2>
+        <div class="panel-grid">
+          <div class="p-item p1" aria-label="Holo City"></div>
+          <div class="p-item p2" aria-label="Neon Alley"></div>
+          <div class="p-item p3" aria-label="Tech Terminal"></div>
+          <div class="p-item p4" aria-label="Scanner HUD"></div>
+          <div class="p-item p5" aria-label="Night Ride"></div>
+          <div class="p-item p6" aria-label="Data Stream"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Panel -->
+    <section id="terminal" class="nc-section">
+      <div class="nc-container">
+        <h2 class="nc-title">Neon Terminal</h2>
+        <div class="nc-terminal" aria-live="polite" aria-label="Live Code Feed">
+          <pre id="ncTermOut" class="nc-terminal-out"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt / CTA -->
+    <section id="contact" class="nc-section alt">
+      <div class="nc-container cta">
+        <div>
+          <h2 class="nc-title">Template anfragen</h2>
+          <p>Gefällt dir das Design? Fordere den Download-Link an – ich schicke ihn dir per Mail zu.</p>
+        </div>
+        <div>
+          <a class="nc-btn primary" href="/templates/">Zur Übersicht</a>
+          <a class="nc-btn ghost" href="/kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="nc-footer">
+    <div class="nc-container nc-footer-inner">
+      <nav class="nc-footer-nav" aria-label="Fußnavigation">
+        <a href="/templates/">← Zurück zu Templates</a>
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+      </nav>
+      <div class="nc-copy">(C) 2025 by Michael Ostermann</div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=20251117c" defer></script>
+  <script src="protected.js" defer></script>
+</body>
+</html>

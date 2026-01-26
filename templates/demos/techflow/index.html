@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive" />
+  <title>TechFlow Solutions – IT-Dienstleister Demo</title>
+  <meta name="description" content="Modernes IT-Dienstleister-Template mit Glassmorphism, Tech-Radar, Interactive Features & Dark Mode." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Set theme immediately to prevent flash
+    const savedTheme = localStorage.getItem('techflow-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+</head>
+<body>
+  <!-- Code Rain Background -->
+  <canvas id="codeRain" class="code-rain"></canvas>
+  
+  <!-- Header -->
+  <header class="site-header glass">
+    <div class="container nav">
+      <a href="#" class="brand" style="text-decoration: none; color: inherit;">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">Tech<span class="accent">Flow</span></span>
+      </a>
+      <nav class="menu">
+        <a href="#services">Services</a>
+        <a href="#tech">Technologie</a>
+        <a href="#cases">Cases</a>
+        <a href="#team">Team</a>
+        <a href="#preise">Preise</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Theme wechseln">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+        <a href="#kontakt" class="btn btn-primary">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid-bg"></div>
+      <div class="datacenter-bg">
+        <div class="network-switch">
+          <div class="switch-body">
+            <div class="switch-label">48-PORT GIGABIT SWITCH</div>
+            <div class="port-grid">
+              <span class="port" data-port="1"></span>
+              <span class="port" data-port="2"></span>
+              <span class="port" data-port="3"></span>
+              <span class="port" data-port="4"></span>
+              <span class="port" data-port="5"></span>
+              <span class="port" data-port="6"></span>
+              <span class="port" data-port="7"></span>
+              <span class="port" data-port="8"></span>
+              <span class="port" data-port="9"></span>
+              <span class="port" data-port="10"></span>
+              <span class="port" data-port="11"></span>
+              <span class="port" data-port="12"></span>
+            </div>
+            <div class="switch-stats">
+              <span class="stat-item"><span class="stat-dot active"></span>POWER</span>
+              <span class="stat-item"><span class="stat-dot link"></span>LINK</span>
+              <span class="stat-item"><span class="stat-dot data"></span>DATA</span>
+            </div>
+          </div>
+        </div>
+        <div class="firewall-appliance">
+          <div class="firewall-body">
+            <div class="firewall-header">
+              <span class="fw-icon">🛡️</span>
+              <span class="fw-title">FIREWALL</span>
+            </div>
+            <div class="security-status">
+              <div class="status-row">
+                <span class="status-label">Threats Blocked</span>
+                <span class="status-value" data-counter="1247">0</span>
+              </div>
+              <div class="status-row">
+                <span class="status-label">Active Rules</span>
+                <span class="status-value" data-counter="856">0</span>
+              </div>
+              <div class="status-row">
+                <span class="status-label">Traffic</span>
+                <span class="status-value">2.4 GB/s</span>
+              </div>
+            </div>
+            <div class="security-indicators">
+              <div class="indicator" data-status="secure">
+                <span class="indicator-dot"></span>
+                <span class="indicator-text">IPS</span>
+              </div>
+              <div class="indicator" data-status="secure">
+                <span class="indicator-dot"></span>
+                <span class="indicator-text">WAF</span>
+              </div>
+              <div class="indicator" data-status="warning">
+                <span class="indicator-dot"></span>
+                <span class="indicator-text">DDoS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="server-rack left-rack">
+          <div class="rack-unit" data-index="1"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="2"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="3"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="4"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="5"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="6"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="7"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="8"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+        </div>
+        <div class="server-rack right-rack">
+          <div class="rack-unit" data-index="1"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="2"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="3"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="4"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="5"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="6"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="7"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+          <div class="rack-unit" data-index="8"><span class="led"></span><span class="led"></span><span class="led"></span></div>
+        </div>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="status-badge pulse">
+            <span class="status-dot"></span>
+            <span>Alle Systeme Online</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="gradient-text">Digitale Excellence</span><br>
+            für Ihr Unternehmen
+          </h1>
+          <p class="hero-subtitle">Maßgeschneiderte IT-Lösungen, Cloud-Migration, Cybersecurity & 24/7-Support – Ihr verlässlicher Partner für digitale Transformation.</p>
+          <div class="hero-cta">
+            <a href="#kontakt" class="btn btn-primary btn-lg">Kostenlose Beratung</a>
+            <a href="#services" class="btn btn-ghost btn-lg">Services ansehen</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-num" data-count="850">0</div>
+              <div class="stat-label">Projekte</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num" data-count="99">0</div>
+              <div class="stat-label">% Uptime</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num" data-count="24">0</div>
+              <div class="stat-label">h Support</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="terminal-window glass">
+            <div class="terminal-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">system-status.log</span>
+            </div>
+            <div class="terminal-body" id="terminalOutput">
+              <div class="terminal-line"><span class="prompt">$</span> Checking system health...</div>
+              <div class="terminal-line success">✓ Database: ONLINE</div>
+              <div class="terminal-line success">✓ API Gateway: OPERATIONAL</div>
+              <div class="terminal-line success">✓ CDN: 45ms avg response</div>
+              <div class="terminal-line success">✓ Security: ALL CLEAR</div>
+              <div class="terminal-line"><span class="prompt">$</span> <span class="cursor">_</span></div>
+            </div>
+          </div>
+          <div class="floating-card glass">
+            <div class="card-icon">🔒</div>
+            <div class="card-label">SSL Secured</div>
+          </div>
+          <div class="floating-card glass" style="animation-delay: 0.5s;">
+            <div class="card-icon">⚡</div>
+            <div class="card-label">99.9% Uptime</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Was wir tun</span>
+          <h2 class="section-title">Unsere <span class="gradient-text">Services</span></h2>
+          <p class="section-subtitle">End-to-End IT-Lösungen für moderne Unternehmen</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">☁️</div>
+            <h3>Cloud Migration</h3>
+            <p>Sichere und nahtlose Migration Ihrer Infrastruktur in AWS, Azure oder Google Cloud. Skalierbar und kosteneffizient.</p>
+            <ul class="service-features">
+              <li>Hybrid-Cloud-Strategien</li>
+              <li>Zero-Downtime-Migration</li>
+              <li>Cost-Optimization</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">🛡️</div>
+            <h3>Cybersecurity</h3>
+            <p>Umfassender Schutz vor Cyberbedrohungen: Penetration-Tests, SOC, Incident Response & Compliance.</p>
+            <ul class="service-features">
+              <li>24/7 Threat Monitoring</li>
+              <li>DSGVO & ISO 27001</li>
+              <li>Security Audits</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">⚙️</div>
+            <h3>DevOps & CI/CD</h3>
+            <p>Automatisierung Ihrer Deployment-Pipeline. GitOps, Container-Orchestrierung und Infrastructure-as-Code.</p>
+            <ul class="service-features">
+              <li>Kubernetes & Docker</li>
+              <li>GitLab/GitHub Actions</li>
+              <li>Terraform & Ansible</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">📊</div>
+            <h3>Data Analytics</h3>
+            <p>Big Data, KI-gestützte Analysen und Business Intelligence für datengetriebene Entscheidungen.</p>
+            <ul class="service-features">
+              <li>Real-Time-Dashboards</li>
+              <li>Predictive Analytics</li>
+              <li>Machine Learning</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">🔧</div>
+            <h3>Managed IT</h3>
+            <p>Komplette IT-Betreuung: Server, Netzwerk, Endpoints. 24/7 Remote-Support und proaktives Monitoring.</p>
+            <ul class="service-features">
+              <li>SLA-garantiert</li>
+              <li>Patch-Management</li>
+              <li>Helpdesk & Ticketing</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+          <article class="service-card glass" data-tilt>
+            <div class="service-icon">💻</div>
+            <h3>Software Development</h3>
+            <p>Custom-Software, Microservices, APIs. Agile Teams für Web, Mobile und Enterprise-Anwendungen.</p>
+            <ul class="service-features">
+              <li>React, Node.js, .NET</li>
+              <li>Agile/Scrum</li>
+              <li>Code Quality & Testing</li>
+            </ul>
+            <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Radar -->
+    <section id="tech" class="section tech-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Technologie</span>
+          <h2 class="section-title">Unser <span class="gradient-text">Tech-Stack</span></h2>
+        </div>
+        <div class="tech-radar-wrapper">
+          <canvas id="techRadar" width="600" height="600"></canvas>
+          <div class="tech-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #0EA5E9;"></span>
+              <span>Cloud & Infrastructure</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #10B981;"></span>
+              <span>Security & Compliance</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #7C3AED;"></span>
+              <span>Development & DevOps</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #F59E0B;"></span>
+              <span>Data & Analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="tech-logos">
+          <div class="tech-logo">AWS</div>
+          <div class="tech-logo">Azure</div>
+          <div class="tech-logo">Kubernetes</div>
+          <div class="tech-logo">Docker</div>
+          <div class="tech-logo">Terraform</div>
+          <div class="tech-logo">React</div>
+          <div class="tech-logo">Node.js</div>
+          <div class="tech-logo">Python</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="cases" class="section cases-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Erfolge</span>
+          <h2 class="section-title">Case <span class="gradient-text">Studies</span></h2>
+        </div>
+        <div class="cases-grid">
+          <article class="case-card glass">
+            <div class="case-tag">Cloud Migration</div>
+            <h3>FinTech Startup → AWS</h3>
+            <p class="case-desc">Migration einer monolithischen Anwendung in Cloud-Native Microservices. 60% Kostenreduktion, 10x Skalierbarkeit.</p>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-value">-60%</div>
+                <div class="metric-label">Kosten</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">10x</div>
+                <div class="metric-label">Scale</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">8 Wo.</div>
+                <div class="metric-label">Timeline</div>
+              </div>
+            </div>
+          </article>
+          <article class="case-card glass">
+            <div class="case-tag">Security</div>
+            <h3>Enterprise → Zero-Trust</h3>
+            <p class="case-desc">Implementierung einer Zero-Trust-Architektur für 500+ Mitarbeiter. ISO 27001-Zertifizierung erreicht.</p>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-value">0</div>
+                <div class="metric-label">Breaches</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">ISO</div>
+                <div class="metric-label">Certified</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">500+</div>
+                <div class="metric-label">Users</div>
+              </div>
+            </div>
+          </article>
+          <article class="case-card glass">
+            <div class="case-tag">DevOps</div>
+            <h3>E-Commerce → CI/CD</h3>
+            <p class="case-desc">Automatisierung der Deployment-Pipeline. Von 2 Releases/Monat auf 50+ Releases/Woche.</p>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-value">50+</div>
+                <div class="metric-label">Releases/Wo</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">-80%</div>
+                <div class="metric-label">Deploy-Zeit</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value">99.9%</div>
+                <div class="metric-label">Uptime</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section id="preise" class="section pricing-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Preiskalkulator</span>
+          <h2 class="section-title">Berechnen Sie Ihr <span class="gradient-text">Projekt</span></h2>
+          <p class="section-subtitle">Transparente Preise, individuelle Pakete</p>
+        </div>
+        <div class="pricing-calculator glass">
+          <div class="calculator-controls">
+            <div class="control-group">
+              <label>Projektgröße</label>
+              <select id="projectSize">
+                <option value="small">Klein (< 3 Monate)</option>
+                <option value="medium" selected>Mittel (3-6 Monate)</option>
+                <option value="large">Groß (6+ Monate)</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Team-Größe</label>
+              <input type="range" id="teamSize" min="1" max="10" value="3" />
+              <span id="teamSizeValue">3</span> Entwickler
+            </div>
+            <div class="control-group">
+              <label>Services</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" value="cloud" checked /> Cloud Migration</label>
+                <label><input type="checkbox" value="security" /> Security Audit</label>
+                <label><input type="checkbox" value="devops" /> DevOps Setup</label>
+                <label><input type="checkbox" value="support" checked /> 24/7 Support</label>
+              </div>
+            </div>
+          </div>
+          <div class="calculator-result">
+            <div class="result-label">Geschätzter Preis</div>
+            <div class="result-price" id="calculatedPrice">€ 25.000</div>
+            <div class="result-note">Monatlich, exkl. MwSt.</div>
+            <a href="#kontakt" class="btn btn-primary btn-lg">Angebot anfordern</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="kontakt" class="section cta-section">
+      <div class="container">
+        <div class="cta-content glass">
+          <h2>Bereit für die digitale Transformation?</h2>
+          <p>Lassen Sie uns gemeinsam Ihre IT-Infrastruktur auf das nächste Level heben.</p>
+          <div class="cta-buttons">
+            <a href="mailto:hello@techflow.de" class="btn btn-primary btn-lg">Kontakt aufnehmen</a>
+            <a href="tel:+4930123456" class="btn btn-ghost btn-lg">📞 +49 30 123456</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer glass">
+    <div class="container footer-content">
+      <div>
+        <a href="/templates/" class="btn btn-ghost">← Zurück zu Templates</a>
+        <a href="/impressum.html" class="btn btn-ghost">Impressum</a>
+        <a href="/datenschutz.html" class="btn btn-ghost">Datenschutz</a>
+      </div>
+      <small>(C) 2025 by Michael Ostermann</small>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="protected.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enshrouded – Meine Abenteuer in Embervale</title>
+  <meta name="description" content="Meine persönliche Enshrouded Seite mit Builds, Basen und Erfahrungen aus Embervale." />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/alien.css" />
+  
+  <style>
+    :root {
+      --enshrouded-gold: #DAA520;
+      --enshrouded-dark-gold: #B8860B;
+      --enshrouded-amber: #FF8C00;
+      --enshrouded-brown: #8B4513;
+    }
+    
+    body {
+      background: #1A1410;
+      color: #E0E0E0;
+    }
+    
+    /* Hero Section - Enshrouded Style */
+    .enshrouded-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(26, 20, 16, 0.9) 0%, rgba(40, 30, 20, 0.7) 100%),
+                  url('https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1203620/header.jpg') center/cover;
+      overflow: hidden;
+    }
+    
+    .enshrouded-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence baseFrequency="0.8" numOctaves="1" /><feColorMatrix values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.08 0"/></filter><rect width="100" height="100" filter="url(%23n)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .enshrouded-hero__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+    
+    .enshrouded-logo {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--enshrouded-gold);
+      text-shadow: 
+        0 0 20px rgba(218, 165, 32, 0.8),
+        0 0 40px rgba(218, 165, 32, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1rem;
+      letter-spacing: 4px;
+    }
+    
+    .enshrouded-subtitle {
+      font-size: 1.5rem;
+      color: var(--enshrouded-amber);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Feature Icons */
+    .feature-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .feature-icon {
+      width: 100px;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: rgba(218, 165, 32, 0.15);
+      border: 2px solid rgba(218, 165, 32, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .feature-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(218, 165, 32, 0.4);
+      border-color: var(--enshrouded-gold);
+    }
+    
+    .feature-icon__emoji {
+      font-size: 2rem;
+    }
+    
+    .feature-icon__text {
+      font-size: 0.75rem;
+      color: var(--enshrouded-gold);
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    /* Content Sections */
+    .enshrouded-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(218, 165, 32, 0.15);
+    }
+    
+    .enshrouded-section__title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--enshrouded-gold);
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
+    }
+    
+    .enshrouded-card {
+      background: linear-gradient(135deg, rgba(40, 30, 20, 0.6) 0%, rgba(60, 40, 25, 0.3) 100%);
+      border: 2px solid rgba(218, 165, 32, 0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .enshrouded-card:hover {
+      border-color: var(--enshrouded-gold);
+      box-shadow: 0 10px 40px rgba(218, 165, 32, 0.25);
+      transform: translateY(-4px);
+    }
+    
+    .enshrouded-card__title {
+      font-size: 1.8rem;
+      color: var(--enshrouded-amber);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .enshrouded-card__text {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .enshrouded-badge {
+      display: inline-block;
+      background: rgba(218, 165, 32, 0.2);
+      color: var(--enshrouded-gold);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(218, 165, 32, 0.4);
+      margin-right: 0.5rem;
+    }
+    
+    /* Grid Layout */
+    .enshrouded-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(218, 165, 32, 0.2);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--enshrouded-gold);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      background: var(--enshrouded-gold);
+      box-shadow: 0 0 20px rgba(218, 165, 32, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .enshrouded-logo { font-size: 2.5rem; }
+      .enshrouded-subtitle { font-size: 1.2rem; }
+      .feature-icons { gap: 1rem; }
+      .feature-icon { width: 80px; padding: 1rem; }
+      .enshrouded-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation" style="background: rgba(26, 20, 16, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite" style="color: var(--enshrouded-gold); text-decoration: none; font-weight: bold; font-size: 1.2rem;">
+        <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+      </a>
+
+      <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten" style="display: none; background: none; border: none; cursor: pointer;">
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--enshrouded-gold); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--enshrouded-gold); margin: 5px 0; transition: 0.3s;"></span>
+        <span class="nav__bar" aria-hidden="true" style="display: block; width: 25px; height: 3px; background: var(--enshrouded-gold); margin: 5px 0; transition: 0.3s;"></span>
+      </button>
+
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Home</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../templates/index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Templates</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming" style="color: var(--enshrouded-amber); text-decoration: none; font-weight: bold; transition: color 0.3s;">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Blog</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">About</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s;">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <a href="../index.html#gaming" class="back-btn" style="display: inline-block; margin: 1rem 2rem; color: var(--enshrouded-gold); text-decoration: none; font-weight: bold;">← Zurück zu Gaming</a>
+  
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
+  
+  <!-- Hero Section -->
+  <section class="enshrouded-hero">
+    <div class="enshrouded-hero__content">
+      <div class="enshrouded-logo">ENSHROUDED</div>
+      <div class="enshrouded-subtitle">Flammengeboren in Embervale</div>
+      <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto 2rem;">
+        Überlebe den Nebel, erkunde verlorene Reiche und baue epische Festungen. Hier teile ich meine Abenteuer aus dem gefallenen Königreich Embervale.
+      </p>
+      
+      <!-- Feature Icons -->
+      <div class="feature-icons">
+        <div class="feature-icon">
+          <div class="feature-icon__emoji">🏰</div>
+          <div class="feature-icon__text">BASE BUILDING</div>
+        </div>
+        <div class="feature-icon">
+          <div class="feature-icon__emoji">⚔️</div>
+          <div class="feature-icon__text">COMBAT</div>
+        </div>
+        <div class="feature-icon">
+          <div class="feature-icon__emoji">🌲</div>
+          <div class="feature-icon__text">EXPLORATION</div>
+        </div>
+        <div class="feature-icon">
+          <div class="feature-icon__emoji">🔨</div>
+          <div class="feature-icon__text">CRAFTING</div>
+        </div>
+        <div class="feature-icon">
+          <div class="feature-icon__emoji">👥</div>
+          <div class="feature-icon__text">16 PLAYERS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Enshrouded -->
+  <section class="enshrouded-section">
+    <div class="container">
+      <h2 class="enshrouded-section__title">Was ist Enshrouded?</h2>
+      <div class="enshrouded-card">
+        <p class="enshrouded-card__text">
+          Enshrouded ist ein Survival-Action-RPG, das in der gefallenen Fantasy-Welt Embervale spielt. 
+          Als Flammengeborener bist du die letzte Hoffnung einer sterbenden Zivilisation. 
+          Ein mysteriöser Nebel – der "Shroud" – hat das Land verflucht und verwandelt alle, die ihn einatmen, in Monster.
+        </p>
+        <p class="enshrouded-card__text">
+          Das Spiel kombiniert intensiven Kampf mit einem der besten Bausysteme im Genre. 
+          Erkunde riesige Biome von den Kindlewastes bis zum Revelwood, baue beeindruckende Festungen 
+          mit einem Voxel-basierten System und kämpfe gegen brutale Bosse – solo oder mit bis zu 16 Freunden im Co-op!
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <span class="enshrouded-badge">SURVIVAL</span>
+          <span class="enshrouded-badge">OPEN WORLD</span>
+          <span class="enshrouded-badge">CO-OP (16 SPIELER)</span>
+          <span class="enshrouded-badge">VOXEL BUILDING</span>
+          <span class="enshrouded-badge">EARLY ACCESS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- My Builds Section -->
+  <section id="builds" class="enshrouded-section" style="background: linear-gradient(180deg, rgba(26, 20, 16, 0.3) 0%, rgba(26, 20, 16, 0) 100%);">
+    <div class="container">
+      <h2 class="enshrouded-section__title">Meine Builds & Strategien</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Hier findest du meine erprobten Charakter-Builds für verschiedene Spielstile.
+      </p>
+      
+      <div class="enshrouded-grid">
+        <!-- Build 1 -->
+        <div class="enshrouded-card">
+          <div class="enshrouded-card__title">⚔️ Nahkampf-Tank Build</div>
+          <p class="enshrouded-card__text">
+            <strong>Fokus:</strong> Schwere Rüstung + Zweihänder<br>
+            <strong>Level:</strong> 25 | <strong>Tier:</strong> A-Tier<br>
+            <strong>Ideal für:</strong> Solo-Shroud-Diving, Tankrolle im Co-op<br>
+            <strong>Skills:</strong> Heavy Armor Mastery, Double Jump, Updraft
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="enshrouded-badge">TANK</span>
+            <span class="enshrouded-badge">MELEE</span>
+          </div>
+        </div>
+        
+        <!-- Build 2 -->
+        <div class="enshrouded-card">
+          <div class="enshrouded-card__title">🏹 Ranger-Sniper Build</div>
+          <p class="enshrouded-card__text">
+            <strong>Fokus:</strong> Fernkampf mit Bogen + Stealth<br>
+            <strong>Level:</strong> 22 | <strong>Tier:</strong> S-Tier<br>
+            <strong>Ideal für:</strong> Boss-Farming, sichere Erkundung<br>
+            <strong>Skills:</strong> Ranger, Assassin, Water Aura
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="enshrouded-badge">RANGE</span>
+            <span class="enshrouded-badge">STEALTH</span>
+          </div>
+        </div>
+        
+        <!-- Build 3 -->
+        <div class="enshrouded-card">
+          <div class="enshrouded-card__title">🔮 Magier Build</div>
+          <p class="enshrouded-card__text">
+            <strong>Fokus:</strong> Staff + Elemental Magic<br>
+            <strong>Level:</strong> 20 | <strong>Tier:</strong> B-Tier<br>
+            <strong>Ideal für:</strong> AoE-Damage, Mob-Clearing<br>
+            <strong>Skills:</strong> Mage, Fireball, Lightning Strike
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="enshrouded-badge">MAGIC</span>
+            <span class="enshrouded-badge">AoE</span>
+          </div>
+        </div>
+        
+        <!-- Placeholder -->
+        <div class="enshrouded-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px; opacity: 0.5;">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎮</div>
+            <div style="color: var(--enshrouded-gold); font-weight: 600;">Weitere Builds folgen...</div>
+            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">Experimentiere gerade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- My Bases Section -->
+  <section class="enshrouded-section">
+    <div class="container">
+      <h2 class="enshrouded-section__title">Meine Basen</h2>
+      <p style="text-align: center; color: rgba(255, 255, 255, 0.7); margin-bottom: 3rem; font-size: 1.1rem;">
+        Einige meiner Lieblings-Festungen und Siedlungen in Embervale.
+      </p>
+      
+      <div class="enshrouded-grid">
+        <div class="enshrouded-card">
+          <div class="enshrouded-card__title">🏰 Hauptfestung – Revelwood</div>
+          <p class="enshrouded-card__text">
+            Meine Hauptbasis im Herzen des Revelwood-Waldes. Mehrstöckige Burg mit allen Crafting-Stationen, 
+            NPC-Workshops und verteidigten Mauern. Perfekt gelegen zwischen wichtigen Ressourcen-Spots.
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="enshrouded-badge">HAUPT-BASIS</span>
+            <span class="enshrouded-badge">ALLE NPCs</span>
+          </div>
+        </div>
+        
+        <div class="enshrouded-card">
+          <div class="enshrouded-card__title">🏔️ Bergfestung – Nomad Highlands</div>
+          <p class="enshrouded-card__text">
+            Außenposten in den Bergen mit Blick über die Highlands. Kompakte Verteidigungs-Struktur 
+            mit schnellem Zugang zu Erz-Minen und seltenen Ressourcen.
+          </p>
+          <div style="margin-top: 1rem;">
+            <span class="enshrouded-badge">MINING OUTPOST</span>
+            <span class="enshrouded-badge">FARM</span>
+          </div>
+        </div>
+        
+        <div class="enshrouded-card" style="border-style: dashed; display: flex; align-items: center; justify-content: center; min-height: 200px; opacity: 0.5;">
+          <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🏗️</div>
+            <div style="color: var(--enshrouded-gold); font-weight: 600;">Weitere Basen geplant...</div>
+            <div style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin-top: 0.5rem;">In Konstruktion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Personal Stats -->
+  <section class="enshrouded-section">
+    <div class="container">
+      <h2 class="enshrouded-section__title">Meine Statistiken</h2>
+      <div class="enshrouded-grid">
+        <div class="enshrouded-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--enshrouded-gold); font-weight: 900; margin-bottom: 0.5rem;">180+</div>
+          <div style="color: var(--enshrouded-amber); font-weight: 600;">Spielstunden</div>
+        </div>
+        <div class="enshrouded-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--enshrouded-gold); font-weight: 900; margin-bottom: 0.5rem;">Level 25</div>
+          <div style="color: var(--enshrouded-amber); font-weight: 600;">Hauptcharakter</div>
+        </div>
+        <div class="enshrouded-card" style="text-align: center;">
+          <div style="font-size: 3rem; color: var(--enshrouded-gold); font-weight: 900; margin-bottom: 0.5rem;">5</div>
+          <div style="color: var(--enshrouded-amber); font-weight: 600;">Große Basen gebaut</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Community -->
+  <section class="enshrouded-section" style="border-bottom: none;">
+    <div class="container">
+      <h2 class="enshrouded-section__title">Zusammen durch den Nebel</h2>
+      <div class="enshrouded-card" style="text-align: center;">
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+          Du spielst auch Enshrouded? Lass uns gemeinsam Embervale zurückerobern!
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn" style="background: var(--enshrouded-gold); color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;">
+            Steam hinzufügen
+          </a>
+          <a href="#" class="btn" style="background: rgba(218, 165, 32, 0.2); color: white; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 700; border: 2px solid var(--enshrouded-gold); transition: all 0.3s;">
+            Discord Server
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="footer site-footer" role="contentinfo" style="background: rgba(26, 20, 16, 0.95); border-top: 2px solid var(--enshrouded-gold); padding: 3rem 2rem 2rem; margin-top: 4rem;">
+    <div class="container footer__top" style="max-width: 1200px; margin: 0 auto;">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a class="nav__link nav-link" href="../index.html#hero" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming" style="color: var(--enshrouded-amber); text-decoration: none; transition: all 0.3s;">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Blog</a>
+        <a class="nav__link nav-link" href="../index.html#about" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">About</a>
+        <a class="nav__link nav-link" href="../index.html#contact" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s;">Kontakt</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom" style="max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(218, 165, 32, 0.3);">
+      <small style="color: rgba(255, 255, 255, 0.6); display: block; margin-bottom: 1rem;">(C) 2025 by Michael Ostermann · <a href="../impressum.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Impressum</a> · <a href="../datenschutz.html" class="nav-link" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Datenschutz</a></small>
+      <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem;">
+        <p>Enshrouded® ist eine eingetragene Marke von Keen Games GmbH.</p>
+        <p style="margin-top: 0.5rem;">Diese Seite ist ein Fan-Projekt und nicht offiziell mit Keen Games verbunden.</p>
+      </small>
+    </div>
+  </footer>
+</body>
+</html>
