@@ -64,7 +64,7 @@ Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.`;
 
   // API-Request an das eigene Backend (Vercel)
   try {
-    const response = await fetch('https://michas-homepage.vercel.app/api/generate', {
+    const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
