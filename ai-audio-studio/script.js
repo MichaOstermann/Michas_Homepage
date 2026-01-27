@@ -15,7 +15,7 @@ async function generateAudio(e) {
   e.preventDefault();
   
   const buttonText = generateBtn.querySelector('span');
-  buttonText.textContent = '✨ Generating...';
+  buttonText.textContent = '✨ Generating Song...';
   loadingSpinner.classList.remove('hidden');
   generateBtn.disabled = true;
   progressBarContainer.classList.remove('hidden');
@@ -23,14 +23,15 @@ async function generateAudio(e) {
   audioOutputContainer.classList.add('hidden');
 
   // Collect user inputs
+  const lyrics = document.getElementById('lyrics').value;
   const genre = document.getElementById('genre').value;
   const bpm = document.getElementById('bpm').value;
   const atmosphere = document.getElementById('atmosphere').value;
   const mastering = document.getElementById('mastering').value;
   const description = document.getElementById('description').value;
 
-  // Build the 5-Pillar Prompt according to SOTA framework
-  const audioPrompt = buildSOTAPrompt(genre, bpm, atmosphere, mastering, description);
+  // Build the SOTA Prompt for Lyrics-to-Music
+  const audioPrompt = buildLyricsToMusicPrompt(lyrics, genre, bpm, atmosphere, mastering, description);
 
   // Simulate progress
   let progress = 0;
@@ -54,7 +55,7 @@ async function generateAudio(e) {
     // Show output container
     audioOutputContainer.classList.remove('hidden');
     
-    buttonText.textContent = '🎵 Generate Audio';
+    buttonText.textContent = '� Generate Song with Vocals';
     loadingSpinner.classList.add('hidden');
     generateBtn.disabled = false;
     
@@ -62,17 +63,17 @@ async function generateAudio(e) {
     
   } catch (err) {
     clearInterval(progressInterval);
-    alert('Error generating audio: ' + err.message);
-    buttonText.textContent = '🎵 Generate Audio';
+    alert('Error generating song: ' + err.message);
+    buttonText.textContent = '🎤 Generate Song with Vocals';
     loadingSpinner.classList.add('hidden');
     generateBtn.disabled = false;
     progressBarContainer.classList.add('hidden');
   }
 }
 
-function buildSOTAPrompt(genre, bpm, atmosphere, mastering, description) {
-  // Build the 5-Pillar SOTA Prompt:
-  // [CLOCK] | [GENRE-DNA] | [INSTRUMENTAL-LAYERING] | [ATMOSPHERE] | [ENGINEERING-STAMP]
+function buildLyricsToMusicPrompt(lyrics, genre, bpm, atmosphere, mastering, description) {
+  // Build SOTA Prompt for Lyrics-to-Music (like Suno/Udio/Musicful)
+  // [CLOCK] | [GENRE-DNA] | [INSTRUMENTAL-LAYERING] | [ATMOSPHERE] | [ENGINEERING-STAMP] | [VOCALS + LYRICS]
   
   const genreTemplates = {
     'modern-trap': {
@@ -135,28 +136,40 @@ function buildSOTAPrompt(genre, bpm, atmosphere, mastering, description) {
   const template = genreTemplates[genre] || genreTemplates['radio-pop'];
   
   const prompt = `
+[LYRICS-TO-MUSIC GENERATION]
 [CLOCK: ${bpm} BPM] | [GENRE-DNA: ${template.genreDNA}] | [INSTRUMENTAL-LAYERING: ${template.instrumental}] | [ATMOSPHERE: ${atmosphereMap[atmosphere]}] | [ENGINEERING-STAMP: ${template.engineering}, ${masteringMap[mastering]}]
 
-ADDITIONAL CONTEXT:
-${description}
+LYRICS (sing these exactly as written):
+${lyrics}
 
-STRUCTURE TAGS:
-[SECTION: INTRO] - Reduced instrumentation, filter sweeps
-[SECTION: VERSE] - Rhythm stability, vocal pocket (300Hz-3kHz)
-[SECTION: BUILD-UP] - Snare rolls, pitch risers, increasing complexity
-[SECTION: CHORUS] - Maximum spectral width, density increase, main melody focus
-[SECTION: BRIDGE] - Dynamic break, textural variation
-[SECTION: OUTRO] - Gradual reduction, fadeout or hard stop
+VOCAL STYLE & PRODUCTION:
+${description || 'Natural vocals matching the genre and mood'}
+
+IMPORTANT INSTRUCTIONS:
+- Generate a COMPLETE SONG with VOCALS singing the provided lyrics
+- Follow the structure markers in the lyrics ([Intro], [Verse], [Chorus], etc.)
+- Vocals must be clear, professional, and match the genre
+- Add appropriate backing vocals, harmonies, ad-libs where fitting
+- Instrumental arrangement must support and enhance the vocals
+- Apply genre-appropriate vocal effects (reverb, delay, Auto-Tune if specified)
+
+STRUCTURE REQUIREMENTS:
+- Follow the exact structure in the provided lyrics
+- Intro: Set the mood with instrumental, vocals may start sparse
+- Verse: Full vocal delivery with rhythm section
+- Chorus/Hook: Maximum energy, layered vocals, full instrumentation
+- Bridge: Dynamic variation, possible vocal breakdown or build
+- Outro: Natural fadeout or hard ending as fitting
 
 QUALITY REQUIREMENTS:
-- Loudness-Matching to target LUFS
-- BPM validation and quantization
-- Transient-Check for kick drums
-- Phase coherence in stereo field
-- Professional mastering chain
+- Loudness-Matching to ${mastering === 'streaming' ? '-14 LUFS (Spotify)' : mastering === 'club' ? '-10 LUFS (Club)' : '-12 LUFS (Mobile)'}
+- BPM locked to ${bpm} BPM
+- Vocals sit perfectly in the mix (not too loud, not buried)
+- Professional mastering chain applied
+- Phase coherence, transient punch, spectral balance
 `.trim();
 
-  console.log('SOTA Prompt:', prompt);
+  console.log('Lyrics-to-Music SOTA Prompt:', prompt);
   return prompt;
 }
 
