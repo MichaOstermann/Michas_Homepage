@@ -41,6 +41,7 @@ Du bist ein Platin-Songwriter und Musikproduzent. Schreibe einen Songtext im Gen
 Songstruktur: Nutze explizit [Intro], [Verse], [Hook/Chorus], [Bridge], [Outro].
 
 REIMSCHEMA: ${rhyme} – ABER nutze SLANT RHYMES (unreine Reime wie Stahl/Fahr, Blick/Schritt, Nacht/macht) statt perfekter Kinderreime. Das klingt moderner und authentischer.
+WICHTIG: Achte darauf, dass die Reime zumindest ähnliche Endlaute haben (z.B. -ung/-ung, -cht/-ft). Vermeide zu unsaubere Reime wie "Rüstung/Dunst".
 
 SILBEN & METRUM: 
 - Verse: 10-12 Silben pro Zeile (konstanter Flow)
