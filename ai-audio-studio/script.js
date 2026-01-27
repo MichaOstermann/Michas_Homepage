@@ -30,27 +30,55 @@ async function generateAudio(e) {
   const mastering = document.getElementById('mastering').value;
   const description = document.getElementById('description').value;
 
-  // Build the SOTA Prompt for Lyrics-to-Music
-  const audioPrompt = buildLyricsToMusicPrompt(lyrics, genre, bpm, atmosphere, mastering, description);
-
   // Simulate progress
   let progress = 0;
   const progressInterval = setInterval(() => {
-    progress += Math.random() * 15;
-    if (progress > 90) progress = 90;
+    progress += Math.random() * 10;
+    if (progress > 85) progress = 85;
     progressBar.style.width = progress + '%';
-  }, 500);
+  }, 800);
 
   try {
-    // TODO: Connect to AI Audio API endpoint
-    // For now, we'll show a placeholder
-    await new Promise(resolve => setTimeout(resolve, 3000)); // Simulate API call
+    // Call our Vercel API endpoint for ElevenLabs Music generation
+    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/generate-music', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        lyrics,
+        genre, 
+        bpm: parseInt(bpm), 
+        atmosphere, 
+        mastering,
+        description 
+      })
+    });
     
     clearInterval(progressInterval);
-    progressBar.style.width = '100%';
     
-    // TODO: Replace with actual audio file from API
-    // audioPlayer.src = audioData;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to generate music');
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success || !data.audio) {
+      throw new Error('Invalid response from server');
+    }
+    
+    // Convert base64 to audio blob
+    const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
+    const audioUrl = URL.createObjectURL(audioBlob);
+    
+    // Set audio player source
+    audioPlayer.src = audioUrl;
+    
+    // Store for download
+    audioPlayer.dataset.audioBlob = audioUrl;
+    
+    progressBar.style.width = '100%';
     
     // Show output container
     audioOutputContainer.classList.remove('hidden');
@@ -69,6 +97,24 @@ async function generateAudio(e) {
     generateBtn.disabled = false;
     progressBarContainer.classList.add('hidden');
   }
+}
+
+// Helper function to convert base64 to Blob
+function base64ToBlob(base64, mimeType) {
+  const byteCharacters = atob(base64);
+  const byteArrays = [];
+  
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+  
+  return new Blob(byteArrays, { type: mimeType });
 }
 
 function buildLyricsToMusicPrompt(lyrics, genre, bpm, atmosphere, mastering, description) {
@@ -181,6 +227,17 @@ regenBtn.addEventListener('click', () => {
 });
 
 downloadBtn.addEventListener('click', () => {
-  // TODO: Implement actual download when API is connected
-  alert('Download functionality will be available once the AI Audio API is connected.');
+  const audioUrl = audioPlayer.dataset.audioBlob;
+  if (!audioUrl) {
+    alert('No audio to download. Please generate a song first.');
+    return;
+  }
+  
+  // Create download link
+  const a = document.createElement('a');
+  a.href = audioUrl;
+  a.download = `song-${Date.now()}.mp3`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 });
