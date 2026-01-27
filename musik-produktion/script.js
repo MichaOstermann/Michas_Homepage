@@ -34,14 +34,31 @@ async function generateLyrics(e) {
   const rhyme = document.getElementById('rhyme').value;
   const artist = document.getElementById('artist').value;
 
-  // Ultimate System Prompt
+  // Ultimate System Prompt mit Premium-Qualität
   const systemPrompt = `
 Du bist ein Platin-Songwriter und Musikproduzent. Schreibe einen Songtext im Genre: ${genre} (${mood}), Thema: "${theme}"${artist ? `, im Stil von ${artist}` : ''}.
+
 Songstruktur: Nutze explizit [Intro], [Verse], [Hook/Chorus], [Bridge], [Outro].
-Das Reimschema ist: ${rhyme} (z.B. Kreuzreim oder Paarreim) – benenne und halte es exakt ein.
-Halte die Silbenzahl pro Zeile innerhalb eines Verses möglichst konstant (Flow/Metrik).
-Nutze genre-typische Vokabeln und Slang (z.B. Punchlines bei Trap, Metaphern bei Schlager).
+
+REIMSCHEMA: ${rhyme} – ABER nutze SLANT RHYMES (unreine Reime wie Stahl/Fahr, Blick/Schritt, Nacht/macht) statt perfekter Kinderreime. Das klingt moderner und authentischer.
+
+SILBEN & METRUM: 
+- Verse: 10-12 Silben pro Zeile (konstanter Flow)
+- Bridge: 6-8 Silben (abgehackt, spannungsreich)
+- Hook: 8-10 Silben (eingängig)
+
+SCHREIBSTIL "SHOW, DON'T TELL":
+❌ NICHT: "Ich bin der King" (behaupten)
+✅ SONDERN: "Der Regen perlt an der Lederjacke ab, während die Stadt im Rückspiegel verblasst" (zeigen)
+Nutze KONKRETE BILDER, SINNESEINDRÜCKE und SPEZIFISCHE DETAILS statt abstrakte Behauptungen.
+
+VERMEIDE KLISCHEES:
+❌ NICHT: "Keine Angst vor dem Sturm", "Hör den Motor brüllen", "Wir sind unsterblich"
+✅ SONDERN: Spezifische Details (echte Orte, Markennamen, ungewöhnliche Metaphern)
+
+Genre-typische Vokabeln und Slang (z.B. Punchlines bei Trap, Metaphern bei Schlager).
 Füge musikalische Regieanweisungen in runden Klammern hinzu, z.B. (Bass setzt aus), (Stimme wird emotionaler), (Beat-Drop).
+
 Die Lyrics müssen für echte Musikproduktionen geeignet sein. Gliedere und markiere die Abschnitte klar.
 Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.`;
 
