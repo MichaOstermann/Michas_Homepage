@@ -63,57 +63,61 @@
 
                     <div class="newsletter-bg" style="position:relative;background:rgba(10,14,24,0.98);border-radius:2rem;box-shadow:0 0 0 3px #06FFF0,0 0 64px #06FFF040;overflow:hidden;padding:0;">
                         <div class="newsletter-grid-bg" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(6,255,240,0.04) 1px,transparent 1px),linear-gradient(180deg,rgba(6,255,240,0.04) 1px,transparent 1px);background-size:40px 40px;"></div>
-                        <form id="lyricsForm" class="form-contact" style="position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3.2rem 2.2rem 2.2rem 2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:2.2rem 2.8rem;align-items:start;background:transparent;">
-                            <div style="display:flex;flex-direction:column;gap:2.2rem;width:100%;grid-column:1/3;max-width:600px;margin:0 auto;">
+                        <form id="lyricsForm" class="form-contact" style="position:relative;z-index:1;max-width:850px;margin:0 auto;padding:3.2rem 2.5rem 2.2rem 2.5rem;display:flex;flex-direction:column;gap:2.2rem;background:transparent;">
+                            <div style="display:flex;flex-direction:column;gap:2.2rem;width:100%;margin:0 auto;">
                                 <div class="form-group">
-                                    <div style="font-size:1.22rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Songthema</div>
+                                    <div style="font-size:1.28rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">💡 Songthema</div>
                                     <label for="theme" class="form-label" style="display:none;">Songthema</label>
-                                    <textarea id="theme" rows="8" class="form-control" placeholder="Worüber soll der Song handeln?" style="font-size:1.22rem;padding:1.3rem 1.5rem;min-height:180px;max-width:100%;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:1.1rem;color:#fff;box-shadow:0 0 0 2px #06FFF040;"></textarea>
+                                    <textarea id="theme" rows="6" class="form-control" placeholder="Beschreibe dein Songthema (z.B. 'Verloren in der Großstadt, Sehnsucht nach Freiheit')" style="font-size:1.22rem;padding:1.3rem 1.5rem;min-height:150px;width:100%;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:1.1rem;color:#fff;box-shadow:0 0 0 2px #06FFF040;"></textarea>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎸 Genre</div>
+                                        <label for="genre" class="form-label" style="display:none;">Genre</label>
+                                        <select id="genre" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Pop</option>
+                                            <option>Trap</option>
+                                            <option>Rock</option>
+                                            <option>Schlager</option>
+                                            <option>Country</option>
+                                            <option>Techno</option>
+                                            <option>Indie</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎭 Stimmung</div>
+                                        <label for="mood" class="form-label" style="display:none;">Stimmung</label>
+                                        <select id="mood" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Melancholisch</option>
+                                            <option>Aggressiv</option>
+                                            <option>Motivierend</option>
+                                            <option>Lieblich</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎼 Song-Struktur</div>
+                                        <label for="structure" class="form-label" style="display:none;">Song-Struktur</label>
+                                        <select id="structure" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Standard: Verse - Chorus</option>
+                                            <option>Komplex: Verse - Chorus - Bridge</option>
+                                            <option>Individuell: Eigenes Muster</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">📝 Reimschema</div>
+                                        <label for="rhyme" class="form-label" style="display:none;">Reimschema</label>
+                                        <select id="rhyme" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>AABB</option>
+                                            <option>ABAB</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Genre</div>
-                                    <label for="genre" class="form-label" style="display:none;">Genre</label>
-                                    <select id="genre" class="form-control" style="font-size:1.1rem;padding:1rem 1.2rem;min-height:3.1rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;">
-                                        <option>Pop</option>
-                                        <option>Trap</option>
-                                        <option>Rock</option>
-                                        <option>Schlager</option>
-                                        <option>Country</option>
-                                        <option>Techno</option>
-                                        <option>Indie</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Stimmung</div>
-                                    <label for="mood" class="form-label" style="display:none;">Stimmung</label>
-                                    <select id="mood" class="form-control" style="font-size:1.1rem;padding:1rem 1.2rem;min-height:3.1rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;">
-                                        <option>Melancholisch</option>
-                                        <option>Aggressiv</option>
-                                        <option>Motivierend</option>
-                                        <option>Lieblich</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Song-Struktur</div>
-                                    <label for="structure" class="form-label" style="display:none;">Song-Struktur</label>
-                                    <select id="structure" class="form-control" style="font-size:1.1rem;padding:1rem 1.2rem;min-height:3.1rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;">
-                                        <option>Standard: Verse - Chorus</option>
-                                        <option>Komplex: Verse - Chorus - Bridge</option>
-                                        <option>Individuell: Eigenes Muster</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Reimschema</div>
-                                    <label for="rhyme" class="form-label" style="display:none;">Reimschema</label>
-                                    <select id="rhyme" class="form-control" style="font-size:1.1rem;padding:1rem 1.2rem;min-height:3.1rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;">
-                                        <option>AABB</option>
-                                        <option>ABAB</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.4rem;">Referenz-Künstler</div>
+                                    <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎤 Referenz-Künstler (optional)</div>
                                     <label for="artist" class="form-label" style="display:none;">Referenz-Künstler</label>
-                                    <input id="artist" type="text" class="form-control" placeholder="z.B. Stil von Taylor Swift oder Apache 207" style="font-size:1.1rem;padding:1rem 1.2rem;min-height:3.1rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;">
+                                    <input id="artist" type="text" class="form-control" placeholder="z.B. im Stil von Taylor Swift, Apache 207, Ed Sheeran..." style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
                                 </div>
                                 <div class="form-group" style="display:flex;gap:1.2rem;margin-top:0.7rem;justify-content:flex-end;">
                                     <button id="generateBtn" type="submit" class="btn btn--glass btn--neon" style="font-size:1.22rem;padding:1.2rem 2.8rem;min-width:220px;background:linear-gradient(90deg,#06FFF0 0%,#8B5CF6 100%);color:#181c24;font-weight:700;box-shadow:0 0 24px #06FFF040;">
