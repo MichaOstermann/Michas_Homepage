@@ -1,9 +1,8 @@
 // Vercel Serverless Function – sichere API-Anbindung
 // API-Key wird aus Umgebungsvariable gelesen (.env)
-const { OpenAI } = require("openai");
-const fetch = require("node-fetch");
+import OpenAI from "openai";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // CORS-Header für lokale Entwicklung
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -40,31 +39,8 @@ module.exports = async function handler(req, res) {
         temperature: 0.92
       });
       result = completion.choices?.[0]?.message?.content || "Keine Lyrics generiert.";
-    } else if (provider === "anthropic") {
-      const apiKey = process.env.ANTHROPIC_API_KEY;
-      if (!apiKey) {
-        return res.status(500).json({ error: "Anthropic API-Key nicht konfiguriert. Bitte .env-Datei prüfen." });
-      }
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": apiKey
-        },
-        body: JSON.stringify({
-          model: "claude-3.5-sonnet-20240606",
-          max_tokens: 900,
-          temperature: 0.92,
-          messages: [
-            { role: "user", content: systemPrompt }
-          ]
-        })
-      });
-      if (!response.ok) throw new Error("Fehler bei der KI-Antwort (Anthropic)");
-      const data = await response.json();
-      result = data.content?.[0]?.text || "Keine Lyrics generiert.";
     } else {
-      return res.status(400).json({ error: "Ungültiger Provider" });
+      return res.status(400).json({ error: "Ungültiger Provider - nur 'openai' wird unterstützt" });
     }
     res.status(200).json({ lyrics: result });
   } catch (err) {

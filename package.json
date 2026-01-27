@@ -2,12 +2,8 @@
   "name": "michas-homepage",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
-  },
+  "type": "module",
   "dependencies": {
-    "openai": "^4.30.0",
-    "node-fetch": "^2.7.0"
+    "openai": "^4.30.0"
   }
 }
