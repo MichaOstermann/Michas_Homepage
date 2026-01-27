@@ -1,11 +1,22 @@
 {
   "posts": [
     {
+      "slug": "ki-songwriting-tool-launch",
+      "href": "blog/ki-songwriting-tool-launch.html",
+      "title": "KI-Songwriting-Tool gelauncht - Professionelle Lyrics in Sekunden",
+      "tag": "Musik Studio",
+      "emoji": "🎵",
+      "readMin": 5,
+      "date": "2026-01-27",
+      "featured": true,
+      "excerpt": "Von der Idee zum fertigen Songtext in Sekunden - unser KI-powered Songwriting-Tool ist live und bereit, deine Kreativität zu boosten!"
+    },
+    {
       "slug": "projekt-update-fortschritte",
       "href": "blog/projekt-update-fortschritte.html",
       "title": "Projekt‑Update: Schutz, Cyberpunk, Suche, Steuerleiste",
       "tag": "News",
-      "emoji": "\uD83D\uDE80",
+      "emoji": "🚀",
       "readMin": 7,
       "date": "2025-11-17",
       "featured": true,
