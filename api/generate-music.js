@@ -1,11 +1,30 @@
 // Vercel Serverless Function – ElevenLabs Music API Integration
 // Generates complete songs with vocals from lyrics
+import { jwtVerify } from 'jose';
+import { promises as fs } from 'fs';
+import path from 'path';
+
+const USERS_FILE = path.join('/tmp', 'audio-studio-users.json');
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || 'your-secret-key-change-in-production');
+
+async function getUsers() {
+  try {
+    const data = await fs.readFile(USERS_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch {
+    return {};
+  }
+}
+
+async function saveUsers(users) {
+  await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2));
+}
 
 export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -15,7 +34,38 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Only POST allowed' });
   }
 
-  const { lyrics, genre, bpm, atmosphere, description } = req.body || {};
+  // Auth check
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+
+  const token = authHeader.substring(7);
+  
+  try {
+    // Verify JWT
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const email = payload.email;
+    const isAdmin = payload.isAdmin || false;
+
+    // Check user limits
+    const users = await getUsers();
+    const user = users[email];
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+
+    // Check monthly limit (admins have unlimited)
+    if (!isAdmin && user.generationsUsed >= user.monthlyLimit) {
+      return res.status(429).json({ 
+        error: `Monthly limit reached (${user.monthlyLimit} songs/month). Please contact us for more access.`,
+        limit: user.monthlyLimit,
+        used: user.generationsUsed
+      });
+    }
+
+    const { lyrics, genre, bpm, atmosphere, description } = req.body || {};
   
   if (!lyrics) {
     return res.status(400).json({ error: 'Lyrics are required' });
@@ -60,17 +110,29 @@ export default async function handler(req, res) {
     // Get audio buffer
     const audioBuffer = await response.arrayBuffer();
     
+    // Update user generation count
+    user.generationsUsed += 1;
+    users[email] = user;
+    await saveUsers(users);
+    
     // Convert to base64 for frontend
     const base64Audio = Buffer.from(audioBuffer).toString('base64');
     
     res.status(200).json({ 
       success: true,
       audio: base64Audio,
-      format: 'mp3'
+      format: 'mp3',
+      remainingGenerations: isAdmin ? -1 : (user.monthlyLimit - user.generationsUsed)
     });
 
   } catch (err) {
     console.error('Backend error:', err);
+    
+    // Check if JWT error
+    if (err.code === 'ERR_JWT_EXPIRED' || err.code === 'ERR_JWS_INVALID') {
+      return res.status(401).json({ error: 'Session expired. Please login again.' });
+    }
+    
     res.status(500).json({ 
       error: err.message || 'Server error during music generation' 
     });
