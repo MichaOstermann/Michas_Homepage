@@ -53,6 +53,13 @@ SCHREIBSTIL "SHOW, DON'T TELL":
 ✅ SONDERN: "Der Regen perlt an der Lederjacke ab, während die Stadt im Rückspiegel verblasst" (zeigen)
 Nutze KONKRETE BILDER, SINNESEINDRÜCKE und SPEZIFISCHE DETAILS statt abstrakte Behauptungen.
 
+METAPHERN-LOGIK:
+Achte auf logisch konsistente Metaphern. Beispiele:
+❌ NICHT: "fliegt wie ein Fisch" (Fische schwimmen, fliegen nicht)
+❌ NICHT: "schwebt wie ein Stein" (Steine fallen, schweben nicht)
+✅ SONDERN: "fliegt wie ein Pfeil", "Zeit bleibt kurz stehen", "zieht vorbei wie Rauch"
+Metaphern müssen der Realität entsprechen, auch wenn sie poetisch sind.
+
 VERMEIDE KLISCHEES:
 ❌ NICHT: "Keine Angst vor dem Sturm", "Hör den Motor brüllen", "Wir sind unsterblich"
 ✅ SONDERN: Spezifische Details (echte Orte, Markennamen, ungewöhnliche Metaphern)
