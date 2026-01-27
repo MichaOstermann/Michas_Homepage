@@ -1,9 +1,9 @@
 // Vercel Serverless Function – sichere API-Anbindung
 // API-Key wird aus Umgebungsvariable gelesen (.env)
-import { OpenAI } from "openai";
-import fetch from "node-fetch";
+const { OpenAI } = require("openai");
+const fetch = require("node-fetch");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS-Header für lokale Entwicklung
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
