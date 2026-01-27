@@ -65,102 +65,204 @@ export default async function handler(req, res) {
       });
     }
 
+    // Validate input
     const { lyrics, genre, bpm, atmosphere, description } = req.body || {};
   
-  if (!lyrics) {
-    return res.status(400).json({ error: 'Lyrics are required' });
-  }
+    if (!lyrics) {
+      return res.status(400).json({ error: 'Lyrics are required' });
+    }
 
-  try {
-    const apiKey = process.env.ELEVENLABS_API_KEY;
-    if (!apiKey) {
+    // Validate optional parameters
+    const validGenres = ['modern-trap', 'boom-bap', 'radio-pop', 'stadium-rock', 'edm', 'indie-alternative', 'rnb', 'metal'];
+    const validAtmospheres = ['dark-aggressive', 'euphoric', 'melancholic', 'energetic', 'chill', 'anthemic'];
+    
+    if (genre && !validGenres.includes(genre)) {
+      return res.status(400).json({ error: 'Invalid genre selected' });
+    }
+    
+    if (atmosphere && !validAtmospheres.includes(atmosphere)) {
+      return res.status(400).json({ error: 'Invalid atmosphere selected' });
+    }
+
+    // Check lyrics length (max 5000 characters for optimal quality)
+    if (lyrics.length > 5000) {
+      return res.status(400).json({ error: 'Lyrics too long. Maximum 5000 characters.' });
+    }
+
+    try {
+      const apiKey = process.env.ELEVENLABS_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ 
+          error: 'Music generation service not configured. Please contact support.',
+          code: 'NO_API_KEY'
+        });
+      }
+
+      // Build the music generation prompt with lyrics
+      const musicPrompt = buildMusicPrompt(lyrics, genre, bpm, atmosphere, description);
+
+      // Log request for debugging
+      console.log(`[Music Generation] User: ${email}, Genre: ${genre || 'default'}, BPM: ${bpm || 'default'}`);
+
+      // Call ElevenLabs Music API with proper endpoint
+      // Docs: https://elevenlabs.io/docs/api-reference/music-generation
+      const response = await fetch('https://api.elevenlabs.io/v1/text-to-sound-effects', {
+        method: 'POST',
+        headers: {
+          'xi-api-key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text: musicPrompt,
+          duration_seconds: null, // Auto-detect from lyrics length
+          prompt_influence: 0.3 // Balance between prompt and model creativity
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('ElevenLabs API Error:', errorData);
+        
+        // Handle specific error codes
+        if (response.status === 401) {
+          return res.status(500).json({ 
+            error: 'Music generation service authentication failed. Please contact support.',
+            code: 'API_AUTH_FAILED'
+          });
+        }
+        
+        if (response.status === 429) {
+          return res.status(503).json({ 
+            error: 'Music generation service is temporarily busy. Please try again in a moment.',
+            code: 'API_RATE_LIMIT'
+          });
+        }
+        
+        return res.status(response.status).json({ 
+          error: `Music generation failed: ${response.statusText}`,
+          details: errorData,
+          code: 'API_ERROR'
+        });
+      }
+
+      // Get audio buffer
+      const audioBuffer = await response.arrayBuffer();
+      
+      // Validate audio output
+      if (!audioBuffer || audioBuffer.byteLength === 0) {
+        return res.status(500).json({ 
+          error: 'Music generation produced empty result. Please try again.',
+          code: 'EMPTY_AUDIO'
+        });
+      }
+
+      // Update user generation count
+      user.generationsUsed += 1;
+      user.lastGeneration = new Date().toISOString();
+      users[email] = user;
+      await saveUsers(users);
+      
+      // Convert to base64 for frontend
+      const base64Audio = Buffer.from(audioBuffer).toString('base64');
+      
+      // Calculate file size in MB
+      const fileSizeMB = (audioBuffer.byteLength / (1024 * 1024)).toFixed(2);
+      
+      console.log(`[Music Generation] Success for ${email}. File size: ${fileSizeMB}MB, Remaining: ${isAdmin ? 'unlimited' : user.monthlyLimit - user.generationsUsed}`);
+      
+      res.status(200).json({ 
+        success: true,
+        audio: base64Audio,
+        format: 'mp3',
+        fileSizeMB: parseFloat(fileSizeMB),
+        generatedAt: new Date().toISOString(),
+        remainingGenerations: isAdmin ? -1 : (user.monthlyLimit - user.generationsUsed),
+        metadata: {
+          genre: genre || 'default',
+          bpm: bpm || 'auto',
+          atmosphere: atmosphere || 'energetic'
+        }
+      });
+
+    } catch (apiError) {
+      console.error('[Music Generation] API Error:', apiError);
       return res.status(500).json({ 
-        error: 'ElevenLabs API key not configured. Please add ELEVENLABS_API_KEY to Vercel environment variables.' 
+        error: 'Music generation API failed. Please try again.',
+        code: 'API_EXCEPTION',
+        details: apiError.message
       });
     }
-
-    // Build the music generation prompt
-    const musicPrompt = buildMusicPrompt(lyrics, genre, bpm, atmosphere, description);
-
-    // Call ElevenLabs Music API
-    // Note: Adjust endpoint based on actual ElevenLabs Music API documentation
-    const response = await fetch('https://api.elevenlabs.io/v1/music/generate', {
-      method: 'POST',
-      headers: {
-        'xi-api-key': apiKey,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: musicPrompt,
-        duration_seconds: null, // Auto-detect based on lyrics length
-        prompt_influence: 0.7, // Higher = more precise to prompt
-        model_id: 'eleven_music_v1' // Adjust based on actual model name
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.text();
-      console.error('ElevenLabs API Error:', errorData);
-      return res.status(response.status).json({ 
-        error: `ElevenLabs API error: ${response.statusText}`,
-        details: errorData
-      });
-    }
-
-    // Get audio buffer
-    const audioBuffer = await response.arrayBuffer();
-    
-    // Update user generation count
-    user.generationsUsed += 1;
-    users[email] = user;
-    await saveUsers(users);
-    
-    // Convert to base64 for frontend
-    const base64Audio = Buffer.from(audioBuffer).toString('base64');
-    
-    res.status(200).json({ 
-      success: true,
-      audio: base64Audio,
-      format: 'mp3',
-      remainingGenerations: isAdmin ? -1 : (user.monthlyLimit - user.generationsUsed)
-    });
 
   } catch (err) {
-    console.error('Backend error:', err);
+    console.error('[Music Generation] Backend error:', err);
     
     // Check if JWT error
     if (err.code === 'ERR_JWT_EXPIRED' || err.code === 'ERR_JWS_INVALID') {
-      return res.status(401).json({ error: 'Session expired. Please login again.' });
-    }
-    
-    res.status(500).json({ 
-      error: err.message || 'Server error during music generation' 
-    });
-  }
-}
-
-function buildMusicPrompt(lyrics, genre, bpm, atmosphere, description) {
-  // Build comprehensive prompt for ElevenLabs Music API
+      return res.status(401).json({ 
+        error: 'Session expired. Please login again.',
+  // Genre definitions with production details
   const genreMap = {
-    'modern-trap': 'Modern Trap with 808 bass, trap hi-hats, melodic vocals',
-    'boom-bap': '90s Boom Bap Hip-Hop with jazz samples, vinyl crackle, punchy drums',
-    'radio-pop': 'Radio-ready Pop with polished production, catchy hooks, wide stereo',
-    'stadium-rock': 'Stadium Rock with powerful guitars, live drums, anthemic vocals',
-    'edm': 'Electronic Dance Music with synthesizers, build-ups, powerful drops',
-    'indie-alternative': 'Indie Alternative with organic instruments, emotional vocals',
-    'rnb': 'R&B/Soul with smooth vocals, sultry mood, rich harmonies',
-    'metal': 'Metal with distorted guitars, double kick drums, aggressive vocals'
+    'modern-trap': 'Modern Trap with deep 808 bass, rapid trap hi-hats, auto-tuned melodic vocals, and ambient synth pads',
+    'boom-bap': '90s Boom Bap Hip-Hop with jazzy piano samples, vinyl crackle texture, punchy kick and snare, crisp rap vocals',
+    'radio-pop': 'Radio-ready Pop with polished vocal production, catchy melodic hooks, wide stereo imaging, and dynamic chorus',
+    'stadium-rock': 'Stadium Rock with powerful distorted guitars, live acoustic drums, anthemic vocal harmonies, and epic build-ups',
+    'edm': 'Electronic Dance Music with synthesizer leads, build-up risers, powerful bass drops, and energetic beat patterns',
+    'indie-alternative': 'Indie Alternative with organic guitar tones, authentic drum grooves, emotional raw vocals, and atmospheric layers',
+    'rnb': 'R&B/Soul with smooth silky vocals, sultry vibe, rich chord progressions, and tasteful background harmonies',
+    'metal': 'Metal with heavily distorted rhythm guitars, aggressive double kick drums, powerful screaming/singing vocals, and breakdown sections'
   };
 
+  // Atmosphere/mood definitions
   const atmosphereMap = {
-    'dark-aggressive': 'dark and aggressive',
-    'euphoric': 'euphoric and uplifting',
-    'melancholic': 'melancholic and emotional',
-    'energetic': 'energetic and powerful',
-    'chill': 'chill and laid-back',
-    'anthemic': 'anthemic and epic'
+    'dark-aggressive': 'dark, aggressive, and intense with heavy low-end presence',
+    'euphoric': 'euphoric, uplifting, and inspiring with bright melodic elements',
+    'melancholic': 'melancholic, emotional, and introspective with tender dynamics',
+    'energetic': 'energetic, powerful, and driving with high-impact percussion',
+    'chill': 'chill, laid-back, and relaxed with smooth flowing arrangements',
+    'anthemic': 'anthemic, epic, and grandiose with massive chorus sections'
   };
 
+  // Calculate estimated duration from lyrics length
+  const wordCount = lyrics.split(/\s+/).length;
+  const estimatedDuration = Math.ceil(wordCount / 2.5); // ~150 words per minute average singing speed
+
+  // Build structured prompt
+  const selectedGenre = genreMap[genre] || 'Modern Pop with professional production, clear vocals, and radio-ready mix';
+  const selectedAtmosphere = atmosphereMap[atmosphere] || 'energetic and engaging with dynamic arrangement';
+  const targetBPM = bpm || 120;
+
+  const prompt = `
+🎵 MUSIC GENERATION REQUEST 🎵
+
+GENRE & STYLE:
+${selectedGenre}
+
+TEMPO: ${targetBPM} BPM
+ATMOSPHERE: ${selectedAtmosphere}
+${description ? `VOCAL DIRECTION: ${description}` : 'VOCAL STYLE: Professional, expressive, and genre-appropriate'}
+
+SONG STRUCTURE:
+Follow the exact structure markers in the lyrics below ([Intro], [Verse], [Chorus], [Bridge], [Outro], etc.)
+
+PRODUCTION REQUIREMENTS:
+✓ Professional studio-quality mixing and mastering
+✓ Clear, expressive lead vocals with proper pitch and timing
+✓ Genre-authentic instrumentation and sound design
+✓ Balanced frequency spectrum (lows, mids, highs)
+✓ Dynamic range appropriate to genre
+✓ Stereo width and depth for immersive experience
+✓ Streaming-ready output (Spotify/Apple Music standard: -14 LUFS)
+
+LYRICS TO PERFORM:
+${lyrics}
+
+TECHNICAL SPECS:
+- Target Duration: ~${estimatedDuration} seconds (based on lyrics length)
+- Format: MP3, 320kbps
+- Sample Rate: 48kHz
+- Bit Depth: 16-bit
+
+Generate a complete, professional-quality song that brings these lyrics to life with emotion, energy, and technical excellence.
   const prompt = `
 Create a complete ${genreMap[genre] || 'Pop'} song at ${bpm} BPM with a ${atmosphereMap[atmosphere] || 'energetic'} atmosphere.
 

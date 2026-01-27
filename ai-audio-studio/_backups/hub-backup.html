@@ -9,7 +9,7 @@
   <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
   
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="hub-styles.css" />
 </head>
 <body class="hub-body">
 
@@ -49,7 +49,7 @@
   <main class="hub-main">
     <div class="hub-container">
       
-      <div class="hub-grid hub-grid-4">
+      <div class="hub-grid">
         
         <!-- Card 1: Songtext Generieren -->
         <div class="hub-card card-lyrics">
@@ -68,7 +68,7 @@
               <li>✓ Struktur-Templates (Intro-Verse-Chorus)</li>
               <li>✓ Artist-Style Referenz</li>
             </ul>
-            <a href="lyrics-generator/" class="card-button btn-lyrics">
+            <a href="generate-lyrics.html" class="card-button btn-lyrics">
               <span>Lyrics Generieren</span>
               <span class="button-arrow">→</span>
             </a>
@@ -93,7 +93,7 @@
               <li>✓ Atmosphere & Vocal Style</li>
               <li>✓ Professional Mastering</li>
             </ul>
-            <a href="song-creator/" class="card-button btn-music">
+            <a href="create-song.html" class="card-button btn-music">
               <span>Song Erstellen</span>
               <span class="button-arrow">→</span>
             </a>
@@ -118,37 +118,12 @@
               <li>✓ Album Cover Integration</li>
               <li>✓ Style Prompts (K-Pop, Cyberpunk...)</li>
             </ul>
-            <a href="video-creator/" class="card-button btn-video">
-              <span>Vorschau ansehen</span>
+            <button class="card-button btn-video" disabled>
+              <span>Coming Soon</span>
               <span class="button-arrow">🚀</span>
-            </a>
+            </button>
           </div>
           <div class="card-decoration decoration-video"></div>
-        </div>
-
-        <!-- Card 4: Referenz Galerie -->
-        <div class="hub-card card-gallery">
-          <div class="card-icon">
-            <div class="icon-circle">🎨</div>
-          </div>
-          <div class="card-content">
-            <h2 class="card-title">Referenz Galerie</h2>
-            <p class="card-description">
-              Entdecke Beispiel-Songs, Videos, Lyrics und Style-Referenzen. 
-              Lass dich inspirieren für deine nächste KI-Musik-Produktion.
-            </p>
-            <ul class="card-features">
-              <li>✓ Beispiel-Songs (alle Genres)</li>
-              <li>✓ Video-Showcase (K-Pop, Cyberpunk...)</li>
-              <li>✓ Lyrics-Vorlagen & Prompts</li>
-              <li>✓ Style Guides & Referenzen</li>
-            </ul>
-            <a href="reference-gallery/" class="card-button btn-gallery">
-              <span>Galerie öffnen</span>
-              <span class="button-arrow">→</span>
-            </a>
-          </div>
-          <div class="card-decoration decoration-gallery"></div>
         </div>
 
       </div>
@@ -257,6 +232,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="hub-script.js"></script>
 </body>
 </html>

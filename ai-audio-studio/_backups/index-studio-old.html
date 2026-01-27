@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Audio Studio | AI Music Production</title>
+  <meta name="description" content="Professional-Grade AI Music Production Studio - Text to Complete Songs with Vocals" />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="studio-body">
+
+  <!-- Top Bar with Auth Status -->
+  <div class="studio-topbar">
+    <div class="studio-container">
+      <div class="topbar-brand">
+        <a href="../index.html" class="brand-link">← Code & Beats</a>
+        <span class="studio-badge">AI Audio Studio</span>
+      </div>
+      <div id="authStatusTop" class="auth-status-top">
+        <button id="loginBtnTop" class="btn-login">🔐 Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Studio Interface -->
+  <main class="studio-main">
+    
+    <!-- Login/Register Modal -->
+    <div id="authModal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button id="closeModal" class="modal-close">×</button>
+        
+        <div class="modal-header">
+          <h2>🎛️ AI Audio Studio</h2>
+          <p>Professional Music Production with AI</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form">
+          <h3>Login</h3>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" required placeholder="••••••••" />
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <div class="form-divider">OR</div>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form">
+          <h3>Create Account</h3>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="registerEmail" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Password (min. 6 characters)</label>
+            <input type="password" id="registerPassword" required minlength="6" placeholder="••••••••" />
+          </div>
+          <button type="submit" class="btn-secondary">Create Account</button>
+          <p class="form-hint">5 generations/month free · Admins get unlimited access</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Studio Interface -->
+    <div id="studioInterface" class="studio-interface">
+      
+      <!-- Left Panel: Controls -->
+      <div class="studio-panel studio-left">
+        <div class="panel-header">
+          <h2>⚡ Production Controls</h2>
+          <p>Configure your track parameters</p>
+        </div>
+
+        <form id="studioForm" class="studio-form">
+          
+          <!-- Genre & Style Section -->
+          <div class="control-section">
+            <div class="section-header">
+              <span class="section-icon">🎸</span>
+              <h3>Genre & Style</h3>
+            </div>
+            
+            <div class="control-grid">
+              <div class="control-item">
+                <label for="genre">Genre</label>
+                <select id="genre" required class="control-select">
+                  <option value="modern-trap">🔥 Modern Trap</option>
+                  <option value="boom-bap">🎧 Boom Bap Hip-Hop</option>
+                  <option value="radio-pop" selected>📻 Radio Pop</option>
+                  <option value="stadium-rock">🎸 Stadium Rock</option>
+                  <option value="edm">💎 Electronic Dance</option>
+                  <option value="indie-alternative">🎨 Indie/Alternative</option>
+                  <option value="rnb">🌙 R&B/Soul</option>
+                  <option value="metal">⚡ Metal/Heavy</option>
+                </select>
+              </div>
+
+              <div class="control-item">
+                <label for="atmosphere">Atmosphere</label>
+                <select id="atmosphere" required class="control-select">
+                  <option value="dark-aggressive">🌑 Dark & Aggressive</option>
+                  <option value="euphoric">✨ Euphoric & Uplifting</option>
+                  <option value="melancholic">💔 Melancholic & Emotional</option>
+                  <option value="energetic" selected>⚡ Energetic & Powerful</option>
+                  <option value="chill">🌊 Chill & Laid-back</option>
+                  <option value="anthemic">🏆 Anthemic & Epic</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Parameters Section -->
+          <div class="control-section">
+            <div class="section-header">
+              <span class="section-icon">⚙️</span>
+              <h3>Technical Parameters</h3>
+            </div>
+            
+            <div class="control-grid">
+              <div class="control-item">
+                <label for="bpm">
+                  BPM (Tempo)
+                  <span class="control-value" id="bpmValue">120</span>
+                </label>
+                <input type="range" id="bpm" min="60" max="200" value="120" class="control-slider" />
+                <div class="control-range-labels">
+                  <span>60</span>
+                  <span>200</span>
+                </div>
+              </div>
+
+              <div class="control-item">
+                <label for="mastering">Mastering Target</label>
+                <select id="mastering" required class="control-select">
+                  <option value="streaming" selected>🎧 Streaming-Ready (Spotify)</option>
+                  <option value="club">🔊 Club-Ready (Bass Focus)</option>
+                  <option value="mobile">📱 Mobile-Ready (Mid Focus)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vocal Style Section -->
+          <div class="control-section">
+            <div class="section-header">
+              <span class="section-icon">🎤</span>
+              <h3>Vocal Style (Optional)</h3>
+            </div>
+            
+            <div class="control-item">
+              <textarea 
+                id="vocalStyle" 
+                rows="3" 
+                class="control-textarea" 
+                placeholder="e.g., male voice, raspy, with Auto-Tune, emotional delivery, aggressive tone..."
+              ></textarea>
+              <p class="control-hint">Describe the vocal characteristics you want</p>
+            </div>
+          </div>
+
+          <!-- Lyrics Section -->
+          <div class="control-section">
+            <div class="section-header">
+              <span class="section-icon">📝</span>
+              <h3>Your Lyrics</h3>
+            </div>
+            
+            <!-- Lyrics Generator Integration -->
+            <div class="lyrics-generator-bar">
+              <button type="button" id="openLyricsGenerator" class="btn-lyrics-gen">
+                <span>✨</span>
+                Generate Lyrics with AI
+              </button>
+              <span class="lyrics-hint">or paste your own lyrics below</span>
+            </div>
+            
+            <div class="control-item">
+              <textarea 
+                id="lyrics" 
+                rows="12" 
+                required
+                class="control-textarea lyrics-input" 
+                placeholder="[Intro]
+Your generated lyrics here...
+
+[Verse 1]
+Paste your lyrics from the Songwriting Tool...
+
+[Chorus]
+..."
+              ></textarea>
+              <p class="control-hint">
+                💡 Tip: Use the AI Lyrics Generator above or the <a href="../musik-produktion/index.html" target="_blank" class="link-highlight">Songwriting Tool</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Lyrics Generator Modal -->
+          <div id="lyricsGenModal" class="modal hidden">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content lyrics-gen-content">
+              <button id="closeLyricsGenModal" class="modal-close">×</button>
+              
+              <div class="modal-header">
+                <h2>✨ AI Lyrics Generator</h2>
+                <p>Create professional song lyrics with AI</p>
+              </div>
+
+              <form id="lyricsGenForm" class="lyrics-gen-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Genre</label>
+                    <select id="lyricsGenre" required class="control-select">
+                      <option value="Trap">🔥 Trap</option>
+                      <option value="Hip-Hop">🎧 Hip-Hop</option>
+                      <option value="Pop">📻 Pop</option>
+                      <option value="Rock">🎸 Rock</option>
+                      <option value="EDM">💎 EDM</option>
+                      <option value="R&B">🌙 R&B</option>
+                      <option value="Metal">⚡ Metal</option>
+                      <option value="Indie">🎨 Indie</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Mood</label>
+                    <select id="lyricsMood" required class="control-select">
+                      <option value="Dark & Aggressive">🌑 Dark & Aggressive</option>
+                      <option value="Euphoric">✨ Euphoric</option>
+                      <option value="Melancholic">💔 Melancholic</option>
+                      <option value="Energetic">⚡ Energetic</option>
+                      <option value="Chill">🌊 Chill</option>
+                      <option value="Anthemic">🏆 Anthemic</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Theme / Topic</label>
+                  <input type="text" id="lyricsTheme" required placeholder="e.g., love, struggle, freedom, party..." class="control-select" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Structure</label>
+                    <select id="lyricsStructure" required class="control-select">
+                      <option value="Intro - Verse - Hook - Verse - Hook - Bridge - Hook - Outro">Standard (Intro-Verse-Hook-Bridge)</option>
+                      <option value="Verse - Chorus - Verse - Chorus - Bridge - Chorus">Pop (Verse-Chorus)</option>
+                      <option value="Verse - Verse - Hook - Verse - Hook - Outro">Hip-Hop (Verse-Hook)</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Rhyme Scheme</label>
+                    <select id="lyricsRhyme" required class="control-select">
+                      <option value="AABB">AABB (Paarreime)</option>
+                      <option value="ABAB">ABAB (Kreuzreime)</option>
+                      <option value="ABCB">ABCB (Minimal Rhyme)</option>
+                      <option value="Frei">Free (No Scheme)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Artist Reference (Optional)</label>
+                  <input type="text" id="lyricsArtist" placeholder="e.g., Drake, Billie Eilish, Imagine Dragons..." class="control-select" />
+                </div>
+
+                <button type="submit" id="generateLyricsBtn" class="btn-primary" style="width: 100%; margin-top: 1rem;">
+                  Generate Lyrics
+                </button>
+
+                <!-- Progress -->
+                <div id="lyricsGenProgress" class="progress-container hidden">
+                  <div class="progress-bar">
+                    <div id="lyricsGenProgressFill" class="progress-fill"></div>
+                  </div>
+                  <p class="progress-text">Generating professional lyrics...</p>
+                </div>
+
+                <!-- Output -->
+                <div id="lyricsGenOutput" class="lyrics-gen-output hidden">
+                  <h4>Generated Lyrics:</h4>
+                  <pre id="lyricsGenText" class="lyrics-preview"></pre>
+                  <div class="lyrics-gen-actions">
+                    <button type="button" id="useLyricsBtn" class="btn-action btn-download">
+                      <span>✅</span>
+                      Use These Lyrics
+                    </button>
+                    <button type="button" id="regenerateLyricsBtn" class="btn-action btn-regenerate">
+                      <span>🔄</span>
+                      Regenerate
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Generate Button -->
+          <button type="submit" id="generateBtn" class="btn-generate">
+            <span class="btn-icon">🎵</span>
+            <span class="btn-text">Generate Professional Track</span>
+          </button>
+
+          <!-- Progress Bar -->
+          <div id="progressContainer" class="progress-container hidden">
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <p class="progress-text">Generating your track... This may take 1-2 minutes</p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Right Panel: Output & Preview -->
+      <div class="studio-panel studio-right">
+        <div class="panel-header">
+          <h2>🎧 Audio Output</h2>
+          <p>Your generated tracks appear here</p>
+        </div>
+
+        <!-- Placeholder State -->
+        <div id="outputPlaceholder" class="output-placeholder">
+          <div class="placeholder-icon">🎛️</div>
+          <h3>Ready to Create</h3>
+          <p>Configure your parameters and hit generate to create professional music</p>
+          <div class="placeholder-features">
+            <div class="feature-chip">✅ Professional Vocals</div>
+            <div class="feature-chip">✅ Studio Mixing</div>
+            <div class="feature-chip">✅ Auto Mastering</div>
+            <div class="feature-chip">✅ Instant Download</div>
+          </div>
+        </div>
+
+        <!-- Audio Output (initially hidden) -->
+        <div id="audioOutput" class="audio-output hidden">
+          <div class="output-header">
+            <h3>✨ Generated Track</h3>
+            <span id="trackInfo" class="track-info"></span>
+          </div>
+
+          <!-- Waveform Visualizer Placeholder -->
+          <div class="waveform-container">
+            <audio id="audioPlayer" controls></audio>
+          </div>
+
+          <!-- Track Metadata -->
+          <div id="trackMetadata" class="track-metadata"></div>
+
+          <!-- Action Buttons -->
+          <div class="output-actions">
+            <button id="downloadBtn" class="btn-action btn-download">
+              <span>💾</span>
+              Download MP3
+            </button>
+            <button id="regenerateBtn" class="btn-action btn-regenerate">
+              <span>🔄</span>
+              Regenerate
+            </button>
+          </div>
+        </div>
+
+        <!-- Generation History -->
+        <div class="generation-history">
+          <h4>📚 Recent Generations</h4>
+          <div id="historyList" class="history-list">
+            <p class="history-empty">No generations yet. Create your first track!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Branding -->
+  <div class="studio-footer">
+    <div class="studio-container">
+      <p>⚡ Powered by <strong>mcgv.de</strong> · Professional AI Music Production</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

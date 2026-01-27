@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Songtext Generieren | AI Audio Studio</title>
+  <meta name="description" content="Professional AI Lyrics Generator with Premium Prompts" />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="lyrics-body">
+
+  <!-- Top Bar -->
+  <div class="lyrics-topbar">
+    <div class="lyrics-container">
+      <div class="topbar-nav">
+        <a href="../" class="back-link">← Zurück zum Hub</a>
+        <span class="page-title">📝 Songtext Generator</span>
+      </div>
+      <div id="authStatusTop" class="auth-status-top">
+        <button id="loginBtnTop" class="btn-login">🔐 Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="lyrics-main">
+    <div class="lyrics-container">
+      
+      <!-- Header -->
+      <header class="lyrics-header">
+        <h1>🎤 Professional Lyrics Generator</h1>
+        <p>Premium AI mit Show-Don't-Tell, Slant Rhymes & Anti-Klischee</p>
+      </header>
+
+      <!-- Generator Form -->
+      <div class="generator-layout">
+        
+        <!-- Left: Controls -->
+        <section class="control-panel">
+          <form id="lyricsForm" class="lyrics-form">
+            
+            <!-- Genre -->
+            <div class="form-group">
+              <label for="lyricsGenre">🎵 Genre</label>
+              <select id="lyricsGenre" required>
+                <option value="">Genre auswählen...</option>
+                <option value="trap">Trap / Hip-Hop</option>
+                <option value="pop">Pop / Chart</option>
+                <option value="rock">Rock / Alternative</option>
+                <option value="edm">EDM / Electronic</option>
+                <option value="rnb">R&B / Soul</option>
+                <option value="indie">Indie / Singer-Songwriter</option>
+                <option value="metal">Metal / Hard Rock</option>
+                <option value="country">Country / Folk</option>
+              </select>
+            </div>
+
+            <!-- Mood -->
+            <div class="form-group">
+              <label for="lyricsMood">😌 Stimmung</label>
+              <select id="lyricsMood" required>
+                <option value="">Stimmung auswählen...</option>
+                <option value="dark">Dark / Melancholisch</option>
+                <option value="euphoric">Euphoric / Uplifting</option>
+                <option value="angry">Angry / Aggressive</option>
+                <option value="romantic">Romantic / Emotional</option>
+                <option value="chill">Chill / Entspannt</option>
+                <option value="energetic">Energetic / Hype</option>
+              </select>
+            </div>
+
+            <!-- Theme -->
+            <div class="form-group">
+              <label for="lyricsTheme">💭 Thema / Konzept</label>
+              <input 
+                type="text" 
+                id="lyricsTheme" 
+                placeholder="z.B. Verlorene Liebe, Erfolg gegen alle Widerstände, Nachtleben..." 
+                maxlength="200"
+              />
+            </div>
+
+            <!-- Structure -->
+            <div class="form-group">
+              <label for="lyricsStructure">📋 Songstruktur</label>
+              <select id="lyricsStructure">
+                <option value="standard">Standard (Intro-Verse-Chorus-Verse-Chorus-Bridge-Chorus)</option>
+                <option value="short">Kurz (Verse-Chorus-Verse-Chorus)</option>
+                <option value="extended">Extended (Intro-Verse-Pre-Chorus-Chorus-Verse-Pre-Chorus-Chorus-Bridge-Chorus-Outro)</option>
+                <option value="custom">Experimentell (Freie Struktur)</option>
+              </select>
+            </div>
+
+            <!-- Rhyme Scheme -->
+            <div class="form-group">
+              <label for="lyricsRhyme">🎭 Reimschema</label>
+              <select id="lyricsRhyme">
+                <option value="slant">Slant Rhymes (Modern, Unperfekt)</option>
+                <option value="perfect">Perfect Rhymes (Klassisch)</option>
+                <option value="internal">Internal Rhymes (Komplex)</option>
+                <option value="free">Free Style (Keine festen Reime)</option>
+              </select>
+            </div>
+
+            <!-- Artist Reference -->
+            <div class="form-group">
+              <label for="artistReference">🎤 Artist Style (Optional)</label>
+              <input 
+                type="text" 
+                id="artistReference" 
+                placeholder="z.B. Drake, Taylor Swift, The Weeknd..." 
+                maxlength="100"
+              />
+            </div>
+
+            <!-- Generate Button -->
+            <button type="submit" id="generateBtn" class="btn-generate">
+              <span>✨ Lyrics Generieren</span>
+            </button>
+
+          </form>
+        </section>
+
+        <!-- Right: Output -->
+        <section class="output-panel">
+          
+          <div id="outputPlaceholder" class="output-placeholder">
+            <div class="placeholder-icon">📝</div>
+            <h3>Bereit für deinen Song?</h3>
+            <p>Wähle deine Optionen links und klicke auf "Lyrics Generieren"</p>
+            <ul class="feature-list">
+              <li>✓ Premium AI Prompt Engineering</li>
+              <li>✓ Show-Don't-Tell Prinzipien</li>
+              <li>✓ Anti-Klischee Filter</li>
+              <li>✓ Metaphern-Logik & Bildsprache</li>
+            </ul>
+          </div>
+
+          <div id="outputContent" class="output-content hidden">
+            
+            <!-- Generated Lyrics -->
+            <div class="lyrics-display">
+              <div class="lyrics-header-actions">
+                <h3>🎵 Deine generierten Lyrics</h3>
+                <div class="action-buttons">
+                  <button id="copyLyricsBtn" class="btn-action" title="In Zwischenablage kopieren">
+                    📋 Kopieren
+                  </button>
+                  <button id="downloadLyricsBtn" class="btn-action" title="Als .txt herunterladen">
+                    💾 Download
+                  </button>
+                  <button id="useInStudioBtn" class="btn-action btn-primary-action" title="Direkt in Song Studio verwenden">
+                    🎵 Im Studio verwenden
+                  </button>
+                </div>
+              </div>
+              
+              <div id="lyricsTextDisplay" class="lyrics-text"></div>
+            </div>
+
+            <!-- Regenerate -->
+            <div class="regenerate-section">
+              <button id="regenerateBtn" class="btn-regenerate">
+                🔄 Neue Version generieren
+              </button>
+              <p class="regenerate-hint">Nicht zufrieden? Generiere eine neue Variation!</p>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Login/Register Modal -->
+  <div id="authModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close">×</button>
+      
+      <div class="modal-header">
+        <h2>🎛️ AI Audio Studio</h2>
+        <p>Login für Lyrics Generator</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <h3>Login</h3>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+
+      <div class="form-divider">OR</div>
+
+      <form id="registerForm" class="auth-form">
+        <h3>Create Account</h3>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="registerEmail" required placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Password (min. 6 characters)</label>
+          <input type="password" id="registerPassword" required minlength="6" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-secondary">Create Account</button>
+        <p class="form-hint">Unlimited Lyrics Generation!</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

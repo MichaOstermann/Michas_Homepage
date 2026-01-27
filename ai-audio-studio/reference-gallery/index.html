@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Referenz Galerie | AI Audio Studio</title>
+  <meta name="description" content="Beispiel-Songs, Videos und Style-Referenzen für deine KI-Musik-Produktion" />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="gallery-body">
+
+  <!-- Top Bar -->
+  <div class="gallery-topbar">
+    <div class="gallery-container">
+      <div class="topbar-nav">
+        <a href="../" class="back-link">← Zurück zum Hub</a>
+        <span class="page-title">🎨 Referenz Galerie</span>
+      </div>
+      <div id="authStatusTop" class="auth-status-top">
+        <button id="loginBtnTop" class="btn-login">🔐 Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="gallery-main">
+    <div class="gallery-container">
+      
+      <!-- Header -->
+      <header class="gallery-header">
+        <h1>🎨 Inspiration & Referenzen</h1>
+        <p>Entdecke Beispiele, Styles und lass dich inspirieren für deine nächste Kreation</p>
+      </header>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="tab-btn active" data-category="all">🌟 Alle</button>
+        <button class="tab-btn" data-category="songs">🎵 Songs</button>
+        <button class="tab-btn" data-category="videos">🎬 Videos</button>
+        <button class="tab-btn" data-category="lyrics">📝 Lyrics</button>
+        <button class="tab-btn" data-category="styles">🎨 Styles</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        
+        <!-- Song Examples -->
+        <div class="gallery-item" data-category="songs">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎵</span>
+            </div>
+            <div class="item-badge badge-song">Song</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Cyberpunk Dreams</h3>
+            <p class="item-meta">Genre: Electronic • BPM: 128 • Länge: 3:42</p>
+            <p class="item-description">Futuristischer Synthwave-Track mit dunklen Basslines und atmosphärischen Pads. Perfekt für Science-Fiction Vibes.</p>
+            <div class="item-tags">
+              <span class="tag">Synthwave</span>
+              <span class="tag">Dark</span>
+              <span class="tag">Atmospheric</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="playDemo('cyberpunk')">▶️ Anhören</button>
+              <button class="btn-action btn-secondary">📥 Als Referenz</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="songs">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎵</span>
+            </div>
+            <div class="item-badge badge-song">Song</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Summer Memories</h3>
+            <p class="item-meta">Genre: Pop • BPM: 110 • Länge: 3:15</p>
+            <p class="item-description">Leichter Pop-Track mit akustischen Gitarren und warmen Vocals. Perfekt für emotionale Momente.</p>
+            <div class="item-tags">
+              <span class="tag">Acoustic</span>
+              <span class="tag">Emotional</span>
+              <span class="tag">Uplifting</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="playDemo('summer')">▶️ Anhören</button>
+              <button class="btn-action btn-secondary">📥 Als Referenz</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="songs">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎵</span>
+            </div>
+            <div class="item-badge badge-song">Song</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Urban Nightlife</h3>
+            <p class="item-meta">Genre: Hip-Hop • BPM: 92 • Länge: 2:58</p>
+            <p class="item-description">Moderner Trap-Beat mit tiefen 808s und knackigen Hi-Hats. Perfekt für urbane Vibes.</p>
+            <div class="item-tags">
+              <span class="tag">Trap</span>
+              <span class="tag">Urban</span>
+              <span class="tag">Energetic</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="playDemo('urban')">▶️ Anhören</button>
+              <button class="btn-action btn-secondary">📥 Als Referenz</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Examples -->
+        <div class="gallery-item" data-category="videos">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎬</span>
+            </div>
+            <div class="item-badge badge-video">Video</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">K-Pop Style Vibes</h3>
+            <p class="item-meta">Style: K-Pop • Länge: 3:20 • Auflösung: 1080p</p>
+            <p class="item-description">Hochenergetisches Video mit schnellen Schnitten, Neon-Farben und choreographischen Elementen. Perfekt für Pop-Tracks.</p>
+            <div class="item-tags">
+              <span class="tag">K-Pop</span>
+              <span class="tag">Colorful</span>
+              <span class="tag">Fast-Paced</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="playDemo('kpop')">▶️ Ansehen</button>
+              <button class="btn-action btn-secondary">📥 Als Referenz</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="videos">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎬</span>
+            </div>
+            <div class="item-badge badge-video">Video</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Cinematic Epic</h3>
+            <p class="item-meta">Style: Cinematic • Länge: 4:05 • Auflösung: 4K</p>
+            <p class="item-description">Episches Video mit dramatischen Landschaften, Slow-Motion und orchestralen Vibes. Perfekt für emotionale Tracks.</p>
+            <div class="item-tags">
+              <span class="tag">Epic</span>
+              <span class="tag">Dramatic</span>
+              <span class="tag">Slow-Mo</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="playDemo('cinematic')">▶️ Ansehen</button>
+              <button class="btn-action btn-secondary">📥 Als Referenz</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lyrics Examples -->
+        <div class="gallery-item" data-category="lyrics">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">📝</span>
+            </div>
+            <div class="item-badge badge-lyrics">Lyrics</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Lost in Neon Lights</h3>
+            <p class="item-meta">Genre: Synthwave • Mood: Melancholic • Struktur: AABA</p>
+            <p class="item-description">Poetische Lyrics über Einsamkeit in der Großstadt, mit metaphorischen Bildern und emotionaler Tiefe.</p>
+            <div class="item-tags">
+              <span class="tag">Metaphorisch</span>
+              <span class="tag">Urban</span>
+              <span class="tag">Emotional</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="showLyrics('neon')">📖 Lesen</button>
+              <button class="btn-action btn-secondary">📥 Als Vorlage</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="lyrics">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">📝</span>
+            </div>
+            <div class="item-badge badge-lyrics">Lyrics</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Rise Above</h3>
+            <p class="item-meta">Genre: Hip-Hop • Mood: Motivational • Struktur: ABAB</p>
+            <p class="item-description">Motivierende Rap-Lyrics über Durchhaltevermögen und Erfolg, mit kraftvollen Reimen und Wordplay.</p>
+            <div class="item-tags">
+              <span class="tag">Motivational</span>
+              <span class="tag">Rap</span>
+              <span class="tag">Wordplay</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="showLyrics('rise')">📖 Lesen</button>
+              <button class="btn-action btn-secondary">📥 Als Vorlage</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Style Guides -->
+        <div class="gallery-item" data-category="styles">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎨</span>
+            </div>
+            <div class="item-badge badge-style">Style</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Cyberpunk Aesthetic</h3>
+            <p class="item-meta">Farben: Neon Pink, Cyan • Mood: Dark, Futuristic</p>
+            <p class="item-description">Dunkle urbane Szenerien mit Neon-Lichtern, Regen-Effekten und futuristischer Technologie. Blade Runner inspired.</p>
+            <div class="item-tags">
+              <span class="tag">Neon</span>
+              <span class="tag">Dark</span>
+              <span class="tag">Futuristic</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="showStyleGuide('cyberpunk')">🎨 Details</button>
+              <button class="btn-action btn-secondary">📥 Prompt kopieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="styles">
+          <div class="item-thumbnail">
+            <div class="thumbnail-placeholder">
+              <span class="thumbnail-icon">🎨</span>
+            </div>
+            <div class="item-badge badge-style">Style</div>
+          </div>
+          <div class="item-content">
+            <h3 class="item-title">Vintage Film</h3>
+            <p class="item-meta">Farben: Sepia, Warm Tones • Mood: Nostalgic</p>
+            <p class="item-description">Retro Film-Look mit Körnung, Vignettierung und warmen Farben. 70er/80er Jahre Ästhetik.</p>
+            <div class="item-tags">
+              <span class="tag">Retro</span>
+              <span class="tag">Nostalgic</span>
+              <span class="tag">Film Grain</span>
+            </div>
+            <div class="item-actions">
+              <button class="btn-action" onclick="showStyleGuide('vintage')">🎨 Details</button>
+              <button class="btn-action btn-secondary">📥 Prompt kopieren</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🔍</div>
+        <h3>Keine Ergebnisse</h3>
+        <p>Keine Referenzen in dieser Kategorie gefunden</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Login/Register Modal -->
+  <div id="authModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close">×</button>
+      
+      <div class="modal-header">
+        <h2>🎛️ AI Audio Studio</h2>
+        <p>Login für Referenz Galerie</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <h3>Login</h3>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" id="loginEmail" required placeholder="deine@email.de" />
+        </div>
+        <div class="form-group">
+          <label>Passwort</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-primary">Einloggen</button>
+      </form>
+
+      <div class="form-divider">ODER</div>
+
+      <form id="registerForm" class="auth-form">
+        <h3>Konto Erstellen</h3>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" id="registerEmail" required placeholder="deine@email.de" />
+        </div>
+        <div class="form-group">
+          <label>Passwort (mind. 6 Zeichen)</label>
+          <input type="password" id="registerPassword" required minlength="6" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-secondary">Konto Erstellen</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

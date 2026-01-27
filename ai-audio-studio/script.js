@@ -1,66 +1,169 @@
-// AI Audio Studio - Frontend Logic with Authentication
-// Professional Text-to-Audio Generation with State-of-the-Art Production
+/* ============================================
+   HUB SCRIPT - AI Audio Studio Entry Point
+   ============================================ */
 
-const form = document.getElementById('audioForm');
-const generateBtn = document.getElementById('generateBtn');
-const loadingSpinner = document.getElementById('loadingSpinner');
-const progressBar = document.getElementById('progressBar');
-const progressBarContainer = document.getElementById('progressBarContainer');
-const audioOutputContainer = document.getElementById('audioOutputContainer');
-const audioPlayer = document.getElementById('audioPlayer');
-const downloadBtn = document.getElementById('downloadBtn');
-const regenBtn = document.getElementById('regenBtn');
+// Auth State
+let authToken = localStorage.getItem('authToken');
+let currentUser = null;
 
-// Auth elements
+// DOM Elements
 const authModal = document.getElementById('authModal');
-const authStatus = document.getElementById('authStatus');
-const loginBtn = document.getElementById('loginBtn');
+const loginBtnTop = document.getElementById('loginBtnTop');
 const closeModal = document.getElementById('closeModal');
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
-const generatorSection = document.getElementById('generatorSection');
 
-// Auth state
-let authToken = null;
-let currentUser = null;
+// ============================================
+// INIT
+// ============================================
 
-// Check for existing session on load
 window.addEventListener('DOMContentLoaded', () => {
-  const savedToken = localStorage.getItem('audioStudioToken');
-  const savedUser = localStorage.getItem('audioStudioUser');
+  checkAuthSession();
+  updateAuthStatus();
   
-  if (savedToken && savedUser) {
-    authToken = savedToken;
-    currentUser = JSON.parse(savedUser);
-    showGeneratorUI();
+  // Create animated background particles
+  createBackgroundParticles();
+  
+  // Modal Controls
+  loginBtnTop?.addEventListener('click', () => openAuthModal());
+  closeModal?.addEventListener('click', () => closeAuthModal());
+  authModal?.addEventListener('click', (e) => {
+    if (e.target === authModal) closeAuthModal();
+  });
+  
+  // Forms
+  loginForm?.addEventListener('submit', handleLogin);
+  registerForm?.addEventListener('submit', handleRegister);
+});
+
+// ============================================
+// ANIMATED BACKGROUND PARTICLES
+// ============================================
+
+function createBackgroundParticles() {
+  const container = document.createElement('div');
+  container.className = 'particles-container';
+  container.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  `;
+  
+  document.body.insertBefore(container, document.body.firstChild);
+  
+  // Create particles
+  const particleCount = 30;
+  const colors = ['#06FFF0', '#8B5CF6', '#FF1493', '#FFD700'];
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    const size = Math.random() * 4 + 2;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const startX = Math.random() * 100;
+    const startY = Math.random() * 100;
+    const duration = Math.random() * 20 + 15;
+    const delay = Math.random() * 5;
+    
+    particle.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: 50%;
+      left: ${startX}%;
+      top: ${startY}%;
+      opacity: ${Math.random() * 0.3 + 0.1};
+      animation: float ${duration}s ease-in-out ${delay}s infinite;
+      box-shadow: 0 0 ${size * 3}px ${color};
+    `;
+    
+    container.appendChild(particle);
   }
-});
-
-// Modal controls
-loginBtn.addEventListener('click', () => {
-  authModal.classList.remove('hidden');
-});
-
-closeModal.addEventListener('click', () => {
-  authModal.classList.add('hidden');
-});
-
-// Click outside modal to close
-authModal.addEventListener('click', (e) => {
-  if (e.target === authModal) {
-    authModal.classList.add('hidden');
+  
+  // Add CSS animation
+  if (!document.getElementById('particle-animations')) {
+    const style = document.createElement('style');
+    style.id = 'particle-animations';
+    style.textContent = `
+      @keyframes float {
+        0%, 100% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * -100}px) scale(1.2);
+        }
+        50% {
+          transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * -200}px) scale(0.8);
+        }
+        75% {
+          transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * -100}px) scale(1.1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
-});
+}
 
-// Login handler
-loginForm.addEventListener('submit', async (e) => {
+// ============================================
+// AUTH FUNCTIONS
+// ============================================
+
+async function checkAuthSession() {
+  if (!authToken) return;
+  
+  try {
+    const response = await fetch('/api/check-session', {
+      headers: { Authorization: `Bearer ${authToken}` }
+    });
+    
+    if (response.ok) {
+      currentUser = await response.json();
+      updateAuthStatus();
+    } else {
+      logout();
+    }
+  } catch (err) {
+    console.error('Session check failed:', err);
+  }
+}
+
+function updateAuthStatus() {
+  const authStatusTop = document.getElementById('authStatusTop');
+  if (!authStatusTop) return;
+  
+  if (currentUser) {
+    authStatusTop.innerHTML = `
+      <div class="user-display">
+        <div class="user-avatar">${currentUser.email.charAt(0).toUpperCase()}</div>
+        <span class="user-email">${currentUser.email}</span>
+        ${currentUser.isAdmin ? '<span class="admin-badge">👑 ADMIN</span>' : ''}
+        <button id="logoutBtn" class="btn-logout">🚪 Logout</button>
+      </div>
+    `;
+    
+    document.getElementById('logoutBtn')?.addEventListener('click', logout);
+  } else {
+    authStatusTop.innerHTML = `
+      <button id="loginBtnTop" class="btn-login">🔐 Login</button>
+    `;
+    
+    document.getElementById('loginBtnTop')?.addEventListener('click', () => openAuthModal());
+  }
+}
+
+async function handleLogin(e) {
   e.preventDefault();
   
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
   
   try {
-    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/auth-login', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -68,35 +171,37 @@ loginForm.addEventListener('submit', async (e) => {
     
     const data = await response.json();
     
-    if (!response.ok) {
-      alert('Login failed: ' + data.error);
-      return;
+    if (response.ok) {
+      authToken = data.token;
+      currentUser = data.user;
+      localStorage.setItem('authToken', authToken);
+      
+      showNotification('✅ Login erfolgreich!', 'success');
+      closeAuthModal();
+      updateAuthStatus();
+      loginForm.reset();
+    } else {
+      showNotification('❌ ' + (data.error || 'Login fehlgeschlagen'), 'error');
     }
-    
-    // Store auth
-    authToken = data.token;
-    currentUser = data.user;
-    localStorage.setItem('audioStudioToken', authToken);
-    localStorage.setItem('audioStudioUser', JSON.stringify(currentUser));
-    
-    // Show generator
-    authModal.classList.add('hidden');
-    showGeneratorUI();
-    
   } catch (err) {
-    alert('Login error: ' + err.message);
+    console.error('Login error:', err);
+    showNotification('❌ Verbindungsfehler', 'error');
   }
-});
+}
 
-// Register handler
-registerForm.addEventListener('submit', async (e) => {
+async function handleRegister(e) {
   e.preventDefault();
   
   const email = document.getElementById('registerEmail').value;
   const password = document.getElementById('registerPassword').value;
   
+  if (password.length < 6) {
+    showNotification('❌ Passwort muss mindestens 6 Zeichen lang sein', 'error');
+    return;
+  }
+  
   try {
-    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/auth-register', {
+    const response = await fetch('/api/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -104,303 +209,114 @@ registerForm.addEventListener('submit', async (e) => {
     
     const data = await response.json();
     
-    if (!response.ok) {
-      alert('Registration failed: ' + data.error);
-      return;
+    if (response.ok) {
+      authToken = data.token;
+      currentUser = data.user;
+      localStorage.setItem('authToken', authToken);
+      
+      showNotification('✅ Account erstellt!', 'success');
+      closeAuthModal();
+      updateAuthStatus();
+      registerForm.reset();
+    } else {
+      showNotification('❌ ' + (data.error || 'Registrierung fehlgeschlagen'), 'error');
     }
-    
-    alert('Registration successful! Please login now.');
-    
-    // Clear register form and focus login
-    document.getElementById('registerEmail').value = '';
-    document.getElementById('registerPassword').value = '';
-    document.getElementById('loginEmail').value = email;
-    document.getElementById('loginEmail').focus();
-    
   } catch (err) {
-    alert('Registration error: ' + err.message);
+    console.error('Register error:', err);
+    showNotification('❌ Verbindungsfehler', 'error');
   }
-});
-
-function showGeneratorUI() {
-  // Update UI
-  authStatus.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <span class="txt-dim" style="font-size: 0.95rem;">
-        👤 <strong style="color: #06FFF0;">${currentUser.email}</strong>
-        ${currentUser.isAdmin ? '<span style="color: #FFD700;">⭐ Admin</span>' : ''}
-      </span>
-      <span class="txt-dim" style="font-size: 0.9rem;">
-        🎵 ${currentUser.isAdmin ? 'Unlimited' : `${currentUser.generationsUsed}/${currentUser.monthlyLimit}`} Songs
-      </span>
-      <button id="logoutBtn" class="btn" style="background: rgba(255,20,147,0.2); color: #FF1493; padding: 0.5rem 1.5rem; border: 1px solid rgba(255,20,147,0.4); border-radius: 8px; font-size: 0.9rem; cursor: pointer;">
-        Logout
-      </button>
-    </div>
-  `;
-  
-  document.getElementById('logoutBtn').addEventListener('click', logout);
-  
-  generatorSection.classList.remove('hidden');
 }
 
 function logout() {
   authToken = null;
   currentUser = null;
-  localStorage.removeItem('audioStudioToken');
-  localStorage.removeItem('audioStudioUser');
-  location.reload();
+  localStorage.removeItem('authToken');
+  updateAuthStatus();
+  showNotification('👋 Logout erfolgreich', 'info');
 }
 
-async function generateAudio(e) {
-  e.preventDefault();
-  
-  const buttonText = generateBtn.querySelector('span');
-  buttonText.textContent = '✨ Generating Song...';
-  loadingSpinner.classList.remove('hidden');
-  generateBtn.disabled = true;
-  progressBarContainer.classList.remove('hidden');
-  progressBar.style.width = '0%';
-  audioOutputContainer.classList.add('hidden');
+// ============================================
+// MODAL CONTROLS
+// ============================================
 
-  // Collect user inputs
-  const lyrics = document.getElementById('lyrics').value;
-  const genre = document.getElementById('genre').value;
-  const bpm = document.getElementById('bpm').value;
-  const atmosphere = document.getElementById('atmosphere').value;
-  const mastering = document.getElementById('mastering').value;
-  const description = document.getElementById('description').value;
-
-  // Simulate progress
-  let progress = 0;
-  const progressInterval = setInterval(() => {
-    progress += Math.random() * 10;
-    if (progress > 85) progress = 85;
-    progressBar.style.width = progress + '%';
-  }, 800);
-
-  try {
-    // Call our Vercel API endpoint for ElevenLabs Music generation
-    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/generate-music', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
-      },
-      body: JSON.stringify({ 
-        lyrics,
-        genre, 
-        bpm: parseInt(bpm), 
-        atmosphere, 
-        mastering,
-        description 
-      })
-    });
-    
-    clearInterval(progressInterval);
-    
-    if (!response.ok) {
-      const errorData = await response.json();
-      
-      // Check for auth error
-      if (response.status === 401) {
-        alert('Session expired. Please login again.');
-        logout();
-        throw new Error('Authentication expired');
-      }
-      
-      // Check for limit error
-      if (response.status === 429) {
-        alert(`Monthly limit reached!\n\n${errorData.error}\n\nFalls du mehr Generationen brauchst, kontaktiere uns!`);
-        throw new Error(errorData.error);
-      }
-      
-      throw new Error(errorData.error || 'Failed to generate music');
-    }
-    
-    const data = await response.json();
-    
-    if (!data.success || !data.audio) {
-      throw new Error('Invalid response from server');
-    }
-    
-    // Update remaining generations display
-    if (data.remainingGenerations !== undefined && !currentUser.isAdmin) {
-      currentUser.generationsUsed = currentUser.monthlyLimit - data.remainingGenerations;
-      localStorage.setItem('audioStudioUser', JSON.stringify(currentUser));
-      showGeneratorUI(); // Refresh UI
-    }
-    
-    // Convert base64 to audio blob
-    const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
-    const audioUrl = URL.createObjectURL(audioBlob);
-    
-    // Set audio player source
-    audioPlayer.src = audioUrl;
-    
-    // Store for download
-    audioPlayer.dataset.audioBlob = audioUrl;
-    
-    progressBar.style.width = '100%';
-    
-    // Show output container
-    audioOutputContainer.classList.remove('hidden');
-    
-    buttonText.textContent = '� Generate Song with Vocals';
-    loadingSpinner.classList.add('hidden');
-    generateBtn.disabled = false;
-    
-    setTimeout(() => progressBarContainer.classList.add('hidden'), 600);
-    
-  } catch (err) {
-    clearInterval(progressInterval);
-    alert('Error generating song: ' + err.message);
-    buttonText.textContent = '🎤 Generate Song with Vocals';
-    loadingSpinner.classList.add('hidden');
-    generateBtn.disabled = false;
-    progressBarContainer.classList.add('hidden');
-  }
+function openAuthModal() {
+  authModal?.classList.remove('hidden');
 }
 
-// Helper function to convert base64 to Blob
-function base64ToBlob(base64, mimeType) {
-  const byteCharacters = atob(base64);
-  const byteArrays = [];
+function closeAuthModal() {
+  authModal?.classList.add('hidden');
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+function showNotification(message, type = 'info') {
+  // Remove old notifications
+  const oldNotif = document.querySelector('.hub-notification');
+  if (oldNotif) oldNotif.remove();
   
-  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
-    const slice = byteCharacters.slice(offset, offset + 512);
-    const byteNumbers = new Array(slice.length);
-    for (let i = 0; i < slice.length; i++) {
-      byteNumbers[i] = slice.charCodeAt(i);
+  // Create notification
+  const notif = document.createElement('div');
+  notif.className = `hub-notification hub-notification-${type}`;
+  notif.textContent = message;
+  
+  // Style
+  notif.style.cssText = `
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: ${type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6'};
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 10000;
+    animation: slideInRight 0.3s ease;
+  `;
+  
+  document.body.appendChild(notif);
+  
+  // Auto remove
+  setTimeout(() => {
+    notif.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => notif.remove(), 300);
+  }, 3000);
+}
+
+// Add animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
     }
-    const byteArray = new Uint8Array(byteNumbers);
-    byteArrays.push(byteArray);
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
   
-  return new Blob(byteArrays, { type: mimeType });
-}
-
-function buildLyricsToMusicPrompt(lyrics, genre, bpm, atmosphere, mastering, description) {
-  // Build SOTA Prompt for Lyrics-to-Music (like Suno/Udio/Musicful)
-  // [CLOCK] | [GENRE-DNA] | [INSTRUMENTAL-LAYERING] | [ATMOSPHERE] | [ENGINEERING-STAMP] | [VOCALS + LYRICS]
-  
-  const genreTemplates = {
-    'modern-trap': {
-      genreDNA: 'Trap',
-      instrumental: '808-Sub-Bass (tuned to Key), Rattling Triple-Hi-Hats, Sharp Snare',
-      engineering: 'Side-chained Low-end, Surgical EQ, No-Mud Filter'
-    },
-    'boom-bap': {
-      genreDNA: '90s Hip-Hop',
-      instrumental: 'MPC-style swing, Vinyl-crackle, Jazz-sample chops, Thick Bass',
-      engineering: 'Mid-range saturation, Authentic Lo-fi textures'
-    },
-    'radio-pop': {
-      genreDNA: 'Modern Pop',
-      instrumental: 'Polished Synth-Layers, Hybrid Drums, Clean Electric Bass',
-      engineering: 'Ultra-wide Stereo, Multiband-compressed, High-Gloss Finish'
-    },
-    'stadium-rock': {
-      genreDNA: 'Hard Rock',
-      instrumental: 'Multi-tracked Guitars (Double-tracked L/R), Acoustic Drum Kit (Live Room)',
-      engineering: 'High Dynamic Range, Analog Console Emulation'
-    },
-    'edm': {
-      genreDNA: 'Electronic Dance',
-      instrumental: 'Synthesized Leads, Sub-Bass, Build-up FX, Drop Elements',
-      engineering: 'Sidechain Compression, Wide Stereo Field, Limiter at -0.1dB'
-    },
-    'indie-alternative': {
-      genreDNA: 'Indie/Alternative',
-      instrumental: 'Organic Guitars, Live Drums, Ambient Pads, Textured Vocals',
-      engineering: 'Natural Dynamics, Room Ambience, Warm Saturation'
-    },
-    'rnb': {
-      genreDNA: 'R&B/Soul',
-      instrumental: 'Smooth Keys, Sub-Bass, Tight Drums, Vocal Harmonies',
-      engineering: 'Vocal-forward Mix, Lush Reverb, Warm EQ'
-    },
-    'metal': {
-      genreDNA: 'Metal/Heavy',
-      instrumental: 'Distorted Guitars (Quad-tracked), Double-kick Drums, Aggressive Bass',
-      engineering: 'Tight Low-end, Brick-wall Compression, Aggressive EQ'
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
     }
-  };
-
-  const atmosphereMap = {
-    'dark-aggressive': 'Dark, Aggressive',
-    'euphoric': 'Euphoric, Uplifting',
-    'melancholic': 'Melancholic, Emotional',
-    'energetic': 'Energetic, Powerful',
-    'chill': 'Chill, Laid-back',
-    'anthemic': 'Anthemic, Epic'
-  };
-
-  const masteringMap = {
-    'streaming': 'Streaming-Ready (-14 LUFS, Transparent Master)',
-    'club': 'Club-Ready (Mono-compatible Bass, Phase-Check)',
-    'mobile': 'Mobile-Ready (Mid-boost 700Hz-2kHz, Smartphone-optimized)'
-  };
-
-  const template = genreTemplates[genre] || genreTemplates['radio-pop'];
-  
-  const prompt = `
-[LYRICS-TO-MUSIC GENERATION]
-[CLOCK: ${bpm} BPM] | [GENRE-DNA: ${template.genreDNA}] | [INSTRUMENTAL-LAYERING: ${template.instrumental}] | [ATMOSPHERE: ${atmosphereMap[atmosphere]}] | [ENGINEERING-STAMP: ${template.engineering}, ${masteringMap[mastering]}]
-
-LYRICS (sing these exactly as written):
-${lyrics}
-
-VOCAL STYLE & PRODUCTION:
-${description || 'Natural vocals matching the genre and mood'}
-
-IMPORTANT INSTRUCTIONS:
-- Generate a COMPLETE SONG with VOCALS singing the provided lyrics
-- Follow the structure markers in the lyrics ([Intro], [Verse], [Chorus], etc.)
-- Vocals must be clear, professional, and match the genre
-- Add appropriate backing vocals, harmonies, ad-libs where fitting
-- Instrumental arrangement must support and enhance the vocals
-- Apply genre-appropriate vocal effects (reverb, delay, Auto-Tune if specified)
-
-STRUCTURE REQUIREMENTS:
-- Follow the exact structure in the provided lyrics
-- Intro: Set the mood with instrumental, vocals may start sparse
-- Verse: Full vocal delivery with rhythm section
-- Chorus/Hook: Maximum energy, layered vocals, full instrumentation
-- Bridge: Dynamic variation, possible vocal breakdown or build
-- Outro: Natural fadeout or hard ending as fitting
-
-QUALITY REQUIREMENTS:
-- Loudness-Matching to ${mastering === 'streaming' ? '-14 LUFS (Spotify)' : mastering === 'club' ? '-10 LUFS (Club)' : '-12 LUFS (Mobile)'}
-- BPM locked to ${bpm} BPM
-- Vocals sit perfectly in the mix (not too loud, not buried)
-- Professional mastering chain applied
-- Phase coherence, transient punch, spectral balance
-`.trim();
-
-  console.log('Lyrics-to-Music SOTA Prompt:', prompt);
-  return prompt;
-}
-
-// Event Listeners
-form.addEventListener('submit', generateAudio);
-
-regenBtn.addEventListener('click', () => {
-  form.dispatchEvent(new Event('submit'));
-});
-
-downloadBtn.addEventListener('click', () => {
-  const audioUrl = audioPlayer.dataset.audioBlob;
-  if (!audioUrl) {
-    alert('No audio to download. Please generate a song first.');
-    return;
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
   }
   
-  // Create download link
-  const a = document.createElement('a');
-  a.href = audioUrl;
-  a.download = `song-${Date.now()}.mp3`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-});
+  .admin-badge {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+`;
+document.head.appendChild(style);

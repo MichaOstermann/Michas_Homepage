@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Audio Studio – Professional Music Production | mcgv.de</title>
+  <meta name="description" content="Professionelle KI-gestützte Audio-Produktion: Von Text zu kompletten Songs mit State-of-the-Art Mixing, Mastering und Genre-Optimization." />
+  <meta name="theme-color" content="#0B0F16" />
+  <link rel="icon" href="../assets/media/favicon.svg" type="image/svg+xml" />
+  
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/nav-modern.css" />
+  <link rel="stylesheet" href="../assets/css/hero-mega.css" />
+  <link rel="stylesheet" href="../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../assets/css/newsletter-bg.css" />
+  <link rel="stylesheet" href="../assets/chatbot/mcgv-chatbot-styles.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <nav class="nav container navbar" aria-label="Hauptnavigation">
+      <a href="../index.html#hero" class="brand navbar-brand" aria-label="Startseite">Code & Beats</a>
+      <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a role="menuitem" class="nav__link nav-link is-active" href="../index.html#music">Music</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#powershell">PowerShell</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#gaming">Gaming</a></li>
+        <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#blog">Blog</a></li>
+      </ul>
+      <button class="nav__toggle navbar-toggle" id="navToggle" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main" class="section" style="padding-top: 6rem;">
+    <div class="container" style="max-width: 900px;">
+      
+      <!-- Hero Section -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 class="section__title" style="background: linear-gradient(135deg, #FFD700 0%, #FF1493 50%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 30px rgba(255,215,0,0.3); font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem;">
+          🎛️ AI Audio Studio
+        </h1>
+        <p class="txt-dim" style="font-size: 1.2rem; max-width: 650px; margin: 0 auto 1.5rem; line-height: 1.8;">
+          Verwandle deine Lyrics in komplette Songs mit Vocals! State-of-the-Art KI-Engine mit professionellem Mixing & Mastering
+        </p>
+        
+        <!-- Info Box -->
+        <div style="max-width: 700px; margin: 0 auto 2rem; padding: 1.5rem; background: rgba(255,215,0,0.1); border: 2px solid rgba(255,215,0,0.3); border-radius: 12px; text-align: left;">
+          <h3 style="color: #FFD700; margin-bottom: 0.75rem; font-size: 1.2rem;">👋 Willkommen im Beta-Zugang!</h3>
+          <p class="txt-dim" style="margin-bottom: 0.5rem;">
+            Unser AI Audio Studio befindet sich in der <strong style="color: #00FF88;">Beta-Phase</strong>. Registriere dich kostenlos und erhalte:
+          </p>
+          <ul class="txt-dim" style="margin-left: 1.5rem; margin-bottom: 0.5rem;">
+            <li><strong style="color: #06FFF0;">5 Song-Generationen pro Monat</strong></li>
+            <li>Professional-Grade Vocals & Production</li>
+            <li>Download als MP3</li>
+          </ul>
+          <p class="txt-dim" style="font-size: 0.95rem; color: rgba(255,255,255,0.6);">
+            Mit steigender Nachfrage erweitern wir die Kapazitäten. Admins haben unlimited Zugang für Tests! 🚀
+          </p>
+        </div>
+
+        <!-- Auth Status -->
+        <div id="authStatus" style="margin-bottom: 1rem;">
+          <button id="loginBtn" class="btn" style="background: linear-gradient(90deg, #06FFF0 0%, #8B5CF6 100%); color: #0B0F16; font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px; border: none; cursor: pointer; font-size: 1rem;">
+            🔐 Login / Register
+          </button>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <span class="chip" style="background: rgba(255,215,0,0.15); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 0.5rem 1rem; border-radius: 20px;">🎵 Professional Grade</span>
+          <span class="chip" style="background: rgba(0,255,136,0.1); color: #00FF88; border: 1px solid rgba(0,255,136,0.25); padding: 0.5rem 1rem; border-radius: 20px;">🤖 AI-Powered</span>
+          <span class="chip" style="background: rgba(139,92,246,0.1); color: #8B5CF6; border: 1px solid rgba(139,92,246,0.25); padding: 0.5rem 1rem; border-radius: 20px;">🎚️ Auto-Mastering</span>
+        </div>
+      </div>
+
+      <!-- Login/Register Modal -->
+      <div id="authModal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+        <div style="background: #181c24; padding: 2.5rem; border-radius: 12px; max-width: 450px; width: 100%; border: 2px solid rgba(6,255,240,0.3); position: relative;">
+          <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; line-height: 1;">×</button>
+          
+          <h2 style="color: #06FFF0; margin-bottom: 1.5rem; text-align: center;">Zugang zum AI Audio Studio</h2>
+          
+          <!-- Login Form -->
+          <form id="loginForm" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: #FFD700;">Email</label>
+              <input type="email" id="loginEmail" required style="width: 100%; padding: 0.85rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; color: #fff; font-size: 1rem;" />
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: #FFD700;">Password</label>
+              <input type="password" id="loginPassword" required style="width: 100%; padding: 0.85rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; color: #fff; font-size: 1rem;" />
+            </div>
+            <button type="submit" style="padding: 1rem; background: linear-gradient(90deg, #06FFF0, #8B5CF6); border: none; border-radius: 8px; color: #0B0F16; font-weight: 700; cursor: pointer;">
+              Login
+            </button>
+          </form>
+          
+          <div style="text-align: center; margin: 1.5rem 0; color: rgba(255,255,255,0.5);">oder</div>
+          
+          <!-- Register Form -->
+          <form id="registerForm" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: #FF1493;">Email (Registrierung)</label>
+              <input type="email" id="registerEmail" required style="width: 100%; padding: 0.85rem; background: rgba(255,20,147,0.05); border: 1px solid rgba(255,20,147,0.2); border-radius: 8px; color: #fff; font-size: 1rem;" />
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; color: #FF1493;">Password (min. 6 Zeichen)</label>
+              <input type="password" id="registerPassword" required minlength="6" style="width: 100%; padding: 0.85rem; background: rgba(255,20,147,0.05); border: 1px solid rgba(255,20,147,0.2); border-radius: 8px; color: #fff; font-size: 1rem;" />
+            </div>
+            <button type="submit" style="padding: 1rem; background: linear-gradient(90deg, #FFD700, #FF1493); border: none; border-radius: 8px; color: #0B0F16; font-weight: 700; cursor: pointer;">
+              Kostenlos Registrieren
+            </button>
+          </form>
+          
+          <p class="txt-dim" style="font-size: 0.85rem; text-align: center; margin-top: 1rem; color: rgba(255,255,255,0.5);">
+            5 Generationen/Monat kostenlos · Admins haben unlimited Zugang
+          </p>
+        </div>
+      </div>
+
+      <!-- Generator Form (initially hidden until logged in) -->
+      <div id="generatorSection" class="hidden">
+      <div class="newsletter-bg-modern" style="max-width: 850px; margin: 0 auto; padding: 2.5rem;">
+        <form id="audioForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Genre & BPM (2 columns) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label for="genre" style="display: block; margin-bottom: 0.5rem; color: #06FFF0; font-weight: 600;">
+                🎸 Genre
+              </label>
+              <select id="genre" required style="width: 100%; padding: 0.85rem; background: rgba(6,255,240,0.05); border: 1px solid rgba(6,255,240,0.2); border-radius: 8px; color: #fff; font-size: 1rem;">
+                <option value="modern-trap">Modern Trap</option>
+                <option value="boom-bap">Boom Bap Hip-Hop</option>
+                <option value="radio-pop">Radio Pop</option>
+                <option value="stadium-rock">Stadium Rock</option>
+                <option value="edm">Electronic Dance Music</option>
+                <option value="indie-alternative">Indie/Alternative</option>
+                <option value="rnb">R&B/Soul</option>
+                <option value="metal">Metal/Heavy</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="bpm" style="display: block; margin-bottom: 0.5rem; color: #FF1493; font-weight: 600;">
+                ⏱️ BPM (Tempo)
+              </label>
+              <input type="number" id="bpm" min="60" max="200" value="120" required style="width: 100%; padding: 0.85rem; background: rgba(255,20,147,0.05); border: 1px solid rgba(255,20,147,0.2); border-radius: 8px; color: #fff; font-size: 1rem;" />
+            </div>
+          </div>
+
+          <!-- Atmosphere & Energy (2 columns) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label for="atmosphere" style="display: block; margin-bottom: 0.5rem; color: #8B5CF6; font-weight: 600;">
+                🌌 Atmosphäre
+              </label>
+              <select id="atmosphere" required style="width: 100%; padding: 0.85rem; background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.2); border-radius: 8px; color: #fff; font-size: 1rem;">
+                <option value="dark-aggressive">Dark & Aggressive</option>
+                <option value="euphoric">Euphoric & Uplifting</option>
+                <option value="melancholic">Melancholic & Emotional</option>
+                <option value="energetic">Energetic & Powerful</option>
+                <option value="chill">Chill & Laid-back</option>
+                <option value="anthemic">Anthemic & Epic</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="mastering" style="display: block; margin-bottom: 0.5rem; color: #FFD700; font-weight: 600;">
+                🎚️ Mastering-Target
+              </label>
+              <select id="mastering" required style="width: 100%; padding: 0.85rem; background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.2); border-radius: 8px; color: #fff; font-size: 1rem;">
+                <option value="streaming">Streaming-Ready (Spotify)</option>
+                <option value="club">Club-Ready (Bass Focus)</option>
+                <option value="mobile">Mobile-Ready (Mid Focus)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Lyrics Input (full width) -->
+          <div>
+            <label for="lyrics" style="display: block; margin-bottom: 0.5rem; color: #FFD700; font-weight: 600;">
+              🎤 Deine Lyrics <span style="color: rgba(255,255,255,0.5); font-weight: 400; font-size: 0.9rem;">(kopiere sie aus dem <a href="../musik-produktion/index.html" style="color: #06FFF0; text-decoration: underline;">Songwriting-Tool</a>)</span>
+            </label>
+            <textarea id="lyrics" rows="12" placeholder="[Intro]\nDeine generierten Lyrics hier einfügen...\n\n[Verse 1]\n..." required style="width: 100%; padding: 0.85rem; background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.2); border-radius: 8px; color: #fff; font-size: 1rem; resize: vertical; font-family: 'Courier New', monospace;"></textarea>
+          </div>
+
+          <!-- Style Description (full width) -->
+          <div>
+            <label for="description" style="display: block; margin-bottom: 0.5rem; color: #00FF88; font-weight: 600;">
+              🎨 Vocal & Style Details <span style="color: rgba(255,255,255,0.5); font-weight: 400; font-size: 0.9rem;">(optional)</span>
+            </label>
+            <textarea id="description" rows="3" placeholder="z.B. männliche Stimme, rauchig, Auto-Tune, emotional, aggressiv..." style="width: 100%; padding: 0.85rem; background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); border-radius: 8px; color: #fff; font-size: 1rem; resize: vertical;"></textarea>
+          </div>
+
+          <!-- Generate Button -->
+          <button type="submit" id="generateBtn" style="padding: 1.2rem; background: linear-gradient(90deg, #FFD700 0%, #FF1493 100%); border: none; border-radius: 8px; color: #0B0F16; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 30px rgba(255,215,0,0.3);">
+            <span>� Generate Song with Vocals</span>
+          </button>
+
+          <!-- Progress Bar -->
+          <div id="progressBarContainer" class="hidden" style="width: 100%; height: 6px; background: rgba(6,255,240,0.1); border-radius: 10px; overflow: hidden; margin-top: 0.5rem;">
+            <div id="progressBar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #06FFF0, #8B5CF6); transition: width 0.3s;"></div>
+          </div>
+          
+          <!-- Loading Spinner -->
+          <div id="loadingSpinner" class="hidden" style="text-align: center; padding: 1rem;">
+            <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid rgba(6,255,240,0.2); border-top-color: #06FFF0; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <p class="txt-dim" style="margin-top: 1rem;">Generating your song with vocals... (This may take 1-2 minutes)</p>
+          </div>
+        </form>
+
+        <!-- Audio Output -->
+        <div id="audioOutputContainer" class="hidden" style="margin-top: 2rem; padding: 2rem; background: rgba(6,255,240,0.05); border: 2px solid rgba(6,255,240,0.2); border-radius: 12px;">
+          <h3 style="color: #06FFF0; margin-bottom: 1rem;">🎧 Generated Audio</h3>
+          <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 1rem;"></audio>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button id="downloadBtn" style="flex: 1; padding: 0.85rem; background: linear-gradient(90deg, #8B5CF6, #06FFF0); border: none; border-radius: 8px; color: #fff; font-weight: 600; cursor: pointer;">
+              💾 Download WAV
+            </button>
+            <button id="regenBtn" style="flex: 1; padding: 0.85rem; background: rgba(255,215,0,0.1); border: 2px solid rgba(255,215,0,0.3); border-radius: 8px; color: #FFD700; font-weight: 600; cursor: pointer;">
+              🔄 Regenerate
+            </button>
+          </div>
+        </div>
+      </div>
+      </div> <!-- End of generatorSection -->
+
+      <!-- mcgv.de Branding -->
+      <div style="margin: 3rem auto 2rem; max-width: 850px; padding: 2rem; background: linear-gradient(135deg, rgba(6,255,240,0.1) 0%, rgba(139,92,246,0.1) 100%); border: 2px solid rgba(6,255,240,0.2); border-radius: 12px; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡🔥✨</div>
+        <h3 style="color: #06FFF0; margin-bottom: 0.75rem; font-size: 1.4rem; font-weight: 700;">Powered by mcgv.de</h3>
+        <p class="txt-dim" style="margin-bottom: 1.25rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Professionelle <strong style="color: #FFD700;">Audio-Produktion</strong>, <strong style="color: #FF1493;">KI-Integration</strong> und <strong style="color: #8B5CF6;">Kreativ-Tools</strong> - alles aus einer Hand!
+        </p>
+        <a href="https://mcgv.de" class="btn" style="background: linear-gradient(90deg, #06FFF0 0%, #8B5CF6 100%); color: #0B0F16; font-weight: 700; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(6,255,240,0.4); transition: all 0.3s;">
+          🚀 Besuche mcgv.de
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer site-footer" role="contentinfo">
+    <div class="container footer__top">
+      <nav class="footer__nav footer-nav" aria-label="Footernavigation">
+        <a class="nav__link nav-link" href="../index.html">Home</a>
+        <a class="nav__link nav-link" href="../index.html#music">Music</a>
+        <a class="nav__link nav-link" href="../index.html#powershell">PowerShell</a>
+        <a class="nav__link nav-link" href="../index.html#gaming">Gaming</a>
+        <a class="nav__link nav-link" href="../index.html#blog">Blog</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <small>(C) 2026 Code & Beats · <a href="../impressum.html" class="nav-link">Impressum</a> · <a href="../datenschutz.html" class="nav-link">Datenschutz</a></small>
+    </div>
+  </footer>
+
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .hidden { display: none !important; }
+    button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,215,0,0.4); }
+    select, input, textarea { font-family: inherit; }
+    select:focus, input:focus, textarea:focus { outline: none; border-color: #06FFF0; box-shadow: 0 0 10px rgba(6,255,240,0.3); }
+  </style>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="script.js"></script>
+  <script src="../assets/chatbot/mcgv-chatbot.js" defer></script>
+</body>
+</html>
