@@ -71,11 +71,15 @@ Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.`;
       },
       body: JSON.stringify({ provider, systemPrompt })
     });
-    if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error || 'Serverfehler');
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonErr) {
+      throw new Error('Ungültige Server-Antwort (kein JSON). Bitte später erneut versuchen.');
     }
-    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Serverfehler');
+    }
     streamText(data.lyrics || 'Keine Lyrics generiert.');
   } catch (err) {
     output.textContent = 'Fehler: ' + (err.message || 'Unbekannter Fehler. Bitte API-Key prüfen.');
