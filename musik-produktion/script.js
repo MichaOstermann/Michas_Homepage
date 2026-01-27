@@ -19,6 +19,8 @@ const provider = 'openai'; // oder 'anthropic'
 async function generateLyrics(e) {
   e.preventDefault();
   output.textContent = '';
+  const buttonText = generateBtn.querySelector('span');
+  buttonText.textContent = '✨ Generiere...';
   loadingSpinner.classList.remove('hidden');
   generateBtn.disabled = true;
   progressBarContainer.classList.remove('hidden');
@@ -54,6 +56,8 @@ Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.`;
       progressBar.style.width = Math.min(100, (i / text.length) * 100) + '%';
       if (i >= text.length) {
         clearInterval(interval);
+        const buttonText = generateBtn.querySelector('span');
+        buttonText.textContent = '🎵 Lyrics generieren';
         loadingSpinner.classList.add('hidden');
         progressBar.style.width = '100%';
         setTimeout(() => progressBarContainer.classList.add('hidden'), 600);
@@ -64,7 +68,7 @@ Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.`;
 
   // API-Request an das eigene Backend (Vercel)
   try {
-    const response = await fetch('/api/generate', {
+    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
