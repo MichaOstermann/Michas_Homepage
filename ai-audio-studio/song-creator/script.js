@@ -96,11 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBar.style.width = '60%';
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || `API Error: ${response.status}`);
+                let errorMessage = `API Error: ${response.status}`;
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.error || errorMessage;
+                } catch (parseError) {
+                    // If JSON parsing fails, try to get text
+                    const errorText = await response.text();
+                    errorMessage = errorText || errorMessage;
+                }
+                throw new Error(errorMessage);
             }
 
-            const data = await response.json();
+            let data;
+            try {
+                data = await response.json();
+            } catch (parseError) {
+                const rawText = await response.text();
+                console.error('Failed to parse response:', rawText);
+                throw new Error('Invalid API response. Please try again.');
+            }
+            
             progressBar.style.width = '100%';
 
             // Check if audio URL is returned
