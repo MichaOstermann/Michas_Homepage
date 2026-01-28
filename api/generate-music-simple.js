@@ -58,19 +58,18 @@ export default async function handler(req, res) {
   }
 }
 
-// Generate with Replicate API using MusicGen or Stable Audio
+// Generate with Replicate API using Stable Audio 2.0 (MAXIMUM DURATION MODE)
 async function generateWithReplicate(prompt, apiToken, duration, vocals) {
-  // Use smaller/faster model for testing to save costs
-  // MusicGen Melody (faster, cheaper for testing)
-  const model = '671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb';
+  // Stable Audio 2.0 Large - Push it to the LIMIT!
+  const model = 'b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38';
 
-  // Calculate duration in seconds (MusicGen max is 30 seconds)
-  let durationSeconds = 10; // Start with shorter duration to save costs
-  if (duration === 'short') durationSeconds = 15;
-  else if (duration === 'medium') durationSeconds = 20;
-  else if (duration === 'long') durationSeconds = 30;
+  // Calculate duration in seconds - GOING FOR 2:30 MIN!
+  let durationSeconds = 90; // default
+  if (duration === 'short') durationSeconds = 60;
+  else if (duration === 'medium') durationSeconds = 120; // 2 minutes
+  else if (duration === 'long') durationSeconds = 150; // 2:30 minutes!
 
-  console.log('[Replicate] Starting generation with prompt:', prompt.substring(0, 100));
+  console.log('[Replicate] MAXIMUM MODE: Generating', durationSeconds, 'seconds with Stable Audio 2.0!');
 
   // Create prediction
   const response = await fetch('https://api.replicate.com/v1/predictions', {
@@ -83,10 +82,9 @@ async function generateWithReplicate(prompt, apiToken, duration, vocals) {
       version: model,
       input: {
         prompt: prompt,
-        model_version: 'stereo-large',
-        output_format: 'mp3',
-        normalization_strategy: 'peak',
-        duration: Math.min(durationSeconds, 30) // MusicGen max 30s per generation
+        seconds_total: durationSeconds,
+        steps: 100,
+        cfg_scale: 7
       }
     })
   });
