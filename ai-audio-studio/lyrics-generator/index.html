@@ -1,226 +1,216 @@
 <!doctype html>
 <html lang="de" class="no-js">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Songtext Generieren | AI Audio Studio</title>
-  <meta name="description" content="Professional AI Lyrics Generator with Premium Prompts" />
-  <meta name="theme-color" content="#0B0F16" />
-  <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
-  
-  <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Lyrics Generator | AI Audio Studio</title>
+    <meta name="description" content="Professionelles Songwriting-Tool im Stil von Code & Beats by Micha. Schreibe moderne Songtexte mit KI!" />
+    <meta name="theme-color" content="#0B0F16" />
+    <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/css/nav-modern.css" />
+    <link rel="stylesheet" href="../../assets/css/hero-mega.css" />
+    <script defer src="script.js"></script>
 </head>
-<body class="lyrics-body">
+<body>
+        <header class="header" role="banner">
+            <nav class="nav container navbar" aria-label="Hauptnavigation">
+                <a href="../../index.html" class="brand navbar-brand" aria-label="Startseite">
+                    <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+                </a>
+                <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+                    <span class="nav__bar" aria-hidden="true"></span>
+                    <span class="nav__bar" aria-hidden="true"></span>
+                    <span class="nav__bar" aria-hidden="true"></span>
+                </button>
+                <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html">Home</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#music">Music</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link active" href="../index.html">AI Audio Studio</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html">Lyrics Generator</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../song-creator/">Song Creator</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#gaming">Gaming</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#blog">Blog</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#newsletter">Newsletter</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about">About</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact">Kontakt</a></li>
+                    <li role="none">
+                        <button id="searchButton" class="nav__link" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;" aria-label="Suche öffnen">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">STRG+K</span>
+                        </button>
+                    </li>
+                </ul>
+                <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+                <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+            </nav>
+            <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+        </header>
+        <main id="main">
+            <section class="hero hero-section" aria-labelledby="hero-title" style="position: relative;">
+                <div class="container hero__content" style="max-width: 900px; margin: 0 auto;">
+                    <h1 id="hero-title" class="hero__title hero-title glitch-text reveal" data-text="Songwriting KI-Tool" style="font-size:2.3rem;line-height:1.1;margin-bottom:2.2rem;font-weight:900;background:linear-gradient(135deg,#06FFF0 0%,#8B5CF6 50%,#FF1493 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em;display:inline-block;white-space:nowrap;text-align:center;width:100%;">Songwriting KI-Tool</h1>
+                    
+                    <div style="max-width:800px;margin:0 auto 3.2rem auto;padding:2.2rem;background:rgba(139,92,246,0.05);border-left:4px solid #8B5CF6;border-radius:0.7rem;">
+                        <h2 style="font-size:1.4rem;color:#06FFF0;font-weight:700;margin-bottom:1rem;text-shadow:0 0 8px #06FFF099;">🎵 Dein persönlicher KI-Songwriter</h2>
+                        <p style="font-size:1.05rem;color:#c7faff;line-height:1.7;margin-bottom:0.8rem;">Egal ob <strong style='color:#8B5CF6;'>Pop-Balladen</strong>, <strong style='color:#8B5CF6;'>Trap-Bangers</strong> oder <strong style='color:#8B5CF6;'>Indie-Hymnen</strong> – unser KI-Tool erstellt dir in Sekunden professionelle Songtexte mit perfektem Flow, stimmigen Reimen und genre-typischen Elementen.</p>
+                        <p style="font-size:1.05rem;color:#c7faff;line-height:1.7;margin-bottom:0;">✨ <strong style='color:#06FFF0;'>Powered by mcgv.de</strong> – für kreative, authentische und produktionsreife Lyrics, die deine Vision zum Leben erwecken.</p>
+                    </div>
 
-  <!-- Top Bar -->
-  <div class="lyrics-topbar">
-    <div class="lyrics-container">
-      <div class="topbar-nav">
-        <a href="../" class="back-link">← Zurück zum Hub</a>
-        <span class="page-title">📝 Songtext Generator</span>
-      </div>
-      <div id="authStatusTop" class="auth-status-top">
-        <button id="loginBtnTop" class="btn-login">🔐 Login</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <main class="lyrics-main">
-    <div class="lyrics-container">
-      
-      <!-- Header -->
-      <header class="lyrics-header">
-        <h1>🎤 Professional Lyrics Generator</h1>
-        <p>Premium AI mit Show-Don't-Tell, Slant Rhymes & Anti-Klischee</p>
-      </header>
-
-      <!-- Generator Form -->
-      <div class="generator-layout">
-        
-        <!-- Left: Controls -->
-        <section class="control-panel">
-          <form id="lyricsForm" class="lyrics-form">
-            
-            <!-- Genre -->
-            <div class="form-group">
-              <label for="lyricsGenre">🎵 Genre</label>
-              <select id="lyricsGenre" required>
-                <option value="">Genre auswählen...</option>
-                <option value="trap">Trap / Hip-Hop</option>
-                <option value="pop">Pop / Chart</option>
-                <option value="rock">Rock / Alternative</option>
-                <option value="edm">EDM / Electronic</option>
-                <option value="rnb">R&B / Soul</option>
-                <option value="indie">Indie / Singer-Songwriter</option>
-                <option value="metal">Metal / Hard Rock</option>
-                <option value="country">Country / Folk</option>
-              </select>
-            </div>
-
-            <!-- Mood -->
-            <div class="form-group">
-              <label for="lyricsMood">😌 Stimmung</label>
-              <select id="lyricsMood" required>
-                <option value="">Stimmung auswählen...</option>
-                <option value="dark">Dark / Melancholisch</option>
-                <option value="euphoric">Euphoric / Uplifting</option>
-                <option value="angry">Angry / Aggressive</option>
-                <option value="romantic">Romantic / Emotional</option>
-                <option value="chill">Chill / Entspannt</option>
-                <option value="energetic">Energetic / Hype</option>
-              </select>
-            </div>
-
-            <!-- Theme -->
-            <div class="form-group">
-              <label for="lyricsTheme">💭 Thema / Konzept</label>
-              <input 
-                type="text" 
-                id="lyricsTheme" 
-                placeholder="z.B. Verlorene Liebe, Erfolg gegen alle Widerstände, Nachtleben..." 
-                maxlength="200"
-              />
-            </div>
-
-            <!-- Structure -->
-            <div class="form-group">
-              <label for="lyricsStructure">📋 Songstruktur</label>
-              <select id="lyricsStructure">
-                <option value="standard">Standard (Intro-Verse-Chorus-Verse-Chorus-Bridge-Chorus)</option>
-                <option value="short">Kurz (Verse-Chorus-Verse-Chorus)</option>
-                <option value="extended">Extended (Intro-Verse-Pre-Chorus-Chorus-Verse-Pre-Chorus-Chorus-Bridge-Chorus-Outro)</option>
-                <option value="custom">Experimentell (Freie Struktur)</option>
-              </select>
-            </div>
-
-            <!-- Rhyme Scheme -->
-            <div class="form-group">
-              <label for="lyricsRhyme">🎭 Reimschema</label>
-              <select id="lyricsRhyme">
-                <option value="slant">Slant Rhymes (Modern, Unperfekt)</option>
-                <option value="perfect">Perfect Rhymes (Klassisch)</option>
-                <option value="internal">Internal Rhymes (Komplex)</option>
-                <option value="free">Free Style (Keine festen Reime)</option>
-              </select>
-            </div>
-
-            <!-- Artist Reference -->
-            <div class="form-group">
-              <label for="artistReference">🎤 Artist Style (Optional)</label>
-              <input 
-                type="text" 
-                id="artistReference" 
-                placeholder="z.B. Drake, Taylor Swift, The Weeknd..." 
-                maxlength="100"
-              />
-            </div>
-
-            <!-- Generate Button -->
-            <button type="submit" id="generateBtn" class="btn-generate">
-              <span>✨ Lyrics Generieren</span>
-            </button>
-
-          </form>
-        </section>
-
-        <!-- Right: Output -->
-        <section class="output-panel">
-          
-          <div id="outputPlaceholder" class="output-placeholder">
-            <div class="placeholder-icon">📝</div>
-            <h3>Bereit für deinen Song?</h3>
-            <p>Wähle deine Optionen links und klicke auf "Lyrics Generieren"</p>
-            <ul class="feature-list">
-              <li>✓ Premium AI Prompt Engineering</li>
-              <li>✓ Show-Don't-Tell Prinzipien</li>
-              <li>✓ Anti-Klischee Filter</li>
-              <li>✓ Metaphern-Logik & Bildsprache</li>
-            </ul>
-          </div>
-
-          <div id="outputContent" class="output-content hidden">
-            
-            <!-- Generated Lyrics -->
-            <div class="lyrics-display">
-              <div class="lyrics-header-actions">
-                <h3>🎵 Deine generierten Lyrics</h3>
-                <div class="action-buttons">
-                  <button id="copyLyricsBtn" class="btn-action" title="In Zwischenablage kopieren">
-                    📋 Kopieren
-                  </button>
-                  <button id="downloadLyricsBtn" class="btn-action" title="Als .txt herunterladen">
-                    💾 Download
-                  </button>
-                  <button id="useInStudioBtn" class="btn-action btn-primary-action" title="Direkt in Song Studio verwenden">
-                    🎵 Im Studio verwenden
-                  </button>
+                    <div class="newsletter-bg" style="position:relative;background:rgba(10,14,24,0.98);border-radius:2rem;box-shadow:0 0 0 3px #06FFF0,0 0 64px #06FFF040;overflow:hidden;padding:0;">
+                        <div class="newsletter-grid-bg" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(6,255,240,0.04) 1px,transparent 1px),linear-gradient(180deg,rgba(6,255,240,0.04) 1px,transparent 1px);background-size:40px 40px;"></div>
+                        <form id="lyricsForm" class="form-contact" style="position:relative;z-index:1;max-width:850px;margin:0 auto;padding:3.2rem 2.5rem 2.2rem 2.5rem;display:flex;flex-direction:column;gap:2.2rem;background:transparent;">
+                            <div style="display:flex;flex-direction:column;gap:2.2rem;width:100%;margin:0 auto;">
+                                <div class="form-group">
+                                    <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🌐 Sprache / Language</div>
+                                    <label for="language" class="form-label" style="display:none;">Sprache</label>
+                                    <select id="language" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                        <option value="de">🇩🇪 Deutsch</option>
+                                        <option value="en">🇬🇧 English</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div style="font-size:1.28rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">💡 Songthema</div>
+                                    <label for="theme" class="form-label" style="display:none;">Songthema</label>
+                                    <textarea id="theme" rows="6" class="form-control" placeholder="Beschreibe dein Songthema (z.B. 'Verloren in der Großstadt, Sehnsucht nach Freiheit')" style="font-size:1.22rem;padding:1.3rem 1.5rem;min-height:150px;width:100%;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:1.1rem;color:#fff;box-shadow:0 0 0 2px #06FFF040;"></textarea>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎸 Genre</div>
+                                        <label for="genre" class="form-label" style="display:none;">Genre</label>
+                                        <select id="genre" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Pop</option>
+                                            <option>Hip-Hop</option>
+                                            <option>Rap</option>
+                                            <option>Trap</option>
+                                            <option>R&B</option>
+                                            <option>Rock</option>
+                                            <option>Metal</option>
+                                            <option>Punk</option>
+                                            <option>Schlager</option>
+                                            <option>Country</option>
+                                            <option>Folk</option>
+                                            <option>Blues</option>
+                                            <option>Jazz</option>
+                                            <option>Techno</option>
+                                            <option>House</option>
+                                            <option>Drum & Bass</option>
+                                            <option>Indie</option>
+                                            <option>Alternative</option>
+                                            <option>Soul</option>
+                                            <option>Reggae</option>
+                                            <option>Latin</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎭 Stimmung</div>
+                                        <label for="mood" class="form-label" style="display:none;">Stimmung</label>
+                                        <select id="mood" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Melancholisch</option>
+                                            <option>Fröhlich</option>
+                                            <option>Energetisch</option>
+                                            <option>Aggressiv</option>
+                                            <option>Motivierend</option>
+                                            <option>Romantisch</option>
+                                            <option>Lieblich</option>
+                                            <option>Nachdenklich</option>
+                                            <option>Dunkel</option>
+                                            <option>Euphorisch</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎼 Song-Struktur</div>
+                                        <label for="structure" class="form-label" style="display:none;">Song-Struktur</label>
+                                        <select id="structure" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Standard: Verse - Chorus</option>
+                                            <option>Komplex: Verse - Chorus - Bridge</option>
+                                            <option>Individuell: Eigenes Muster</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">📝 Reimschema</div>
+                                        <label for="rhyme" class="form-label" style="display:none;">Reimschema</label>
+                                        <select id="rhyme" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>AABB</option>
+                                            <option>ABAB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎤 Referenz-Künstler (optional)</div>
+                                    <label for="artist" class="form-label" style="display:none;">Referenz-Künstler</label>
+                                    <input id="artist" type="text" class="form-control" placeholder="z.B. im Stil von Taylor Swift, Apache 207, Ed Sheeran..." style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                </div>
+                                <div class="form-group" style="display:flex;gap:1.2rem;margin-top:0.7rem;justify-content:flex-end;flex-wrap:wrap;">
+                                    <button id="generateBtn" type="submit" class="btn btn--glass btn--neon" style="font-size:1.22rem;padding:1.2rem 2.8rem;min-width:220px;background:linear-gradient(90deg,#06FFF0 0%,#8B5CF6 100%);color:#181c24;font-weight:700;box-shadow:0 0 24px #06FFF040;">
+                                        <span>Lyrics generieren</span>
+                                        <span id="loadingSpinner" class="hidden loader"></span>
+                                    </button>
+                                    <button id="copyBtn" type="button" class="btn btn--glass" style="font-size:1.22rem;padding:1.2rem 2.2rem;min-width:140px;">📋 Kopieren</button>
+                                    <button id="toSongCreatorBtn" type="button" class="btn btn--glass" style="font-size:1.22rem;padding:1.2rem 2.2rem;min-width:180px;background:linear-gradient(135deg,rgba(6,255,240,0.3),rgba(139,92,246,0.3));border:2px solid #06FFF0;box-shadow:0 0 20px #06FFF040;">🎵 Zum Song Creator</button>
+                                    <button id="downloadBtn" type="button" class="btn btn--glass" style="font-size:1.22rem;padding:1.2rem 2.2rem;min-width:140px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(236,72,153,0.3));border:2px solid #8B5CF6;box-shadow:0 0 20px #8B5CF640;">💾 Export (.txt)</button>
+                                </div>
+                                <div id="progressBarContainer" class="w-full h-2 mt-2 bg-gray-800 rounded-full overflow-hidden hidden">
+                                    <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-pink-500 animate-pulse" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="output-box" style="background:rgba(10,14,24,0.98);border-radius:1.2rem;border:2px solid #06FFF0;box-shadow:0 0 32px #06FFF040;padding:2.2rem;min-height:180px;color:#c7faff;font-family:'Fira Mono','Consolas',monospace;font-size:1.22rem;position:relative;margin:2.2rem 2.2rem 2.2rem 2.2rem;max-width:900px;margin-left:auto;margin-right:auto;">
+                            <label for="lyricsOutput" style="display:block;font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.7rem;">Generierte Lyrics</label>
+                            <pre id="lyricsOutput" style="background:transparent; border:none; box-shadow:none; min-height:120px; max-height:420px; overflow:auto; font-size:1.22rem;"></pre>
+                            <button id="copyBtnInline" type="button" class="btn btn--glass" style="position:absolute;top:16px;right:16px;padding:0.45rem 1.1rem;font-size:1.08rem;" title="Kopieren">⧉</button>
+                        </div>
+                    </div>
+                    
+                    <div style="max-width:800px;margin:3.2rem auto 0 auto;padding:2.2rem;text-align:center;">
+                        <h3 style="font-size:1.5rem;color:#06FFF0;font-weight:700;margin-bottom:1.2rem;text-shadow:0 0 8px #06FFF099;">🚀 Von der Idee zum fertigen Song</h3>
+                        <p style="font-size:1.08rem;color:#c7faff;line-height:1.8;margin-bottom:1.5rem;">Die generierten Lyrics sind perfekt für deine <strong style='color:#8B5CF6;'>DAW</strong>, <strong style='color:#8B5CF6;'>Aufnahme-Sessions</strong> oder als Inspiration für eigene Kreationen. Nutze die Export-Funktion für nahtlose Integration in deinen Workflow.</p>
+                        <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(6,255,240,0.05);border:1px solid #06FFF0;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">⚡</div>
+                                <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.3rem;">Blitzschnell</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">Lyrics in unter 10 Sekunden</div>
+                            </div>
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(139,92,246,0.05);border:1px solid #8B5CF6;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">🎨</div>
+                                <div style="font-size:1.1rem;color:#8B5CF6;font-weight:700;margin-bottom:0.3rem;">Kreativ</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">Einzigartige Texte, jedes Mal</div>
+                            </div>
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(255,20,147,0.05);border:1px solid #FF1493;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">🎯</div>
+                                <div style="font-size:1.1rem;color:#FF1493;font-weight:700;margin-bottom:0.3rem;">Präzise</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">Perfekt auf dein Genre abgestimmt</div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
                 </div>
-              </div>
-              
-              <div id="lyricsTextDisplay" class="lyrics-text"></div>
+            </section>
+            
+        </main>
+        <footer class="footer site-footer" role="contentinfo">
+            <div class="container footer__top">
+                <nav class="footer__nav footer-nav" aria-label="Footernavigation">
+                    <a class="nav__link nav-link" href="../index.html">Home</a>
+                    <a class="nav__link nav-link" href="../index.html#music">Music</a>
+                    <a class="nav__link nav-link active" href="index.html">Musik Produktion</a>
+                    <a class="nav__link nav-link" href="../index.html#powershell">PowerShell</a>
+                    <a class="nav__link nav-link" href="../templates/index.html">Templates</a>
+                    <a class="nav__link nav-link" href="../index.html#gaming">Gaming</a>
+                    <a class="nav__link nav-link" href="../index.html#blog">Blog</a>
+                    <a class="nav__link nav-link" href="../index.html#newsletter">Newsletter</a>
+                    <a class="nav__link nav-link" href="../index.html#about">About</a>
+                    <a class="nav__link nav-link" href="../index.html#contact">Kontakt</a>
+                </nav>
             </div>
-
-            <!-- Regenerate -->
-            <div class="regenerate-section">
-              <button id="regenerateBtn" class="btn-regenerate">
-                🔄 Neue Version generieren
-              </button>
-              <p class="regenerate-hint">Nicht zufrieden? Generiere eine neue Variation!</p>
+            <div class="container footer__bottom">
+                <small>(C) 2026 Michas Homepage · <a href="../impressum.html" class="nav-link">Impressum</a> · <a href="../datenschutz.html" class="nav-link">Datenschutz</a></small>
             </div>
-
-          </div>
-
-        </section>
-
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Login/Register Modal -->
-  <div id="authModal" class="modal hidden">
-    <div class="modal-backdrop"></div>
-    <div class="modal-content">
-      <button id="closeModal" class="modal-close">×</button>
-      
-      <div class="modal-header">
-        <h2>🎛️ AI Audio Studio</h2>
-        <p>Login für Lyrics Generator</p>
-      </div>
-
-      <form id="loginForm" class="auth-form">
-        <h3>Login</h3>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="loginEmail" required placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" id="loginPassword" required placeholder="••••••••" />
-        </div>
-        <button type="submit" class="btn-primary">Login</button>
-      </form>
-
-      <div class="form-divider">OR</div>
-
-      <form id="registerForm" class="auth-form">
-        <h3>Create Account</h3>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="registerEmail" required placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label>Password (min. 6 characters)</label>
-          <input type="password" id="registerPassword" required minlength="6" placeholder="••••••••" />
-        </div>
-        <button type="submit" class="btn-secondary">Create Account</button>
-        <p class="form-hint">Unlimited Lyrics Generation!</p>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+        </footer>
+    </body>
+    </html>

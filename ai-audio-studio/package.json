@@ -1,0 +1,27 @@
+{
+  "name": "ai-audio-studio",
+  "version": "1.0.0",
+  "description": "Professional AI Music Production Suite - From Lyrics to Music Videos",
+  "main": "test-server.js",
+  "scripts": {
+    "test": "node test-server.js",
+    "dev": "node test-server.js",
+    "start": "node test-server.js"
+  },
+  "keywords": [
+    "ai",
+    "music",
+    "lyrics",
+    "songwriting",
+    "elevenlabs",
+    "openai"
+  ],
+  "author": "Code & Beats by Micha",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {}
+}

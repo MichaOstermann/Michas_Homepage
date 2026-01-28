@@ -400,6 +400,47 @@
   overflow-y: auto;
 }
 
+.lyrics-text-edit {
+  background: rgba(255, 215, 0, 0.05);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  color: var(--lyrics-text);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  width: 100%;
+  min-height: 500px;
+  resize: vertical;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.lyrics-text-edit:focus {
+  border-color: rgba(255, 215, 0, 0.6);
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.1);
+}
+
+.edit-mode-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+}
+
 /* Regenerate Section */
 .regenerate-section {
   text-align: center;

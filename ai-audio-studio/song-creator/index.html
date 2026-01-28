@@ -1,288 +1,214 @@
 <!doctype html>
 <html lang="de" class="no-js">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Song Erstellen | AI Audio Studio</title>
-  <meta name="description" content="Professional-Grade AI Music Production Studio - Text to Complete Songs with Vocals" />
-  <meta name="theme-color" content="#0B0F16" />
-  <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
-  
-  <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Song Erstellen | AI Audio Studio</title>
+    <meta name="description" content="Generiere komplette Songs mit KI - von Melodie bis Vocals!" />
+    <meta name="theme-color" content="#0B0F16" />
+    <link rel="icon" href="../../assets/media/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/css/nav-modern.css" />
+    <link rel="stylesheet" href="../../assets/css/hero-mega.css" />
+    <script defer src="script.js"></script>
 </head>
-<body class="studio-body">
+<body>
+        <header class="header" role="banner">
+            <nav class="nav container navbar" aria-label="Hauptnavigation">
+                <a href="../../index.html" class="brand navbar-brand" aria-label="Startseite">
+                    <span class="brand-text">Codes, Beats, Scripts <span class="brand-amp">&amp;</span> more<span class="brand-dots">...</span></span>
+                </a>
+                <button class="nav__toggle menu-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Navigation umschalten">
+                    <span class="nav__bar" aria-hidden="true"></span>
+                    <span class="nav__bar" aria-hidden="true"></span>
+                    <span class="nav__bar" aria-hidden="true"></span>
+                </button>
+                <ul class="nav__menu nav-menu" id="navMenu" role="menubar">
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html">Home</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#music">Music</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link active" href="../index.html">AI Audio Studio</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="index.html">Lyrics Generator</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../song-creator/">Song Creator</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#gaming">Gaming</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../../index.html#blog">Blog</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#newsletter">Newsletter</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#about">About</a></li>
+                    <li role="none"><a role="menuitem" class="nav__link nav-link" href="../index.html#contact">Kontakt</a></li>
+                    <li role="none">
+                        <button id="searchButton" class="nav__link" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;" aria-label="Suche öffnen">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">STRG+K</span>
+                        </button>
+                    </li>
+                </ul>
+                <span class="nav__active-indicator" id="navActiveIndicator" aria-hidden="true"></span>
+                <span class="nav__hover-halo" id="navHoverHalo" aria-hidden="true"></span>
+            </nav>
+            <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+        </header>
+        <main id="main">
+            <section class="hero hero-section" aria-labelledby="hero-title" style="position: relative;">
+                <div class="container hero__content" style="max-width: 900px; margin: 0 auto;">
+                    <h1 id="hero-title" class="hero__title hero-title glitch-text reveal" data-text="KI Song Generator" style="font-size:2.3rem;line-height:1.1;margin-bottom:2.2rem;font-weight:900;background:linear-gradient(135deg,#06FFF0 0%,#8B5CF6 50%,#FF1493 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em;display:inline-block;white-space:nowrap;text-align:center;width:100%;">KI Song Generator</h1>
+                    
+                    <div style="max-width:800px;margin:0 auto 3.2rem auto;padding:2.2rem;background:rgba(139,92,246,0.05);border-left:4px solid #8B5CF6;border-radius:0.7rem;">
+                        <h2 style="font-size:1.4rem;color:#06FFF0;font-weight:700;margin-bottom:1rem;text-shadow:0 0 8px #06FFF099;">🎵 Komplette Songs mit KI erstellen</h2>
+                        <p style="font-size:1.05rem;color:#c7faff;line-height:1.7;margin-bottom:0.8rem;">Von <strong style='color:#8B5CF6;'>Lyrics</strong> über <strong style='color:#8B5CF6;'>Melodie</strong> bis zu <strong style='color:#8B5CF6;'>Vocals</strong> – erstelle in Minuten einen kompletten Song mit professioneller Produktion. Wähle Genre, Tempo, Gesangsstil und mehr.</p>
+                        <p style="font-size:1.05rem;color:#c7faff;line-height:1.7;margin-bottom:0;">✨ <strong style='color:#06FFF0;'>Powered by mcgv.de</strong> – für produktionsreife Musik, direkt zum Download.</p>
+                    </div>
 
-  <!-- Top Bar with Auth Status -->
-  <div class="studio-topbar">
-    <div class="studio-container">
-      <div class="topbar-brand">
-        <a href="../" class="brand-link">← Zurück zum Hub</a>
-        <span class="studio-badge">🎵 Song Erstellen</span>
-      </div>
-      <div id="authStatusTop" class="auth-status-top">
-        <button id="loginBtnTop" class="btn-login">🔐 Login</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Studio Interface -->
-  <main class="studio-main">
-    
-    <!-- Login/Register Modal -->
-    <div id="authModal" class="modal hidden">
-      <div class="modal-backdrop"></div>
-      <div class="modal-content">
-        <button id="closeModal" class="modal-close">×</button>
-        
-        <div class="modal-header">
-          <h2>🎛️ AI Audio Studio</h2>
-          <p>Professionelle Musikproduktion mit KI</p>
-        </div>
-
-        <!-- Login Form -->
-        <form id="loginForm" class="auth-form">
-          <h3>Login</h3>
-          <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" id="loginEmail" required placeholder="deine@email.de" />
-          </div>
-          <div class="form-group">
-            <label>Passwort</label>
-            <input type="password" id="loginPassword" required placeholder="••••••••" />
-          </div>
-          <button type="submit" class="btn-primary">Einloggen</button>
-        </form>
-
-        <div class="form-divider">ODER</div>
-
-        <!-- Register Form -->
-        <form id="registerForm" class="auth-form">
-          <h3>Konto Erstellen</h3>
-          <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" id="registerEmail" required placeholder="deine@email.de" />
-          </div>
-          <div class="form-group">
-            <label>Passwort (mind. 6 Zeichen)</label>
-            <input type="password" id="registerPassword" required minlength="6" placeholder="••••••••" />
-          </div>
-          <button type="submit" class="btn-secondary">Konto Erstellen</button>
-          <p class="form-hint">5 Songs/Monat kostenlos · Admins haben unbegrenzten Zugang</p>
-        </form>
-      </div>
-    </div>
-
-    <!-- Studio Interface (hidden until logged in) -->
-    <div id="studioInterface" class="studio-interface hidden">
-      
-      <!-- Left Panel: Controls -->
-      <div class="studio-panel studio-left">
-        <div class="panel-header">
-          <h2>⚡ Produktions-Einstellungen</h2>
-          <p>Konfiguriere deine Track-Parameter</p>
-        </div>
-
-        <form id="studioForm" class="studio-form">
-          
-          <!-- Genre & Style Section -->
-          <div class="control-section">
-            <div class="section-header">
-              <span class="section-icon">🎸</span>
-              <h3>Genre & Stil</h3>
-            </div>
-            
-            <div class="control-grid">
-              <div class="control-item">
-                <label for="genre">Genre</label>
-                <select id="genre" required class="control-select">
-                  <option value="modern-trap">🔥 Modern Trap</option>
-                  <option value="boom-bap">🎧 Boom Bap Hip-Hop</option>
-                  <option value="radio-pop" selected>📻 Radio Pop</option>
-                  <option value="stadium-rock">🎸 Stadium Rock</option>
-                  <option value="edm">💎 Electronic Dance</option>
-                  <option value="indie-alternative">🎨 Indie/Alternative</option>
-                  <option value="rnb">🌙 R&B/Soul</option>
-                  <option value="metal">⚡ Metal/Heavy</option>
-                </select>
-              </div>
-
-              <div class="control-item">
-                <label for="atmosphere">Atmosphäre</label>
-                <select id="atmosphere" required class="control-select">
-                  <option value="dark-aggressive">🌑 Dunkel & Aggressiv</option>
-                  <option value="euphoric">✨ Euphorisch & Erhebend</option>
-                  <option value="melancholic">💔 Melancholisch & Emotional</option>
-                  <option value="energetic" selected>⚡ Energetisch & Kraftvoll</option>
-                  <option value="chill">🌊 Chill & Entspannt</option>
-                  <option value="anthemic">🏆 Hymnisch & Episch</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Technical Parameters Section -->
-          <div class="control-section">
-            <div class="section-header">
-              <span class="section-icon">⚙️</span>
-              <h3>Technische Parameter</h3>
-            </div>
-            
-            <div class="control-grid">
-              <div class="control-item">
-                <label for="bpm">
-                  BPM (Tempo)
-                  <span class="control-value" id="bpmValue">120</span>
-                </label>
-                <input type="range" id="bpm" min="60" max="200" value="120" class="control-slider" />
-                <div class="control-range-labels">
-                  <span>60</span>
-                  <span>200</span>
+                    <div class="newsletter-bg" style="position:relative;background:rgba(10,14,24,0.98);border-radius:2rem;box-shadow:0 0 0 3px #06FFF0,0 0 64px #06FFF040;overflow:hidden;padding:0;">
+                        <div class="newsletter-grid-bg" style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(90deg,rgba(6,255,240,0.04) 1px,transparent 1px),linear-gradient(180deg,rgba(6,255,240,0.04) 1px,transparent 1px);background-size:40px 40px;"></div>
+                        <form id="songForm" class="form-contact" style="position:relative;z-index:1;max-width:850px;margin:0 auto;padding:3.2rem 2.5rem 2.2rem 2.5rem;display:flex;flex-direction:column;gap:2.2rem;background:transparent;">
+                            <div style="display:flex;flex-direction:column;gap:2.2rem;width:100%;margin:0 auto;">
+                                <div class="form-group">
+                                    <div style="font-size:1.28rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">💡 Song-Beschreibung</div>
+                                    <label for="description" class="form-label" style="display:none;">Song-Beschreibung</label>
+                                    <textarea id="description" rows="6" class="form-control" placeholder="Beschreibe deinen Song (z.B. 'Upbeat Pop-Song über Freundschaft mit sommerlichem Vibe')" style="font-size:1.22rem;padding:1.3rem 1.5rem;min-height:150px;width:100%;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:1.1rem;color:#fff;box-shadow:0 0 0 2px #06FFF040;"></textarea>
+                                </div>
+                                <div class="form-group" id="lyricsImportGroup" style="display:none;">
+                                    <div style="font-size:1.15rem;color:#8B5CF6;font-weight:700;margin-bottom:0.6rem;display:flex;justify-content:space-between;align-items:center;">
+                                        <span>📝 Importierte Lyrics aus Generator</span>
+                                        <button type="button" id="clearLyricsBtn" style="background:none;border:none;color:#ff4444;cursor:pointer;font-size:0.9rem;text-decoration:underline;">✕ Entfernen</button>
+                                    </div>
+                                    <label for="importedLyrics" class="form-label" style="display:none;">Importierte Lyrics</label>
+                                    <textarea id="importedLyrics" rows="8" class="form-control" readonly style="font-size:1.1rem;padding:1.3rem 1.5rem;min-height:200px;width:100%;background:rgba(139,92,246,0.1);border:2px solid #8B5CF6;border-radius:1.1rem;color:#c7faff;box-shadow:0 0 0 2px #8B5CF640;font-family:'Fira Mono','Consolas',monospace;"></textarea>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎸 Genre</div>
+                                        <label for="genre" class="form-label" style="display:none;">Genre</label>
+                                        <select id="genre" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Pop</option>
+                                            <option>Hip-Hop</option>
+                                            <option>Rap</option>
+                                            <option>Trap</option>
+                                            <option>Rock</option>
+                                            <option>Electronic</option>
+                                            <option>R&B</option>
+                                            <option>Country</option>
+                                            <option>Jazz</option>
+                                            <option>Classical</option>
+                                            <option>Reggae</option>
+                                            <option>Metal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎭 Stimmung</div>
+                                        <label for="mood" class="form-label" style="display:none;">Stimmung</label>
+                                        <select id="mood" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option>Energetic</option>
+                                            <option>Melancholic</option>
+                                            <option>Happy</option>
+                                            <option>Aggressive</option>
+                                            <option>Romantic</option>
+                                            <option>Chill</option>
+                                            <option>Uplifting</option>
+                                            <option>Dark</option>
+                                            <option>Euphoric</option>
+                                            <option>Peaceful</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">⚡ Tempo (BPM)</div>
+                                        <label for="tempo" class="form-label" style="display:none;">Tempo</label>
+                                        <select id="tempo" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option value="60-80">Langsam (60-80 BPM)</option>
+                                            <option value="80-100">Mittel (80-100 BPM)</option>
+                                            <option value="100-120" selected>Normal (100-120 BPM)</option>
+                                            <option value="120-140">Schnell (120-140 BPM)</option>
+                                            <option value="140+">Sehr Schnell (140+ BPM)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎤 Gesang</div>
+                                        <label for="vocals" class="form-label" style="display:none;">Gesang</label>
+                                        <select id="vocals" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                            <option value="male">Männlich</option>
+                                            <option value="female">Weiblich</option>
+                                            <option value="instrumental">Instrumental (ohne Gesang)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div style="font-size:1.15rem;color:#06FFF0;font-weight:700;margin-bottom:0.6rem;">🎵 Song-Dauer</div>
+                                    <label for="duration" class="form-label" style="display:none;">Song-Dauer</label>
+                                    <select id="duration" class="form-control" style="font-size:1.12rem;padding:1.1rem 1.3rem;min-height:3.3rem;background:rgba(20,24,34,0.98);border:2px solid #06FFF0;border-radius:0.7rem;color:#fff;width:100%;">
+                                        <option value="short">Kurz (~2 Min)</option>
+                                        <option value="medium" selected>Normal (~3 Min)</option>
+                                        <option value="long">Lang (~4 Min)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="display:flex;gap:1.2rem;margin-top:0.7rem;justify-content:flex-end;">
+                                    <button id="generateBtn" type="submit" class="btn btn--glass btn--neon" style="font-size:1.22rem;padding:1.2rem 2.8rem;min-width:220px;background:linear-gradient(90deg,#06FFF0 0%,#8B5CF6 100%);color:#181c24;font-weight:700;box-shadow:0 0 24px #06FFF040;">
+                                        <span>Song generieren</span>
+                                        <span id="loadingSpinner" class="hidden loader"></span>
+                                    </button>
+                                    <button id="downloadBtn" type="button" class="btn btn--glass" style="font-size:1.22rem;padding:1.2rem 2.2rem;min-width:140px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(236,72,153,0.3));border:2px solid #8B5CF6;box-shadow:0 0 20px #8B5CF640;">💾 Download MP3</button>
+                                </div>
+                                <div id="progressBarContainer" class="w-full h-2 mt-2 bg-gray-800 rounded-full overflow-hidden hidden">
+                                    <div id="progressBar" class="h-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-pink-500 animate-pulse" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="output-box" style="background:rgba(10,14,24,0.98);border-radius:1.2rem;border:2px solid #06FFF0;box-shadow:0 0 32px #06FFF040;padding:2.2rem;min-height:180px;color:#c7faff;font-family:'Fira Mono','Consolas',monospace;font-size:1.22rem;position:relative;margin:2.2rem 2.2rem 2.2rem 2.2rem;max-width:900px;margin-left:auto;margin-right:auto;">
+                            <label for="songOutput" style="display:block;font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.7rem;">Generierter Song</label>
+                            <div id="songOutput" style="display:flex;flex-direction:column;gap:1rem;min-height:120px;">
+                                <div id="statusText" style="color:#c7faff;font-size:1.1rem;text-align:center;padding:2rem;">Wähle deine Parameter und klicke auf "Song generieren"</div>
+                                <audio id="audioPlayer" controls style="width:100%;display:none;"></audio>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="max-width:800px;margin:3.2rem auto 0 auto;padding:2.2rem;text-align:center;">
+                        <h3 style="font-size:1.5rem;color:#06FFF0;font-weight:700;margin-bottom:1.2rem;text-shadow:0 0 8px #06FFF099;">🚀 Von der Idee zum fertigen Song</h3>
+                        <p style="font-size:1.08rem;color:#c7faff;line-height:1.8;margin-bottom:1.5rem;">Generiere komplette Songs mit <strong style='color:#8B5CF6;'>Melodie</strong>, <strong style='color:#8B5CF6;'>Instrumentierung</strong> und <strong style='color:#8B5CF6;'>Vocals</strong>. Lade deine Tracks als MP3 herunter und nutze sie direkt in deinen Projekten.</p>
+                        <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(6,255,240,0.05);border:1px solid #06FFF0;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">⚡</div>
+                                <div style="font-size:1.1rem;color:#06FFF0;font-weight:700;margin-bottom:0.3rem;">Produktionsreif</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">Studio-Qualität Musik</div>
+                            </div>
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(139,92,246,0.05);border:1px solid #8B5CF6;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">🎨</div>
+                                <div style="font-size:1.1rem;color:#8B5CF6;font-weight:700;margin-bottom:0.3rem;">Unbegrenzt</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">So viele Songs wie du willst</div>
+                            </div>
+                            <div style="flex:1;min-width:200px;max-width:250px;padding:1.5rem;background:rgba(255,20,147,0.05);border:1px solid #FF1493;border-radius:0.8rem;">
+                                <div style="font-size:2rem;margin-bottom:0.5rem;">🎯</div>
+                                <div style="font-size:1.1rem;color:#FF1493;font-weight:700;margin-bottom:0.3rem;">Individuell</div>
+                                <div style="font-size:0.95rem;color:#c7faff;">Exakt nach deinen Vorgaben</div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
                 </div>
-              </div>
-
-              <div class="control-item">
-                <label for="mastering">Mastering-Ziel</label>
-                <select id="mastering" required class="control-select">
-                  <option value="streaming" selected>🎧 Streaming-Optimiert (Spotify)</option>
-                  <option value="club">🔊 Club-Optimiert (Bass-Fokus)</option>
-                  <option value="mobile">📱 Mobile-Optimiert (Mitten-Fokus)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <!-- Vocal Style Section -->
-          <div class="control-section">
-            <div class="section-header">
-              <span class="section-icon">🎤</span>
-              <h3>Gesangsstil (Optional)</h3>
-            </div>
+            </section>
             
-            <div class="control-item">
-              <textarea 
-                id="vocalStyle" 
-                rows="3" 
-                class="control-textarea" 
-                placeholder="z.B. männliche Stimme, rau, mit Auto-Tune, emotionaler Vortrag, aggressiver Ton..."
-              ></textarea>
-              <p class="control-hint">Beschreibe die gewünschten Gesangsmerkmale</p>
+        </main>
+        <footer class="footer site-footer" role="contentinfo">
+            <div class="container footer__top">
+                <nav class="footer__nav footer-nav" aria-label="Footernavigation">
+                    <a class="nav__link nav-link" href="../index.html">Home</a>
+                    <a class="nav__link nav-link" href="../index.html#music">Music</a>
+                    <a class="nav__link nav-link active" href="index.html">Musik Produktion</a>
+                    <a class="nav__link nav-link" href="../index.html#powershell">PowerShell</a>
+                    <a class="nav__link nav-link" href="../templates/index.html">Templates</a>
+                    <a class="nav__link nav-link" href="../index.html#gaming">Gaming</a>
+                    <a class="nav__link nav-link" href="../index.html#blog">Blog</a>
+                    <a class="nav__link nav-link" href="../index.html#newsletter">Newsletter</a>
+                    <a class="nav__link nav-link" href="../index.html#about">About</a>
+                    <a class="nav__link nav-link" href="../index.html#contact">Kontakt</a>
+                </nav>
             </div>
-          </div>
-
-          <!-- Lyrics Section -->
-          <div class="control-section">
-            <div class="section-header">
-              <span class="section-icon">📝</span>
-              <h3>Deine Lyrics</h3>
+            <div class="container footer__bottom">
+                <small>(C) 2026 Michas Homepage · <a href="../impressum.html" class="nav-link">Impressum</a> · <a href="../datenschutz.html" class="nav-link">Datenschutz</a></small>
             </div>
-            
-            <div class="control-item">
-              <textarea 
-                id="lyrics" 
-                rows="12" 
-                required
-                class="control-textarea lyrics-input" 
-                placeholder="[Intro]
-Deine generierten Lyrics hier...
-
-[Verse 1]
-Füge deine Lyrics vom Songtext-Generator ein...
-
-[Chorus]
-..."
-              ></textarea>
-              <p class="control-hint">
-                💡 Tipp: Nutze den <a href="../lyrics-generator/" target="_blank" class="link-highlight">Songtext-Generator</a> für professionelle Lyrics
-              </p>
-            </div>
-          </div>
-
-          <!-- Generate Button -->
-          <button type="submit" id="generateBtn" class="btn-generate">
-            <span class="btn-icon">🎵</span>
-            <span class="btn-text">Professionellen Track Generieren</span>
-          </button>
-
-          <!-- Progress Bar -->
-          <div id="progressContainer" class="progress-container hidden">
-            <div class="progress-bar">
-              <div id="progressFill" class="progress-fill"></div>
-            </div>
-            <p class="progress-text">Generiere deinen Track... Dies kann 1-2 Minuten dauern</p>
-          </div>
-
-        </form>
-      </div>
-
-      <!-- Right Panel: Output & Preview -->
-      <div class="studio-panel studio-right">
-        <div class="panel-header">
-          <h2>🎧 Audio Ausgabe</h2>
-          <p>Deine generierten Tracks erscheinen hier</p>
-        </div>
-
-        <!-- Placeholder State -->
-        <div id="outputPlaceholder" class="output-placeholder">
-          <div class="placeholder-icon">🎛️</div>
-          <h3>Bereit zum Erstellen</h3>
-          <p>Konfiguriere deine Parameter und klicke auf Generieren für professionelle Musik</p>
-          <div class="placeholder-features">
-            <div class="feature-chip">✅ Professionelle Vocals</div>
-            <div class="feature-chip">✅ Studio Mixing</div>
-            <div class="feature-chip">✅ Auto Mastering</div>
-            <div class="feature-chip">✅ Sofort-Download</div>
-          </div>
-        </div>
-
-        <!-- Audio Output (initially hidden) -->
-        <div id="audioOutput" class="audio-output hidden">
-          <div class="output-header">
-            <h3>✨ Generierter Track</h3>
-            <span id="trackInfo" class="track-info"></span>
-          </div>
-
-          <!-- Waveform Visualizer Placeholder -->
-          <div class="waveform-container">
-            <audio id="audioPlayer" controls></audio>
-          </div>
-
-          <!-- Track Metadata -->
-          <div id="trackMetadata" class="track-metadata"></div>
-
-          <!-- Action Buttons -->
-          <div class="output-actions">
-            <button id="downloadBtn" class="btn-action btn-download">
-              <span>💾</span>
-              MP3 Herunterladen
-            </button>
-            <button id="regenerateBtn" class="btn-action btn-regenerate">
-              <span>🔄</span>
-              Neu Generieren
-            </button>
-          </div>
-        </div>
-
-        <!-- Generation History -->
-        <div class="generation-history">
-          <h4>📚 Letzte Generierungen</h4>
-          <div id="historyList" class="history-list">
-            <p class="history-empty">Noch keine Generierungen. Erstelle deinen ersten Track!</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- Footer Branding -->
-  <div class="studio-footer">
-    <div class="studio-container">
-      <p>⚡ Powered by <strong>mcgv.de</strong> · Professionelle KI-Musikproduktion</p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+        </footer>
+    </body>
+    </html>

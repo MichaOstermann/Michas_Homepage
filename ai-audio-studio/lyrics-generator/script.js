@@ -1,442 +1,205 @@
-/* ============================================
-   LYRICS GENERATOR SCRIPT
-   Professional Songtext Generator
-   ============================================ */
 
-// Auth State
-let authToken = localStorage.getItem('authToken');
-let currentUser = null;
 
-// Current Lyrics State
-let currentLyrics = '';
-let currentConfig = null;
+// Songwriting KI-Tool – script.js
+// WICHTIG: API-Keys NIEMALS im Frontend speichern! Die Kommunikation läuft über /api/generate (Vercel Serverless Function). Keys liegen sicher in .env.
 
-// DOM Elements
-const authModal = document.getElementById('authModal');
-const loginBtnTop = document.getElementById('loginBtnTop');
-const closeModal = document.getElementById('closeModal');
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-
-const lyricsForm = document.getElementById('lyricsForm');
+const form = document.getElementById('lyricsForm');
+const output = document.getElementById('lyricsOutput');
+const copyBtn = document.getElementById('copyBtn');
+const copyBtnInline = document.getElementById('copyBtnInline');
+const downloadBtn = document.getElementById('downloadBtn');
 const generateBtn = document.getElementById('generateBtn');
+const loadingSpinner = document.getElementById('loadingSpinner');
+const progressBar = document.getElementById('progressBar');
+const progressBarContainer = document.getElementById('progressBarContainer');
 
-const outputPlaceholder = document.getElementById('outputPlaceholder');
-const outputContent = document.getElementById('outputContent');
-const lyricsTextDisplay = document.getElementById('lyricsTextDisplay');
+// Provider-Switch: 'openai' oder 'anthropic'
+const provider = 'openai'; // oder 'anthropic'
 
-const copyLyricsBtn = document.getElementById('copyLyricsBtn');
-const downloadLyricsBtn = document.getElementById('downloadLyricsBtn');
-const useInStudioBtn = document.getElementById('useInStudioBtn');
-const regenerateBtn = document.getElementById('regenerateBtn');
+async function generateLyrics(e) {
+  e.preventDefault();
+  output.textContent = '';
+  const buttonText = generateBtn.querySelector('span');
+  buttonText.textContent = '✨ Generiere...';
+  loadingSpinner.classList.remove('hidden');
+  generateBtn.disabled = true;
+  progressBarContainer.classList.remove('hidden');
+  progressBar.style.width = '0%';
 
-// ============================================
-// INIT
-// ============================================
+  // Nutzereingaben sammeln
+  const language = document.getElementById('language').value;
+  const genre = document.getElementById('genre').value;
+  const mood = document.getElementById('mood').value;
+  const theme = document.getElementById('theme').value;
+  const structure = document.getElementById('structure').value;
+  const rhyme = document.getElementById('rhyme').value;
+  const artist = document.getElementById('artist').value;
 
-window.addEventListener('DOMContentLoaded', () => {
-  checkAuthSession();
-  updateAuthStatus();
-  
-  // Modal Controls
-  loginBtnTop?.addEventListener('click', () => openAuthModal());
-  closeModal?.addEventListener('click', () => closeAuthModal());
-  authModal?.addEventListener('click', (e) => {
-    if (e.target === authModal) closeAuthModal();
+  const isGerman = language === 'de';
+
+  // Ultimate System Prompt mit Premium-Qualität
+  const systemPrompt = isGerman ? `
+Du bist ein Platin-Songwriter und Musikproduzent. Schreibe einen DEUTSCHEN Songtext im Genre: ${genre} (${mood}), Thema: "${theme}"${artist ? `, im Stil von ${artist}` : ''}.
+
+Songstruktur: Nutze explizit [Intro], [Verse], [Hook/Chorus], [Bridge], [Outro].
+
+REIMSCHEMA: ${rhyme} – ABER nutze SLANT RHYMES (unreine Reime wie Stahl/Fahr, Blick/Schritt, Nacht/macht) statt perfekter Kinderreime. Das klingt moderner und authentischer.
+WICHTIG: Achte darauf, dass die Reime zumindest ähnliche Endlaute haben (z.B. -ung/-ung, -cht/-ft). Vermeide zu unsaubere Reime wie "Rüstung/Dunst".
+
+SILBEN & METRUM: 
+- Verse: 10-12 Silben pro Zeile (konstanter Flow)
+- Bridge: 6-8 Silben (abgehackt, spannungsreich)
+- Hook: 8-10 Silben (eingängig)
+
+SCHREIBSTIL "SHOW, DON'T TELL":
+❌ NICHT: "Ich bin der King" (behaupten)
+✅ SONDERN: "Der Regen perlt an der Lederjacke ab, während die Stadt im Rückspiegel verblasst" (zeigen)
+Nutze KONKRETE BILDER, SINNESEINDRÜCKE und SPEZIFISCHE DETAILS statt abstrakte Behauptungen.
+
+METAPHERN-LOGIK:
+Achte auf logisch konsistente Metaphern. Beispiele:
+❌ NICHT: "fliegt wie ein Fisch" (Fische schwimmen, fliegen nicht)
+❌ NICHT: "schwebt wie ein Stein" (Steine fallen, schweben nicht)
+✅ SONDERN: "fliegt wie ein Pfeil", "Zeit bleibt kurz stehen", "zieht vorbei wie Rauch"
+Metaphern müssen der Realität entsprechen, auch wenn sie poetisch sind.
+
+VERMEIDE KLISCHEES:
+❌ NICHT: "Keine Angst vor dem Sturm", "Hör den Motor brüllen", "Wir sind unsterblich"
+✅ SONDERN: Spezifische Details (echte Orte, Markennamen, ungewöhnliche Metaphern)
+
+Genre-typische Vokabeln und Slang (z.B. Punchlines bei Trap, Metaphern bei Schlager).
+Füge musikalische Regieanweisungen in runden Klammern hinzu, z.B. (Bass setzt aus), (Stimme wird emotionaler), (Beat-Drop).
+
+Die Lyrics müssen für echte Musikproduktionen geeignet sein. Gliedere und markiere die Abschnitte klar.
+Gib nur den Songtext im gewünschten Format aus, keine Erklärungen.` : `
+IMPORTANT: You MUST write in ENGLISH ONLY. Do NOT use ANY German words or phrases!
+
+You are a platinum songwriter and music producer. Write ENGLISH lyrics in genre: ${genre} (${mood}), theme: "${theme}"${artist ? `, style of ${artist}` : ''}.
+
+LANGUAGE REQUIREMENT: Write EXCLUSIVELY in English. NO German words allowed!
+
+Song Structure: Use explicit [Intro], [Verse], [Hook/Chorus], [Bridge], [Outro].
+
+RHYME SCHEME: ${rhyme} – BUT use SLANT RHYMES (imperfect rhymes like night/side, deep/keep, lost/frost) instead of perfect childish rhymes. This sounds more modern and authentic.
+IMPORTANT: Make sure rhymes have at least similar end sounds. Avoid too rough rhymes.
+
+SYLLABLES & METER:
+- Verse: 10-12 syllables per line (constant flow)
+- Bridge: 6-8 syllables (choppy, suspenseful)
+- Hook: 8-10 syllables (catchy)
+
+WRITING STYLE "SHOW, DON'T TELL":
+❌ NOT: "I am the king" (claiming)
+✅ INSTEAD: "Rain beads off the leather jacket as the city fades in the rearview" (showing)
+Use CONCRETE IMAGES, SENSORY IMPRESSIONS and SPECIFIC DETAILS instead of abstract claims.
+
+METAPHOR LOGIC:
+Pay attention to logically consistent metaphors. Examples:
+❌ NOT: "flies like a fish" (fish swim, don't fly)
+❌ NOT: "floats like a stone" (stones fall, don't float)
+✅ INSTEAD: "flies like an arrow", "time stands still briefly", "drifts by like smoke"
+Metaphors must correspond to reality, even if they are poetic.
+
+AVOID CLICHÉS:
+❌ NOT: "No fear of the storm", "Hear the engine roar", "We are immortal"
+✅ INSTEAD: Specific details (real places, brand names, unusual metaphors)
+
+Genre-typical vocabulary and slang (e.g. punchlines for trap, metaphors for pop).
+Add musical stage directions in parentheses, e.g. (bass drops out), (voice becomes emotional), (beat drop).
+
+The lyrics must be suitable for real music productions. Structure and mark the sections clearly.
+REMINDER: Write ONLY in English, NO German!
+Output only the lyrics in the desired format, no explanations.`;
+
+  // Streaming-Effekt: Text wird "getippt"
+  function streamText(text) {
+    output.textContent = '';
+    let i = 0;
+    let interval = setInterval(() => {
+      output.textContent += text[i] || '';
+      i++;
+      // Fortschritt simulieren
+      progressBar.style.width = Math.min(100, (i / text.length) * 100) + '%';
+      if (i >= text.length) {
+        clearInterval(interval);
+        const buttonText = generateBtn.querySelector('span');
+        buttonText.textContent = '🎵 Lyrics generieren';
+        loadingSpinner.classList.add('hidden');
+        progressBar.style.width = '100%';
+        setTimeout(() => progressBarContainer.classList.add('hidden'), 600);
+        generateBtn.disabled = false;
+      }
+    }, 12);
+  }
+
+  // API-Request an das eigene Backend (Vercel)
+  try {
+    const response = await fetch('https://michas-homepage-3em5.vercel.app/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ provider, systemPrompt })
+    });
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonErr) {
+      throw new Error('Ungültige Server-Antwort (kein JSON). Bitte später erneut versuchen.');
+    }
+    if (!response.ok) {
+      throw new Error(data.error || 'Serverfehler');
+    }
+    streamText(data.lyrics || 'Keine Lyrics generiert.');
+  } catch (err) {
+    output.textContent = 'Fehler: ' + (err.message || 'Unbekannter Fehler. Bitte API-Key prüfen.');
+    loadingSpinner.classList.add('hidden');
+    progressBarContainer.classList.add('hidden');
+    generateBtn.disabled = false;
+  }
+}
+
+form.addEventListener('submit', generateLyrics);
+
+// Kopieren-Button (oben)
+copyBtn.addEventListener('click', () => {
+  const text = output.textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtn.textContent = 'Kopiert!';
+    setTimeout(() => copyBtn.textContent = '📋 Kopieren', 1200);
   });
-  
-  // Forms
-  loginForm?.addEventListener('submit', handleLogin);
-  registerForm?.addEventListener('submit', handleRegister);
-  lyricsForm?.addEventListener('submit', handleGenerateLyrics);
-  
-  // Action Buttons
-  copyLyricsBtn?.addEventListener('click', copyLyrics);
-  downloadLyricsBtn?.addEventListener('click', downloadLyrics);
-  useInStudioBtn?.addEventListener('click', useInStudio);
-  regenerateBtn?.addEventListener('click', regenerateLyrics);
 });
 
-// ============================================
-// AUTH FUNCTIONS
-// ============================================
-
-async function checkAuthSession() {
-  if (!authToken) return;
-  
-  try {
-    const response = await fetch('/api/check-session', {
-      headers: { Authorization: `Bearer ${authToken}` }
-    });
-    
-    if (response.ok) {
-      currentUser = await response.json();
-      updateAuthStatus();
-    } else {
-      logout();
-    }
-  } catch (err) {
-    console.error('Session check failed:', err);
-  }
-}
-
-function updateAuthStatus() {
-  const authStatusTop = document.getElementById('authStatusTop');
-  if (!authStatusTop) return;
-  
-  if (currentUser) {
-    authStatusTop.innerHTML = `
-      <div class="user-display">
-        <div class="user-avatar">${currentUser.email.charAt(0).toUpperCase()}</div>
-        <span class="user-email">${currentUser.email}</span>
-        ${currentUser.isAdmin ? '<span class="admin-badge">👑 ADMIN</span>' : ''}
-        <button id="logoutBtn" class="btn-logout">🚪 Logout</button>
-      </div>
-    `;
-    
-    document.getElementById('logoutBtn')?.addEventListener('click', logout);
-  } else {
-    authStatusTop.innerHTML = `
-      <button id="loginBtnTop" class="btn-login">🔐 Login</button>
-    `;
-    
-    document.getElementById('loginBtnTop')?.addEventListener('click', () => openAuthModal());
-  }
-}
-
-async function handleLogin(e) {
-  e.preventDefault();
-  
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-  
-  try {
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-      authToken = data.token;
-      currentUser = data.user;
-      localStorage.setItem('authToken', authToken);
-      
-      showNotification('✅ Login erfolgreich!', 'success');
-      closeAuthModal();
-      updateAuthStatus();
-      loginForm.reset();
-    } else {
-      showNotification('❌ ' + (data.error || 'Login fehlgeschlagen'), 'error');
-    }
-  } catch (err) {
-    console.error('Login error:', err);
-    showNotification('❌ Verbindungsfehler', 'error');
-  }
-}
-
-async function handleRegister(e) {
-  e.preventDefault();
-  
-  const email = document.getElementById('registerEmail').value;
-  const password = document.getElementById('registerPassword').value;
-  
-  if (password.length < 6) {
-    showNotification('❌ Passwort muss mindestens 6 Zeichen lang sein', 'error');
+// Zum Song Creator Button
+const toSongCreatorBtn = document.getElementById('toSongCreatorBtn');
+toSongCreatorBtn.addEventListener('click', () => {
+  const text = output.textContent;
+  if (!text || text.includes('Keine Lyrics generiert') || text.includes('Fehler:')) {
+    alert('Bitte generiere zuerst Lyrics!');
     return;
   }
-  
-  try {
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-      authToken = data.token;
-      currentUser = data.user;
-      localStorage.setItem('authToken', authToken);
-      
-      showNotification('✅ Account erstellt!', 'success');
-      closeAuthModal();
-      updateAuthStatus();
-      registerForm.reset();
-    } else {
-      showNotification('❌ ' + (data.error || 'Registrierung fehlgeschlagen'), 'error');
-    }
-  } catch (err) {
-    console.error('Register error:', err);
-    showNotification('❌ Verbindungsfehler', 'error');
-  }
-}
+  // Save lyrics to sessionStorage
+  sessionStorage.setItem('generatedLyrics', text);
+  // Navigate to song creator
+  window.location.href = '../song-creator/';
+});
 
-function logout() {
-  authToken = null;
-  currentUser = null;
-  localStorage.removeItem('authToken');
-  updateAuthStatus();
-  showNotification('👋 Logout erfolgreich', 'info');
-}
+// Kopieren-Button (im Ausgabefenster)
+copyBtnInline.addEventListener('click', () => {
+  const text = output.textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtnInline.textContent = 'Kopiert!';
+    setTimeout(() => copyBtnInline.textContent = '⧉', 1200);
+  });
+});
 
-// ============================================
-// LYRICS GENERATION
-// ============================================
-
-async function handleGenerateLyrics(e) {
-  e.preventDefault();
-  
-  // Check Auth (optional for testing - comment out if needed)
-  // if (!authToken) {
-  //   showNotification('❌ Bitte einloggen', 'error');
-  //   openAuthModal();
-  //   return;
-  // }
-  
-  // Collect Form Data
-  const genre = document.getElementById('lyricsGenre').value;
-  const mood = document.getElementById('lyricsMood').value;
-  const theme = document.getElementById('lyricsTheme').value;
-  const structure = document.getElementById('lyricsStructure').value;
-  const rhyme = document.getElementById('lyricsRhyme').value;
-  const artistReference = document.getElementById('artistReference').value;
-  
-  if (!genre || !mood) {
-    showNotification('❌ Bitte Genre und Stimmung auswählen', 'error');
-    return;
-  }
-  
-  // Save config for regeneration
-  currentConfig = { genre, mood, theme, structure, rhyme, artistReference };
-  
-  // Build Premium Prompt
-  const prompt = buildPremiumLyricsPrompt(genre, mood, theme, structure, rhyme, artistReference);
-  
-  // UI State
-  generateBtn.disabled = true;
-  generateBtn.innerHTML = '<span>⏳ Generiere...</span>';
-  
-  try {
-    // DEMO MODE: Use mock data if API fails
-    let useDemoMode = false;
-    
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...(authToken && { 'Authorization': `Bearer ${authToken}` })
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        prompt: prompt,
-        maxTokens: 2000
-      })
-    }).catch(() => {
-      useDemoMode = true;
-      return null;
-    });
-    
-    let data;
-    
-    if (useDemoMode || !response || !response.ok) {
-      // Demo Mode: Generate mock lyrics
-      showNotification('🎭 Demo Mode - Mock Lyrics werden generiert', 'info');
-      data = { text: generateMockLyrics(genre, mood, theme) };
-    } else {
-      data = await response.json();
-    }
-    
-    if (data.text) {
-      currentLyrics = data.text;
-      displayLyrics(currentLyrics);
-      showNotification('✅ Lyrics generiert!', 'success');
-    } else {
-      throw new Error('Keine Lyrics erhalten');
-    }
-  } catch (err) {
-    console.error('Lyrics generation error:', err);
-    showNotification('❌ ' + err.message, 'error');
-  } finally {
-    generateBtn.disabled = false;
-    generateBtn.innerHTML = '<span>✨ Lyrics Generieren</span>';
-  }
-}
-
-function buildPremiumLyricsPrompt(genre, mood, theme, structure, rhyme, artistReference) {
-  let prompt = `Du bist ein professioneller Songtext-Autor mit Deep Domain Expertise.\n\n`;
-  
-  prompt += `**GENRE:** ${genre}\n`;
-  prompt += `**STIMMUNG:** ${mood}\n`;
-  if (theme) prompt += `**THEMA:** ${theme}\n`;
-  if (artistReference) prompt += `**ARTIST STYLE REFERENZ:** ${artistReference}\n`;
-  prompt += `**STRUKTUR:** ${structure}\n`;
-  prompt += `**REIMSCHEMA:** ${rhyme}\n\n`;
-  
-  prompt += `**PREMIUM WRITING PRINZIPIEN:**\n`;
-  prompt += `1. **Show Don't Tell:** Benutze konkrete Bilder und Szenen statt abstrakter Aussagen\n`;
-  prompt += `2. **Slant Rhymes:** Moderne, unperfekte Reime für natürlichen Flow (z.B. "night/light" → "night/side")\n`;
-  prompt += `3. **Anti-Klischee:** Vermeide Phrasen wie "follow your dreams", "be yourself", "shine like a star"\n`;
-  prompt += `4. **Metaphern-Logik:** Metaphern müssen innerhalb ihrer Logik bleiben (wenn Ozean, dann Wellen/Tiefen/Strömung)\n`;
-  prompt += `5. **Kontraste:** Nutze Widersprüche und Spannungen (z.B. "cold fire", "silent scream")\n`;
-  prompt += `6. **Spezifität:** Konkrete Details statt generische Beschreibungen (z.B. "3 AM rain on Brooklyn streets" statt "rainy night")\n\n`;
-  
-  prompt += `**STRUKTUR-SPEZIFIKATION:**\n`;
-  if (structure === 'standard') {
-    prompt += `[Intro - 4 Zeilen]\n[Verse 1 - 8 Zeilen]\n[Chorus - 6 Zeilen]\n[Verse 2 - 8 Zeilen]\n[Chorus - 6 Zeilen]\n[Bridge - 4 Zeilen]\n[Chorus - 6 Zeilen]\n`;
-  } else if (structure === 'short') {
-    prompt += `[Verse 1 - 8 Zeilen]\n[Chorus - 6 Zeilen]\n[Verse 2 - 8 Zeilen]\n[Chorus - 6 Zeilen]\n`;
-  } else if (structure === 'extended') {
-    prompt += `[Intro - 4 Zeilen]\n[Verse 1 - 8 Zeilen]\n[Pre-Chorus - 4 Zeilen]\n[Chorus - 6 Zeilen]\n[Verse 2 - 8 Zeilen]\n[Pre-Chorus - 4 Zeilen]\n[Chorus - 6 Zeilen]\n[Bridge - 4 Zeilen]\n[Chorus - 6 Zeilen]\n[Outro - 4 Zeilen]\n`;
-  } else {
-    prompt += `Experimentelle, freie Struktur mit kreativen Abschnitten.\n`;
-  }
-  
-  prompt += `\n**OUTPUT FORMAT:**\n`;
-  prompt += `Schreibe die Lyrics mit klaren Abschnitts-Labels [INTRO], [VERSE 1], [CHORUS], etc.\n`;
-  prompt += `Jede Zeile auf einer neuen Zeile.\n\n`;
-  
-  prompt += `**JETZT SCHREIBE DIE LYRICS:**`;
-  
-  return prompt;
-}
-
-// ============================================
-// DEMO MODE - Mock Lyrics Generator
-// ============================================
-
-function generateMockLyrics(genre, mood, theme) {
-  const themeText = theme || 'life and dreams';
-  
-  return `[INTRO]
-${mood} vibes in the ${genre} sound
-${themeText} all around
-Let me tell you what I found
-In this ${mood} ${genre} playground
-
-[VERSE 1]
-Walking through the city lights at 3 AM
-Shadows dancing, thoughts I can't condemn
-${themeText} weighing heavy on my mind
-Searching for the truth I need to find
-
-Every corner holds a memory so clear
-Whispers of the past that I still hear
-But I keep moving, never looking back
-On this ${mood} ${genre} track
-
-[CHORUS]
-This is my story, my ${mood} melody
-${themeText} setting me free
-In this ${genre} symphony
-I found where I'm meant to be
-
-[VERSE 2]
-Neon signs reflecting in the rain
-Every drop washes away the pain
-${themeText} leading me through the night
-Till I finally see the morning light
-
-[CHORUS]
-This is my story, my ${mood} melody
-${themeText} setting me free
-In this ${genre} symphony
-I found where I'm meant to be
-
-[BRIDGE]
-And when the world feels cold and grey
-I'll find my way, I'll find my way
-Through the ${mood} and the ${genre} sound
-I'll stand my ground
-
-[CHORUS]
-This is my story, my ${mood} melody
-${themeText} setting me free
-In this ${genre} symphony
-I found where I'm meant to be
-
-[OUTRO]
-${genre} fading into the dawn
-But my ${mood} spirit carries on
-
----
-🎭 DEMO MODE - Mock Lyrics
-Real AI-generated lyrics available with API setup`;
-}
-
-function displayLyrics(lyrics) {
-  outputPlaceholder.style.display = 'none';
-  outputContent.classList.remove('hidden');
-  lyricsTextDisplay.textContent = lyrics;
-}
-
-async function regenerateLyrics() {
-  if (!currentConfig) {
-    showNotification('❌ Keine Config vorhanden', 'error');
-    return;
-  }
-  
-  // Regenerate with same config
-  const { genre, mood, theme, structure, rhyme, artistReference } = currentConfig;
-  const prompt = buildPremiumLyricsPrompt(genre, mood, theme, structure, rhyme, artistReference);
-  
-  regenerateBtn.disabled = true;
-  regenerateBtn.textContent = '⏳ Regeneriere...';
-  
-  try {
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        prompt: prompt,
-        maxTokens: 2000
-      })
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok && data.text) {
-      currentLyrics = data.text;
-      displayLyrics(currentLyrics);
-      showNotification('✅ Neue Version generiert!', 'success');
-    } else {
-      throw new Error(data.error || 'Regeneration fehlgeschlagen');
-    }
-  } catch (err) {
-    console.error('Regeneration error:', err);
-    showNotification('❌ ' + err.message, 'error');
-  } finally {
-    regenerateBtn.disabled = false;
-    regenerateBtn.textContent = '🔄 Neue Version generieren';
-  }
-}
-
-// ============================================
-// ACTION BUTTONS
-// ============================================
-
-function copyLyrics() {
-  if (!currentLyrics) return;
-  
-  navigator.clipboard.writeText(currentLyrics)
-    .then(() => showNotification('📋 Lyrics kopiert!', 'success'))
-    .catch(err => {
-      console.error('Copy failed:', err);
-      showNotification('❌ Kopieren fehlgeschlagen', 'error');
-    });
-}
-
-function downloadLyrics() {
-  if (!currentLyrics) return;
-  
-  const blob = new Blob([currentLyrics], { type: 'text/plain' });
+// Download-Button (Export als .txt)
+downloadBtn.addEventListener('click', () => {
+  const text = output.textContent;
+  if (!text) return;
+  const blob = new Blob([text], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -445,86 +208,4 @@ function downloadLyrics() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  
-  showNotification('💾 Lyrics heruntergeladen!', 'success');
-}
-
-function useInStudio() {
-  if (!currentLyrics) return;
-  
-  // Save lyrics to localStorage for Song Creator to pick up
-  localStorage.setItem('pendingLyrics', currentLyrics);
-  
-  // Redirect to Song Creator
-  window.location.href = '../song-creator/';
-}
-
-// ============================================
-// MODAL CONTROLS
-// ============================================
-
-function openAuthModal() {
-  authModal?.classList.remove('hidden');
-}
-
-function closeAuthModal() {
-  authModal?.classList.add('hidden');
-}
-
-// ============================================
-// NOTIFICATIONS
-// ============================================
-
-function showNotification(message, type = 'info') {
-  const oldNotif = document.querySelector('.lyrics-notification');
-  if (oldNotif) oldNotif.remove();
-  
-  const notif = document.createElement('div');
-  notif.className = `lyrics-notification lyrics-notification-${type}`;
-  notif.textContent = message;
-  
-  notif.style.cssText = `
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    background: ${type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6'};
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 600;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 10000;
-    animation: slideInRight 0.3s ease;
-  `;
-  
-  document.body.appendChild(notif);
-  
-  setTimeout(() => {
-    notif.style.animation = 'slideOutRight 0.3s ease';
-    setTimeout(() => notif.remove(), 300);
-  }, 3000);
-}
-
-// Add animations
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  
-  @keyframes slideOutRight {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(100%); opacity: 0; }
-  }
-  
-  .admin-badge {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000;
-    padding: 0.25rem 0.75rem;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-`;
-document.head.appendChild(style);
+});
