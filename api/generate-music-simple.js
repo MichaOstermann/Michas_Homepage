@@ -1,5 +1,5 @@
-// Vercel Serverless Function – Simplified Music Generation (No Auth Required for Demo)
-// Generates complete songs with vocals using ElevenLabs or Suno API
+// Vercel Serverless Function – Music Generation with Replicate
+// Generates complete songs using MusicGen, Stable Audio, and other AI models
 
 export default async function handler(req, res) {
   // CORS headers
@@ -23,13 +23,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Song description or prompt is required' });
     }
 
-    // Check API Key from environment
-    const elevenLabsKey = process.env.ELEVENLABS_API_KEY;
-    const sunoKey = process.env.SUNO_API_KEY;
+    // Check Replicate API Token
+    const replicateToken = process.env.REPLICATE_API_TOKEN;
 
-    if (!elevenLabsKey && !sunoKey) {
+    if (!replicateToken) {
       return res.status(500).json({ 
-        error: 'Music generation service not configured. Please add ELEVENLABS_API_KEY or SUNO_API_KEY to environment variables.',
+        error: 'Music generation service not configured. Please add REPLICATE_API_TOKEN to environment variables.',
         code: 'NO_API_KEY'
       });
     }
@@ -37,44 +36,21 @@ export default async function handler(req, res) {
     // Build comprehensive music prompt
     const musicPrompt = buildMusicPrompt(prompt || description, genre, mood, tempo, vocals, duration, lyrics);
 
-    console.log('[Music Generation Simple] Starting generation...', { genre, mood, tempo });
+    console.log('[Music Generation Replicate] Starting generation...', { genre, mood, tempo });
 
-    // Try ElevenLabs first if available
-    if (elevenLabsKey) {
-      try {
-        const audioUrl = await generateWithElevenLabs(musicPrompt, elevenLabsKey, lyrics);
-        return res.status(200).json({ 
-          success: true,
-          audioUrl: audioUrl,
-          provider: 'elevenlabs',
-          generatedAt: new Date().toISOString()
-        });
-      } catch (elevenLabsError) {
-        console.error('[ElevenLabs] Failed:', elevenLabsError.message);
-        // Fall through to try Suno
-      }
-    }
-
-    // Try Suno as fallback if available
-    if (sunoKey) {
-      try {
-        const audioUrl = await generateWithSuno(musicPrompt, sunoKey, lyrics);
-        return res.status(200).json({ 
-          success: true,
-          audioUrl: audioUrl,
-          provider: 'suno',
-          generatedAt: new Date().toISOString()
-        });
-      } catch (sunoError) {
-        console.error('[Suno] Failed:', sunoError.message);
-        throw sunoError;
-      }
-    }
-
-    throw new Error('All music generation providers failed');
+    // Generate with Replicate
+    const audioUrl = await generateWithReplicate(musicPrompt, replicateToken, duration, vocals);
+    
+    return res.status(200).json({ 
+      success: true,
+      audioUrl: audioUrl,
+      provider: 'replicate',
+      model: 'musicgen',
+      generatedAt: new Date().toISOString()
+    });
 
   } catch (error) {
-    console.error('[Music Generation Simple] Error:', error);
+    console.error('[Music Generation] Error:', error);
     return res.status(500).json({ 
       error: error.message || 'Music generation failed. Please try again.',
       code: 'GENERATION_FAILED'
@@ -82,63 +58,68 @@ export default async function handler(req, res) {
   }
 }
 
-// Generate with ElevenLabs API
-async function generateWithElevenLabs(prompt, apiKey, lyrics) {
-  const endpoint = 'https://api.elevenlabs.io/v1/text-to-sound-effects';
-  
-  const response = await fetch(endpoint, {
+// Generate with Replicate API using MusicGen or Stable Audio
+async function generateWithReplicate(prompt, apiToken, duration, vocals) {
+  // Choose model based on vocals requirement
+  // For instrumental: Use MusicGen (faster, better quality)
+  // For vocals: Use MusicGen Large (better for complex arrangements)
+  const model = vocals === 'instrumental' 
+    ? 'meta/musicgen:671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb'
+    : 'meta/musicgen:b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38';
+
+  // Calculate duration in seconds
+  let durationSeconds = 30; // default
+  if (duration === 'short') durationSeconds = 120;
+  else if (duration === 'medium') durationSeconds = 180;
+  else if (duration === 'long') durationSeconds = 240;
+
+  // Create prediction
+  const response = await fetch('https://api.replicate.com/v1/predictions', {
     method: 'POST',
     headers: {
-      'xi-api-key': apiKey,
-      'Content-Type': 'application/json'
+      'Authorization': `Token ${apiToken}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'wait'
     },
     body: JSON.stringify({
-      text: lyrics ? `${prompt}\n\nLyrics:\n${lyrics}` : prompt,
-      duration_seconds: null, // Auto-detect
-      prompt_influence: 0.3
+      version: model,
+      input: {
+        prompt: prompt,
+        model_version: 'stereo-large',
+        output_format: 'mp3',
+        normalization_strategy: 'peak',
+        duration: Math.min(durationSeconds, 30) // MusicGen max 30s per generation
+      }
     })
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`ElevenLabs API Error ${response.status}: ${errorText}`);
+    throw new Error(`Replicate API Error ${response.status}: ${errorText}`);
   }
 
-  // Get audio buffer and convert to data URL
-  const audioBuffer = await response.arrayBuffer();
-  const base64Audio = Buffer.from(audioBuffer).toString('base64');
+  const prediction = await response.json();
   
-  // Return as data URL for immediate playback
-  return `data:audio/mpeg;base64,${base64Audio}`;
-}
-
-// Generate with Suno API (if available)
-async function generateWithSuno(prompt, apiKey, lyrics) {
-  // Suno API endpoint - update with actual endpoint when available
-  const endpoint = 'https://api.suno.ai/v1/generate';
-  
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      prompt: prompt,
-      lyrics: lyrics || null,
-      make_instrumental: !lyrics
-    })
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Suno API Error ${response.status}: ${errorText}`);
+  // Wait for completion if not already done
+  let result = prediction;
+  while (result.status !== 'succeeded' && result.status !== 'failed') {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${result.id}`, {
+      headers: {
+        'Authorization': `Token ${apiToken}`
+      }
+    });
+    
+    result = await statusResponse.json();
+    
+    if (result.status === 'failed') {
+      throw new Error(`Generation failed: ${result.error || 'Unknown error'}`);
+    }
   }
-
-  const data = await response.json();
   
-  // Return audio URL from Suno response
-  return data.audio_url || data.url || data.audioUrl;
+  // Return audio URL
+  return result.output;
 }
 
 // Build comprehensive music generation prompt
@@ -147,46 +128,59 @@ function buildMusicPrompt(description, genre, mood, tempo, vocals, duration, lyr
 
   // Genre and style
   if (genre) {
-    prompt += `Genre: ${genre}. `;
+    const genreMap = {
+      'Pop': 'upbeat pop music',
+      'Hip-Hop': 'hip hop beat with bass',
+      'Rap': 'rap beat with hard drums',
+      'Trap': 'trap music with 808s',
+      'Rock': 'rock music with electric guitars',
+      'Electronic': 'electronic dance music',
+      'R&B': 'smooth r&b with soul',
+      'Country': 'country music with acoustic guitar',
+      'Jazz': 'jazz with piano and saxophone',
+      'Classical': 'classical orchestral music',
+      'Reggae': 'reggae with offbeat rhythm',
+      'Metal': 'heavy metal with distorted guitars'
+    };
+    prompt += genreMap[genre] || genre.toLowerCase();
   }
 
   // Mood/Atmosphere
   if (mood) {
-    prompt += `Mood: ${mood}. `;
+    prompt += `, ${mood.toLowerCase()} mood`;
   }
 
   // Tempo
   if (tempo) {
-    prompt += `Tempo: ${tempo}. `;
+    if (tempo.includes('60-80')) prompt += ', slow tempo';
+    else if (tempo.includes('80-100')) prompt += ', medium tempo';
+    else if (tempo.includes('100-120')) prompt += ', moderate tempo';
+    else if (tempo.includes('120-140')) prompt += ', fast tempo';
+    else if (tempo.includes('140+')) prompt += ', very fast tempo';
   }
 
   // Vocals
-  if (vocals) {
-    if (vocals === 'male') {
-      prompt += `Male vocals. `;
-    } else if (vocals === 'female') {
-      prompt += `Female vocals. `;
-    } else if (vocals === 'instrumental') {
-      prompt += `Instrumental only, no vocals. `;
-    }
-  }
-
-  // Duration
-  if (duration) {
-    if (duration === 'short') {
-      prompt += `Duration: approximately 2 minutes. `;
-    } else if (duration === 'medium') {
-      prompt += `Duration: approximately 3 minutes. `;
-    } else if (duration === 'long') {
-      prompt += `Duration: approximately 4 minutes. `;
-    }
+  if (vocals === 'instrumental') {
+    prompt += ', instrumental only no vocals';
+  } else if (vocals === 'male') {
+    prompt += ', with male vocals';
+  } else if (vocals === 'female') {
+    prompt += ', with female vocals';
   }
 
   // Main description
-  prompt += description;
+  if (description && description !== prompt) {
+    prompt += '. ' + description;
+  }
+
+  // Add lyrics context if provided
+  if (lyrics) {
+    const lyricsPreview = lyrics.substring(0, 200);
+    prompt += `. Song about: ${lyricsPreview}`;
+  }
 
   // Production quality
-  prompt += ` Professional studio production, high quality mixing and mastering.`;
+  prompt += ', high quality, professional production, clear mix';
 
   return prompt;
 }
