@@ -78,8 +78,7 @@ async function generateWithReplicate(prompt, apiToken, duration, vocals) {
     method: 'POST',
     headers: {
       'Authorization': `Token ${apiToken}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'wait'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       version: model,
@@ -95,15 +94,27 @@ async function generateWithReplicate(prompt, apiToken, duration, vocals) {
 
   if (!response.ok) {
     const errorText = await response.text();
+    console.error('Replicate API Error:', errorText);
     throw new Error(`Replicate API Error ${response.status}: ${errorText}`);
   }
 
-  const prediction = await response.json();
+  let prediction;
+  try {
+    prediction = await response.json();
+  } catch (parseError) {
+    const rawText = await response.text();
+    console.error('Failed to parse Replicate response:', rawText);
+    throw new Error(`Invalid API response format: ${parseError.message}`);
+  }
   
-  // Wait for completion if not already done
+  // Wait for completion
   let result = prediction;
-  while (result.status !== 'succeeded' && result.status !== 'failed') {
+  let attempts = 0;
+  const maxAttempts = 60; // 60 seconds timeout
+  
+  while (result.status !== 'succeeded' && result.status !== 'failed' && attempts < maxAttempts) {
     await new Promise(resolve => setTimeout(resolve, 1000));
+    attempts++;
     
     const statusResponse = await fetch(`https://api.replicate.com/v1/predictions/${result.id}`, {
       headers: {
@@ -111,14 +122,31 @@ async function generateWithReplicate(prompt, apiToken, duration, vocals) {
       }
     });
     
-    result = await statusResponse.json();
+    if (!statusResponse.ok) {
+      throw new Error(`Status check failed: ${statusResponse.status}`);
+    }
+    
+    try {
+      result = await statusResponse.json();
+    } catch (parseError) {
+      console.error('Failed to parse status response');
+      throw new Error('Failed to check generation status');
+    }
     
     if (result.status === 'failed') {
       throw new Error(`Generation failed: ${result.error || 'Unknown error'}`);
     }
   }
   
+  if (attempts >= maxAttempts) {
+    throw new Error('Generation timeout - took longer than 60 seconds');
+  }
+  
   // Return audio URL
+  if (!result.output) {
+    throw new Error('No audio output generated');
+  }
+  
   return result.output;
 }
 
