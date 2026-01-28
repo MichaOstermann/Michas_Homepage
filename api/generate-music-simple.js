@@ -60,18 +60,17 @@ export default async function handler(req, res) {
 
 // Generate with Replicate API using MusicGen or Stable Audio
 async function generateWithReplicate(prompt, apiToken, duration, vocals) {
-  // Choose model based on vocals requirement
-  // For instrumental: Use MusicGen (faster, better quality)
-  // For vocals: Use MusicGen Large (better for complex arrangements)
-  const model = vocals === 'instrumental' 
-    ? 'meta/musicgen:671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb'
-    : 'meta/musicgen:b05b1dff1d8c6dc63d14b0cdb42135378dcb87f6373b0d3d341ede46e59e2b38';
+  // Use smaller/faster model for testing to save costs
+  // MusicGen Melody (faster, cheaper for testing)
+  const model = '671ac645ce5e552cc63a54a2bbff63fcf798043055d2dac5fc9e36a837eedcfb';
 
-  // Calculate duration in seconds
-  let durationSeconds = 30; // default
-  if (duration === 'short') durationSeconds = 120;
-  else if (duration === 'medium') durationSeconds = 180;
-  else if (duration === 'long') durationSeconds = 240;
+  // Calculate duration in seconds (MusicGen max is 30 seconds)
+  let durationSeconds = 10; // Start with shorter duration to save costs
+  if (duration === 'short') durationSeconds = 15;
+  else if (duration === 'medium') durationSeconds = 20;
+  else if (duration === 'long') durationSeconds = 30;
+
+  console.log('[Replicate] Starting generation with prompt:', prompt.substring(0, 100));
 
   // Create prediction
   const response = await fetch('https://api.replicate.com/v1/predictions', {
