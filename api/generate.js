@@ -35,7 +35,7 @@ export default async function handler(req, res) {
           { role: "system", content: systemPrompt },
           { role: "user", content: "Bitte generiere den Songtext." }
         ],
-        max_tokens: 900,
+        max_tokens: 2000,
         temperature: 0.92
       });
       result = completion.choices?.[0]?.message?.content || "Keine Lyrics generiert.";
